@@ -41,15 +41,15 @@
 
 <!-- coverage -->
 
-[coverage]: https://codecov.io/gh/arvinxx/npm-template/branch/master/graph/badge.svg
-[codecov-url]: https://codecov.io/gh/arvinxx/npm-template/branch/master
+[coverage]: https://codecov.io/gh/arvinxx/pro-chat/branch/master/graph/badge.svg
+[codecov-url]: https://codecov.io/gh/arvinxx/pro-chat/branch/master
 
 <!-- Github CI -->
 
-[test-ci]: https://github.com/arvinxx/npm-template/workflows/Test%20CI/badge.svg
-[release-ci]: https://github.com/arvinxx/npm-template/workflows/Release%20CI/badge.svg
-[test-ci-url]: https://github.com/arvinxx/npm-template/actions?query=workflow%3ATest%20CI
-[release-ci-url]: https://github.com/arvinxx/npm-template/actions?query=workflow%3ARelease%20CI
+[test-ci]: https://github.com/arvinxx/pro-chat/workflows/Test%20CI/badge.svg
+[release-ci]: https://github.com/arvinxx/pro-chat/workflows/Release%20CI/badge.svg
+[test-ci-url]: https://github.com/arvinxx/pro-chat/actions?query=workflow%3ATest%20CI
+[release-ci-url]: https://github.com/arvinxx/pro-chat/actions?query=workflow%3ARelease%20CI
 [download-image]: https://img.shields.io/npm/dm/@ant-design/pro-chat.svg?style=flat-square
 [download-url]: https://npmjs.org/package/@ant-design/pro-chat
 
@@ -74,7 +74,6 @@
 pnpm i @ant-design/pro-chat -S
 ```
 
-
 ### 使用
 
 基于该仓库模板可以快速创建一个 npm 包的工程化脚手架。
@@ -90,8 +89,6 @@ const nextConfig = {
   transpilePackages: ['@ant-design/pro-chat'],
 };
 ```
-
-
 
 ## 🤝 Contributing
 
@@ -129,20 +126,20 @@ This project is [MIT](./LICENSE) licensed.
 
 <!-- contributors -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/arvinxx/npm-template.svg?style=flat
-[contributors-url]: https://github.com/arvinxx/npm-template/graphs/contributors
+[contributors-shield]: https://img.shields.io/github/contributors/arvinxx/pro-chat.svg?style=flat
+[contributors-url]: https://github.com/arvinxx/pro-chat/graphs/contributors
 
 <!-- forks -->
 
-[forks-shield]: https://img.shields.io/github/forks/arvinxx/npm-template.svg?style=flat
-[forks-url]: https://github.com/arvinxx/npm-template/network/members
+[forks-shield]: https://img.shields.io/github/forks/arvinxx/pro-chat.svg?style=flat
+[forks-url]: https://github.com/arvinxx/pro-chat/network/members
 
 <!-- stargazers -->
 
-[stargazers-shield]: https://img.shields.io/github/stars/arvinxx/npm-template.svg?style=flat
-[stargazers-url]: https://github.com/arvinxx/npm-template/stargazers
+[stargazers-shield]: https://img.shields.io/github/stars/arvinxx/pro-chat.svg?style=flat
+[stargazers-url]: https://github.com/arvinxx/pro-chat/stargazers
 
 <!-- issues -->
 
-[issues-shield]: https://img.shields.io/github/issues/arvinxx/npm-template.svg?style=flat
-[issues-url]: https://github.com/arvinxx/npm-template/issues/new/choose
+[issues-shield]: https://img.shields.io/github/issues/arvinxx/pro-chat.svg?style=flat
+[issues-url]: https://github.com/arvinxx/pro-chat/issues/new/choose

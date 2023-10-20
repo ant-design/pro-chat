@@ -6,13 +6,13 @@
     "npm",
     "template"
   ],
-  "homepage": "https://github.com/arvinxx/npm-template",
+  "homepage": "https://github.com/arvinxx/pro-chat",
   "bugs": {
-    "url": "https://github.com/arvinxx/npm-template/issues/new"
+    "url": "https://github.com/arvinxx/pro-chat/issues/new"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/arvinxx/npm-template.git"
+    "url": "https://github.com/arvinxx/pro-chat.git"
   },
   "license": "MIT",
   "author": "arvinxx(arvinx@foxmail.com)",
