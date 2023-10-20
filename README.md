@@ -41,15 +41,15 @@
 
 <!-- coverage -->
 
-[coverage]: https://codecov.io/gh/arvinxx/pro-chat/branch/master/graph/badge.svg
-[codecov-url]: https://codecov.io/gh/arvinxx/pro-chat/branch/master
+[coverage]: https://codecov.io/gh/ant-design/pro-chat/branch/master/graph/badge.svg
+[codecov-url]: https://codecov.io/gh/ant-design/pro-chat/branch/master
 
 <!-- Github CI -->
 
-[test-ci]: https://github.com/arvinxx/pro-chat/workflows/Test%20CI/badge.svg
-[release-ci]: https://github.com/arvinxx/pro-chat/workflows/Release%20CI/badge.svg
-[test-ci-url]: https://github.com/arvinxx/pro-chat/actions?query=workflow%3ATest%20CI
-[release-ci-url]: https://github.com/arvinxx/pro-chat/actions?query=workflow%3ARelease%20CI
+[test-ci]: https://github.com/ant-design/pro-chat/workflows/Test%20CI/badge.svg
+[release-ci]: https://github.com/ant-design/pro-chat/workflows/Release%20CI/badge.svg
+[test-ci-url]: https://github.com/ant-design/pro-chat/actions?query=workflow%3ATest%20CI
+[release-ci-url]: https://github.com/ant-design/pro-chat/actions?query=workflow%3ARelease%20CI
 [download-image]: https://img.shields.io/npm/dm/@ant-design/pro-chat.svg?style=flat-square
 [download-url]: https://npmjs.org/package/@ant-design/pro-chat
 
@@ -126,20 +126,20 @@ This project is [MIT](./LICENSE) licensed.
 
 <!-- contributors -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/arvinxx/pro-chat.svg?style=flat
-[contributors-url]: https://github.com/arvinxx/pro-chat/graphs/contributors
+[contributors-shield]: https://img.shields.io/github/contributors/ant-design/pro-chat.svg?style=flat
+[contributors-url]: https://github.com/ant-design/pro-chat/graphs/contributors
 
 <!-- forks -->
 
-[forks-shield]: https://img.shields.io/github/forks/arvinxx/pro-chat.svg?style=flat
-[forks-url]: https://github.com/arvinxx/pro-chat/network/members
+[forks-shield]: https://img.shields.io/github/forks/ant-design/pro-chat.svg?style=flat
+[forks-url]: https://github.com/ant-design/pro-chat/network/members
 
 <!-- stargazers -->
 
-[stargazers-shield]: https://img.shields.io/github/stars/arvinxx/pro-chat.svg?style=flat
-[stargazers-url]: https://github.com/arvinxx/pro-chat/stargazers
+[stargazers-shield]: https://img.shields.io/github/stars/ant-design/pro-chat.svg?style=flat
+[stargazers-url]: https://github.com/ant-design/pro-chat/stargazers
 
 <!-- issues -->
 
-[issues-shield]: https://img.shields.io/github/issues/arvinxx/pro-chat.svg?style=flat
-[issues-url]: https://github.com/arvinxx/pro-chat/issues/new/choose
+[issues-shield]: https://img.shields.io/github/issues/ant-design/pro-chat.svg?style=flat
+[issues-url]: https://github.com/ant-design/pro-chat/issues/new/choose

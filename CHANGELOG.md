@@ -1,6 +1,6 @@
 # Changelog
 
-### [Version&nbsp;0.1.1](https://github.com/arvinxx/pro-chat/compare/v0.1.0...v0.1.1)
+### [Version&nbsp;0.1.1](https://github.com/ant-design/pro-chat/compare/v0.1.0...v0.1.1)
 
 <sup>Released on **2023-10-20**</sup>
 
@@ -15,7 +15,7 @@
 
 #### What's fixed
 
-- Only support esm ([072ca61](https://github.com/arvinxx/pro-chat/commit/072ca61))
+- Only support esm ([072ca61](https://github.com/ant-design/pro-chat/commit/072ca61))
 
 </details>
 
