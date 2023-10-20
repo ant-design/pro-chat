@@ -1,5 +1,5 @@
-import { hello } from '@ant-design/pro-chat';
+import { colorScales } from '@ant-design/pro-chat';
 
-test('hello', () => {
-  expect(hello()).toBe('world');
+test('colorScales', () => {
+  expect(colorScales).toMatchSnapshot();
 });
