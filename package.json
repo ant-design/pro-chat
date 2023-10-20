@@ -1,0 +1,95 @@
+{
+  "name": "@arvinxu/npm-template",
+  "version": "1.11.1",
+  "description": "a npm develop template",
+  "keywords": [
+    "npm",
+    "template"
+  ],
+  "homepage": "https://github.com/arvinxx/npm-template",
+  "bugs": {
+    "url": "https://github.com/arvinxx/npm-template/issues/new"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arvinxx/npm-template.git"
+  },
+  "license": "MIT",
+  "author": "arvinxx(arvinx@foxmail.com)",
+  "sideEffects": false,
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib",
+    "es"
+  ],
+  "scripts": {
+    "build": "father build",
+    "build:watch": "father dev",
+    "changelog": "conventional-changelog -n node_modules/conventional-changelog-gitmoji-config -i CHANGELOG.md -s -r 0",
+    "ci": "npm run lint && npm run type-check && npm run doctor && npm run build",
+    "clean": "rm -rf es lib dist coverage .dumi/tmp .eslintcache",
+    "dev": "dumi dev",
+    "docs:build": "dumi build",
+    "doctor": "father doctor",
+    "lint": "eslint \"{src,test}/**/*.{js,jsx,ts,tsx}\"",
+    "prepare": "husky install && npm run setup",
+    "prepublishOnly": "npm run doctor && npm run build",
+    "prettier": "prettier -c --write \"**/**\"",
+    "release": "semantic-release",
+    "setup": "dumi setup",
+    "start": "dumi dev",
+    "test": "vitest --passWithNoTests",
+    "test:coverage": "vitest run --coverage --passWithNoTests",
+    "test:update": "vitest -u",
+    "type-check": "tsc -p tsconfig-check.json"
+  },
+  "lint-staged": {
+    "*.{md,json}": [
+      "prettier --write --no-error-on-unmatched-pattern"
+    ],
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --parser=typescript --write"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17",
+    "@testing-library/react": "^14",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@umijs/lint": "^4",
+    "@vitest/coverage-v8": "latest",
+    "commitlint": "^17",
+    "commitlint-config-gitmoji": "^2",
+    "concurrently": "^7",
+    "conventional-changelog-gitmoji-config": "^1",
+    "cross-env": "^7",
+    "dumi": "^2",
+    "dumi-theme-antd-style": "latest",
+    "eslint": "^8",
+    "father": "^4",
+    "husky": "^8",
+    "jsdom": "^22",
+    "lint-staged": "^13",
+    "prettier": "^2",
+    "prettier-plugin-organize-imports": "^3",
+    "prettier-plugin-packagejson": "^2",
+    "react": "^18",
+    "react-dom": "^18",
+    "semantic-release": "^21",
+    "semantic-release-config-gitmoji": "^1",
+    "stylelint": "^15",
+    "typescript": "^5",
+    "vitest": "latest"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  }
+}
