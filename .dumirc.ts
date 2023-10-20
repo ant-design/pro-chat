@@ -6,5 +6,6 @@ export default defineConfig({
     name: '@ant-design/pro-chat',
     github: homepage,
   },
+  outputPath: 'docs-dist',
   html2sketch: {},
 });
