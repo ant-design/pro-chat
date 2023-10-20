@@ -11,7 +11,7 @@
     "types": ["vitest/globals"],
     "paths": {
       "@@/*": [".dumi/tmp/*"],
-      "@/*": ["src"],
+      "@/*": ["src/*"],
       "@ant-design/pro-chat": ["src"],
       "@ant-design/pro-chat/*": ["src/*", "*"]
     }
