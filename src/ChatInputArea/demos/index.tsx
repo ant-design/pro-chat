@@ -2,19 +2,13 @@ import { ActionIcon, ChatInputArea, DraggablePanel, Icon, TokenTag } from '@ant-
 import { Button } from 'antd';
 import { Archive, Eraser, Languages } from 'lucide-react';
 import { useState } from 'react';
-import styled from 'styled-components';
-
-const View = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  height: 400px;
-`;
+import { Flexbox } from 'react-layout-kit';
 
 export default () => {
   const [expand, setExpand] = useState<boolean>(false);
+
   return (
-    <View>
+    <Flexbox height={400}>
       <div style={{ flex: 1 }}></div>
       <DraggablePanel expandable={false} fullscreen={expand} minHeight={200} placement="bottom">
         <ChatInputArea
@@ -31,6 +25,6 @@ export default () => {
           onExpandChange={setExpand}
         />
       </DraggablePanel>
-    </View>
+    </Flexbox>
   );
 };
