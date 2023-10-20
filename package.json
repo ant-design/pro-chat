@@ -137,7 +137,8 @@
   },
   "peerDependencies": {
     "antd": "^5",
-    "antd-style": "^3"
+    "antd-style": "^3",
+    "react": "^18"
   },
   "publishConfig": {
     "access": "public",
