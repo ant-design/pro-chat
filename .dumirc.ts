@@ -3,7 +3,7 @@ import { homepage } from './package.json';
 
 export default defineConfig({
   themeConfig: {
-    name: '@arvinxu/npm-template',
+    name: '@ant-design/pro-chat',
     github: homepage,
   },
   html2sketch: {},

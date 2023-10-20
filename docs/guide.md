@@ -8,6 +8,6 @@ title: 使用介绍
 
 ## Step2. 初始化项目信息
 
-使用编辑器全局替换 `@arvinxu/npm-template` 为你的包名（例如 `antd-style`），执行 `pnpm i` 安装依赖。
+使用编辑器全局替换 `@ant-design/pro-chat` 为你的包名（例如 `antd-style`），执行 `pnpm i` 安装依赖。
 
 ## Step3. 开始开发

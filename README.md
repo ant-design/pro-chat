@@ -4,7 +4,7 @@
 
 [//]: # '<img width="160" src="https://avatars.githubusercontent.com/u/17870709?v=4">'
 
-<h1>@arvinxu/npm-template</h1>
+<h1>@ant-design/pro-chat</h1>
 
 一个开发 npm 项目的模板
 
@@ -25,7 +25,7 @@
 <!-- gitpod url -->
 
 [gitpod-badge]: https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod
-[gitpod-url]: https://gitpod.io/#https://github.com/ant-design/@arvinxu/npm-template
+[gitpod-url]: https://gitpod.io/#https://github.com/ant-design/@ant-design/pro-chat
 
 <!-- umi url -->
 
@@ -34,10 +34,10 @@
 
 <!-- npm url -->
 
-[npm-image]: http://img.shields.io/npm/v/@arvinxu/npm-template.svg?style=flat-square&color=deepgreen&label=latest
-[npm-url]: http://npmjs.org/package/@arvinxu/npm-template
-[npm-size]: https://img.shields.io/bundlephobia/minzip/@arvinxu/npm-template?color=deepgreen&label=gizpped%20size&style=flat-square
-[npm-size-url]: https://packagephobia.com/result?p=@arvinxu/npm-template
+[npm-image]: http://img.shields.io/npm/v/@ant-design/pro-chat.svg?style=flat-square&color=deepgreen&label=latest
+[npm-url]: http://npmjs.org/package/@ant-design/pro-chat
+[npm-size]: https://img.shields.io/bundlephobia/minzip/@ant-design/pro-chat?color=deepgreen&label=gizpped%20size&style=flat-square
+[npm-size-url]: https://packagephobia.com/result?p=@ant-design/pro-chat
 
 <!-- coverage -->
 
@@ -50,8 +50,8 @@
 [release-ci]: https://github.com/arvinxx/npm-template/workflows/Release%20CI/badge.svg
 [test-ci-url]: https://github.com/arvinxx/npm-template/actions?query=workflow%3ATest%20CI
 [release-ci-url]: https://github.com/arvinxx/npm-template/actions?query=workflow%3ARelease%20CI
-[download-image]: https://img.shields.io/npm/dm/@arvinxu/npm-template.svg?style=flat-square
-[download-url]: https://npmjs.org/package/@arvinxu/npm-template
+[download-image]: https://img.shields.io/npm/dm/@ant-design/pro-chat.svg?style=flat-square
+[download-url]: https://npmjs.org/package/@ant-design/pro-chat
 
 </div>
 
@@ -71,20 +71,27 @@
 推荐使用 `pnpm` 安装
 
 ```bash
-pnpm i @arvinxu/npm-template -S
+pnpm i @ant-design/pro-chat -S
 ```
+
 
 ### 使用
 
 基于该仓库模板可以快速创建一个 npm 包的工程化脚手架。
 
-## 迭代记录
+### 适配 NextJS
 
-2023.06.12 - 完善文档与 README 框架
+为适配 nextjs 的 SSR 模式, 需要将本包添加到 `next.config.js` 的 `transpilePackages` 配置中:
 
-2022.12.17 - 基于蚂蚁研发技术栈配置完成最新的 npm 研发脚手架
+```js
+// next.config.js
+const nextConfig = {
+  // ...other config
+  transpilePackages: ['@ant-design/pro-chat'],
+};
+```
 
-详情：[CHANGELOG](./CHANGELOG.md)
+
 
 ## 🤝 Contributing
 

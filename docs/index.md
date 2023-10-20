@@ -1,6 +1,6 @@
 ---
 hero:
-  title: @arvinxu/npm-template
+  title: @ant-design/pro-chat
   description: a npm develop template
   actions:
     - text: 快速上手

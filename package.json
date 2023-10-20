@@ -1,7 +1,7 @@
 {
-  "name": "@arvinxu/npm-template",
-  "version": "1.11.1",
-  "description": "a npm develop template",
+  "name": "@ant-design/pro-chat",
+  "version": "0.0.0",
+  "description": "a solution for ai chat",
   "keywords": [
     "npm",
     "template"

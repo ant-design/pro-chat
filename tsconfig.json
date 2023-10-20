@@ -12,8 +12,8 @@
     "paths": {
       "@@/*": [".dumi/tmp/*"],
       "@/*": ["src"],
-      "@arvinxu/npm-template": ["src"],
-      "@arvinxu/npm-template/*": ["src/*", "*"]
+      "@ant-design/pro-chat": ["src"],
+      "@ant-design/pro-chat/*": ["src/*", "*"]
     }
   }
 }
