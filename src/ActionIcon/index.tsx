@@ -2,9 +2,9 @@ import { Loader2 } from 'lucide-react';
 import { forwardRef, useMemo } from 'react';
 
 import Icon, { type IconProps } from '@/Icon';
-import Spotlight from '@/Spotlight';
-import Tooltip, { type TooltipProps } from '@/Tooltip';
+import Spotlight from '@/components/Spotlight';
 import { DivProps } from '@/types';
+import { Tooltip, type TooltipProps } from 'antd';
 
 import { useStyles } from './style';
 

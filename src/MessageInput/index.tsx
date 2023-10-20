@@ -2,7 +2,7 @@ import { Button, ButtonProps } from 'antd';
 import { memo, useState, type CSSProperties } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
-import { TextArea, type TextAreaProps } from '@/Input';
+import { TextArea, type TextAreaProps } from '@/components/Input';
 import { DivProps } from '@/types';
 
 import { useStyles } from './style';

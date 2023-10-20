@@ -1,6 +1,6 @@
 ---
 nav: Components
-group: Data Display
+group: Message
 title: MessageModal
 description: The MessageModal component is a modal window that can display either a message in Markdown format or a message input field for editing the message.
 ---

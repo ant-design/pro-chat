@@ -3,7 +3,7 @@ import { Timer } from 'lucide-react';
 import { memo } from 'react';
 
 import Icon from '@/Icon';
-import Tag from '@/Tag';
+import Tag from '@/components/Tag';
 
 interface HistoryDividerProps {
   enable?: boolean;

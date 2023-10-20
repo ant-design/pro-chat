@@ -3,7 +3,7 @@ import { RotateCcw, Save } from 'lucide-react';
 import { forwardRef, useCallback, useEffect, useRef, useState } from 'react';
 
 import ActionIcon from '@/ActionIcon';
-import { Input, InputProps } from '@/Input';
+import { Input, InputProps } from '@/components/Input';
 
 export interface ControlInputProps extends Omit<InputProps, 'onChange' | 'value' | 'onAbort'> {
   /**

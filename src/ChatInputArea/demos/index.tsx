@@ -1,6 +1,8 @@
-import { ActionIcon, ChatInputArea, DraggablePanel, Icon, TokenTag } from '@ant-design/pro-chat';
-import { Button } from 'antd';
-import { Archive, Eraser, Languages } from 'lucide-react';
+/**
+ * compact: true
+ */
+import { ActionIcon, ChatInputArea, DraggablePanel, TokenTag } from '@ant-design/pro-chat';
+import { Eraser, Languages } from 'lucide-react';
 import { useState } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
@@ -10,7 +12,7 @@ export default () => {
   return (
     <Flexbox height={400}>
       <div style={{ flex: 1 }}></div>
-      <DraggablePanel expandable={false} fullscreen={expand} minHeight={200} placement="bottom">
+      <DraggablePanel fullscreen={expand} minHeight={200} placement="bottom">
         <ChatInputArea
           actions={
             <>
@@ -20,7 +22,6 @@ export default () => {
             </>
           }
           expand={expand}
-          footer={<Button icon={<Icon icon={Archive} />} />}
           minHeight={200}
           onExpandChange={setExpand}
         />

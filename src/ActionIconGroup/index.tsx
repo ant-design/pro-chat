@@ -1,6 +1,6 @@
 import ActionIcon, { ActionIconProps } from '@/ActionIcon';
 import Icon from '@/Icon';
-import Spotlight from '@/Spotlight';
+import Spotlight from '@/components/Spotlight';
 
 import { Dropdown } from 'antd';
 import { MoreHorizontal, type LucideIcon } from 'lucide-react';

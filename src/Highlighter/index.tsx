@@ -1,8 +1,8 @@
 import { memo } from 'react';
 
-import CopyButton, { type CopyButtonProps } from '@/CopyButton';
-import Spotlight from '@/Spotlight';
-import Tag from '@/Tag';
+import CopyButton, { type CopyButtonProps } from '@/components/CopyButton';
+import Spotlight from '@/components/Spotlight';
+import Tag from '@/components/Tag';
 import { DivProps } from '@/types';
 
 import FullFeatured from './FullFeatured';

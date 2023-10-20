@@ -4,7 +4,7 @@ import { CSSProperties, forwardRef, useCallback, useRef } from 'react';
 import useControlledState from 'use-merge-value';
 
 import Icon from '@/Icon';
-import { TextArea, type TextAreaProps } from '@/Input';
+import { TextArea, type TextAreaProps } from '@/components/Input';
 
 import Action from './Action';
 import { useStyles } from './style';

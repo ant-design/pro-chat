@@ -4,7 +4,7 @@ import { memo, useState } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
 import ActionIcon from '@/ActionIcon';
-import CopyButton from '@/CopyButton';
+import CopyButton from '@/components/CopyButton';
 import { languageMap } from '@/hooks/useHighlight';
 import { DivProps } from '@/types';
 

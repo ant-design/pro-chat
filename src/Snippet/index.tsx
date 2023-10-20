@@ -1,8 +1,8 @@
 import { memo } from 'react';
 
-import CopyButton from '@/CopyButton';
 import SyntaxHighlighter from '@/Highlighter/SyntaxHighlighter';
-import Spotlight from '@/Spotlight';
+import CopyButton from '@/components/CopyButton';
+import Spotlight from '@/components/Spotlight';
 import { DivProps } from '@/types';
 
 import { useStyles } from './style';

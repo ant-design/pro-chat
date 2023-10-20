@@ -1,7 +1,7 @@
 import { useResponsive } from 'antd-style';
 import { forwardRef } from 'react';
 
-import FluentEmoji from '@/FluentEmoji';
+import Emoji from '@/Emoji';
 import { DivProps } from '@/types';
 
 import { ICON_SIZE, useStyles } from './style';
@@ -53,7 +53,7 @@ const TokenTag = forwardRef<HTMLDivElement, TokenTagProps>(
 
     return (
       <div className={cx(styles.container, className)} ref={ref} {...props}>
-        <FluentEmoji emoji={emoji} size={ICON_SIZE} />
+        <Emoji emoji={emoji} size={ICON_SIZE} />
         {valueLeft > 0
           ? [
               mobile
