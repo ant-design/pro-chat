@@ -23,7 +23,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           build: |
             pnpm i
-            pnpm run docs:preview
+            pnpm run docs:build
           dist: docs-dist
 
       - name: Get the preview_url
