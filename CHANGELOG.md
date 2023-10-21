@@ -1,5 +1,32 @@
 # Changelog
 
+## [Version&nbsp;0.2.0-beta.2](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.1...v0.2.0-beta.2)
+
+<sup>Released on **2023-10-21**</sup>
+
+#### ✨ 新特性
+
+- Add ProChat, ProChat 初步组件化, 支持流式响应.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- Add ProChat ([ec20b42](https://github.com/ant-design/pro-chat/commit/ec20b42))
+- ProChat 初步组件化 ([86e8283](https://github.com/ant-design/pro-chat/commit/86e8283))
+- 支持流式响应 ([4e6d720](https://github.com/ant-design/pro-chat/commit/4e6d720))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;0.2.0-beta.1](https://github.com/ant-design/pro-chat/compare/v0.1.1...v0.2.0-beta.1)
 
 <sup>Released on **2023-10-20**</sup>
