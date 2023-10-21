@@ -1,7 +1,6 @@
 export { default as ActionIcon, type ActionIconProps, type ActionIconSize } from './ActionIcon';
 export { default as ActionIconGroup, type ActionIconGroupProps } from './ActionIconGroup';
 export { default as BackBottom, type BackBottomProps } from './BackBottom';
-export { default as ChatInputArea, type ChatInputAreaProps } from './ChatInputArea';
 export { default as ChatItem, type ChatItemProps } from './ChatItem';
 export { default as ChatList } from './ChatList';
 export type {
@@ -17,23 +16,6 @@ export type {
 export { default as ActionsBar, type ActionsBarProps } from './ChatList/ActionsBar';
 export * from './ProChat';
 
-export { default as DraggablePanel, type DraggablePanelProps } from './DraggablePanel';
-export {
-  default as DraggablePanelBody,
-  type DraggablePanelBodyProps,
-} from './DraggablePanel/components/DraggablePanelBody';
-export {
-  default as DraggablePanelContainer,
-  type DraggablePanelContainerProps,
-} from './DraggablePanel/components/DraggablePanelContainer';
-export {
-  default as DraggablePanelFooter,
-  type DraggablePanelFooterProps,
-} from './DraggablePanel/components/DraggablePanelFooter';
-export {
-  default as DraggablePanelHeader,
-  type DraggablePanelHeaderProps,
-} from './DraggablePanel/components/DraggablePanelHeader';
 export { default as EditableMessage, type EditableMessageProps } from './EditableMessage';
 export {
   default as EditableMessageList,

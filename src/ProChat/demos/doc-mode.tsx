@@ -2,11 +2,11 @@
  * iframe: 800
  */
 import { ProChat } from '@ant-design/pro-chat';
-
-import { MockResponse } from '@/ProChat/mocks/streamResponse';
 import { useTheme } from 'antd-style';
 import { Flexbox } from 'react-layout-kit';
+
 import { example } from '../mocks/fullFeature';
+import { MockResponse } from '../mocks/streamResponse';
 
 export default () => {
   const theme = useTheme();
