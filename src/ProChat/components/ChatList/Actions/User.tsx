@@ -11,7 +11,7 @@ export const UserActionsBar: RenderAction = memo(({ text, onActionClick }) => {
         edit,
         copy,
         regenerate,
-        divider,
+        // divider,
         // TODO: need a translate
         divider,
         del,

@@ -1,0 +1,9 @@
+{
+  "name": "api",
+  "version": "0.0.0",
+  "description": "test openai api for pro chat",
+  "dependencies": {
+    "ai": "^2",
+    "openai": "^4"
+  }
+}

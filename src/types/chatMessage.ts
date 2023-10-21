@@ -50,5 +50,3 @@ export interface ChatMessage extends BaseDataModel {
    */
   topicId?: string;
 }
-
-export type ChatMessageMap = Record<string, ChatMessage>;

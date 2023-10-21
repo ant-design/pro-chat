@@ -18,7 +18,7 @@ export const AssistantActionsBar: RenderAction = memo(({ text, id, onActionClick
         edit,
         copy,
         regenerate,
-        divider,
+        // divider,
         // TODO: need a translate
         divider,
         del,

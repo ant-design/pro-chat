@@ -9,7 +9,17 @@ description: a Chat Solution
 
 搭配 `request` 指定接口即可使用：
 
+如果 `request` 为 url，入参格式要求：
+
+```ts
+interface Params {}
+```
+
 <code src="./demos/default.tsx" center></code>
+
+### 自定义 request 请求
+
+<code src="./demos/request.tsx" center></code>
 
 ## 设定初始会话消息
 

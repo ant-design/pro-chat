@@ -25,7 +25,7 @@ export default (token: FullToken) => css`
 
   ::selection {
     color: #000;
-    background: ${token.yellow9};
+    background: ${token.blue3};
 
     -webkit-text-fill-color: unset !important;
   }

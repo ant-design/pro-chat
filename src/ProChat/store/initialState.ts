@@ -1,8 +1,9 @@
 import { DEFAULT_AVATAR, DEFAULT_USER_AVATAR } from '@/ProChat/const/meta';
 import { ModelConfig } from '@/ProChat/types/config';
-import { ChatMessageMap } from '@/ProChat/types/message';
+import { ChatMessage, ChatMessageMap } from '@/ProChat/types/message';
 import { MetaData } from '@/ProChat/types/meta';
-import { LanguageModel } from '@/types';
+
+export type ChatRequest = (messages: ChatMessage[], config: ModelConfig) => Promise<Response>;
 
 export interface ChatPropsState {
   /**
@@ -21,6 +22,7 @@ export interface ChatPropsState {
    * 帮助消息
    */
   helloMessage?: string;
+  request?: string | ChatRequest;
 }
 
 export interface ChatState extends ChatPropsState {
@@ -29,9 +31,9 @@ export interface ChatState extends ChatPropsState {
   chatLoadingId?: string;
 }
 
-export const initialLobeAgentConfig: ModelConfig = {
+export const initialModelConfig: ModelConfig = {
   historyCount: 1,
-  model: LanguageModel.GPT3_5,
+  model: 'gpt-3.5-turbo',
   params: {
     frequency_penalty: 0,
     presence_penalty: 0,
@@ -51,5 +53,5 @@ export const initialState: ChatState = {
   assistantMeta: {
     avatar: DEFAULT_AVATAR,
   },
-  config: initialLobeAgentConfig,
+  config: initialModelConfig,
 };

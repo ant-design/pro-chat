@@ -26,6 +26,7 @@ export const ProChat = memo<ProChatProps>(
     userMeta,
     assistantMeta,
     showTitle,
+    request,
     ...props
   }) => {
     return (
@@ -36,6 +37,7 @@ export const ProChat = memo<ProChatProps>(
         helloMessage={helloMessage}
         userMeta={userMeta}
         assistantMeta={assistantMeta}
+        request={request}
         {...props}
         devtoolOptions={__PRO_CHAT_STORE_DEVTOOLS__}
       >
@@ -47,6 +49,7 @@ export const ProChat = memo<ProChatProps>(
           helloMessage={helloMessage}
           chats={chats}
           userMeta={userMeta}
+          request={request}
           assistantMeta={assistantMeta}
           onChatsChange={onChatsChange}
         />

@@ -1,8 +1,7 @@
-import { template } from 'lodash-es';
+import { merge, template } from 'lodash-es';
 import { StateCreator } from 'zustand/vanilla';
 
 import { LOADING_FLAT } from '@/ProChat/const/message';
-import { fetchChatModel } from '@/ProChat/services/chatModel';
 import { ChatStore } from '@/ProChat/store/index';
 import { ChatMessage } from '@/ProChat/types/message';
 import { fetchSSE } from '@/ProChat/utils/fetch';
@@ -10,11 +9,17 @@ import { isFunctionMessage } from '@/ProChat/utils/message';
 import { setNamespace } from '@/ProChat/utils/storeDebug';
 import { nanoid } from '@/ProChat/utils/uuid';
 
+import { initialModelConfig } from '@/ProChat/store/initialState';
+import { ChatStreamPayload } from '@/ProChat/types/chat';
 import { getSlicedMessagesWithConfig } from '../utils/message';
 import { MessageDispatch, messagesReducer } from './reducers/message';
 import { chatSelectors } from './selectors';
 
 const t = setNamespace('chat/message');
+
+interface FetchChatModelOptions {
+  signal?: AbortSignal | undefined;
+}
 
 /**
  * 聊天操作
@@ -68,6 +73,10 @@ export interface ChatAction {
     id?: string,
     action?: string,
   ) => AbortController | undefined;
+  defaultModelFetcher: (
+    params: Partial<ChatStreamPayload>,
+    options?: FetchChatModelOptions,
+  ) => Promise<Response>;
 }
 
 export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], [], ChatAction> = (
@@ -94,7 +103,7 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
     set({ chats: nextChats }, false, t('dispatchMessage'));
   },
   generateMessage: async (messages, assistantId) => {
-    const { dispatchMessage, toggleChatLoading, config } = get();
+    const { dispatchMessage, toggleChatLoading, config, defaultModelFetcher } = get();
 
     const abortController = toggleChatLoading(
       true,
@@ -133,7 +142,7 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
     }
 
     const fetcher = () =>
-      fetchChatModel(
+      defaultModelFetcher(
         {
           messages: postMessages,
           model: config.model,
@@ -271,5 +280,28 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
     } else {
       set({ abortController: undefined, chatLoadingId: undefined }, false, action);
     }
+  },
+
+  defaultModelFetcher: (params, options) => {
+    const { request } = get();
+    const payload = merge(
+      {
+        model: initialModelConfig.model,
+        stream: true,
+        ...initialModelConfig.params,
+      },
+      params,
+    );
+
+    if (typeof request === 'function') return request(payload.messages as ChatMessage[], payload);
+
+    const url = typeof request === 'string' ? request : '/api/openai/chat';
+
+    return fetch(url, {
+      body: JSON.stringify(payload),
+      headers: { 'Content-Type': 'application/json' },
+      method: 'POST',
+      signal: options?.signal,
+    });
   },
 });

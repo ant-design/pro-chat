@@ -15,7 +15,7 @@ export type {
   RenderMessageExtra,
 } from './ChatList';
 export { default as ActionsBar, type ActionsBarProps } from './ChatList/ActionsBar';
-export { ProChat } from './ProChat';
+export * from './ProChat';
 
 export { default as DraggablePanel, type DraggablePanelProps } from './DraggablePanel';
 export {

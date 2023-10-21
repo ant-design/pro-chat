@@ -4,12 +4,12 @@ import { createStoreUpdater } from 'zustand-utils';
 import { ChatProps, ChatState, useStoreApi } from '../store';
 
 export type StoreUpdaterProps = Partial<
-  Pick<ChatState, 'chats' | 'config' | 'init' | 'onChatsChange' | 'helloMessage'>
+  Pick<ChatState, 'chats' | 'config' | 'init' | 'onChatsChange' | 'helloMessage' | 'request'>
 > &
   Pick<ChatProps, 'userMeta' | 'assistantMeta'>;
 
 const StoreUpdater = memo<StoreUpdaterProps>(
-  ({ init, onChatsChange, userMeta, assistantMeta, helloMessage, chats, config }) => {
+  ({ init, onChatsChange, request, userMeta, assistantMeta, helloMessage, chats, config }) => {
     const storeApi = useStoreApi();
     const useStoreUpdater = createStoreUpdater(storeApi);
 
@@ -24,6 +24,7 @@ const StoreUpdater = memo<StoreUpdaterProps>(
     useStoreUpdater('chats', chats);
     useStoreUpdater('onChatsChange', onChatsChange);
 
+    useStoreUpdater('request', request);
     return null;
   },
 );

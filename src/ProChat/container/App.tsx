@@ -3,9 +3,10 @@ import { createStyles } from 'antd-style';
 import { ReactNode, memo, useRef } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
-import { useOverrideStyles } from '@/ProChat/container/OverrideStyle';
 import ChatList from '../components/ChatList';
+import InputArea from '../components/InputArea';
 import ChatScrollAnchor from '../components/ScrollAnchor';
+import { useOverrideStyles } from './OverrideStyle';
 
 const useStyles = createStyles(
   ({ css, responsive, stylish }) => css`
@@ -36,7 +37,7 @@ const App = memo<ConversationProps>(({ chatInput, showTitle }) => {
         </div>
         <BackBottom target={ref} text={'返回底部'} />
       </div>
-      {chatInput}
+      {chatInput ?? <InputArea />}
     </Flexbox>
   );
 });

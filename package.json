@@ -39,6 +39,7 @@
     "release": "semantic-release",
     "setup": "dumi setup",
     "start": "dumi dev",
+    "start-with-api": "vercel dev",
     "test": "vitest --passWithNoTests",
     "test:coverage": "vitest run --coverage --passWithNoTests",
     "test:update": "vitest -u",
@@ -127,6 +128,7 @@
     "semantic-release-config-gitmoji": "^1",
     "stylelint": "^15",
     "typescript": "^5",
+    "vercel": "^32",
     "vitest": "latest"
   },
   "peerDependencies": {

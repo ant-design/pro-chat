@@ -1,17 +1,20 @@
 /**
  * compact: true
  */
-import { ProChat } from '@ant-design/pro-chat';
+import { ChatMessageMap, ProChat } from '@ant-design/pro-chat';
 
 import { useTheme } from 'antd-style';
+import { useState } from 'react';
 import { Flexbox } from 'react-layout-kit';
-import { example } from '../mocks/basic';
 
 export default () => {
   const theme = useTheme();
+
+  const [chats, setChats] = useState<ChatMessageMap>();
+
   return (
     <Flexbox style={{ background: theme.colorBgLayout }}>
-      <ProChat request={'https://chat.lobehub.com/api/openai/chat'} config={example.config} />
+      <ProChat chats={chats} onChatsChange={setChats} />
     </Flexbox>
   );
 };
