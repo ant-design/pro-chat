@@ -11,7 +11,7 @@ export default () => {
   const theme = useTheme();
   return (
     <Flexbox style={{ background: theme.colorBgLayout }}>
-      <ProChat request={'https://chat.lobehub.com/api/openai/chat'} config={example.config} />
+      <ProChat request={'/api/openai/chat'} config={example.config} />
     </Flexbox>
   );
 };
