@@ -42,7 +42,6 @@ describe('messagesReducer', () => {
       expect(newState.message3).toEqual({
         id: 'message3',
         content: 'New Message',
-        meta: {},
         createAt: expect.any(Number),
         updateAt: expect.any(Number),
         role: 'user',
@@ -66,7 +65,6 @@ describe('messagesReducer', () => {
       expect(newState.customId).toEqual({
         id: 'customId',
         content: 'New Message',
-        meta: {},
         createAt: expect.any(Number),
         updateAt: expect.any(Number),
         role: 'user',
@@ -87,33 +85,10 @@ describe('messagesReducer', () => {
       expect(newState.message3).toEqual({
         id: 'message3',
         content: 'New Message',
-        meta: {},
         createAt: expect.any(Number),
         updateAt: expect.any(Number),
         role: 'user',
         parentId: 'message1',
-      });
-    });
-
-    it('should use the provided quotaId when adding a new message', () => {
-      const payload: MessageDispatch = {
-        type: 'addMessage',
-        message: 'New Message',
-        id: 'message3',
-        role: 'user',
-        quotaId: 'message2',
-      };
-
-      const newState = messagesReducer(initialState, payload);
-
-      expect(newState.message3).toEqual({
-        id: 'message3',
-        meta: {},
-        content: 'New Message',
-        createAt: expect.any(Number),
-        updateAt: expect.any(Number),
-        role: 'user',
-        quotaId: 'message2',
       });
     });
 
@@ -124,7 +99,6 @@ describe('messagesReducer', () => {
         id: 'message3',
         role: 'user',
         parentId: 'message1',
-        quotaId: 'message2',
       };
 
       const newState = messagesReducer(initialState, payload);
@@ -132,12 +106,10 @@ describe('messagesReducer', () => {
       expect(newState.message3).toEqual({
         id: 'message3',
         content: 'New Message',
-        meta: {},
         createAt: expect.any(Number),
         updateAt: expect.any(Number),
         role: 'user',
         parentId: 'message1',
-        quotaId: 'message2',
       });
     });
   });
@@ -235,37 +207,6 @@ describe('messagesReducer', () => {
       const newState = messagesReducer(initialState, payload);
 
       expect(newState).toEqual({});
-    });
-
-    it('should delete messages with the specified topicId', () => {
-      const initialState = {
-        message1: {
-          id: 'message1',
-          content: 'Hello World',
-          createAt: 1629264000000,
-          updateAt: 1629264000000,
-          role: 'user',
-          topicId: 'topic1',
-        },
-        message2: {
-          id: 'message2',
-          content: 'How are you?',
-          createAt: 1629264000000,
-          updateAt: 1629264000000,
-          role: 'system',
-        },
-      } as unknown as ChatMessageMap;
-
-      const payload: MessageDispatch = {
-        type: 'resetMessages',
-        topicId: 'topic1',
-      };
-
-      const newState = messagesReducer(initialState, payload);
-
-      expect(Object.keys(newState)).toHaveLength(1);
-      expect(newState).not.toHaveProperty('message1');
-      expect(newState).toHaveProperty('message2');
     });
   });
 
