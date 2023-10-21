@@ -9,8 +9,6 @@ export interface MetaData {
    * @description 可选参数，如果不传则使用默认背景色
    */
   backgroundColor?: string;
-  description?: string;
-  tags?: string[];
   /**
    * 名称
    * @description 可选参数，如果不传则使用默认名称

@@ -8,4 +8,5 @@ export default defineConfig({
   },
   outputPath: 'docs-dist',
   html2sketch: {},
+  extraBabelPlugins: ['antd-style'],
 });

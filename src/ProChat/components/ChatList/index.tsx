@@ -2,20 +2,22 @@ import { ChatList } from '@lobehub/ui';
 import isEqual from 'fast-deep-equal';
 import { memo } from 'react';
 
-import { useChatStore, useSessionChatInit } from '@/ProChat/store';
-import { agentSelectors, chatSelectors } from '@/ProChat/store/selectors';
+import { useStore } from '@/ProChat/store';
+import { chatSelectors } from '@/ProChat/store/selectors';
 
 import { renderActions } from './Actions';
 import { renderMessagesExtra } from './Extras';
 import { renderMessages } from './Messages';
 import SkeletonList from './SkeletonList';
 
-const List = memo(() => {
-  const init = useSessionChatInit();
-
-  const data = useChatStore(chatSelectors.currentChatsWithGuideMessage, isEqual);
+interface ListProps {
+  showTitle?: boolean;
+}
+const List = memo<ListProps>(({ showTitle }) => {
+  const data = useStore(chatSelectors.currentChatsWithGuideMessage, isEqual);
 
   const [
+    init,
     displayMode,
     enableHistoryCount,
     historyCount,
@@ -23,18 +25,18 @@ const List = memo(() => {
     deleteMessage,
     resendMessage,
     dispatchMessage,
-    translateMessage,
-  ] = useChatStore((s) => {
-    const config = agentSelectors.currentAgentConfig(s);
+  ] = useStore((s) => {
+    const config = s.config;
+
     return [
-      config.displayMode,
+      s.init,
+      s.displayMode,
       config.enableHistoryCount,
       config.historyCount,
       s.chatLoadingId,
       s.deleteMessage,
       s.resendMessage,
       s.dispatchMessage,
-      s.translateMessage,
     ];
   });
 
@@ -42,6 +44,8 @@ const List = memo(() => {
 
   return (
     <ChatList
+      showTitle={showTitle}
+      // @ts-ignore
       data={data}
       enableHistoryCount={enableHistoryCount}
       historyCount={historyCount}
@@ -61,13 +65,7 @@ const List = memo(() => {
           }
         }
 
-        // click the menu item with translate item, the result is:
-        // key: 'en-US'
-        // keyPath: ['en-US','translate']
-        if (action.keyPath.at(-1) === 'translate') {
-          const lang = action.keyPath[0];
-          translateMessage(id, lang);
-        }
+        // TODO: need a custom callback
       }}
       onMessageChange={(id, content) =>
         dispatchMessage({ id, key: 'content', type: 'updateMessage', value: content })

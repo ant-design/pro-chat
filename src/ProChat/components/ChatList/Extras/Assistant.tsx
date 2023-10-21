@@ -4,11 +4,10 @@ import { RenderMessageExtra } from '@/index';
 import { memo } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
-import { useChatStore } from '@/ProChat/store';
-import { agentSelectors } from '@/ProChat/store/selectors';
+import { useStore } from '@/ProChat/store';
 
 export const AssistantMessageExtra: RenderMessageExtra = memo(({ extra }) => {
-  const model = useChatStore(agentSelectors.currentAgentModel);
+  const model = useStore((s) => s.config.model);
 
   const showModelTag = extra?.fromModel && model !== extra?.fromModel;
   const hasTranslate = !!extra?.translate;

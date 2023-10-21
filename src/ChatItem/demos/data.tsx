@@ -1,5 +1,4 @@
-import { type ActionIconGroupProps } from '@ant-design/pro-chat';
-import { MetaData } from '@ant-design/pro-chat/types/meta';
+import type { ActionIconGroupProps, MetaData } from '@ant-design/pro-chat';
 import { Copy, Edit, RotateCw, Trash } from 'lucide-react';
 
 export const avatar: MetaData = {

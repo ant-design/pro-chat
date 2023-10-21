@@ -1,53 +1,64 @@
-import { PersistOptions, devtools, persist } from 'zustand/middleware';
-import { shallow } from 'zustand/shallow';
-import { createWithEqualityFn } from 'zustand/traditional';
 import { StateCreator } from 'zustand/vanilla';
 
-import { SessionStoreState, initialState } from './initialState';
-import { AgentAction, createAgentSlice } from './slices/agentConfig/action';
-import { ChatAction, createChatSlice } from './slices/chat/action';
-import { SessionAction, createSessionSlice } from './slices/session/action';
+import { MetaData } from '@/ProChat/types/meta';
+import isEqual from 'fast-deep-equal';
+import { merge } from 'lodash-es';
+import { optionalDevtools } from 'zustand-utils';
+import { DevtoolsOptions } from 'zustand/middleware';
+import { createWithEqualityFn } from 'zustand/traditional';
+import { ChatAction, chatAction } from './action';
+import { ChatPropsState, ChatState, initialState } from './initialState';
 
-const isDev = process.env.NODE_ENV === 'development';
+export interface ChatProps extends Partial<ChatPropsState> {
+  // init
+  loading?: boolean;
+  initialChats?: ChatPropsState['chats'];
+  userMeta?: MetaData;
+  assistantMeta?: MetaData;
+}
 
 //  ===============  聚合 createStoreFn ============ //
 
-export type SessionStore = SessionAction & AgentAction & ChatAction & SessionStoreState;
-const createStore: StateCreator<SessionStore, [['zustand/devtools', never]]> = (...parameters) => ({
-  ...initialState,
-  ...createAgentSlice(...parameters),
-  ...createSessionSlice(...parameters),
-  ...createChatSlice(...parameters),
-});
+export type ChatStore = ChatAction & ChatState;
 
-//  ===============  persist 本地缓存中间件配置 ============ //
+const vanillaStore =
+  ({
+    loading,
+    initialChats,
+    chats,
+    ...props
+  }: ChatProps): StateCreator<ChatStore, [['zustand/devtools', never]]> =>
+  (...parameters) => {
+    // initState = innerState + props
+
+    const state = merge({}, initialState, {
+      init: !loading,
+      chats: chats ?? initialChats,
+      ...props,
+    } as ChatState);
+
+    return {
+      ...state,
+      ...chatAction(...parameters),
+    };
+  };
+//
+
+// ===============  封装 createStore ============ //
 
 const PRO_CHAT = 'PRO_CHAT';
 
-const persistOptions: PersistOptions<SessionStore> = {
-  name: PRO_CHAT,
+const isDev = process.env.NODE_ENV === 'development';
 
-  // 手动控制 Hydration ，避免 ssr 报错
-  skipHydration: true,
+export const createStore = (props: ChatProps, options: boolean | DevtoolsOptions = false) => {
+  const devtools = optionalDevtools(options !== false);
 
-  // storage: createHyperStorage({
-  //   localStorage: {
-  //     dbName: 'LobeHub',
-  //     mode: 'indexedDB',
-  //     selectors: ['inbox', 'sessions'],
-  //   },
-  // }),
-  version: 0,
+  const devtoolOptions =
+    options === false
+      ? undefined
+      : options === true
+      ? { name: PRO_CHAT + (isDev ? '_DEV' : '') }
+      : options;
+
+  return createWithEqualityFn<ChatStore>()(devtools(vanillaStore(props), devtoolOptions), isEqual);
 };
-
-//  ===============  实装 useStore ============ //
-
-export const useChatStore = createWithEqualityFn<SessionStore>()(
-  persist(
-    devtools(createStore, {
-      name: PRO_CHAT + (isDev ? '_DEV' : ''),
-    }),
-    persistOptions,
-  ),
-  shallow,
-);

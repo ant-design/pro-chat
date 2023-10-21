@@ -1,4 +1,4 @@
-import { useChatStore } from '../store';
+import { useStore } from '../store';
 import { useSessionHydrated } from './useSessionHydrated';
 
 /**
@@ -6,7 +6,8 @@ import { useSessionHydrated } from './useSessionHydrated';
  */
 export const useSessionChatInit = () => {
   const sessionHydrated = useSessionHydrated();
-  const [hasActive] = useChatStore((s) => [!!s.activeId]);
+  // TODO: mark when session is active
+  const [hasActive] = useStore(() => [true]);
 
   return sessionHydrated && hasActive;
 };

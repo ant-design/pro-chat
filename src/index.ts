@@ -15,6 +15,7 @@ export type {
   RenderMessageExtra,
 } from './ChatList';
 export { default as ActionsBar, type ActionsBarProps } from './ChatList/ActionsBar';
+export { ProChat } from './ProChat';
 
 export { default as DraggablePanel, type DraggablePanelProps } from './DraggablePanel';
 export {
@@ -53,7 +54,6 @@ export { default as Markdown, type MarkdownProps } from './Markdown';
 export { default as MessageInput, type MessageInputProps } from './MessageInput';
 export { default as MessageModal, type MessageModalProps } from './MessageModal';
 
-export { default as GlobalStyle } from './GlobalStyle';
 export { default as Snippet, type SnippetProps } from './Snippet';
 export { default as TokenTag, type TokenTagProps } from './TokenTag';
 export { useChatListActionsBar } from './hooks/useChatListActionsBar';

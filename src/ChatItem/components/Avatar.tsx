@@ -21,7 +21,6 @@ const Avatar = memo<AvatarProps>(({ loading, avatar, placement, addon, onClick, 
   const avatarContent = (
     <div className={styles.avatarContainer}>
       <A
-        animation={loading}
         avatar={avatar.avatar}
         background={avatar.backgroundColor}
         onClick={onClick}

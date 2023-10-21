@@ -1,26 +1,26 @@
 import { useEffect } from 'react';
 
-import { SessionStore, useChatStore } from '../store';
+import { ChatStore, useStore } from '../store';
 
 export const useEffectAfterSessionHydrated = (
-  fn: (session: typeof useChatStore, store: SessionStore) => void,
+  fn: (session: typeof useStore, store: ChatStore) => void,
   deps: any[] = [],
 ) => {
   // const hasTrigger = useRef(false);
   useEffect(() => {
-    const hasRehydrated = useChatStore.persist.hasHydrated();
+    const hasRehydrated = useStore.persist.hasHydrated();
 
     if (hasRehydrated) {
       // equal useEffect triggered multi-time
-      fn(useChatStore, useChatStore.getState());
+      fn(useStore, useStore.getState());
     } else {
       // keep onFinishHydration just are triggered only once
       // if (hasTrigger.current) return;
       //
       // hasTrigger.current = true;
       // equal useEffect first trigger
-      useChatStore.persist.onFinishHydration(() => {
-        fn(useChatStore, useChatStore.getState());
+      useStore.persist.onFinishHydration(() => {
+        fn(useStore, useStore.getState());
       });
     }
   }, deps);
