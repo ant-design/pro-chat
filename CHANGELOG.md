@@ -1,5 +1,38 @@
 # Changelog
 
+## [Version&nbsp;0.2.0-beta.4](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.3...v0.2.0-beta.4)
+
+<sup>Released on **2023-10-22**</sup>
+
+#### ✨ 新特性
+
+- 支持非流式请求.
+
+#### 🐛 修复
+
+- Fix import.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- 支持非流式请求 ([211fad5](https://github.com/ant-design/pro-chat/commit/211fad5))
+
+#### What's fixed
+
+- Fix import ([ac81b1d](https://github.com/ant-design/pro-chat/commit/ac81b1d))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;0.2.0-beta.3](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.2...v0.2.0-beta.3)
 
 <sup>Released on **2023-10-22**</sup>
