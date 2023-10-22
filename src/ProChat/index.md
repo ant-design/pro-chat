@@ -1,7 +1,8 @@
 ---
-nav: Components
+nav: 组件
 group: Chat
 title: ProChat
+order: 0
 description: a Chat Solution
 ---
 
@@ -63,9 +64,11 @@ ProChat使用 `meta` 来表意会话双方的头像、名称等信息。设定�
 
 <code src="./demos/meta.tsx"></code>
 
-## 🚧 悬浮窗使用
+## 悬浮窗使用
 
 将 `ProChat` 组件作为会话解决方案
+
+<code src="./demos/draggable.tsx"></code>
 
 ## 🚧 程序化控制消息发送
 

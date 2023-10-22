@@ -1,5 +1,5 @@
 ---
-nav: Components
+nav: 组件
 group: Chat
 title: ChatItem
 description: ChatItem is a React component that represents a single item in a chat conversation. It displays the user's avatar, name, and message. It can also display a loading indicator if the message is still being sent.

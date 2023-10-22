@@ -1,5 +1,5 @@
 ---
-nav: Components
+nav: 组件
 group: Chat
 title: TokenTag
 description: The TokenTag component is used to display a token tag with a FluentEmoji icon and a text indicating the remaining tokens.

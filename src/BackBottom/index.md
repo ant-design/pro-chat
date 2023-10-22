@@ -1,5 +1,5 @@
 ---
-nav: Components
+nav: 组件
 group: Chat
 title: BackBottom
 ---
