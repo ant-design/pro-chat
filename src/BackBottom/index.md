@@ -2,6 +2,7 @@
 nav: 组件
 group: Chat
 title: BackBottom
+order: 10
 ---
 
 ## Default
