@@ -128,7 +128,6 @@
     "semantic-release-config-gitmoji": "^1",
     "stylelint": "^15",
     "typescript": "^5",
-    "vercel": "^32",
     "vitest": "latest"
   },
   "peerDependencies": {
