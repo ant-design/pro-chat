@@ -1,6 +1,6 @@
 import BackBottom from '@/BackBottom';
 import { createStyles } from 'antd-style';
-import { ReactNode, memo, useRef } from 'react';
+import { CSSProperties, ReactNode, memo, useRef } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
 import ChatList from '../components/ChatList';
@@ -22,14 +22,16 @@ const useStyles = createStyles(
 interface ConversationProps {
   chatInput?: ReactNode;
   showTitle?: boolean;
+  style?: CSSProperties;
+  className?: string;
 }
 
-const App = memo<ConversationProps>(({ chatInput, showTitle }) => {
+const App = memo<ConversationProps>(({ chatInput, className, style, showTitle }) => {
   const ref = useRef(null);
-  const { styles } = useStyles();
+  const { styles, cx } = useStyles();
   const { styles: override } = useOverrideStyles();
   return (
-    <Flexbox className={override.container} flex={1} style={{ position: 'relative' }}>
+    <Flexbox className={cx(override.container, className)} style={style}>
       <div style={{ flex: 1, overflow: 'hidden', position: 'relative' }}>
         <div className={styles} ref={ref}>
           <ChatList showTitle={showTitle} />

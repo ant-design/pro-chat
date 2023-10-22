@@ -96,11 +96,13 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
   },
 
   dispatchMessage: (payload) => {
-    const { chats } = get();
+    const { chats, onChatsChange } = get();
 
     const nextChats = messagesReducer(chats, payload);
 
     set({ chats: nextChats }, false, t('dispatchMessage'));
+
+    onChatsChange?.(nextChats);
   },
   generateMessage: async (messages, assistantId) => {
     const { dispatchMessage, toggleChatLoading, config, defaultModelFetcher } = get();

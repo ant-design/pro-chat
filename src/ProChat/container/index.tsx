@@ -1,5 +1,5 @@
 import { App as Container } from 'antd';
-import { ReactNode, memo } from 'react';
+import { CSSProperties, ReactNode, memo } from 'react';
 
 import App from './App';
 
@@ -12,6 +12,8 @@ export interface ProChatProps extends ChatProps {
   renderInput?: ReactNode;
   __PRO_CHAT_STORE_DEVTOOLS__?: boolean | DevtoolsOptions;
   showTitle?: boolean;
+  style?: CSSProperties;
+  className?: string;
 }
 
 export const ProChat = memo<ProChatProps>(
@@ -27,6 +29,8 @@ export const ProChat = memo<ProChatProps>(
     assistantMeta,
     showTitle,
     request,
+    style,
+    className,
     ...props
   }) => {
     return (
@@ -42,7 +46,7 @@ export const ProChat = memo<ProChatProps>(
         devtoolOptions={__PRO_CHAT_STORE_DEVTOOLS__}
       >
         <Container>
-          <App chatInput={renderInput} showTitle={showTitle} />
+          <App chatInput={renderInput} showTitle={showTitle} style={style} className={className} />
         </Container>
         <StoreUpdater
           init={!loading}

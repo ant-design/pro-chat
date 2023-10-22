@@ -23,6 +23,11 @@ export interface ChatPropsState {
    */
   helloMessage?: string;
   request?: string | ChatRequest;
+  // /**
+  //  * 控制是否流式输出
+  //  * @default true
+  //  */
+  // stream: boolean;
 }
 
 export interface ChatState extends ChatPropsState {
@@ -54,4 +59,5 @@ export const initialState: ChatState = {
     avatar: DEFAULT_AVATAR,
   },
   config: initialModelConfig,
+  // stream: true,
 };

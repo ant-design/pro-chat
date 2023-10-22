@@ -3,7 +3,6 @@
  */
 import { ProChat } from '@ant-design/pro-chat';
 import { useTheme } from 'antd-style';
-import { Flexbox } from 'react-layout-kit';
 
 import { example } from '../mocks/fullFeature';
 import { MockResponse } from '../mocks/streamResponse';
@@ -11,7 +10,7 @@ import { MockResponse } from '../mocks/streamResponse';
 export default () => {
   const theme = useTheme();
   return (
-    <Flexbox style={{ background: theme.colorBgLayout }}>
+    <div style={{ background: theme.colorBgLayout }}>
       <ProChat
         displayMode={'docs'}
         request={async (messages) => {
@@ -24,6 +23,6 @@ export default () => {
         chats={example.chats}
         config={example.config}
       />
-    </Flexbox>
+    </div>
   );
 };

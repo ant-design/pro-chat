@@ -21,6 +21,12 @@ interface Params {}
 
 <code src="./demos/request.tsx"></code>
 
+### 非流式模式
+
+非流式模式下，会话消息会一次性全部返回，适用于消息量较少的场景。如果消息量较大，可能用户体验较差。
+
+<code src="./demos/no-stream.tsx"></code>
+
 ## 受控模式
 
 使用 `chats` 和 `onChatsChange` 实现 chats 会话消息的受控
