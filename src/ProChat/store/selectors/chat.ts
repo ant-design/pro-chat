@@ -1,4 +1,4 @@
-import { ChatMessage } from '@/ProChat/types/message';
+import { ChatMessage } from '@/types/message';
 
 import { MetaData } from '@/ProChat/types/meta';
 import { getSlicedMessagesWithConfig } from '../../utils/message';

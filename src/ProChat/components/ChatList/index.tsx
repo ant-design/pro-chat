@@ -1,4 +1,4 @@
-import { ChatList } from '@lobehub/ui';
+import ChatList from '@/ChatList';
 import isEqual from 'fast-deep-equal';
 import { memo } from 'react';
 

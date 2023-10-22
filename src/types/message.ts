@@ -31,3 +31,8 @@ export interface ChatMessage {
 }
 
 export type ChatMessageMap = Record<string, ChatMessage>;
+
+export interface OpenAIFunctionCall {
+  arguments?: string;
+  name: string;
+}

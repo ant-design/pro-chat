@@ -1,4 +1,4 @@
-import { ChatListProps } from '@lobehub/ui';
+import { ChatListProps } from '@/ChatList';
 
 import { AssistantMessageExtra } from './Assistant';
 import { UserMessageExtra } from './User';

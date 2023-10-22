@@ -1,7 +1,7 @@
 import { DEFAULT_AVATAR, DEFAULT_USER_AVATAR } from '@/ProChat/const/meta';
 import { ModelConfig } from '@/ProChat/types/config';
-import { ChatMessage, ChatMessageMap } from '@/ProChat/types/message';
 import { MetaData } from '@/ProChat/types/meta';
+import { ChatMessage, ChatMessageMap } from '@/types/message';
 
 export type ChatRequest = (messages: ChatMessage[], config: ModelConfig) => Promise<Response>;
 

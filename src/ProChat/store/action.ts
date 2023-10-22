@@ -3,11 +3,11 @@ import { StateCreator } from 'zustand/vanilla';
 
 import { LOADING_FLAT } from '@/ProChat/const/message';
 import { ChatStore } from '@/ProChat/store/index';
-import { ChatMessage } from '@/ProChat/types/message';
 import { fetchSSE } from '@/ProChat/utils/fetch';
 import { isFunctionMessage } from '@/ProChat/utils/message';
 import { setNamespace } from '@/ProChat/utils/storeDebug';
 import { nanoid } from '@/ProChat/utils/uuid';
+import { ChatMessage } from '@/types/message';
 
 import { initialModelConfig } from '@/ProChat/store/initialState';
 import { ChatStreamPayload } from '@/ProChat/types/chat';

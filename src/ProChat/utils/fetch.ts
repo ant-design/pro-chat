@@ -1,4 +1,4 @@
-import { ChatMessageError } from '@/types/chatMessage';
+import { ChatMessageError } from '../../types/message';
 
 export const getMessageError = async (response: Response) => {
   let chatMessageError: ChatMessageError;

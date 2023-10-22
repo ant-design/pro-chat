@@ -4,8 +4,8 @@ import { FC, ReactNode, memo, useCallback, useMemo, useState } from 'react';
 
 import { ActionEvent } from '@/ActionIconGroup';
 import ChatItem, { type ChatItemProps } from '@/ChatItem';
-import { ChatMessage } from '@/types/chatMessage';
 import { LLMRoleType } from '@/types/llm';
+import { ChatMessage } from '@/types/message';
 
 import ActionsBar, { type ActionsBarProps } from './ActionsBar';
 
@@ -192,7 +192,7 @@ const Item = memo<ChatListItemProps>((props) => {
   return (
     <ChatItem
       actions={<Actions data={item} />}
-      avatar={item.meta}
+      avatar={(item as any).meta}
       avatarAddon={groupNav}
       editing={editing}
       error={error}

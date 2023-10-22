@@ -1,4 +1,4 @@
-import { ChatListProps } from '@lobehub/ui';
+import { ChatListProps } from '@/ChatList';
 
 import { AssistantActionsBar } from './Assistant';
 import { DefaultActionsBar } from './Fallback';

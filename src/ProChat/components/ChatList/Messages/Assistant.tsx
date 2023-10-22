@@ -1,4 +1,4 @@
-import { RenderMessage } from '@lobehub/ui';
+import { RenderMessage } from '@/ChatList';
 import { memo } from 'react';
 
 import { DefaultMessage } from './Default';

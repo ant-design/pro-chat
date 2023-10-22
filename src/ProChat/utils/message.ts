@@ -1,6 +1,6 @@
 import { FUNCTION_MESSAGE_FLAG } from '@/ProChat/const/message';
 import { ModelConfig } from '@/ProChat/types/config';
-import { ChatMessage } from '@/ProChat/types/message';
+import { ChatMessage } from '@/types/message';
 
 export const isFunctionMessage = (content: string) => {
   return content.startsWith(FUNCTION_MESSAGE_FLAG);

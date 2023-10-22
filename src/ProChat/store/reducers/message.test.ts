@@ -1,4 +1,4 @@
-import { ChatMessageMap } from '@/ProChat/types/message';
+import { ChatMessageMap } from '@/types/message';
 
 import { MessageDispatch, messagesReducer } from './message';
 

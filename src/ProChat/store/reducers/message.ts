@@ -1,8 +1,8 @@
 import { produce } from 'immer';
 
-import { ChatMessage, ChatMessageMap } from '@/ProChat/types/message';
 import { nanoid } from '@/ProChat/utils/uuid';
 import { LLMRoleType } from '@/types/llm';
+import { ChatMessage, ChatMessageMap } from '@/types/message';
 import { MetaData } from '@/types/meta';
 
 interface AddMessage {

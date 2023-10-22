@@ -1,5 +1,5 @@
-import { OpenAIFunctionCall } from '@/types/chatMessage';
 import { LLMRoleType } from '@/types/llm';
+import { OpenAIFunctionCall } from '@/types/message';
 
 export interface OpenAIChatMessage {
   /**
