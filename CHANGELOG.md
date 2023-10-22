@@ -1,5 +1,31 @@
 # Changelog
 
+## [Version&nbsp;0.2.0-beta.3](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.2...v0.2.0-beta.3)
+
+<sup>Released on **2023-10-22**</sup>
+
+#### 🐛 修复
+
+- Fix import, fix import.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- Fix import ([565e530](https://github.com/ant-design/pro-chat/commit/565e530))
+- Fix import ([0311e5f](https://github.com/ant-design/pro-chat/commit/0311e5f))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;0.2.0-beta.2](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.1...v0.2.0-beta.2)
 
 <sup>Released on **2023-10-21**</sup>
