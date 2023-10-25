@@ -15,7 +15,7 @@ const useStyles = createStyles(({ css, token }) => ({
 }));
 
 export const ActionBar = () => {
-  const [dispatchMessage] = useStore((s) => [s.dispatchMessage]);
+  const [clearMessage] = useStore((s) => [s.clearMessage]);
 
   const { styles, theme } = useStyles();
 
@@ -33,7 +33,7 @@ export const ActionBar = () => {
           okButtonProps={{ danger: true }}
           okText={'清空会话'}
           onConfirm={() => {
-            dispatchMessage({ type: 'resetMessages' });
+            clearMessage();
           }}
         >
           <ActionIcon title={'清空当前会话'} icon={Trash2} />
