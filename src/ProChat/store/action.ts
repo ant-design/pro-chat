@@ -83,8 +83,11 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
   set,
   get,
 ) => ({
-  clearMessage: () => {
-    const { dispatchMessage } = get();
+  clearMessage: async () => {
+    const { dispatchMessage, onResetMessage } = get();
+
+    // 重置消息，清空聊天记录，等待 onResetMessage 完成后再清空
+    if (onResetMessage) await onResetMessage();
 
     dispatchMessage({ type: 'resetMessages' });
 

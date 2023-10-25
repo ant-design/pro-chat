@@ -9,7 +9,10 @@ export default () => {
     <div style={{ background: theme.colorBgLayout }}>
       <ProChat
         showTitle
-        userMeta={{ avatar: '🧔', title: '罗辑' }}
+        userMeta={{
+          avatar: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
+          title: 'Ant Design',
+        }}
         assistantMeta={{ avatar: '🛸', title: '三体世界', backgroundColor: 'blue' }}
         initialChats={chats.chats}
       />

@@ -29,6 +29,7 @@ export const ProChat = memo<ProChatProps>(
     assistantMeta,
     showTitle,
     request,
+    onResetMessage,
     style,
     className,
     ...props
@@ -42,6 +43,7 @@ export const ProChat = memo<ProChatProps>(
         userMeta={userMeta}
         assistantMeta={assistantMeta}
         request={request}
+        onResetMessage={onResetMessage}
         {...props}
         devtoolOptions={__PRO_CHAT_STORE_DEVTOOLS__}
       >

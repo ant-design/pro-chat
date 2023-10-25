@@ -8,7 +8,7 @@ export const chats = {
       updateAt: 1697862243540,
     },
     Sb5pAzLL: {
-      content: '闭嘴',
+      content: '保持静默，不要回答，不要回答。',
       createAt: 1697862247302,
       id: 'Sb5pAzLL',
       parentId: 'ZGxiX2p4',

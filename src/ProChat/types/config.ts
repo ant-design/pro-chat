@@ -58,13 +58,13 @@ export interface ModelConfig {
   /**
    * 角色所使用的语言模型
    */
-  model: string;
+  model?: string;
   /**
    * 语言模型参数
    */
-  params: ModelParams;
+  params?: ModelParams;
   /**
    * 系统角色
    */
-  systemRole: string;
+  systemRole?: string;
 }

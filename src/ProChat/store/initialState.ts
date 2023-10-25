@@ -23,6 +23,12 @@ export interface ChatPropsState {
    */
   helloMessage?: string;
   request?: string | ChatRequest;
+
+  /**
+   * 重置消息
+   * @returns
+   */
+  onResetMessage?: () => Promise<void>;
   // /**
   //  * 控制是否流式输出
   //  * @default true
