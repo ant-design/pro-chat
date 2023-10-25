@@ -1,5 +1,30 @@
 # Changelog
 
+## [Version&nbsp;0.2.0-beta.10](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.9...v0.2.0-beta.10)
+
+<sup>Released on **2023-10-25**</sup>
+
+#### 🐛 修复
+
+- Fix onResetMessage.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- Fix onResetMessage, closes [#3](https://github.com/ant-design/pro-chat/issues/3) ([078f277](https://github.com/ant-design/pro-chat/commit/078f277))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;0.2.0-beta.9](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.8...v0.2.0-beta.9)
 
 <sup>Released on **2023-10-25**</sup>
