@@ -10,7 +10,13 @@ export default () => {
   const theme = useTheme();
   return (
     <div style={{ background: theme.colorBgLayout }}>
-      <ProChat request={'/api/chat'} config={example.config} />
+      <ProChat
+        request={'/api/chat'}
+        config={example.config}
+        onResetMessage={async () => {
+          console.log('数据清空');
+        }}
+      />
     </div>
   );
 };
