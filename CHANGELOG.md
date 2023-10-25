@@ -1,5 +1,30 @@
 # Changelog
 
+## [Version&nbsp;0.2.0-beta.8](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.7...v0.2.0-beta.8)
+
+<sup>Released on **2023-10-25**</sup>
+
+#### 🐛 修复
+
+- Fix avatar.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- Fix avatar ([61a7efe](https://github.com/ant-design/pro-chat/commit/61a7efe))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;0.2.0-beta.7](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.6...v0.2.0-beta.7)
 
 <sup>Released on **2023-10-22**</sup>
