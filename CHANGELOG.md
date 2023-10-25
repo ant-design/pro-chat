@@ -1,5 +1,30 @@
 # Changelog
 
+## [Version&nbsp;0.2.0-beta.9](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.8...v0.2.0-beta.9)
+
+<sup>Released on **2023-10-25**</sup>
+
+#### ✨ 新特性
+
+- Support onResetMessage funtion.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- Support onResetMessage funtion, closes [#2](https://github.com/ant-design/pro-chat/issues/2) ([418230a](https://github.com/ant-design/pro-chat/commit/418230a))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;0.2.0-beta.8](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.7...v0.2.0-beta.8)
 
 <sup>Released on **2023-10-25**</sup>
