@@ -127,6 +127,7 @@ const Item = memo<ChatListItemProps>((props) => {
       if (renderMessagesExtra?.[item.role]) RenderFunction = renderMessagesExtra[item.role];
       if (renderMessagesExtra?.['default']) RenderFunction = renderMessagesExtra['default'];
       if (!RenderFunction && !RenderFunction) return;
+
       return <RenderFunction {...data} />;
     },
     [renderMessagesExtra?.[item.role]],

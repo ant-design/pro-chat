@@ -29,6 +29,30 @@ export interface ChatPropsState {
    * @returns
    */
   onResetMessage?: () => Promise<void>;
+
+  /**
+   * 获取自动完成列表的  request
+   * @param value
+   * @returns
+   */
+  autocompleteRequest?: (value: string) => Promise<
+    {
+      value: string;
+      label?: string;
+    }[]
+  >;
+
+  /**
+   * 输入框的 placeholder
+   */
+  placeholder?: string;
+
+  /**
+   * 信息框额外渲染
+   */
+  messageItemExtraRender?: (message: ChatMessage, type: 'assistant' | 'user') => React.ReactNode;
+
+  /** */
   // /**
   //  * 控制是否流式输出
   //  * @default true
