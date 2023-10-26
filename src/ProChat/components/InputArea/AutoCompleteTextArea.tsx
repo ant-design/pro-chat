@@ -16,6 +16,7 @@ export const AutoCompleteTextArea: React.FC<TextAreaProps> = (props) => {
       style={{
         height: 'max-content',
       }}
+      value={props.value}
       onSelect={(value) => {
         props.onChange?.({ target: { value } } as any);
         setOptions([]);
