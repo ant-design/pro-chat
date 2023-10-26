@@ -1,5 +1,5 @@
 import { SendOutlined } from '@ant-design/icons';
-import { Button, ConfigProvider, Input } from 'antd';
+import { Button, ConfigProvider } from 'antd';
 import { createStyles, useResponsive } from 'antd-style';
 import { memo, useRef, useState } from 'react';
 import { Flexbox } from 'react-layout-kit';
@@ -7,6 +7,7 @@ import { Flexbox } from 'react-layout-kit';
 import { useStore } from '../../store';
 
 import ActionBar from './ActionBar';
+import { AutoCompleteTextArea } from './AutoCompleteTextArea';
 
 const useStyles = createStyles(({ css, responsive, token }) => ({
   container: css`
@@ -30,13 +31,15 @@ const useStyles = createStyles(({ css, responsive, token }) => ({
   `,
   input: css`
     width: 100%;
+    border: none;
+    outline: none;
     border-radius: 8px;
   `,
   btn: css`
     position: absolute;
     z-index: 10;
     right: 8px;
-    bottom: 8px;
+    bottom: 6px;
 
     color: ${token.colorTextTertiary};
     &:hover {
@@ -49,10 +52,13 @@ const useStyles = createStyles(({ css, responsive, token }) => ({
 }));
 
 export const InputArea = ({}) => {
-  const [sendMessage, isLoading] = useStore((s) => [s.sendMessage, !!s.chatLoadingId]);
+  const [sendMessage, isLoading, placeholder] = useStore((s) => [
+    s.sendMessage,
+    !!s.chatLoadingId,
+    s.placeholder,
+  ]);
   const [message, setMessage] = useState('');
   const isChineseInput = useRef(false);
-
   const { styles, theme } = useStyles();
   const { mobile } = useResponsive();
 
@@ -76,10 +82,10 @@ export const InputArea = ({}) => {
       <Flexbox gap={8} padding={16} className={styles.container}>
         <ActionBar />
         <Flexbox horizontal gap={8} align={'center'} className={styles.boxShadow}>
-          <Input.TextArea
+          <AutoCompleteTextArea
             size={'large'}
             value={message}
-            placeholder="请输入内容..."
+            placeholder={placeholder || '请输入内容...'}
             onChange={(e) => {
               setMessage(e.target.value);
             }}

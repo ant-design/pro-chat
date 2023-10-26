@@ -3,9 +3,12 @@ import { Divider } from 'antd';
 import { memo } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
-export const UserMessageExtra: RenderMessageExtra = memo(({ extra }) => {
+import { useStore } from '@/ProChat/store';
+
+export const UserMessageExtra: RenderMessageExtra = memo(({ extra, ...rest }) => {
   const hasTranslate = !!extra?.translate;
 
+  const [messageItemExtraRender] = useStore((s) => [s.messageItemExtraRender]);
   return (
     <Flexbox gap={8} style={{ marginTop: hasTranslate ? 8 : 0 }}>
       {extra?.translate && (
@@ -13,6 +16,7 @@ export const UserMessageExtra: RenderMessageExtra = memo(({ extra }) => {
           <Divider style={{ margin: '12px 0' }} />
         </div>
       )}
+      {messageItemExtraRender?.(rest, 'user')}
     </Flexbox>
   );
 });

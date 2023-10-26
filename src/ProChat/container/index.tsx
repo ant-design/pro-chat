@@ -32,6 +32,7 @@ export const ProChat = memo<ProChatProps>(
     onResetMessage,
     style,
     className,
+    autocompleteRequest,
     ...props
   }) => {
     return (
@@ -44,6 +45,7 @@ export const ProChat = memo<ProChatProps>(
         assistantMeta={assistantMeta}
         request={request}
         onResetMessage={onResetMessage}
+        autocompleteRequest={autocompleteRequest}
         {...props}
         devtoolOptions={__PRO_CHAT_STORE_DEVTOOLS__}
       >
