@@ -1,5 +1,30 @@
 # Changelog
 
+## [Version&nbsp;0.2.0-beta.12](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.11...v0.2.0-beta.12)
+
+<sup>Released on **2023-10-26**</sup>
+
+#### 🐛 修复
+
+- Fix send auto clear no work error.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- Fix send auto clear no work error, closes [#5](https://github.com/ant-design/pro-chat/issues/5) ([06f6ebf](https://github.com/ant-design/pro-chat/commit/06f6ebf))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;0.2.0-beta.11](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.10...v0.2.0-beta.11)
 
 <sup>Released on **2023-10-26**</sup>
