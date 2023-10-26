@@ -1,5 +1,30 @@
 # Changelog
 
+## [Version&nbsp;0.2.0-beta.11](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.10...v0.2.0-beta.11)
+
+<sup>Released on **2023-10-26**</sup>
+
+#### ✨ 新特性
+
+- Support autocompleteRequest and messageItemExtraRender.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- Support autocompleteRequest and messageItemExtraRender, closes [#4](https://github.com/ant-design/pro-chat/issues/4) ([5305e56](https://github.com/ant-design/pro-chat/commit/5305e56))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;0.2.0-beta.10](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.9...v0.2.0-beta.10)
 
 <sup>Released on **2023-10-25**</sup>
