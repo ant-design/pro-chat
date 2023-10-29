@@ -4,9 +4,11 @@ import { forwardRef, useMemo } from 'react';
 import Icon, { type IconProps } from '@/Icon';
 import Spotlight from '@/components/Spotlight';
 import { DivProps } from '@/types';
-import { Tooltip, type TooltipProps } from 'antd';
+import { type TooltipProps } from 'antd';
 
 import { useStyles } from './style';
+
+import { ActionIcon as ProEditorActionIcon } from '@ant-design/pro-editor';
 
 export type ActionIconSize =
   | 'large'
@@ -125,14 +127,10 @@ const ActionIcon = forwardRef<HTMLDivElement, ActionIconProps>(
       size = 'normal',
       style,
       glass,
-      title,
-      placement,
-      arrow = false,
       spotlight,
       onClick,
       children,
       loading,
-      tooltipDelay = 0.5,
       ...props
     },
     ref,
@@ -173,19 +171,7 @@ const ActionIcon = forwardRef<HTMLDivElement, ActionIconProps>(
       </div>
     );
 
-    if (!title) return actionIconBlock;
-
-    return (
-      <Tooltip
-        arrow={arrow}
-        mouseEnterDelay={tooltipDelay}
-        overlayStyle={{ pointerEvents: 'none' }}
-        placement={placement}
-        title={title}
-      >
-        {actionIconBlock}
-      </Tooltip>
-    );
+    return <ProEditorActionIcon {...props} icon={actionIconBlock} />;
   },
 );
 

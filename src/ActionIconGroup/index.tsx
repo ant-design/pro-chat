@@ -1,14 +1,13 @@
 import ActionIcon, { ActionIconProps } from '@/ActionIcon';
 import Icon from '@/Icon';
 import Spotlight from '@/components/Spotlight';
+import { ActionGroup as ProEditorActionGroup } from '@ant-design/pro-editor';
 
-import { Dropdown } from 'antd';
-import { MoreHorizontal, type LucideIcon } from 'lucide-react';
+import { DropdownProps } from 'antd';
+import { type LucideIcon } from 'lucide-react';
 import { memo } from 'react';
 
 import { DivProps } from '@/types';
-
-import { useStyles } from './style';
 
 export interface ActionIconGroupItems {
   icon: LucideIcon;
@@ -64,60 +63,59 @@ const ActionIconGroup = memo<ActionIconGroupProps>(
     direction = 'row',
     dropdownMenu = [],
     onActionClick,
-    ...props
+    className,
+    style,
   }) => {
-    const { styles } = useStyles({ direction, type });
-
     const tooltipsPlacement = placement || (direction === 'column' ? 'right' : 'top');
 
+    const mergeDropDownList = dropdownMenu?.map((item: any) => {
+      return {
+        ...item,
+        icon: <Icon icon={item.icon} size="small" />,
+        onClick: onActionClick
+          ? (info: ActionEvent) =>
+              onActionClick({
+                item,
+                key: info.key,
+                keyPath: info.keyPath,
+              })
+          : undefined,
+      };
+    });
+
     return (
-      <div className={styles.container} {...props}>
-        {spotlight && <Spotlight />}
-        {items?.length > 0 &&
-          items.map((item) => (
-            <ActionIcon
-              icon={item.icon}
-              key={item.key}
-              onClick={
-                onActionClick
-                  ? () => onActionClick?.({ item, key: item.key, keyPath: [item.key] })
-                  : undefined
-              }
-              placement={tooltipsPlacement}
-              size="small"
-              title={item.label}
-            />
-          ))}
-        {dropdownMenu?.length > 0 && (
-          <Dropdown
-            menu={{
-              items: dropdownMenu.map((item: any) => {
-                if (item.type) return item;
-                return {
-                  ...item,
-                  icon: <Icon icon={item.icon} size="small" />,
-                  onClick: onActionClick
-                    ? (info: ActionEvent) =>
-                        onActionClick({
-                          item,
-                          key: info.key,
-                          keyPath: info.keyPath,
-                        })
-                    : undefined,
-                };
-              }),
-            }}
-            trigger={['click']}
-          >
-            <ActionIcon
-              icon={MoreHorizontal}
-              key="more"
-              placement={tooltipsPlacement}
-              size="small"
-            />
-          </Dropdown>
-        )}
-      </div>
+      <ProEditorActionGroup
+        className={className}
+        direction={direction}
+        type={type}
+        dropdownProps={{
+          placement: tooltipsPlacement as DropdownProps['placement'],
+        }}
+        style={style}
+        dropdownMenu={mergeDropDownList}
+        render={() => {
+          return (
+            <>
+              {spotlight && <Spotlight />}
+              {items?.length > 0 &&
+                items.map((item) => (
+                  <ActionIcon
+                    icon={item.icon}
+                    key={item.key}
+                    onClick={
+                      onActionClick
+                        ? () => onActionClick?.({ item, key: item.key, keyPath: [item.key] })
+                        : undefined
+                    }
+                    placement={tooltipsPlacement}
+                    size="small"
+                    title={item.label}
+                  />
+                ))}
+            </>
+          );
+        }}
+      />
     );
   },
 );
