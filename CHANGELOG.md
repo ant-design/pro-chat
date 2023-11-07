@@ -1,5 +1,30 @@
 # Changelog
 
+## [Version&nbsp;0.2.0-beta.13](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.12...v0.2.0-beta.13)
+
+<sup>Released on **2023-11-07**</sup>
+
+#### ✨ 新特性
+
+- Change action & group as pro-editor.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- Change action & group as pro-editor ([4f1d5ee](https://github.com/ant-design/pro-chat/commit/4f1d5ee))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;0.2.0-beta.12](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.11...v0.2.0-beta.12)
 
 <sup>Released on **2023-10-26**</sup>
