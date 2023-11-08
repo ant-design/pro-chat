@@ -12,12 +12,22 @@ export default () => {
     <div style={{ background: theme.colorBgLayout }}>
       <ProChat
         request={'/api/chat'}
-        config={example.config}
+        config={{
+          ...example.config,
+          params: {
+            ...example.config.params,
+            userId: '123',
+            extra: 'extra',
+          },
+        }}
         autocompleteRequest={async (value) => {
           if (value === '/') {
             return [{ value: '你可以帮助我列出问题吗？', label: '你可以帮助我列出问题吗？' }];
           }
           return [];
+        }}
+        userMeta={{
+          extra: 'extra',
         }}
         messageItemExtraRender={(_, type) => {
           if (type === 'user') return <span>🦐</span>;

@@ -9,13 +9,15 @@ export const currentChats = (s: ChatStore): ChatMessage[] => {
   if (Object.keys(s.chats).length === 0) return [];
 
   const getMeta = (message: ChatMessage): MetaData => {
-    const user = s.userMeta;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { avatar, title, backgroundColor, ...rest } = s.userMeta;
     const assistant = s.assistantMeta;
     switch (message.role) {
       case 'user': {
         return {
-          avatar: user?.avatar,
-          title: user?.title,
+          avatar,
+          title,
+          ...rest,
         };
       }
 
