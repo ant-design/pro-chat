@@ -7,7 +7,7 @@ export const AutoCompleteTextArea: React.FC<TextAreaProps> = (props) => {
   const [autocompleteRequest] = useStore((s) => [s.autocompleteRequest]);
 
   const [options, setOptions] = useState<{ value: string; label: string }[]>([]);
-
+  const [open, setOpen] = useState(false);
   return (
     <AutoComplete
       className={props.className}
@@ -15,6 +15,10 @@ export const AutoCompleteTextArea: React.FC<TextAreaProps> = (props) => {
       size="large"
       style={{
         height: 'max-content',
+      }}
+      open={open}
+      onDropdownVisibleChange={(open) => {
+        setOpen(open);
       }}
       value={props.value}
       onSelect={(value) => {
@@ -26,7 +30,13 @@ export const AutoCompleteTextArea: React.FC<TextAreaProps> = (props) => {
         setOptions((result as any[]) || []);
       }}
     >
-      <Input.TextArea {...props} />
+      <Input.TextArea
+        {...props}
+        onPressEnter={(e) => {
+          if (open) return;
+          props.onPressEnter?.(e);
+        }}
+      />
     </AutoComplete>
   );
 };

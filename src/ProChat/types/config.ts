@@ -24,6 +24,8 @@ export interface ModelParams {
    * @default 1
    */
   top_p?: number;
+
+  [key: string]: any;
 }
 
 export type ModelRoleType = 'user' | 'system' | 'assistant' | 'function';
