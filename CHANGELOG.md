@@ -1,5 +1,30 @@
 # Changelog
 
+## [Version&nbsp;0.2.0-beta.15](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.14...v0.2.0-beta.15)
+
+<sup>Released on **2023-11-08**</sup>
+
+#### ✨ 新特性
+
+- Support extra userMeta and params.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- Support extra userMeta and params, closes [#10](https://github.com/ant-design/pro-chat/issues/10) ([8475b9a](https://github.com/ant-design/pro-chat/commit/8475b9a))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;0.2.0-beta.14](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.13...v0.2.0-beta.14)
 
 <sup>Released on **2023-11-07**</sup>
