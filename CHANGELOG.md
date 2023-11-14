@@ -1,5 +1,30 @@
 # Changelog
 
+## [Version&nbsp;0.2.0-beta.16](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.15...v0.2.0-beta.16)
+
+<sup>Released on **2023-11-14**</sup>
+
+#### 🐛 修复
+
+- Fix onPressEnter no work error.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- Fix onPressEnter no work error, closes [#11](https://github.com/ant-design/pro-chat/issues/11) ([1db28f7](https://github.com/ant-design/pro-chat/commit/1db28f7))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;0.2.0-beta.15](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.14...v0.2.0-beta.15)
 
 <sup>Released on **2023-11-08**</sup>
