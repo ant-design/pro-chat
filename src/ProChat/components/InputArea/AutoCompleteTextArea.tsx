@@ -32,8 +32,12 @@ export const AutoCompleteTextArea: React.FC<TextAreaProps> = (props) => {
     >
       <Input.TextArea
         {...props}
+        onFocus={(e) => {
+          setOpen(false);
+          props.onFocus?.(e);
+        }}
         onPressEnter={(e) => {
-          if (open) return;
+          if (open && options.length > 0) return;
           props.onPressEnter?.(e);
         }}
       />
