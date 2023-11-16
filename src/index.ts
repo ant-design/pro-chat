@@ -36,7 +36,6 @@ export { default as Markdown, type MarkdownProps } from './Markdown';
 export { default as MessageInput, type MessageInputProps } from './MessageInput';
 export { default as MessageModal, type MessageModalProps } from './MessageModal';
 
-export { default as Snippet, type SnippetProps } from './Snippet';
 export { default as TokenTag, type TokenTagProps } from './TokenTag';
 export { useChatListActionsBar } from './hooks/useChatListActionsBar';
 export * from './styles';

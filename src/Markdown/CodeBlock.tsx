@@ -2,8 +2,8 @@ import { createStyles } from 'antd-style';
 import { memo } from 'react';
 
 import Highlighter from '@/Highlighter';
-import Snippet from '@/Snippet';
 import { FALLBACK_LANG } from '@/hooks/useHighlight';
+import { Snippet } from '@ant-design/pro-editor';
 
 const useStyles = createStyles(({ css }) => ({
   container: css`
@@ -18,6 +18,9 @@ const useStyles = createStyles(({ css }) => ({
     pre {
       padding: 12px !important;
     }
+  `,
+  snippet: css`
+    display: flex;
   `,
 }));
 
@@ -41,9 +44,10 @@ const Code = memo(({ fullFeatured, ...properties }: any) => {
   if (countLines(content) === 1 && content.length <= 60) {
     return (
       <Snippet
-        className={styles.container}
+        className={cx(styles.container, styles.snippet)}
         data-code-type="highlighter"
         language={lang}
+        symbol={''}
         type={'block'}
       >
         {content}
