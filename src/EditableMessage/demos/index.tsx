@@ -1,6 +1,4 @@
 import { EditableMessage } from '@ant-design/pro-chat';
-import { StoryBook, useControls, useCreateStore } from '@lobehub/ui';
-import { button } from 'leva';
 import { useState } from 'react';
 
 export const content = `# This is an H1
@@ -95,29 +93,14 @@ $$
 export default () => {
   const [openModal, setOpenModal] = useState(false);
   const [editing, setEdit] = useState(false);
-  const store = useCreateStore();
-
-  useControls(
-    {
-      editing: button(() => {
-        setEdit(true);
-      }),
-      openModal: button(() => {
-        setOpenModal(true);
-      }),
-    },
-    { store },
-  );
 
   return (
-    <StoryBook levaStore={store}>
-      <EditableMessage
-        editing={editing}
-        onEditingChange={setEdit}
-        onOpenChange={setOpenModal}
-        openModal={openModal}
-        value={content}
-      />
-    </StoryBook>
+    <EditableMessage
+      editing={editing}
+      onEditingChange={setEdit}
+      onOpenChange={setOpenModal}
+      openModal={openModal}
+      value={content}
+    />
   );
 };
