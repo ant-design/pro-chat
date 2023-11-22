@@ -2,7 +2,7 @@ import { memo } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
 import { ChatItemProps } from '@/ChatItem';
-import { formatTime } from '@/utils/formatTime';
+import { formatTime } from '@/ChatItem/utils/formatTime';
 
 import { useStyles } from '../style';
 

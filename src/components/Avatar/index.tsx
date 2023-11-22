@@ -2,7 +2,7 @@ import { Avatar as AntAvatar, type AvatarProps as AntAvatarProps } from 'antd';
 import { memo, useMemo } from 'react';
 
 import Emoji from '@/Emoji';
-import { getEmoji } from '@/utils/getEmojiByCharacter';
+import { getEmoji } from '@/components/Avatar/getEmojiByCharacter';
 
 import { useStyles } from './style';
 
