@@ -57,8 +57,8 @@ export const createStore = (props: ChatProps, options: boolean | DevtoolsOptions
     options === false
       ? undefined
       : options === true
-      ? { name: PRO_CHAT + (isDev ? '_DEV' : '') }
-      : options;
+        ? { name: PRO_CHAT + (isDev ? '_DEV' : '') }
+        : options;
 
   return createWithEqualityFn<ChatStore>()(devtools(vanillaStore(props), devtoolOptions), isEqual);
 };

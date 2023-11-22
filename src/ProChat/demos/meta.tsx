@@ -13,7 +13,7 @@ export default () => {
           avatar: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
           title: 'Ant Design',
         }}
-        assistantMeta={{ avatar: '🛸', title: '三体世界', backgroundColor: 'blue' }}
+        assistantMeta={{ avatar: '🛸', title: '三体世界', backgroundColor: '#67dedd' }}
         initialChats={chats.chats}
       />
     </div>

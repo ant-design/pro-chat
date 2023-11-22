@@ -8,17 +8,7 @@ description: a Chat Solution
 
 ## Default
 
-搭配 `request` 指定接口即可使用：
-
-如果 `request` 为 url，入参格式要求：
-
-```ts
-interface Params {}
-```
-
-<code src="./demos/default.tsx"></code>
-
-### 自定义 request 请求
+指定请求
 
 <code src="./demos/request.tsx"></code>
 
@@ -70,6 +60,26 @@ ProChat使用 `meta` 来表意会话双方的头像、名称等信息。设定�
 
 <code src="./demos/draggable.tsx"></code>
 
-## 🚧 程序化控制消息发送
+## 编程式操作控制
+
+### chatRef
+
+在一些简单场景下，使用 `chatRef` 可以获取 `ProChatInstance` ，以在组件同级控制 ProChat 行为。
+
+<code src="./demos/use-ref.tsx"></code>
+
+### useProChat
+
+针对一些复杂场景，可以搭配 `ProChatProvider` 和 `useProChat` hooks， 实现编程式消息发送、获取、删除等行为。
+
+<code src="./demos/use-pro-chat.tsx"></code>
+
+:::warning
+useProChat hooks 必须在包裹 `ProChatProvider` 后方可使用。
+:::
+
+:::warning
+所有 `initialChats` 等初始化 props 需要从 `ProChat` 移动至 `ProChatProvider`
+:::
 
 ## APIs

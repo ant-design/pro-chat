@@ -1,15 +1,31 @@
-import { memo } from 'react';
+import { memo, MutableRefObject, useImperativeHandle } from 'react';
 import { createStoreUpdater } from 'zustand-utils';
 
+import { ProChatInstance, useProChat } from '../hooks/useProChat';
 import { ChatProps, ChatState, useStoreApi } from '../store';
 
-export type StoreUpdaterProps = Partial<
-  Pick<ChatState, 'chats' | 'config' | 'init' | 'onChatsChange' | 'helloMessage' | 'request'>
-> &
-  Pick<ChatProps, 'userMeta' | 'assistantMeta'>;
+export type ProChatChatReference = MutableRefObject<ProChatInstance | undefined>;
+
+export interface StoreUpdaterProps
+  extends Partial<
+      Pick<ChatState, 'chats' | 'config' | 'init' | 'onChatsChange' | 'helloMessage' | 'request'>
+    >,
+    Pick<ChatProps, 'userMeta' | 'assistantMeta'> {
+  chatRef?: ProChatChatReference;
+}
 
 const StoreUpdater = memo<StoreUpdaterProps>(
-  ({ init, onChatsChange, request, userMeta, assistantMeta, helloMessage, chats, config }) => {
+  ({
+    init,
+    onChatsChange,
+    chatRef,
+    request,
+    userMeta,
+    assistantMeta,
+    helloMessage,
+    chats,
+    config,
+  }) => {
     const storeApi = useStoreApi();
     const useStoreUpdater = createStoreUpdater(storeApi);
 
@@ -25,6 +41,10 @@ const StoreUpdater = memo<StoreUpdaterProps>(
     useStoreUpdater('onChatsChange', onChatsChange);
 
     useStoreUpdater('request', request);
+
+    const instance = useProChat();
+    useImperativeHandle(chatRef, () => instance);
+
     return null;
   },
 );
