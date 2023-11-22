@@ -1,5 +1,30 @@
 # Changelog
 
+## [Version&nbsp;0.2.0-beta.17](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.16...v0.2.0-beta.17)
+
+<sup>Released on **2023-11-22**</sup>
+
+#### ✨ 新特性
+
+- Support useChat and chatRef.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- Support useChat and chatRef ([cf98b0f](https://github.com/ant-design/pro-chat/commit/cf98b0f))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;0.2.0-beta.16](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.15...v0.2.0-beta.16)
 
 <sup>Released on **2023-11-14**</sup>
