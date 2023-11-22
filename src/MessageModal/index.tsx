@@ -2,8 +2,8 @@ import { useResponsive } from 'antd-style';
 import { CSSProperties, ReactNode, memo } from 'react';
 import useControlledState from 'use-merge-value';
 
-import Markdown from '@/Markdown';
 import MessageInput, { type MessageInputProps } from '@/MessageInput';
+import { Markdown } from '@ant-design/pro-editor';
 import { Modal, type ModalProps } from 'antd';
 
 export interface MessageModalProps extends Pick<ModalProps, 'open' | 'footer'> {

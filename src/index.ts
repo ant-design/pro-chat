@@ -23,16 +23,8 @@ export {
 } from './EditableMessageList';
 export { default as CopyButton, type CopyButtonProps } from './components/CopyButton';
 
-export {
-  default as Highlighter,
-  SyntaxHighlighter,
-  type HighlighterProps,
-  type SyntaxHighlighterProps,
-} from './Highlighter';
-
 export { default as List } from './List';
 
-export { default as Markdown, type MarkdownProps } from './Markdown';
 export { default as MessageInput, type MessageInputProps } from './MessageInput';
 export { default as MessageModal, type MessageModalProps } from './MessageModal';
 

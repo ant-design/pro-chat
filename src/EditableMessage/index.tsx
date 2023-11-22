@@ -1,9 +1,9 @@
 import { CSSProperties, memo } from 'react';
 import useControlledState from 'use-merge-value';
 
-import Markdown from '@/Markdown';
 import MessageInput, { type MessageInputProps } from '@/MessageInput';
 import MessageModal, { type MessageModalProps } from '@/MessageModal';
+import { Markdown } from '@ant-design/pro-editor';
 
 export interface EditableMessageProps {
   /**
@@ -136,7 +136,9 @@ const EditableMessage = memo<EditableMessageProps>(
         ) : (
           <Markdown
             className={classNames?.markdown}
-            fullFeaturedCodeBlock={fullFeaturedCodeBlock}
+            highlight={{
+              containerWrapper: fullFeaturedCodeBlock,
+            }}
             style={{
               height: isAutoSize ? 'unset' : height,
               overflowX: 'hidden',

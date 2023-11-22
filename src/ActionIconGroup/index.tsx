@@ -60,7 +60,7 @@ const ActionIconGroup = memo<ActionIconGroupProps>(
     items = [],
     placement,
     spotlight = false,
-    direction = 'column',
+    direction = 'row',
     dropdownMenu = [],
     onActionClick,
     className,
