@@ -16,6 +16,7 @@ export default () => {
           render: (defaultDoms) => {
             return [
               <a
+                key="user"
                 onClick={() => {
                   window.open('https://github.com/ant-design/pro-chat');
                 }}
