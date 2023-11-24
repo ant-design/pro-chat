@@ -1,5 +1,57 @@
 # Changelog
 
+## [Version&nbsp;0.2.0](https://github.com/ant-design/pro-chat/compare/v0.1.1...v0.2.0)
+
+<sup>Released on **2023-11-24**</sup>
+
+#### ✨ 新特性
+
+- Add ProChat, add ProChat, change action & group as pro-editor, init basic components, ProChat 初步组件化, support autocompleteRequest and messageItemExtraRender, support extra userMeta and params, support onResetMessage funtion, support useChat and chatRef, 支持流式响应, 支持非流式请求.
+
+#### 🐛 修复
+
+- Change action group style problem, clean deps, fix avatar, fix import, fix import, fix import, fix onPressEnter no work error, fix onResetMessage, fix send auto clear no work error, lock father to fix build.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- Add ProChat, closes [#1](https://github.com/ant-design/pro-chat/issues/1) ([d63f00a](https://github.com/ant-design/pro-chat/commit/d63f00a))
+- Add ProChat ([ec20b42](https://github.com/ant-design/pro-chat/commit/ec20b42))
+- Change action & group as pro-editor ([4f1d5ee](https://github.com/ant-design/pro-chat/commit/4f1d5ee))
+- Init basic components ([09d1284](https://github.com/ant-design/pro-chat/commit/09d1284))
+- ProChat 初步组件化 ([86e8283](https://github.com/ant-design/pro-chat/commit/86e8283))
+- Support autocompleteRequest and messageItemExtraRender, closes [#4](https://github.com/ant-design/pro-chat/issues/4) ([5305e56](https://github.com/ant-design/pro-chat/commit/5305e56))
+- Support extra userMeta and params, closes [#10](https://github.com/ant-design/pro-chat/issues/10) ([8475b9a](https://github.com/ant-design/pro-chat/commit/8475b9a))
+- Support onResetMessage funtion, closes [#2](https://github.com/ant-design/pro-chat/issues/2) ([418230a](https://github.com/ant-design/pro-chat/commit/418230a))
+- Support useChat and chatRef ([cf98b0f](https://github.com/ant-design/pro-chat/commit/cf98b0f))
+- 支持流式响应 ([4e6d720](https://github.com/ant-design/pro-chat/commit/4e6d720))
+- 支持非流式请求 ([211fad5](https://github.com/ant-design/pro-chat/commit/211fad5))
+
+#### What's fixed
+
+- Change action group style problem ([52c9104](https://github.com/ant-design/pro-chat/commit/52c9104))
+- Clean deps ([1479fa3](https://github.com/ant-design/pro-chat/commit/1479fa3))
+- Fix avatar ([61a7efe](https://github.com/ant-design/pro-chat/commit/61a7efe))
+- Fix import ([ac81b1d](https://github.com/ant-design/pro-chat/commit/ac81b1d))
+- Fix import ([565e530](https://github.com/ant-design/pro-chat/commit/565e530))
+- Fix import ([0311e5f](https://github.com/ant-design/pro-chat/commit/0311e5f))
+- Fix onPressEnter no work error, closes [#11](https://github.com/ant-design/pro-chat/issues/11) ([1db28f7](https://github.com/ant-design/pro-chat/commit/1db28f7))
+- Fix onResetMessage, closes [#3](https://github.com/ant-design/pro-chat/issues/3) ([078f277](https://github.com/ant-design/pro-chat/commit/078f277))
+- Fix send auto clear no work error, closes [#5](https://github.com/ant-design/pro-chat/issues/5) ([06f6ebf](https://github.com/ant-design/pro-chat/commit/06f6ebf))
+- Lock father to fix build ([f6618e5](https://github.com/ant-design/pro-chat/commit/f6618e5))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;0.2.0-beta.17](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.16...v0.2.0-beta.17)
 
 <sup>Released on **2023-11-22**</sup>
