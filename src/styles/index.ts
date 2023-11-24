@@ -1,0 +1,1 @@
+export { colorScales } from './colors';

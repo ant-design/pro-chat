@@ -1,0 +1,114 @@
+import { Button, ButtonProps } from 'antd';
+import { memo, useState, type CSSProperties } from 'react';
+import { Flexbox } from 'react-layout-kit';
+
+import { TextArea, type TextAreaProps } from '@/components/Input';
+import { DivProps } from '@/types';
+
+import { useStyles } from './style';
+
+export interface MessageInputProps extends DivProps {
+  /**
+   * @description Additional className to apply to the component.
+   */
+  className?: string;
+  classNames?: TextAreaProps['classNames'];
+  /**
+   * @description The default value of the input box.
+   */
+  defaultValue?: string;
+  editButtonSize?: ButtonProps['size'];
+  height?: number | 'auto' | string;
+  /**
+   * @description Callback function triggered when user clicks on the cancel button.
+   */
+  onCancel?: () => void;
+
+  /**
+   * @description Callback function triggered when user clicks on the confirm button.
+   * @param text - The text input by the user.
+   */
+  onConfirm?: (text: string) => void;
+  /**
+   * @description Custom rendering of the bottom buttons.
+   * @param text - The text input by the user.
+   */
+  renderButtons?: (text: string) => ButtonProps[];
+  text?: {
+    cancel?: string;
+    confirm?: string;
+  };
+  textareaClassname?: string;
+  textareaStyle?: CSSProperties;
+  /**
+   * @description The type of the input box.
+   */
+  type?: TextAreaProps['type'];
+}
+
+const MessageInput = memo<MessageInputProps>(
+  ({
+    text,
+    type = 'pure',
+    onCancel,
+    defaultValue,
+    onConfirm,
+    renderButtons,
+    textareaStyle,
+    textareaClassname,
+    placeholder = 'Type something...',
+
+    height = 'auto',
+
+    style,
+    editButtonSize = 'middle',
+    classNames,
+    ...props
+  }) => {
+    const [temporarySystemRole, setRole] = useState<string>(defaultValue || '');
+    const { cx, styles } = useStyles();
+
+    const isAutoSize = height === 'auto';
+
+    return (
+      <Flexbox gap={16} style={{ flex: 1, width: '100%', ...style }} {...props}>
+        <TextArea
+          autoSize={isAutoSize}
+          className={cx(styles, textareaClassname)}
+          classNames={classNames}
+          onBlur={(e) => setRole(e.target.value)}
+          onChange={(e) => setRole(e.target.value)}
+          placeholder={placeholder}
+          resize={false}
+          style={{ height: isAutoSize ? 'unset' : height, minHeight: '100%', ...textareaStyle }}
+          type={type}
+          value={temporarySystemRole}
+        />
+        <Flexbox direction={'horizontal-reverse'} gap={8}>
+          {renderButtons ? (
+            renderButtons(temporarySystemRole).map((buttonProps, index) => (
+              <Button key={index} size="small" {...buttonProps} />
+            ))
+          ) : (
+            <>
+              <Button
+                onClick={() => {
+                  onConfirm?.(temporarySystemRole);
+                }}
+                size={editButtonSize}
+                type="primary"
+              >
+                {text?.confirm || 'Confirm'}
+              </Button>
+              <Button onClick={onCancel} size={editButtonSize}>
+                {text?.cancel || 'Cancel'}
+              </Button>
+            </>
+          )}
+        </Flexbox>
+      </Flexbox>
+    );
+  },
+);
+
+export default MessageInput;

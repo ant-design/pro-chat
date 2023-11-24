@@ -2,9 +2,6 @@
 
 # dependencies
 **/node_modules
-# roadhog-api-doc ignore
-/src/utils/request-temp.js
-_roadhog-api-doc
 
 # production
 **/dist
@@ -40,3 +37,5 @@ screenshot
 example/.temp/*
 .eslintcache
 techUI*
+.vercel
+bun.lockb
