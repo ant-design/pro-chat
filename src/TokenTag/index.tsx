@@ -59,8 +59,8 @@ const TokenTag = forwardRef<HTMLDivElement, TokenTagProps>(
               mobile
                 ? ''
                 : displayMode === 'remained'
-                ? text?.remained || 'Remained'
-                : text?.used || 'Used',
+                  ? text?.remained || 'Remained'
+                  : text?.used || 'Used',
               displayMode === 'remained' ? valueLeft : value,
             ].join(' ')
           : text?.overload || 'Overload'}
