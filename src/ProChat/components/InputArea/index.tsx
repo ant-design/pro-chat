@@ -1,6 +1,6 @@
 import { SendOutlined } from '@ant-design/icons';
 import { Button, ConfigProvider } from 'antd';
-import { createStyles, useResponsive } from 'antd-style';
+import { createStyles, cx, useResponsive } from 'antd-style';
 import { memo, useRef, useState } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
@@ -85,7 +85,7 @@ export const InputArea = ({}) => {
         <Flexbox horizontal gap={8} align={'center'} className={styles.boxShadow}>
           <AutoCompleteTextArea
             size={'large'}
-            className={styles.input}
+            className={cx(styles.input, inputAreaProps?.className)}
             placeholder={placeholder || '请输入内容...'}
             {...inputAreaProps}
             value={message}
