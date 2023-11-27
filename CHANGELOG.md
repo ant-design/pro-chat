@@ -1,5 +1,30 @@
 # Changelog
 
+### [Version&nbsp;0.3.1](https://github.com/ant-design/pro-chat/compare/v0.3.0...v0.3.1)
+
+<sup>Released on **2023-11-27**</sup>
+
+#### 🐛 修复
+
+- Fixed ActionIcon hover double mask.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- Fixed ActionIcon hover double mask, closes [#15](https://github.com/ant-design/pro-chat/issues/15) ([c98f4d4](https://github.com/ant-design/pro-chat/commit/c98f4d4))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;0.3.0](https://github.com/ant-design/pro-chat/compare/v0.2.0...v0.3.0)
 
 <sup>Released on **2023-11-27**</sup>
