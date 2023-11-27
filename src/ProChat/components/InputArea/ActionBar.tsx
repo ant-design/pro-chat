@@ -15,9 +15,26 @@ const useStyles = createStyles(({ css, token }) => ({
 }));
 
 export const ActionBar = () => {
-  const [clearMessage] = useStore((s) => [s.clearMessage]);
+  const [clearMessage, actionsRender, flexConfig] = useStore((s) => [
+    s.clearMessage,
+    s.actions?.render,
+    s.actions?.flexConfig,
+  ]);
 
   const { styles, theme } = useStyles();
+  const defaultDoms = [
+    <Popconfirm
+      title={'你即将要清空会话，清空后将无法找回。是否清空当前会话？'}
+      okButtonProps={{ danger: true }}
+      okText={'清空会话'}
+      key={'clear'}
+      onConfirm={() => {
+        clearMessage();
+      }}
+    >
+      <ActionIcon title={'清空当前会话'} icon={Trash2} />
+    </Popconfirm>,
+  ];
 
   return (
     <ConfigProvider theme={{ token: { colorText: theme.colorTextSecondary } }}>
@@ -27,17 +44,9 @@ export const ActionBar = () => {
         paddingInline={12}
         className={styles.extra}
         gap={8}
+        {...flexConfig}
       >
-        <Popconfirm
-          title={'你即将要清空会话，清空后将无法找回。是否清空当前会话？'}
-          okButtonProps={{ danger: true }}
-          okText={'清空会话'}
-          onConfirm={() => {
-            clearMessage();
-          }}
-        >
-          <ActionIcon title={'清空当前会话'} icon={Trash2} />
-        </Popconfirm>
+        {actionsRender?.(defaultDoms) ?? defaultDoms}
       </Flexbox>
     </ConfigProvider>
   );

@@ -119,8 +119,7 @@ const nextConfig = {
 
 #### 📝 License
 
-Copyright © 2020 - present [Arvin Xu][profile-url]. <br />
-This project is [MIT](./LICENSE) licensed.
+Copyright © 2020 - present [Arvin Xu][profile-url]. <br /> This project is [MIT](./LICENSE) licensed.
 
 <!-- LINK GROUP -->
 
