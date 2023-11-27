@@ -85,9 +85,9 @@ export const InputArea = ({}) => {
         <Flexbox horizontal gap={8} align={'center'} className={styles.boxShadow}>
           <AutoCompleteTextArea
             size={'large'}
-            className={cx(styles.input, inputAreaProps?.className)}
             placeholder={placeholder || '请输入内容...'}
             {...inputAreaProps}
+            className={cx(styles.input, inputAreaProps?.className)}
             value={message}
             onChange={(e) => {
               setMessage(e.target.value);
