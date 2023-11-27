@@ -1,5 +1,30 @@
 # Changelog
 
+## [Version&nbsp;0.3.0](https://github.com/ant-design/pro-chat/compare/v0.2.0...v0.3.0)
+
+<sup>Released on **2023-11-27**</sup>
+
+#### ✨ 新特性
+
+- 支持 actions 的自定义.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- 支持 actions 的自定义, closes [#13](https://github.com/ant-design/pro-chat/issues/13) ([330046d](https://github.com/ant-design/pro-chat/commit/330046d))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;0.2.0](https://github.com/ant-design/pro-chat/compare/v0.1.1...v0.2.0)
 
 <sup>Released on **2023-11-24**</sup>
