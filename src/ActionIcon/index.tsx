@@ -6,9 +6,8 @@ import Spotlight from '@/components/Spotlight';
 import { DivProps } from '@/types';
 import { type TooltipProps } from 'antd';
 
-import { useStyles } from './style';
-
 import { ActionIcon as ProEditorActionIcon } from '@ant-design/pro-editor';
+import { useStyles } from './style';
 
 export type ActionIconSize =
   | 'large'
@@ -116,63 +115,68 @@ export interface ActionIconProps extends DivProps {
   tooltipDelay?: number;
 }
 
-const ActionIcon = forwardRef<HTMLDivElement, ActionIconProps>(
-  (
-    {
-      color,
-      fill,
-      className,
-      active,
-      icon,
-      size = 'normal',
-      style,
-      glass,
-      spotlight,
-      onClick,
-      children,
-      loading,
-      ...props
-    },
-    ref,
-  ) => {
-    const { styles, cx } = useStyles({ active: Boolean(active), glass: Boolean(glass) });
+const ActionIcon = forwardRef<HTMLDivElement, ActionIconProps>((props, ref) => {
+  const {
+    color,
+    fill,
+    className,
+    active,
+    icon,
+    size = 'normal',
+    style,
+    glass,
+    spotlight,
+    onClick,
+    children,
+    loading,
+    title,
+    placement,
+    arrow = false,
+    tooltipDelay = 0.5,
+    ...rest
+  } = props;
 
-    const { blockSize, borderRadius } = useMemo(() => calcSize(size), [size]);
+  const { styles, cx } = useStyles({ active: Boolean(active), glass: Boolean(glass) });
 
-    const content = (
-      <>
-        {icon && (
-          <Icon
-            className={styles.icon}
-            color={color}
-            fill={fill}
-            icon={icon}
-            size={size === 'site' ? 'normal' : size}
-          />
-        )}
-        {children}
-      </>
-    );
+  const { blockSize, borderRadius } = useMemo(() => calcSize(size), [size]);
 
-    const spin = (
-      <Icon color={color} icon={Loader2} size={size === 'site' ? 'normal' : size} spin />
-    );
+  const content = (
+    <>
+      {icon && (
+        <Icon color={color} fill={fill} icon={icon} size={size === 'site' ? 'normal' : size} />
+      )}
+      {children}
+    </>
+  );
 
-    const actionIconBlock = (
-      <div
-        className={cx(styles.block, className)}
-        onClick={loading ? undefined : onClick}
-        ref={ref}
-        style={{ borderRadius, height: blockSize, width: blockSize, ...style }}
-        {...props}
-      >
-        {spotlight && <Spotlight />}
-        {loading ? spin : content}
-      </div>
-    );
+  const spin = <Icon color={color} icon={Loader2} size={size === 'site' ? 'normal' : size} spin />;
 
-    return <ProEditorActionIcon {...props} icon={actionIconBlock} />;
-  },
-);
+  const actionIconBlock = (
+    <div
+      className={cx(styles.block, className)}
+      onClick={loading ? undefined : onClick}
+      ref={ref}
+      style={{ borderRadius, height: blockSize, width: blockSize, ...style }}
+      {...rest}
+    >
+      {spotlight && <Spotlight />}
+      {loading ? spin : content}
+    </div>
+  );
+
+  return (
+    <>
+      <ProEditorActionIcon
+        {...rest}
+        arrow={arrow}
+        tooltipDelay={tooltipDelay}
+        placement={placement}
+        title={title}
+        icon={actionIconBlock}
+        size={blockSize}
+      />
+    </>
+  );
+});
 
 export default ActionIcon;
