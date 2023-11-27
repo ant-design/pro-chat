@@ -2,6 +2,7 @@ import { DEFAULT_AVATAR, DEFAULT_USER_AVATAR } from '@/ProChat/const/meta';
 import { ModelConfig } from '@/ProChat/types/config';
 import { MetaData } from '@/ProChat/types/meta';
 import { ChatMessage, ChatMessageMap } from '@/types/message';
+import { TextAreaProps } from 'antd/es/input';
 import { FlexBasicProps } from 'react-layout-kit/lib/FlexBasic';
 
 export type ChatRequest = (messages: ChatMessage[], config: ModelConfig) => Promise<Response>;
@@ -47,6 +48,11 @@ export interface ChatPropsState {
    * 输入框的 placeholder
    */
   placeholder?: string;
+
+  /**
+   * 输入框的 props,优先级最高
+   */
+  inputAreaProps?: TextAreaProps;
 
   /**
    * 信息框额外渲染

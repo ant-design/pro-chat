@@ -1,6 +1,6 @@
 import { SendOutlined } from '@ant-design/icons';
 import { Button, ConfigProvider } from 'antd';
-import { createStyles, useResponsive } from 'antd-style';
+import { createStyles, cx, useResponsive } from 'antd-style';
 import { memo, useRef, useState } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
@@ -52,10 +52,11 @@ const useStyles = createStyles(({ css, responsive, token }) => ({
 }));
 
 export const InputArea = ({}) => {
-  const [sendMessage, isLoading, placeholder] = useStore((s) => [
+  const [sendMessage, isLoading, placeholder, inputAreaProps] = useStore((s) => [
     s.sendMessage,
     !!s.chatLoadingId,
     s.placeholder,
+    s.inputAreaProps,
   ]);
   const [message, setMessage] = useState('');
   const isChineseInput = useRef(false);
@@ -84,8 +85,10 @@ export const InputArea = ({}) => {
         <Flexbox horizontal gap={8} align={'center'} className={styles.boxShadow}>
           <AutoCompleteTextArea
             size={'large'}
-            value={message}
             placeholder={placeholder || '请输入内容...'}
+            {...inputAreaProps}
+            className={cx(styles.input, inputAreaProps?.className)}
+            value={message}
             onChange={(e) => {
               setMessage(e.target.value);
             }}
@@ -96,7 +99,6 @@ export const InputArea = ({}) => {
             onCompositionEnd={() => {
               isChineseInput.current = false;
             }}
-            className={styles.input}
             onPressEnter={(e) => {
               if (!isLoading && !e.shiftKey && !isChineseInput.current) {
                 e.preventDefault();
