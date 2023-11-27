@@ -94,10 +94,16 @@ const nextConfig = {
 
 <!-- CONTRIBUTION GROUP -->
 
-> 📊 Total: <kbd>**2**</kbd>
+> 📊 Total: <kbd>**4**</kbd>
 
 <a href="https://github.com/arvinxx" title="arvinxx">
   <img src="https://avatars.githubusercontent.com/u/28616219?v=4" width="50" />
+</a>
+<a href="https://github.com/chenshuai2144" title="chenshuai2144">
+  <img src="https://avatars.githubusercontent.com/u/8186664?v=4" width="50" />
+</a>
+<a href="https://github.com/ONLY-yours" title="ONLY-yours">
+  <img src="https://avatars.githubusercontent.com/u/52664827?v=4" width="50" />
 </a>
 <a href="https://github.com/actions-user" title="actions-user">
   <img src="https://avatars.githubusercontent.com/u/65916846?v=4" width="50" />
@@ -113,8 +119,7 @@ const nextConfig = {
 
 #### 📝 License
 
-Copyright © 2020 - present [Arvin Xu][profile-url]. <br />
-This project is [MIT](./LICENSE) licensed.
+Copyright © 2020 - present [Arvin Xu][profile-url]. <br /> This project is [MIT](./LICENSE) licensed.
 
 <!-- LINK GROUP -->
 

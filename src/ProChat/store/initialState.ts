@@ -3,6 +3,7 @@ import { ModelConfig } from '@/ProChat/types/config';
 import { MetaData } from '@/ProChat/types/meta';
 import { ChatMessage, ChatMessageMap } from '@/types/message';
 import { TextAreaProps } from 'antd/es/input';
+import { FlexBasicProps } from 'react-layout-kit/lib/FlexBasic';
 
 export type ChatRequest = (messages: ChatMessage[], config: ModelConfig) => Promise<Response>;
 
@@ -58,12 +59,21 @@ export interface ChatPropsState {
    */
   messageItemExtraRender?: (message: ChatMessage, type: 'assistant' | 'user') => React.ReactNode;
 
-  /** */
-  // /**
-  //  * 控制是否流式输出
-  //  * @default true
-  //  */
-  // stream: boolean;
+  /**
+   * 信息框顶部的操作列表
+   */
+  actions?: {
+    /**
+     * 控制 input 顶部的操作区域的 flex 布局
+     */
+    flexConfig?: FlexBasicProps;
+    /**
+     * 控制 input 顶部的操作区域的操作按钮
+     * @param defaultDoms
+     * @returns
+     */
+    render?: (defaultDoms: JSX.Element[]) => JSX.Element[];
+  };
 }
 
 export interface ChatState extends ChatPropsState {
