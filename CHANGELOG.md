@@ -1,5 +1,30 @@
 # Changelog
 
+## [Version&nbsp;0.5.0](https://github.com/ant-design/pro-chat/compare/v0.4.0...v0.5.0)
+
+<sup>Released on **2023-11-28**</sup>
+
+#### ✨ 新特性
+
+- Support genMessageId.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- Support genMessageId, closes [#16](https://github.com/ant-design/pro-chat/issues/16) ([753b82a](https://github.com/ant-design/pro-chat/commit/753b82a))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;0.4.0](https://github.com/ant-design/pro-chat/compare/v0.3.1...v0.4.0)
 
 <sup>Released on **2023-11-27**</sup>
