@@ -27,6 +27,13 @@ export interface ChatPropsState {
   request?: string | ChatRequest;
 
   /**
+   * 生成消息 id
+   * @param message
+   * @returns message id
+   */
+  genMessageId?: (message: ChatMessage[], parentId: string) => Promise<string>;
+
+  /**
    * 重置消息
    * @returns
    */

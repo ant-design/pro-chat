@@ -192,6 +192,7 @@ const Item = memo<ChatListItemProps>((props) => {
 
   return (
     <ChatItem
+      data-id={item.id}
       actions={<Actions data={item} />}
       avatar={(item as any).meta}
       avatarAddon={groupNav}

@@ -13,7 +13,7 @@ export const getMessageError = async (response: Response) => {
 
 export interface FetchSSEOptions {
   onErrorHandle?: (error: ChatMessageError) => void;
-  onMessageHandle?: (text: string) => void;
+  onMessageHandle?: (text: string, response: Response) => void;
 }
 
 /**
@@ -49,7 +49,7 @@ export const fetchSSE = async (fetchFn: () => Promise<Response>, options: FetchS
     done = doneReading;
     const chunkValue = decoder.decode(value);
 
-    options.onMessageHandle?.(chunkValue);
+    options.onMessageHandle?.(chunkValue, returnRes);
   }
 
   return returnRes;
