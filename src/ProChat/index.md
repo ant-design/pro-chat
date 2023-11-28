@@ -104,8 +104,9 @@ useProChat hooks 必须在包裹 `ProChatProvider` 后方可使用。
 | displayMode | 显示模式，默认是 chat | 'chat' \| 'docs' | - |
 | helloMessage | 欢迎消息 | string | - |
 | request | 请求消息 | string \| ChatRequest | - |
-| onResetMessage | 重置消息回调函数 | () => Promise<void> | - |
-| autocompleteRequest | 获取自动完成列表的请求函数 | (value: string) => Promise<{ value: string; label?: string; }[]> | - |
+| onResetMessage | 重置消息回调函数 | `() => Promise<void>` | - |
+| genMessageId | 生成消息 id 的函数，如果你的项目需要持久化时才需要使用 | `() => Promise<string>`` | nanoid |
+| autocompleteRequest | 获取自动完成列表的请求函数 | `(value: string) => Promise<{ value: string; label?: string; }[]>`` | - |
 | placeholder | 输入框占位符 | string | - |
 | messageItemExtraRender | 信息框额外渲染函数 | `(message: ChatMessage, type: 'assistant' \| 'user') => React.ReactNode` | - |
 | actions | 信息框顶部的操作列表 | `{ flexConfig?: FlexBasicProps, render?: (defaultDoms: JSX.Element[]) => JSX.Element[] }` | - |
