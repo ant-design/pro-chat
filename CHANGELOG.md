@@ -1,5 +1,30 @@
 # Changelog
 
+## [Version&nbsp;0.6.0](https://github.com/ant-design/pro-chat/compare/v0.5.0...v0.6.0)
+
+<sup>Released on **2023-12-06**</sup>
+
+#### ✨ 新特性
+
+- Support setMessageItem.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- Support setMessageItem, closes [#17](https://github.com/ant-design/pro-chat/issues/17) ([30b516d](https://github.com/ant-design/pro-chat/commit/30b516d))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;0.5.0](https://github.com/ant-design/pro-chat/compare/v0.4.0...v0.5.0)
 
 <sup>Released on **2023-11-28**</sup>
