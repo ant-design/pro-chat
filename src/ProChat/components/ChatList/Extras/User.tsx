@@ -16,7 +16,7 @@ export const UserMessageExtra: RenderMessageExtra = memo(({ extra, ...rest }) =>
           <Divider style={{ margin: '12px 0' }} />
         </div>
       )}
-      {messageItemExtraRender?.(rest, 'user')}
+      {messageItemExtraRender?.({ extra, ...rest }, 'user')}
     </Flexbox>
   );
 });

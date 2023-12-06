@@ -17,7 +17,7 @@ export const AssistantMessageExtra: RenderMessageExtra = memo(({ extra, ...rest 
 
   const showExtra = showModelTag || hasTranslate;
 
-  const dom = messageItemExtraRender?.(rest, 'assistant');
+  const dom = messageItemExtraRender?.({ extra, ...rest }, 'assistant');
   if (!showExtra && !dom) return;
 
   return (
