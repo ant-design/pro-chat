@@ -7,7 +7,7 @@ import { FlexBasicProps } from 'react-layout-kit/lib/FlexBasic';
 
 export type ChatRequest = (messages: ChatMessage[], config: ModelConfig) => Promise<Response>;
 
-export interface ChatPropsState {
+export interface ChatPropsState<T extends Record<string, any> = Record<string, any>> {
   /**
    * 语言模型角色设定
    */
@@ -15,8 +15,8 @@ export interface ChatPropsState {
   /**
    * 聊天记录
    */
-  chats: ChatMessageMap;
-  onChatsChange?: (chats: ChatMessageMap) => void;
+  chats: ChatMessageMap<T>;
+  onChatsChange?: (chats: ChatMessageMap<T>) => void;
   displayMode: 'chat' | 'docs';
   userMeta: MetaData;
   assistantMeta: MetaData;
@@ -31,7 +31,7 @@ export interface ChatPropsState {
    * @param message
    * @returns message id
    */
-  genMessageId?: (message: ChatMessage[], parentId: string) => Promise<string>;
+  genMessageId?: (message: ChatMessage<T>[], parentId: string) => Promise<string>;
 
   /**
    * 重置消息
@@ -64,7 +64,7 @@ export interface ChatPropsState {
   /**
    * 信息框额外渲染
    */
-  messageItemExtraRender?: (message: ChatMessage, type: 'assistant' | 'user') => React.ReactNode;
+  messageItemExtraRender?: (message: ChatMessage<T>, type: 'assistant' | 'user') => React.ReactNode;
 
   /**
    * 信息框顶部的操作列表

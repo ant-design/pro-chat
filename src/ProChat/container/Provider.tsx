@@ -3,13 +3,14 @@ import { memo, ReactNode } from 'react';
 import { DevtoolsOptions } from 'zustand/middleware';
 import { ChatProps, createStore, Provider, useStoreApi } from '../store';
 
-interface ProChatProviderProps extends ChatProps {
+interface ProChatProviderProps<T extends Record<string, any> = Record<string, any>>
+  extends ChatProps<T> {
   children: ReactNode;
   devtoolOptions?: boolean | DevtoolsOptions;
   chatRef?: ProChatChatReference;
 }
 
-export const ProChatProvider = memo<ProChatProviderProps>(
+export const ProChatProvider = memo<ProChatProviderProps<any>>(
   ({
     children,
     devtoolOptions,
