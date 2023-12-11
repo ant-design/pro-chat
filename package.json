@@ -3,8 +3,8 @@
   "version": "0.6.1",
   "description": "a solution for ai chat",
   "keywords": [
-    "npm",
-    "template"
+    "ai",
+    "chat"
   ],
   "homepage": "https://github.com/ant-design/pro-chat",
   "bugs": {
