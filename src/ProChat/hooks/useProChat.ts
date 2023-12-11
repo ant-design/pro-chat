@@ -9,9 +9,31 @@ export interface ProChatInstance
     ChatStore,
     'resendMessage' | 'stopGenerateMessage' | 'sendMessage' | 'deleteMessage' | 'clearMessage'
   > {
+  /**
+   * 获取当前聊天列表对象
+   * @returns ChatStore['chats']
+   */
   getChats: () => ChatStore['chats'];
+  /**
+   * 获取当前聊天消息列表
+   * @returns ChatMessage[]
+   */
   getChatMessages: () => ChatMessage[];
+  /**
+   * 设置消息内容
+   * @param id
+   * @param content
+   * @returns  void
+   */
   setMessageContent: (id: string, content: string) => void;
+  /**
+   * 修改消息的某个属性
+   * @param id
+   * @param key
+   * @param value
+   * @returns  void
+   */
+  setMessageValue: (id: string, key: keyof ChatMessage<Record<string, any>>, value: any) => void;
 }
 
 export const useProChat = () => {
@@ -33,6 +55,12 @@ export const useProChat = () => {
     dispatchMessage({ type: 'updateMessage', id, key: 'content', value: content });
   });
 
+  const setMessageValue = useMemoizedFn(
+    (id: string, key: keyof ChatMessage<Record<string, any>>, value) => {
+      dispatchMessage({ type: 'updateMessage', id, key, value });
+    },
+  );
+
   return useMemo<ProChatInstance>(() => {
     return {
       getChats,
@@ -43,6 +71,7 @@ export const useProChat = () => {
       deleteMessage,
       clearMessage,
       setMessageContent,
+      setMessageValue,
     };
   }, []);
 };

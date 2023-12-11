@@ -1,5 +1,130 @@
 # Changelog
 
+### [Version&nbsp;0.6.1](https://github.com/ant-design/pro-chat/compare/v0.6.0...v0.6.1)
+
+<sup>Released on **2023-12-06**</sup>
+
+#### 🐛 修复
+
+- Fix messageItemExtraRender item no set extra error.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- Fix messageItemExtraRender item no set extra error, closes [#18](https://github.com/ant-design/pro-chat/issues/18) ([ba006e1](https://github.com/ant-design/pro-chat/commit/ba006e1))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
+## [Version&nbsp;0.6.0](https://github.com/ant-design/pro-chat/compare/v0.5.0...v0.6.0)
+
+<sup>Released on **2023-12-06**</sup>
+
+#### ✨ 新特性
+
+- Support setMessageItem.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- Support setMessageItem, closes [#17](https://github.com/ant-design/pro-chat/issues/17) ([30b516d](https://github.com/ant-design/pro-chat/commit/30b516d))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
+## [Version&nbsp;0.5.0](https://github.com/ant-design/pro-chat/compare/v0.4.0...v0.5.0)
+
+<sup>Released on **2023-11-28**</sup>
+
+#### ✨ 新特性
+
+- Support genMessageId.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- Support genMessageId, closes [#16](https://github.com/ant-design/pro-chat/issues/16) ([753b82a](https://github.com/ant-design/pro-chat/commit/753b82a))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
+## [Version&nbsp;0.4.0](https://github.com/ant-design/pro-chat/compare/v0.3.1...v0.4.0)
+
+<sup>Released on **2023-11-27**</sup>
+
+#### ✨ 新特性
+
+- Support inputAreaProps.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- Support inputAreaProps, closes [#14](https://github.com/ant-design/pro-chat/issues/14) ([ce67194](https://github.com/ant-design/pro-chat/commit/ce67194))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
+### [Version&nbsp;0.3.1](https://github.com/ant-design/pro-chat/compare/v0.3.0...v0.3.1)
+
+<sup>Released on **2023-11-27**</sup>
+
+#### 🐛 修复
+
+- Fixed ActionIcon hover double mask.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- Fixed ActionIcon hover double mask, closes [#15](https://github.com/ant-design/pro-chat/issues/15) ([c98f4d4](https://github.com/ant-design/pro-chat/commit/c98f4d4))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;0.3.0](https://github.com/ant-design/pro-chat/compare/v0.2.0...v0.3.0)
 
 <sup>Released on **2023-11-27**</sup>

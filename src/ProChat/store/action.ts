@@ -66,17 +66,42 @@ export interface ChatAction {
    * @param text - 消息文本
    */
   sendMessage: (text: string) => Promise<void>;
+
+  /**
+   * 停止生成消息
+   * @returns
+   */
   stopGenerateMessage: () => void;
 
+  /**
+   * 切换 loading 状态
+   * @param loading
+   * @param id
+   * @param action
+   * @returns
+   */
   toggleChatLoading: (
     loading: boolean,
     id?: string,
     action?: string,
   ) => AbortController | undefined;
+
+  /**
+   * 默认的数据请求方法
+   * @param params
+   * @param options
+   * @returns
+   */
   defaultModelFetcher: (
     params: Partial<ChatStreamPayload>,
     options?: FetchChatModelOptions,
   ) => Promise<Response>;
+
+  /**
+   * 生成消息 ID
+   * @returns  消息 id
+   */
+  getMessageId: (messages: ChatMessage[], parentId: string) => Promise<string>;
 }
 
 export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], [], ChatAction> = (
@@ -187,11 +212,11 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
   },
 
   realFetchAIResponse: async (messages, userMessageId) => {
-    const { dispatchMessage, generateMessage, config } = get();
+    const { dispatchMessage, generateMessage, config, getMessageId } = get();
 
     // 添加一个空的信息用于放置 ai 响应，注意顺序不能反
     // 因为如果顺序反了，messages 中将包含新增的 ai message
-    const mid = nanoid();
+    const mid = await getMessageId(messages, userMessageId);
 
     dispatchMessage({
       id: mid,
@@ -308,5 +333,10 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
       method: 'POST',
       signal: options?.signal,
     });
+  },
+  getMessageId: async (messages, parentId) => {
+    const { genMessageId } = get();
+    if (typeof genMessageId === 'function') return genMessageId(messages, parentId);
+    return nanoid();
   },
 });

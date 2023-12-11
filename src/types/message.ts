@@ -10,7 +10,7 @@ export interface ChatMessageError {
   type: string | number;
 }
 
-export interface ChatMessage {
+export interface ChatMessage<T extends Record<string, any> = Record<string, any>> {
   /**
    * @title 内容
    * @description 消息内容
@@ -28,11 +28,13 @@ export interface ChatMessage {
   createAt: number;
   id: string;
   updateAt: number;
-  extra?: Record<string, any>;
+  extra?: T;
 }
 
-export type ChatMessageMap = Record<string, ChatMessage>;
-
+export type ChatMessageMap<T extends Record<string, any> = Record<string, any>> = Record<
+  string,
+  ChatMessage<T>
+>;
 export interface OpenAIFunctionCall {
   arguments?: string;
   name: string;

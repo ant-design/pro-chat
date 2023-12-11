@@ -9,10 +9,11 @@ import { createWithEqualityFn } from 'zustand/traditional';
 import { ChatAction, chatAction } from './action';
 import { ChatPropsState, ChatState, initialState } from './initialState';
 
-export interface ChatProps extends Partial<ChatPropsState> {
+export interface ChatProps<T extends Record<string, any> = Record<string, any>>
+  extends Partial<ChatPropsState<T>> {
   // init
   loading?: boolean;
-  initialChats?: ChatPropsState['chats'];
+  initialChats?: ChatPropsState<T>['chats'];
   userMeta?: MetaData;
   assistantMeta?: MetaData;
 }
