@@ -5,6 +5,7 @@
 
 # production
 **/dist
+**/docs-dist
 /.vscode
 /es
 /lib

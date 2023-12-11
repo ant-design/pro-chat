@@ -1,4 +1,5 @@
 import { ModelRoleType } from '@/ProChat/types/config';
+import { ReactNode } from 'react';
 
 /**
  * 聊天消息错误对象
@@ -14,7 +15,7 @@ export interface ChatMessage<T extends Record<string, any> = Record<string, any>
    * @title 内容
    * @description 消息内容
    */
-  content: string;
+  content: ReactNode;
   error?: any;
   model?: string;
   name?: string;

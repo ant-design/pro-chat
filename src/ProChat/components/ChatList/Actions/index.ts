@@ -10,4 +10,5 @@ export const renderActions: ChatListProps['renderActions'] = {
   function: FunctionActionsBar,
   system: DefaultActionsBar,
   user: UserActionsBar,
+  hello: () => undefined,
 };

@@ -102,7 +102,7 @@ useProChat hooks 必须在包裹 `ProChatProvider` 后方可使用。
 | chats | 聊天记录 | ChatMessageMap | - |
 | onChatsChange | 聊天记录变化回调函数, | (chats: ChatMessageMap) => void | chat |
 | displayMode | 显示模式，默认是 chat | 'chat' \| 'docs' | - |
-| helloMessage | 欢迎消息 | string | - |
+| helloMessage | 欢迎消息 | string\| ReactNode | - |
 | request | 请求消息 | string \| ChatRequest | - |
 | onResetMessage | 重置消息回调函数 | `() => Promise<void>` | - |
 | genMessageId | 生成消息 id 的函数，如果你的项目需要持久化时才需要使用 | `() => Promise<string>`` | nanoid |
