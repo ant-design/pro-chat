@@ -1,5 +1,41 @@
 # Changelog
 
+## [Version&nbsp;0.7.0](https://github.com/ant-design/pro-chat/compare/v0.6.1...v0.7.0)
+
+<sup>Released on **2023-12-11**</sup>
+
+#### ✨ 新特性
+
+- Chatlist hello dom support reactnode.
+
+#### 🐛 修复
+
+- Mergin main, slove ci problem, ts update, update some ts interface.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- Chatlist hello dom support reactnode ([1fd383e](https://github.com/ant-design/pro-chat/commit/1fd383e))
+
+#### What's fixed
+
+- Mergin main ([cd472bc](https://github.com/ant-design/pro-chat/commit/cd472bc))
+- Slove ci problem ([5c4f1de](https://github.com/ant-design/pro-chat/commit/5c4f1de))
+- Ts update ([62db9be](https://github.com/ant-design/pro-chat/commit/62db9be))
+- Update some ts interface ([32ff653](https://github.com/ant-design/pro-chat/commit/32ff653))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ### [Version&nbsp;0.6.1](https://github.com/ant-design/pro-chat/compare/v0.6.0...v0.6.1)
 
 <sup>Released on **2023-12-06**</sup>
