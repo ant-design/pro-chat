@@ -23,7 +23,7 @@ export interface ChatPropsState {
   /**
    * 帮助消息
    */
-  helloMessage?: string | ReactNode;
+  helloMessage?: ReactNode;
   request?: string | ChatRequest;
 
   /**

@@ -10,7 +10,7 @@ export interface ActionsBarProps extends ActionIconGroupProps {
     edit?: string;
     regenerate?: string;
   };
-  content?: React.ReactNode | string | undefined;
+  content?: React.ReactNode | undefined;
 }
 
 const ActionsBar = memo<ActionsBarProps>(({ text, ...rest }) => {
