@@ -87,7 +87,7 @@ export const currentChatsWithGuideMessage = (s: ChatStore): ChatMessage[] => {
     extra: {},
     id: 'default',
     meta: s.assistantMeta,
-    role: 'assistant',
+    role: 'hello',
     updateAt: Date.now(),
   } as ChatMessage;
 

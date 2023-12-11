@@ -6,7 +6,7 @@ export interface OpenAIChatMessage {
    * @title 内容
    * @description 消息内容
    */
-  content: string;
+  content: string | React.ReactNode;
 
   function_call?: OpenAIFunctionCall;
   name?: string;

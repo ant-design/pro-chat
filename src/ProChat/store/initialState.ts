@@ -2,6 +2,7 @@ import { DEFAULT_AVATAR, DEFAULT_USER_AVATAR } from '@/ProChat/const/meta';
 import { ModelConfig } from '@/ProChat/types/config';
 import { MetaData } from '@/ProChat/types/meta';
 import { ChatMessage, ChatMessageMap } from '@/types/message';
+import { ReactNode } from 'react';
 import { FlexBasicProps } from 'react-layout-kit/lib/FlexBasic';
 
 export type ChatRequest = (messages: ChatMessage[], config: ModelConfig) => Promise<Response>;
@@ -22,7 +23,7 @@ export interface ChatPropsState {
   /**
    * 帮助消息
    */
-  helloMessage?: string;
+  helloMessage?: string | ReactNode;
   request?: string | ChatRequest;
 
   /**

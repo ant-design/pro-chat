@@ -21,7 +21,7 @@ export interface ActionEvent {
   keyPath: string[];
 }
 
-export interface ActionIconGroupProps extends DivProps {
+export interface ActionIconGroupProps extends Omit<DivProps, 'content'> {
   /**
    * @description The direction of the icons
    * @default "row"
