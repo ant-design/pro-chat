@@ -15,7 +15,7 @@ export interface ChatMessage<T extends Record<string, any> = Record<string, any>
    * @title 内容
    * @description 消息内容
    */
-  content: string | ReactNode;
+  content: ReactNode;
   error?: any;
   model?: string;
   name?: string;
