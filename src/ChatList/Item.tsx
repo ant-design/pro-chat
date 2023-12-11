@@ -158,7 +158,7 @@ const Item = memo<ChatListItemProps>((props) => {
       const handleActionClick: ListItemProps['onActionsClick'] = (action, data) => {
         switch (action.key) {
           case 'copy': {
-            copy(data.content);
+            copy(data.content as string);
             message.success(text?.copySuccess || 'Copy Success');
             break;
           }
