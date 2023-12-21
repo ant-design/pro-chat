@@ -1,12 +1,14 @@
-<a name="readme-top"></a>
-
-<div align="center">
+<p align="center">
+  <img width="160" src="https://mdn.alipayobjects.com/huamei_re70wt/afts/img/A*Mo27Sr3kS4kAAAAAAAAAAAAADmuEAQ/original">
+</p>
 
 [//]: # '<img width="160" src="https://avatars.githubusercontent.com/u/17870709?v=4">'
 
+<div align="center">
+
 <h1>@ant-design/pro-chat</h1>
 
-一个开发 npm 项目的模板
+一个快速搭建起大语言模型 Chat 对话的前端组件库
 
 [Changelog](./CHANGELOG.md) · [Report Bug][issues-url] · [Request Feature][issues-url]
 
@@ -19,8 +21,6 @@
 [![contributors][contributors-shield]][contributors-url] [![forks][forks-shield]][forks-url] [![stargazers][stargazers-shield]][stargazers-url] [![issues][issues-shield]][issues-url]
 
 [![ docs by dumi][dumi-url]](https://d.umijs.org/) [![Build With father][father-url]](https://github.com/umijs/father/)
-
-![](https://github.com/othneildrew/Best-README-Template/raw/master/images/screenshot.png)
 
 <!-- gitpod url -->
 
@@ -57,12 +57,12 @@
 
 ## 简介
 
-这是一个开发 npm 项目的模板，具有以下特点：
+ProChat 是基于 AntDesgin 5.0 基础上构建的企业级对话组件库，目的是帮助大家构建大模型对话场景下所需要的内容。
 
-- 🏗️ **基于 father4 的构建工具**：本项目采用了基于 father4 的构建工具，可以更高效地构建项目，提高开发效率；
-- 📖 **基于 dumi2 的文档工具**：本项目采用了基于 dumi2 的文档工具，可以更方便地编写和管理文档，提高文档的可读性和可维护性；
-- 🚀 **基于 vercel 自动化触发文档站构建**：本项目使用 vercel 自动化触发文档站构建，可以更快地更新文档站，提高用户的使用体验；
-- 📦 **基于 semantic-release 实现 npm 包的自动化发布**：本项目使用 semantic-release 实现 npm 包的自动化发布，可以更方便地管理和发布 npm 包，提高开发效率。
+- 📦 **AI Friendly 的数据结构**：参照 ChatGPT、GLM、通义千问等市面上主流的大模型入参出参，减少前端开发者对这些入参和出参的处理。
+- 🏗️ **大模型对话基本操作**：内置对话模型常用的：数据编辑、重新发送、删除对话等这些默认的基本操作。
+- 📖 **更多自定义能力**：你可以通过透出的 Ref 进行颗粒度更细的对话内容处理
+- 🚀 **更简单的样式**：和 antd 一脉相承，主打一个风格统一，你可以在上层自己定义样式。
 
 ## 快速上手
 
@@ -72,11 +72,19 @@
 
 ```bash
 pnpm i @ant-design/pro-chat -S
+pnpm i @ant-design/antd-style -S
 ```
 
 ### 使用
 
-基于该仓库模板可以快速创建一个 npm 包的工程化脚手架。
+```jsx
+<ProChat
+  request={async (messages) => {
+    // Request 发送，Mesaage 作为 参数传入
+    return Message; // 支持流式 & 非流式
+  }}
+/>
+```
 
 ### 适配 NextJS
 
