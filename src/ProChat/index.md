@@ -8,11 +8,9 @@ description: a Chat Solution
 
 ## Default
 
-指定请求
+通过返回流式 Response 请求，实现会话消息的打字机输出效果。
 
 <code src="./demos/request.tsx"></code>
-
-### 非流式模式
 
 非流式模式下，会话消息会一次性全部返回，适用于消息量较少的场景。如果消息量较大，可能用户体验较差。
 
@@ -53,6 +51,10 @@ description: a Chat Solution
 ProChat使用 `meta` 来表意会话双方的头像、名称等信息。设定助手的头像、名称使用 `assistantMeta`，设定用户的头像、名称使用 `userMeta`。 使用 `showTitle` 显示名称。
 
 <code src="./demos/meta.tsx"></code>
+
+## 自定义Actions
+
+<code src="./demos/actions.tsx"></code>
 
 ## 悬浮窗使用
 
