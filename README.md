@@ -108,10 +108,25 @@ peerDependencies: {
   - [x] 自定义 Loading
   - [x] 初始化聊天记录(initialChats)
   - [x] 语言模型角色设定
+  - [x] 程序化控制(Ref)
 - [ ] 设计 / 进行中
   - [ ] 带有编辑能力的对话自定义渲染 [issue/21](https://github.com/ant-design/pro-chat/issues/21)
   - [ ] 额外请求参数的塞入
   - [ ] 出错时候的自定义渲染/配置
+
+### 🌟 Case
+
+#### 流式对话
+
+![stream](https://mdn.alipayobjects.com/huamei_re70wt/afts/img/A*0uQhSIzSS3YAAAAAAAAAAAAADmuEAQ/original)
+
+#### 内置渲染器
+
+![highlight](https://mdn.alipayobjects.com/huamei_re70wt/afts/img/A*e4JbQKfupVQAAAAAAAAAAAAADmuEAQ/original)
+
+#### 内容编辑
+
+![edit](https://mdn.alipayobjects.com/huamei_re70wt/afts/img/A*9ivFQLZwRdYAAAAAAAAAAAAADmuEAQ/original)
 
 ### 适配 NextJS
 
