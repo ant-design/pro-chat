@@ -3,7 +3,7 @@ import { RenderAction } from '@/ChatList';
 import { useChatListActionsBar } from '@/hooks/useChatListActionsBar';
 import { memo } from 'react';
 
-import { ErrorActionsBar } from './Error';
+import { ErrorActionsBar } from '../Actions/Error';
 
 export const AssistantActionsBar: RenderAction = memo(({ text, id, onActionClick, error }) => {
   const { regenerate, edit, copy, divider, del } = useChatListActionsBar(text);
