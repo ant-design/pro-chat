@@ -1,12 +1,14 @@
-<a name="readme-top"></a>
-
-<div align="center">
+<p align="center">
+  <img width="160" src="https://mdn.alipayobjects.com/huamei_re70wt/afts/img/A*Mo27Sr3kS4kAAAAAAAAAAAAADmuEAQ/original">
+</p>
 
 [//]: # '<img width="160" src="https://avatars.githubusercontent.com/u/17870709?v=4">'
 
+<div align="center">
+
 <h1>@ant-design/pro-chat</h1>
 
-一个开发 npm 项目的模板
+一个快速搭建起大语言模型 Chat 对话的前端组件库
 
 [Changelog](./CHANGELOG.md) · [Report Bug][issues-url] · [Request Feature][issues-url]
 
@@ -19,8 +21,6 @@
 [![contributors][contributors-shield]][contributors-url] [![forks][forks-shield]][forks-url] [![stargazers][stargazers-shield]][stargazers-url] [![issues][issues-shield]][issues-url]
 
 [![ docs by dumi][dumi-url]](https://d.umijs.org/) [![Build With father][father-url]](https://github.com/umijs/father/)
-
-![](https://github.com/othneildrew/Best-README-Template/raw/master/images/screenshot.png)
 
 <!-- gitpod url -->
 
@@ -55,28 +55,78 @@
 
 </div>
 
-## 简介
+## ✨简介
 
-这是一个开发 npm 项目的模板，具有以下特点：
+ProChat 是基于 AntDesgin 5.0 基础上构建的企业级对话组件库，目的是帮助大家构建大模型对话场景下所需要的内容。
 
-- 🏗️ **基于 father4 的构建工具**：本项目采用了基于 father4 的构建工具，可以更高效地构建项目，提高开发效率；
-- 📖 **基于 dumi2 的文档工具**：本项目采用了基于 dumi2 的文档工具，可以更方便地编写和管理文档，提高文档的可读性和可维护性；
-- 🚀 **基于 vercel 自动化触发文档站构建**：本项目使用 vercel 自动化触发文档站构建，可以更快地更新文档站，提高用户的使用体验；
-- 📦 **基于 semantic-release 实现 npm 包的自动化发布**：本项目使用 semantic-release 实现 npm 包的自动化发布，可以更方便地管理和发布 npm 包，提高开发效率。
+- 📦 **AI Friendly 的数据结构**：参照 ChatGPT、GLM、通义千问等市面上主流的大模型入参出参，减少前端开发者对这些入参和出参的处理。
+- 🏗️ **大模型对话基本操作**：内置对话模型常用的：数据编辑、重新发送、删除对话等这些默认的基本操作。
+- 📖 **更多自定义能力**：你可以通过透出的 Ref 进行颗粒度更细的对话内容处理
+- 🚀 **更简单的样式**：和 antd 一脉相承，主打一个风格统一，你可以在上层自己定义样式。
 
 ## 快速上手
 
-### 安装
+### 📦 安装
 
 推荐使用 `pnpm` 安装
 
 ```bash
 pnpm i @ant-design/pro-chat -S
+pnpm i @ant-design/antd-style -S
 ```
 
-### 使用
+依赖需求
 
-基于该仓库模板可以快速创建一个 npm 包的工程化脚手架。
+```jsx
+peerDependencies: {
+  "antd": "^5",
+  "antd-style": "^3",
+  "react": "^18"
+}
+```
+
+### 🔨 使用
+
+```jsx
+<ProChat
+  request={async (messages) => {
+    // Request 发送，Mesaage 作为 参数传入
+    return Message; // 支持流式 & 非流式
+  }}
+/>
+```
+
+### 🍉 功能
+
+- [x] 对话能力
+  - [x] 自动缓存对话内容
+  - [x] 支持非流式、流式对话
+  - [x] 重新请求、编辑组合、删除能力
+  - [x] 自动 Markdown 渲染
+- [x] 预设 & Api
+  - [x] 欢迎语👏(HelloMessage)
+  - [x] 自定义 Loading
+  - [x] 初始化聊天记录(initialChats)
+  - [x] 语言模型角色设定
+  - [x] 程序化控制(Ref)
+- [ ] 设计 / 进行中
+  - [ ] 带有编辑能力的对话自定义渲染 [issue/21](https://github.com/ant-design/pro-chat/issues/21)
+  - [ ] 额外请求参数的塞入
+  - [ ] 出错时候的自定义渲染/配置
+
+### 🌟 Case
+
+#### 流式对话
+
+![stream](https://mdn.alipayobjects.com/huamei_re70wt/afts/img/A*0uQhSIzSS3YAAAAAAAAAAAAADmuEAQ/original)
+
+#### 内置渲染器
+
+![highlight](https://mdn.alipayobjects.com/huamei_re70wt/afts/img/A*e4JbQKfupVQAAAAAAAAAAAAADmuEAQ/original)
+
+#### 内容编辑
+
+![edit](https://mdn.alipayobjects.com/huamei_re70wt/afts/img/A*9ivFQLZwRdYAAAAAAAAAAAAADmuEAQ/original)
 
 ### 适配 NextJS
 
@@ -90,26 +140,48 @@ const nextConfig = {
 };
 ```
 
+## 🖥 浏览器兼容性
+
+- 现代浏览器
+- [Electron](https://www.electronjs.org/)
+
+| [![edge](https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png)](http://godban.github.io/browsers-support-badges/) | [![Edge](https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png)](http://godban.github.io/browsers-support-badges/) | [![chrome](https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png)](http://godban.github.io/browsers-support-badges/) | [![safari](https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png)](http://godban.github.io/browsers-support-badges/) | [![electron_48x48](https://raw.githubusercontent.com/alrra/browser-logos/master/src/electron/electron_48x48.png)](http://godban.github.io/browsers-support-badges/) |
+| --- | --- | --- | --- | --- |
+| Edge | last 2 versions | last 2 versions | last 2 versions | last 2 versions |
+
+## ⌨️ 本地开发
+
+你可以使用 Gitpod 进行在线开发：
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/ant-design/pro-chat)
+
+或者克隆到本地开发:
+
+```bash
+$ git clone git@github.com:ant-design/pro-chat.git
+$ cd pro-chat
+$ npm install
+$ npm start
+```
+
+## 参与贡献
+
+我们非常欢迎你的贡献，你可以通过以下方式和我们一起共建 😃 ：
+
+- 在你的公司或个人项目中使用 [ProChat](https://github.com/ant-design/pro-chat)，[ProEditor](https://github.com/ant-design/pro-editor)，[Ant Design](https://github.com/ant-design/ant-design) 和 [antd-style](https://github.com/ant-design/antd-style)。
+- 通过 [Issue](https://github.com/ant-design/pro-chat/issues) 报告 bug 或进行咨询。
+- 提交 [Pull Request](https://github.com/ant-design/pro-chat/pulls) 改进 ProChat 的代码。
+
 ## 🤝 Contributing
 
-<!-- CONTRIBUTION GROUP -->
+<!-- Copy-paste in your Readme.md file -->
 
-> 📊 Total: <kbd>**4**</kbd>
-
-<a href="https://github.com/arvinxx" title="arvinxx">
-  <img src="https://avatars.githubusercontent.com/u/28616219?v=4" width="50" />
+<a href="https://next.ossinsight.io/widgets/official/compose-recent-top-contributors?repo_id=707504998" target="_blank" style="display: block" align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://next.ossinsight.io/widgets/official/compose-recent-top-contributors/thumbnail.png?repo_id=707504998&image_size=auto&color_scheme=dark" width="373" height="auto">
+    <img alt="Top Contributors of ant-design/pro-chat - Last 28 days" src="https://next.ossinsight.io/widgets/official/compose-recent-top-contributors/thumbnail.png?repo_id=707504998&image_size=auto&color_scheme=light" width="373" height="auto">
+  </picture>
 </a>
-<a href="https://github.com/chenshuai2144" title="chenshuai2144">
-  <img src="https://avatars.githubusercontent.com/u/8186664?v=4" width="50" />
-</a>
-<a href="https://github.com/ONLY-yours" title="ONLY-yours">
-  <img src="https://avatars.githubusercontent.com/u/52664827?v=4" width="50" />
-</a>
-<a href="https://github.com/actions-user" title="actions-user">
-  <img src="https://avatars.githubusercontent.com/u/65916846?v=4" width="50" />
-</a>
-
-<!-- CONTRIBUTION END -->
 
 <div align="right">
 

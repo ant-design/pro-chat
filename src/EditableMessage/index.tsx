@@ -92,7 +92,6 @@ const EditableMessage = memo<EditableMessageProps>(
     inputType,
     editButtonSize,
     text,
-    fullFeaturedCodeBlock,
     model,
   }) => {
     const [isEdit, setTyping] = useControlledState(false, {
@@ -136,9 +135,6 @@ const EditableMessage = memo<EditableMessageProps>(
         ) : (
           <Markdown
             className={classNames?.markdown}
-            highlight={{
-              containerWrapper: fullFeaturedCodeBlock,
-            }}
             style={{
               height: isAutoSize ? 'unset' : height,
               overflowX: 'hidden',
