@@ -1,5 +1,34 @@
 # Changelog
 
+## [Version&nbsp;1.0.0](https://github.com/ant-design/pro-chat/compare/v0.7.1...v1.0.0)
+
+<sup>Released on **2023-12-27**</sup>
+
+#### ✨ 新特性
+
+- Bump to 1.0.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- Bump to 1.0, closes [#27](https://github.com/ant-design/pro-chat/issues/27) ([a3b6cd1](https://github.com/ant-design/pro-chat/commit/a3b6cd1))
+
+</details>
+
+#### 💥 BREAKING CHANGES
+
+- upgrade to 1.0.0
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ### [Version&nbsp;0.7.1](https://github.com/ant-design/pro-chat/compare/v0.7.0...v0.7.1)
 
 <sup>Released on **2023-12-27**</sup>
