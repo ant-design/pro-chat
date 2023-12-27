@@ -37,7 +37,8 @@ English · [简体中文](./README.zh-CN.md) · [Changelog](./CHANGELOG.md) . [R
 
 ## 📦 Installation
 
-> \[!IMPORTANT]\
+> \[!IMPORTANT]
+>
 > This package is [ESM only](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c).
 
 To install `@ant-design/pro-chat`, run the following command:
@@ -48,7 +49,8 @@ $ pnpm install @ant-design/pro-chat
 
 ### Compile with Next.js
 
-> \[!NOTE]\
+> \[!NOTE]
+>
 > By work correct with Next.js SSR, add `transpilePackages: ['@ant-design/pro-chat']` to `next.config.js`. For example:
 
 ```js
@@ -81,8 +83,8 @@ export default () => (
 > \[!NOTE]
 >
 > ProChat focuses on quickly setting up a large language model chat dialogue framework. It aims to empower developers to easily create rich, dynamic, and intuitive chat interfaces.
->
-> [![](https://next.ossinsight.io/widgets/official/compose-activity-trends/thumbnail.png?repo_id=707504998&image_size=auto&color_scheme=dark)](https://next.ossinsight.io/widgets/official/compose-activity-trends?repo_id=707504998)
+
+[![](https://next.ossinsight.io/widgets/official/compose-activity-trends/thumbnail.png?repo_id=707504998&image_size=auto&color_scheme=dark)](https://next.ossinsight.io/widgets/official/compose-activity-trends?repo_id=707504998)
 
 **Framework and Solutions for Chat Interface Components:**
 
@@ -91,8 +93,6 @@ export default () => (
 - ✏️ **Message Editing Features**: Provides a suite of editing tools, including request redo, edit combination, and deletion, for precise conversation control.
 - 📖 **Auto-rendered Markdown**: Delivers a rich text experience that immerses users by transforming Markdown into beautifully formatted messages.
 - 🎚️ **Programmatic Controls (Ref)**: Commands the chat flow with precision, allowing developers to create a tailored conversational experience.
-
-The transformative journey of ProChat is ongoing, with a roadmap that promises an even more intuitive and versatile chat interface ecosystem. Stay tuned as we unveil features that will further personalize the user journey and expand our global reach.
 
 <br/>
 
