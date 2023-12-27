@@ -108,7 +108,7 @@ type Message = {
 
 #### 多种渲染支持
 
-还有一点对前端来说比较头疼的在于「解析-渲染」
+还有一点对前端来说比较头疼的在于「解析 - 渲染」
 
 像是下面这种，如果你自己写，你需要对 String 部分的内容解析，然后决定哪些用什么渲染，我们已经帮你内置好了一些渲染器：Markdown 渲染、终端命令拼接、跳转链接等等常用的渲染器
 
@@ -122,11 +122,11 @@ type Message = {
 
 ### 🚧 使用原子化能力
 
-> Working in Progress当前该部分能力仍处于高速开发中，敬请期待。
+> Working in Progress 当前该部分能力仍处于高速开发中，敬请期待。
 
 ProChat 后续会提供一系列原子化的组件，在特殊情况下你可能会想要使用某些 ProChat 中的独立组件，这些需求我们也会提供类似的组件来帮助大家更好的搭建应用。
 
-有部分的底层组件，例如 Markdown、Highlight 之类的，我们会依赖于 [ProEditor - 编辑器UI 组件库](https://github.com/ant-design/pro-editor)，因此如果你也有搭建编辑器的场景，可以来这里看看。
+有部分的底层组件，例如 Markdown、Highlight 之类的，我们会依赖于 [ProEditor - 编辑器 UI 组件库](https://github.com/ant-design/pro-editor)，因此如果你也有搭建编辑器的场景，可以来这里看看。
 
 ## 与框架集成
 
