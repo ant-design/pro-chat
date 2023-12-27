@@ -1,5 +1,30 @@
 # Changelog
 
+### [Version&nbsp;0.7.1](https://github.com/ant-design/pro-chat/compare/v0.7.0...v0.7.1)
+
+<sup>Released on **2023-12-27**</sup>
+
+#### 🐛 修复
+
+- Clear useless contributor-help.yml.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- Clear useless contributor-help.yml ([28f5511](https://github.com/ant-design/pro-chat/commit/28f5511))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;0.7.0](https://github.com/ant-design/pro-chat/compare/v0.6.1...v0.7.0)
 
 <sup>Released on **2023-12-11**</sup>
