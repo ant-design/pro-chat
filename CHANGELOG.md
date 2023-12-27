@@ -1,6 +1,6 @@
 # Changelog
 
-### [Version&nbsp;1.0.1](https://github.com/ant-design/pro-chat/compare/v1.0.0...v1.0.1)
+### [Version 1.0.1](https://github.com/ant-design/pro-chat/compare/v1.0.0...v1.0.1)
 
 <sup>Released on **2023-12-27**</sup>
 
@@ -25,7 +25,7 @@
 
 </div>
 
-## [Version&nbsp;1.0.0](https://github.com/ant-design/pro-chat/compare/v0.7.1...v1.0.0)
+## [Version 1.0.0](https://github.com/ant-design/pro-chat/compare/v0.7.1...v1.0.0)
 
 <sup>Released on **2023-12-27**</sup>
 
@@ -54,7 +54,7 @@
 
 </div>
 
-### [Version&nbsp;0.7.1](https://github.com/ant-design/pro-chat/compare/v0.7.0...v0.7.1)
+### [Version 0.7.1](https://github.com/ant-design/pro-chat/compare/v0.7.0...v0.7.1)
 
 <sup>Released on **2023-12-27**</sup>
 
@@ -79,7 +79,7 @@
 
 </div>
 
-## [Version&nbsp;0.7.0](https://github.com/ant-design/pro-chat/compare/v0.6.1...v0.7.0)
+## [Version 0.7.0](https://github.com/ant-design/pro-chat/compare/v0.6.1...v0.7.0)
 
 <sup>Released on **2023-12-11**</sup>
 
@@ -115,7 +115,7 @@
 
 </div>
 
-### [Version&nbsp;0.6.1](https://github.com/ant-design/pro-chat/compare/v0.6.0...v0.6.1)
+### [Version 0.6.1](https://github.com/ant-design/pro-chat/compare/v0.6.0...v0.6.1)
 
 <sup>Released on **2023-12-06**</sup>
 
@@ -140,7 +140,7 @@
 
 </div>
 
-## [Version&nbsp;0.6.0](https://github.com/ant-design/pro-chat/compare/v0.5.0...v0.6.0)
+## [Version 0.6.0](https://github.com/ant-design/pro-chat/compare/v0.5.0...v0.6.0)
 
 <sup>Released on **2023-12-06**</sup>
 
@@ -165,7 +165,7 @@
 
 </div>
 
-## [Version&nbsp;0.5.0](https://github.com/ant-design/pro-chat/compare/v0.4.0...v0.5.0)
+## [Version 0.5.0](https://github.com/ant-design/pro-chat/compare/v0.4.0...v0.5.0)
 
 <sup>Released on **2023-11-28**</sup>
 
@@ -190,7 +190,7 @@
 
 </div>
 
-## [Version&nbsp;0.4.0](https://github.com/ant-design/pro-chat/compare/v0.3.1...v0.4.0)
+## [Version 0.4.0](https://github.com/ant-design/pro-chat/compare/v0.3.1...v0.4.0)
 
 <sup>Released on **2023-11-27**</sup>
 
@@ -215,7 +215,7 @@
 
 </div>
 
-### [Version&nbsp;0.3.1](https://github.com/ant-design/pro-chat/compare/v0.3.0...v0.3.1)
+### [Version 0.3.1](https://github.com/ant-design/pro-chat/compare/v0.3.0...v0.3.1)
 
 <sup>Released on **2023-11-27**</sup>
 
@@ -240,7 +240,7 @@
 
 </div>
 
-## [Version&nbsp;0.3.0](https://github.com/ant-design/pro-chat/compare/v0.2.0...v0.3.0)
+## [Version 0.3.0](https://github.com/ant-design/pro-chat/compare/v0.2.0...v0.3.0)
 
 <sup>Released on **2023-11-27**</sup>
 
@@ -255,7 +255,7 @@
 
 #### What's improved
 
-- 支持 actions 的自定义, closes [#13](https://github.com/ant-design/pro-chat/issues/13) ([330046d](https://github.com/ant-design/pro-chat/commit/330046d))
+- 支持 actions 的自定义，closes [#13](https://github.com/ant-design/pro-chat/issues/13) ([330046d](https://github.com/ant-design/pro-chat/commit/330046d))
 
 </details>
 
@@ -265,13 +265,13 @@
 
 </div>
 
-## [Version&nbsp;0.2.0](https://github.com/ant-design/pro-chat/compare/v0.1.1...v0.2.0)
+## [Version 0.2.0](https://github.com/ant-design/pro-chat/compare/v0.1.1...v0.2.0)
 
 <sup>Released on **2023-11-24**</sup>
 
 #### ✨ 新特性
 
-- Add ProChat, add ProChat, change action & group as pro-editor, init basic components, ProChat 初步组件化, support autocompleteRequest and messageItemExtraRender, support extra userMeta and params, support onResetMessage funtion, support useChat and chatRef, 支持流式响应, 支持非流式请求.
+- Add ProChat, add ProChat, change action & group as pro-editor, init basic components, ProChat 初步组件化，support autocompleteRequest and messageItemExtraRender, support extra userMeta and params, support onResetMessage funtion, support useChat and chatRef, 支持流式响应，支持非流式请求.
 
 #### 🐛 修复
 
@@ -317,7 +317,7 @@
 
 </div>
 
-## [Version&nbsp;0.2.0-beta.17](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.16...v0.2.0-beta.17)
+## [Version 0.2.0-beta.17](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.16...v0.2.0-beta.17)
 
 <sup>Released on **2023-11-22**</sup>
 
@@ -342,7 +342,7 @@
 
 </div>
 
-## [Version&nbsp;0.2.0-beta.16](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.15...v0.2.0-beta.16)
+## [Version 0.2.0-beta.16](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.15...v0.2.0-beta.16)
 
 <sup>Released on **2023-11-14**</sup>
 
@@ -367,7 +367,7 @@
 
 </div>
 
-## [Version&nbsp;0.2.0-beta.15](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.14...v0.2.0-beta.15)
+## [Version 0.2.0-beta.15](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.14...v0.2.0-beta.15)
 
 <sup>Released on **2023-11-08**</sup>
 
@@ -392,7 +392,7 @@
 
 </div>
 
-## [Version&nbsp;0.2.0-beta.14](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.13...v0.2.0-beta.14)
+## [Version 0.2.0-beta.14](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.13...v0.2.0-beta.14)
 
 <sup>Released on **2023-11-07**</sup>
 
@@ -417,7 +417,7 @@
 
 </div>
 
-## [Version&nbsp;0.2.0-beta.13](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.12...v0.2.0-beta.13)
+## [Version 0.2.0-beta.13](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.12...v0.2.0-beta.13)
 
 <sup>Released on **2023-11-07**</sup>
 
@@ -442,7 +442,7 @@
 
 </div>
 
-## [Version&nbsp;0.2.0-beta.12](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.11...v0.2.0-beta.12)
+## [Version 0.2.0-beta.12](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.11...v0.2.0-beta.12)
 
 <sup>Released on **2023-10-26**</sup>
 
@@ -467,7 +467,7 @@
 
 </div>
 
-## [Version&nbsp;0.2.0-beta.11](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.10...v0.2.0-beta.11)
+## [Version 0.2.0-beta.11](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.10...v0.2.0-beta.11)
 
 <sup>Released on **2023-10-26**</sup>
 
@@ -492,7 +492,7 @@
 
 </div>
 
-## [Version&nbsp;0.2.0-beta.10](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.9...v0.2.0-beta.10)
+## [Version 0.2.0-beta.10](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.9...v0.2.0-beta.10)
 
 <sup>Released on **2023-10-25**</sup>
 
@@ -517,7 +517,7 @@
 
 </div>
 
-## [Version&nbsp;0.2.0-beta.9](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.8...v0.2.0-beta.9)
+## [Version 0.2.0-beta.9](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.8...v0.2.0-beta.9)
 
 <sup>Released on **2023-10-25**</sup>
 
@@ -542,7 +542,7 @@
 
 </div>
 
-## [Version&nbsp;0.2.0-beta.8](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.7...v0.2.0-beta.8)
+## [Version 0.2.0-beta.8](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.7...v0.2.0-beta.8)
 
 <sup>Released on **2023-10-25**</sup>
 
@@ -567,7 +567,7 @@
 
 </div>
 
-## [Version&nbsp;0.2.0-beta.7](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.6...v0.2.0-beta.7)
+## [Version 0.2.0-beta.7](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.6...v0.2.0-beta.7)
 
 <sup>Released on **2023-10-22**</sup>
 
@@ -592,7 +592,7 @@
 
 </div>
 
-## [Version&nbsp;0.2.0-beta.6](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.5...v0.2.0-beta.6)
+## [Version 0.2.0-beta.6](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.5...v0.2.0-beta.6)
 
 <sup>Released on **2023-10-22**</sup>
 
@@ -609,7 +609,7 @@
 
 </div>
 
-## [Version&nbsp;0.2.0-beta.5](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.4...v0.2.0-beta.5)
+## [Version 0.2.0-beta.5](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.4...v0.2.0-beta.5)
 
 <sup>Released on **2023-10-22**</sup>
 
@@ -634,7 +634,7 @@
 
 </div>
 
-## [Version&nbsp;0.2.0-beta.4](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.3...v0.2.0-beta.4)
+## [Version 0.2.0-beta.4](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.3...v0.2.0-beta.4)
 
 <sup>Released on **2023-10-22**</sup>
 
@@ -667,7 +667,7 @@
 
 </div>
 
-## [Version&nbsp;0.2.0-beta.3](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.2...v0.2.0-beta.3)
+## [Version 0.2.0-beta.3](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.2...v0.2.0-beta.3)
 
 <sup>Released on **2023-10-22**</sup>
 
@@ -693,13 +693,13 @@
 
 </div>
 
-## [Version&nbsp;0.2.0-beta.2](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.1...v0.2.0-beta.2)
+## [Version 0.2.0-beta.2](https://github.com/ant-design/pro-chat/compare/v0.2.0-beta.1...v0.2.0-beta.2)
 
 <sup>Released on **2023-10-21**</sup>
 
 #### ✨ 新特性
 
-- Add ProChat, ProChat 初步组件化, 支持流式响应.
+- Add ProChat, ProChat 初步组件化，支持流式响应.
 
 <br/>
 
@@ -720,7 +720,7 @@
 
 </div>
 
-## [Version&nbsp;0.2.0-beta.1](https://github.com/ant-design/pro-chat/compare/v0.1.1...v0.2.0-beta.1)
+## [Version 0.2.0-beta.1](https://github.com/ant-design/pro-chat/compare/v0.1.1...v0.2.0-beta.1)
 
 <sup>Released on **2023-10-20**</sup>
 
@@ -745,7 +745,7 @@
 
 </div>
 
-### [Version&nbsp;0.1.1](https://github.com/ant-design/pro-chat/compare/v0.1.0...v0.1.1)
+### [Version 0.1.1](https://github.com/ant-design/pro-chat/compare/v0.1.0...v0.1.1)
 
 <sup>Released on **2023-10-20**</sup>
 

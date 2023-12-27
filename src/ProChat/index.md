@@ -56,11 +56,11 @@ description: a Chat Solution
 
 ## 指定会话双方的头像、名称
 
-ProChat使用 `meta` 来表意会话双方的头像、名称等信息。设定助手的头像、名称使用 `assistantMeta`，设定用户的头像、名称使用 `userMeta`。 使用 `showTitle` 显示名称。
+ProChat 使用 `meta` 来表意会话双方的头像、名称等信息。设定助手的头像、名称使用 `assistantMeta`，设定用户的头像、名称使用 `userMeta`。 使用 `showTitle` 显示名称。
 
 <code src="./demos/meta.tsx"></code>
 
-## 自定义Actions
+## 自定义 Actions
 
 <code src="./demos/actions.tsx"></code>
 
@@ -98,27 +98,27 @@ useProChat hooks 必须在包裹 `ProChatProvider` 后方可使用。
 
 ## APIs
 
-| 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| showTitle | 是否显示标题 | Boolean | - |
-| style | 样式 | CSSProperties | - |
-| className | 主类名 | string | - |
-| chatRef | 聊天引用,用于操作数据 | ProChatChatReference | - |
-| loading | 是否加载中 | boolean | - |
-| initialChats | 初始聊天记录 | ChatPropsState['chats'] | - |
-| userMeta | 用户元数据 | MetaData | - |
-| assistantMeta | 助手元数据 | MetaData | - |
-| config | 语言模型角色设定 | ModelConfig | - |
-| chats | 聊天记录 | ChatMessageMap | - |
-| onChatsChange | 聊天记录变化回调函数, | (chats: ChatMessageMap) => void | chat |
-| displayMode | 显示模式，默认是 chat | 'chat' \| 'docs' | - |
-| helloMessage | 欢迎消息 | string\| ReactNode | - |
-| request | 请求消息 | string \| ChatRequest | - |
-| onResetMessage | 重置消息回调函数 | `() => Promise<void>` | - |
-| genMessageId | 生成消息 id 的函数，如果你的项目需要持久化时才需要使用 | `() => Promise<string>`` | nanoid |
-| autocompleteRequest | 获取自动完成列表的请求函数 | `(value: string) => Promise<{ value: string; label?: string; }[]>`` | - |
-| placeholder | 输入框占位符 | string | - |
-| messageItemExtraRender | 信息框额外渲染函数 | `(message: ChatMessage, type: 'assistant' \| 'user') => React.ReactNode` | - |
-| actions | 信息框顶部的操作列表 | `{ flexConfig?: FlexBasicProps, render?: (defaultDoms: JSX.Element[]) => JSX.Element[] }` | - |
-| actions.flexConfig | 控制 input 顶部的操作区域的 flex 布局 | `FlexBasicProps` | - |
-| actions.render | 控制 input 顶部的操作区域的操作按钮 | `(defaultDoms: JSX.Element[]) => JSX.Element[]` | - |
+| 参数                     | 说明                            | 类型                                                                                        | 默认值    |
+| ---------------------- | ----------------------------- | ----------------------------------------------------------------------------------------- | ------ |
+| showTitle              | 是否显示标题                        | Boolean                                                                                   | -      |
+| style                  | 样式                            | CSSProperties                                                                             | -      |
+| className              | 主类名                           | string                                                                                    | -      |
+| chatRef                | 聊天引用，用于操作数据                   | ProChatChatReference                                                                      | -      |
+| loading                | 是否加载中                         | boolean                                                                                   | -      |
+| initialChats           | 初始聊天记录                        | ChatPropsState\['chats']                                                                  | -      |
+| userMeta               | 用户元数据                         | MetaData                                                                                  | -      |
+| assistantMeta          | 助手元数据                         | MetaData                                                                                  | -      |
+| config                 | 语言模型角色设定                      | ModelConfig                                                                               | -      |
+| chats                  | 聊天记录                          | ChatMessageMap                                                                            | -      |
+| onChatsChange          | 聊天记录变化回调函数，                   | (chats: ChatMessageMap) => void                                                           | chat   |
+| displayMode            | 显示模式，默认是 chat                 | 'chat' \| 'docs'                                                                          | -      |
+| helloMessage           | 欢迎消息                          | string\| ReactNode                                                                        | -      |
+| request                | 请求消息                          | string \| ChatRequest                                                                     | -      |
+| onResetMessage         | 重置消息回调函数                      | `() => Promise<void>`                                                                     | -      |
+| genMessageId           | 生成消息 id 的函数，如果你的项目需要持久化时才需要使用 | \`() => Promise<string>\`\`                                                               | nanoid |
+| autocompleteRequest    | 获取自动完成列表的请求函数                 | \`(value: string) => Promise<{ value: string; label?: string; }\[]>\`\`                   | -      |
+| placeholder            | 输入框占位符                        | string                                                                                    | -      |
+| messageItemExtraRender | 信息框额外渲染函数                     | `(message: ChatMessage, type: 'assistant' \| 'user') => React.ReactNode`                  | -      |
+| actions                | 信息框顶部的操作列表                    | `{ flexConfig?: FlexBasicProps, render?: (defaultDoms: JSX.Element[]) => JSX.Element[] }` | -      |
+| actions.flexConfig     | 控制 input 顶部的操作区域的 flex 布局     | `FlexBasicProps`                                                                          | -      |
+| actions.render         | 控制 input 顶部的操作区域的操作按钮         | `(defaultDoms: JSX.Element[]) => JSX.Element[]`                                           | -      |
