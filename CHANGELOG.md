@@ -1,5 +1,30 @@
 # Changelog
 
+### [Version&nbsp;1.0.1](https://github.com/ant-design/pro-chat/compare/v1.0.0...v1.0.1)
+
+<sup>Released on **2023-12-27**</sup>
+
+#### 🐛 修复
+
+- Fix publish error.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- Fix publish error, closes [#28](https://github.com/ant-design/pro-chat/issues/28) ([204b731](https://github.com/ant-design/pro-chat/commit/204b731))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;1.0.0](https://github.com/ant-design/pro-chat/compare/v0.7.1...v1.0.0)
 
 <sup>Released on **2023-12-27**</sup>
