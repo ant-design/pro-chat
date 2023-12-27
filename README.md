@@ -1,25 +1,4 @@
 <p align="center">
-  <img 
-
-> 📊 Total: <kbd>**5**</kbd>
-
-<a href="https://github.com/arvinxx" title="arvinxx">
-  <img src="https://avatars.githubusercontent.com/u/28616219?v=4" width="50" />
-</a>
-<a href="https://github.com/chenshuai2144" title="chenshuai2144">
-  <img src="https://avatars.githubusercontent.com/u/8186664?v=4" width="50" />
-</a>
-<a href="https://github.com/ONLY-yours" title="ONLY-yours">
-  <img src="https://avatars.githubusercontent.com/u/52664827?v=4" width="50" />
-</a>
-<a href="https://github.com/actions-user" title="actions-user">
-  <img src="https://avatars.githubusercontent.com/u/65916846?v=4" width="50" />
-</a>
-<a href="https://github.com/rdmclin2" title="rdmclin2">
-  <img src="https://avatars.githubusercontent.com/u/4705237?v=4" width="50" />
-</a>
-
-<p align="center">
   <img width="160" src="https://mdn.alipayobjects.com/huamei_re70wt/afts/img/A*Mo27Sr3kS4kAAAAAAAAAAAAADmuEAQ/original">
 </p>
 
@@ -134,6 +113,8 @@ peerDependencies: {
   - [ ] 带有编辑能力的对话自定义渲染 [issue/21](https://github.com/ant-design/pro-chat/issues/21)
   - [ ] 额外请求参数的塞入
   - [ ] 出错时候的自定义渲染/配置
+  - [ ] 更完展的文档 & 国际化
+  - [ ] 原子化组件设计 
 
 ### 🌟 Case
 
@@ -147,7 +128,7 @@ peerDependencies: {
 
 #### 内容编辑
 
-![edit](https://mdn.alipayobjects.com/huamei_re70wt/afts/img/A*9ivFQLZwRdYAAAAAAAAAAAAADmuEAQ/original)
+![edit](https://mdn.alipayobjects.com/huamei_re70wt/afts/img/A*wVSCTb7bq8UAAAAAAAAAAAAADmuEAQ/original)
 
 ### 适配 NextJS
 
