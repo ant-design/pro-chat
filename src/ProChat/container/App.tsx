@@ -14,7 +14,7 @@ const useStyles = createStyles(
     height: 100%;
     ${responsive.mobile} {
       ${stylish.noScrollbar}
-      width: 100vw;
+      width: 100%;
     }
   `,
 );
