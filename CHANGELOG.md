@@ -1,5 +1,30 @@
 # Changelog
 
+## [Version&nbsp;1.2.0](https://github.com/ant-design/pro-chat/compare/v1.1.0...v1.2.0)
+
+<sup>Released on **2024-01-11**</sup>
+
+#### ✨ 新特性
+
+- Auto not work when render long stream markdown.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- Auto not work when render long stream markdown ([bf7c8d2](https://github.com/ant-design/pro-chat/commit/bf7c8d2))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;1.1.0](https://github.com/ant-design/pro-chat/compare/v1.0.1...v1.1.0)
 
 <sup>Released on **2023-12-28**</sup>
