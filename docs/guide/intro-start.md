@@ -2,7 +2,7 @@
 title: 快速开始
 group:
   title: 快速上手
-  order: 1
+  order: 0
 nav:
   title: 文档
   order: 0
@@ -136,7 +136,25 @@ ProChat 后续会提供一系列原子化的组件，在特殊情况下你可能
 
 ### 与 Next.js 集成
 
-> Working in Progress
+[Next.js](https://nextjs.org/) 是社区中非常流行的研发框架。ProChat 与 Next.js 的集成也非常容易。
+
+由于 Next.js 是一个 CSR、SSR 同构的 React 框架，而 ProChat 默认只提供 esm 模块，因此在安装后，需要在 `next.config.(m)js` 中 `transpilePackages` 中加入相关依赖：
+
+> 这里需要转换的内容除了 ProChat 外，另外几个是底层的 @ant-design/pro-editor 以及配套的依赖内容，后续我们会尝试优化让你可以少配置一些。
+
+```js
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // 将纯 esm 模块转为 node 兼容模块
+  transpilePackages: [
+    '@ant-design/pro-chat',
+    'react-intersection-observer',
+    '@ant-design/pro-editor',
+    'leva',
+    'zustand',
+  ],
+};
+```
 
 接下来和其他组件一样使用即可。
 
