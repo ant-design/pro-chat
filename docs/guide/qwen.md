@@ -52,7 +52,7 @@ import { NextResponse } from 'next/server';
 export async function POST(request: Request) {
   const { messages = [] }: Partial<{ messages: Array<any> }> = await request.json();
   try {
-    const apiKey = 'xxxxxxx'; // 你的 API 密钥
+    const apiKey = 'Your—Api-Key'; // 你的 API 密钥
     const response = await fetch(
       'https://dashscope.aliyuncs.com/api/v1/services/aigc/text-generation/generation',
       {
@@ -125,3 +125,5 @@ export default function Home() {
 ### 完整的代码
 
 详见 Github [Qwen-NextJs](https://github.com/ant-design/pro-chat/tree/main/demos/qwen-nextjs)
+
+> 记得在安装完依赖后，去 api 的地方配置通义千问的 api-key
