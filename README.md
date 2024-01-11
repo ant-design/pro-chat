@@ -55,7 +55,13 @@ $ pnpm install @ant-design/pro-chat
 
 ```js
 const nextConfig = {
-  transpilePackages: ['@ant-design/pro-chat'],
+  transpilePackages: [
+    '@ant-design/pro-chat',
+    '@ant-design/pro-editor',
+    'zustand',
+    'react-intersection-observer',
+    'leva',
+  ],
 };
 ```
 

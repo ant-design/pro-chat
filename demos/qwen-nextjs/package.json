@@ -1,0 +1,28 @@
+{
+  "name": "qwen-nextjs",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev",
+    "lint": "next lint",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@ant-design/pro-chat": "^1.2.0",
+    "@ant-design/pro-editor": "^0.38.0",
+    "antd": "^5.12.8",
+    "antd-style": "^3.6.1",
+    "next": "14.0.4",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.0.4",
+    "typescript": "^5"
+  }
+}
