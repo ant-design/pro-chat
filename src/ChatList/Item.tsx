@@ -1,12 +1,13 @@
 import { App } from 'antd';
 import copy from 'copy-to-clipboard';
-import { FC, ReactNode, memo, useCallback, useMemo, useState } from 'react';
+import { FC, ReactNode, useCallback, useMemo, useState } from 'react';
 
 import { ActionEvent } from '@/ActionIconGroup';
 import ChatItem, { type ChatItemProps } from '@/ChatItem';
 import { LLMRoleType } from '@/types/llm';
 import { ChatMessage } from '@/types/message';
 
+import { useRefFunction } from '@/ProChat/hooks/useRefFunction';
 import ActionsBar, { type ActionsBarProps } from './ActionsBar';
 
 export type OnMessageChange = (id: string, content: string) => void;
@@ -77,7 +78,7 @@ export interface ListItemProps {
 
 export type ChatListItemProps = ChatMessage & ListItemProps;
 
-const Item = memo<ChatListItemProps>((props) => {
+const Item = (props: ChatListItemProps) => {
   const {
     renderMessagesExtra,
     showTitle,
@@ -107,7 +108,7 @@ const Item = memo<ChatListItemProps>((props) => {
     return renderFunction;
   }, [renderItems?.[item.role]]);
 
-  const RenderMessage = useCallback(
+  const RenderMessage = useRefFunction(
     ({ editableContent, data }: { data: ChatMessage; editableContent: ReactNode }) => {
       if (!renderMessages || !item?.role) return;
       let RenderFunction;
@@ -117,35 +118,28 @@ const Item = memo<ChatListItemProps>((props) => {
       if (!RenderFunction) return;
       return <RenderFunction {...data} editableContent={editableContent} />;
     },
-    [renderMessages?.[item.role]],
   );
 
-  const MessageExtra = useCallback(
-    ({ data }: { data: ChatMessage }) => {
-      if (!renderMessagesExtra || !item?.role) return;
-      let RenderFunction;
-      if (renderMessagesExtra?.[item.role]) RenderFunction = renderMessagesExtra[item.role];
-      if (renderMessagesExtra?.['default']) RenderFunction = renderMessagesExtra['default'];
-      if (!RenderFunction && !RenderFunction) return;
+  const MessageExtra = useRefFunction(({ data }: { data: ChatMessage }) => {
+    if (!renderMessagesExtra || !item?.role) return;
+    let RenderFunction;
+    if (renderMessagesExtra?.[item.role]) RenderFunction = renderMessagesExtra[item.role];
+    if (renderMessagesExtra?.['default']) RenderFunction = renderMessagesExtra['default'];
+    if (!RenderFunction && !RenderFunction) return;
 
-      return <RenderFunction {...data} />;
-    },
-    [renderMessagesExtra?.[item.role]],
-  );
+    return <RenderFunction {...data} />;
+  });
 
-  const ErrorMessage = useCallback(
-    ({ data }: { data: ChatMessage }) => {
-      if (!renderErrorMessages || !item?.error?.type) return;
-      let RenderFunction;
-      if (renderErrorMessages?.[item.error.type])
-        RenderFunction = renderErrorMessages[item.error.type];
-      if (!RenderFunction && renderErrorMessages?.['default'])
-        RenderFunction = renderErrorMessages['default'];
-      if (!RenderFunction) return;
-      return <RenderFunction {...data} />;
-    },
-    [renderErrorMessages?.[item?.error?.type]],
-  );
+  const ErrorMessage = useRefFunction(({ data }: { data: ChatMessage }) => {
+    if (!renderErrorMessages || !item?.error?.type) return;
+    let RenderFunction;
+    if (renderErrorMessages?.[item.error.type])
+      RenderFunction = renderErrorMessages[item.error.type];
+    if (!RenderFunction && renderErrorMessages?.['default'])
+      RenderFunction = renderErrorMessages['default'];
+    if (!RenderFunction) return;
+    return <RenderFunction {...data} />;
+  });
 
   const Actions = useCallback(
     ({ data }: { data: ChatMessage }) => {
@@ -188,39 +182,46 @@ const Item = memo<ChatListItemProps>((props) => {
     };
   }, [item.error]);
 
+  /**
+   * @description memoize the chat item
+   */
+  const memoItem = useMemo(() => {
+    return (
+      <ChatItem
+        data-id={item.id}
+        actions={<Actions data={item} />}
+        avatar={(item as any).meta}
+        avatarAddon={groupNav}
+        editing={editing}
+        error={error}
+        errorMessage={<ErrorMessage data={item} />}
+        loading={loading}
+        message={item.content}
+        messageExtra={<MessageExtra data={item} />}
+        onChange={(value) => onMessageChange?.(item.id, value)}
+        onDoubleClick={(e) => {
+          if (item.id === 'default' || item.error) return;
+          if (item.role && ['assistant', 'user'].includes(item.role) && e.altKey) {
+            setEditing(true);
+          }
+        }}
+        onEditingChange={setEditing}
+        placement={type === 'chat' ? (item.role === 'user' ? 'right' : 'left') : 'left'}
+        primary={item.role === 'user'}
+        renderMessage={(editableContent) => (
+          <RenderMessage data={item} editableContent={editableContent} />
+        )}
+        showTitle={showTitle}
+        text={text}
+        time={item.updateAt || item.createAt}
+        type={type === 'chat' ? 'block' : 'pure'}
+      />
+    );
+  }, [props.content, props.loading, props.id, item.updateAt || item.createAt]);
+
   if (RenderItem) return <RenderItem key={item.id} {...props} />;
 
-  return (
-    <ChatItem
-      data-id={item.id}
-      actions={<Actions data={item} />}
-      avatar={(item as any).meta}
-      avatarAddon={groupNav}
-      editing={editing}
-      error={error}
-      errorMessage={<ErrorMessage data={item} />}
-      loading={loading}
-      message={item.content}
-      messageExtra={<MessageExtra data={item} />}
-      onChange={(value) => onMessageChange?.(item.id, value)}
-      onDoubleClick={(e) => {
-        if (item.id === 'default' || item.error) return;
-        if (item.role && ['assistant', 'user'].includes(item.role) && e.altKey) {
-          setEditing(true);
-        }
-      }}
-      onEditingChange={setEditing}
-      placement={type === 'chat' ? (item.role === 'user' ? 'right' : 'left') : 'left'}
-      primary={item.role === 'user'}
-      renderMessage={(editableContent) => (
-        <RenderMessage data={item} editableContent={editableContent} />
-      )}
-      showTitle={showTitle}
-      text={text}
-      time={item.updateAt || item.createAt}
-      type={type === 'chat' ? 'block' : 'pure'}
-    />
-  );
-});
+  return memoItem;
+};
 
 export default Item;

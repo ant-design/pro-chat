@@ -4,6 +4,7 @@ import type { ChatMessage, DivProps } from '@/types';
 
 import HistoryDivider from './HistoryDivider';
 import Item, { ListItemProps } from './Item';
+import ShouldUpdateItem from './ShouldUpdateItem';
 import { useStyles } from './style';
 
 export interface ChatListProps extends DivProps, ListItemProps {
@@ -14,6 +15,7 @@ export interface ChatListProps extends DivProps, ListItemProps {
   enableHistoryCount?: boolean;
   historyCount?: number;
   loadingId?: string;
+  itemShouldUpdate?: (prevProps: any, nextProps: any) => boolean;
 }
 export type {
   OnActionClick,
@@ -34,6 +36,7 @@ const ChatList = memo<ChatListProps>(
     type = 'chat',
     text,
     showTitle,
+    itemShouldUpdate,
     onMessageChange,
     renderMessages,
     renderErrorMessages,
@@ -70,10 +73,17 @@ const ChatList = memo<ChatListProps>(
             historyCount === historyLength - index + 1;
 
           return (
-            <Fragment key={item.id}>
-              <HistoryDivider enable={enableHistoryDivider} text={text?.history} />
-              <Item {...itemProps} {...item} />
-            </Fragment>
+            <ShouldUpdateItem
+              key={item.id}
+              {...itemProps}
+              {...item}
+              shouldUpdate={itemShouldUpdate}
+            >
+              <Fragment>
+                <HistoryDivider enable={enableHistoryDivider} text={text?.history} />
+                <Item {...itemProps} {...item} />
+              </Fragment>
+            </ShouldUpdateItem>
           );
         })}
       </div>

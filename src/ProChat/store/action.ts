@@ -29,6 +29,7 @@ export interface ChatAction {
    * 清除消息
    */
   clearMessage: () => void;
+
   /**
    * 删除消息
    * @param id - 消息 ID
@@ -190,7 +191,6 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
       },
       onMessageHandle: (text) => {
         output += text;
-
         dispatchMessage({
           id: assistantId,
           key: 'content',
@@ -206,7 +206,9 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
       },
     });
 
-    toggleChatLoading(false, undefined, t('generateMessage(end)') as string);
+    requestIdleCallback(() => {
+      toggleChatLoading(false, undefined, t('generateMessage(end)') as string);
+    });
 
     return { isFunctionCall };
   },

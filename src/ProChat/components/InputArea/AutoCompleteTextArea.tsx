@@ -12,7 +12,6 @@ export const AutoCompleteTextArea: React.FC<TextAreaProps> = (props) => {
     <AutoComplete
       className={props.className}
       options={options}
-      size="large"
       style={{
         height: 'max-content',
       }}
@@ -31,6 +30,7 @@ export const AutoCompleteTextArea: React.FC<TextAreaProps> = (props) => {
       }}
     >
       <Input.TextArea
+        size="large"
         {...props}
         onFocus={(e) => {
           setOpen(false);

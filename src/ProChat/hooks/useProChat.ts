@@ -1,8 +1,8 @@
 import { ChatMessage } from '@/types';
-import { useMemoizedFn } from 'ahooks';
 import { useMemo } from 'react';
 import { ChatStore, useStoreApi } from '../store';
 import { chatSelectors } from '../store/selectors';
+import { useRefFunction } from './useRefFunction';
 
 export interface ProChatInstance
   extends Pick<
@@ -34,6 +34,11 @@ export interface ProChatInstance
    * @returns  void
    */
   setMessageValue: (id: string, key: keyof ChatMessage<Record<string, any>>, value: any) => void;
+  /**
+   * 滚动到底部
+   * @returns
+   */
+  scrollToBottom?: () => void;
 }
 
 export const useProChat = () => {
@@ -48,14 +53,14 @@ export const useProChat = () => {
     dispatchMessage,
   } = storeApi.getState();
 
-  const getChats = useMemoizedFn(() => storeApi.getState().chats);
-  const getChatMessages = useMemoizedFn(() => chatSelectors.currentChats(storeApi.getState()));
+  const getChats = useRefFunction(() => storeApi.getState().chats);
+  const getChatMessages = useRefFunction(() => chatSelectors.currentChats(storeApi.getState()));
 
-  const setMessageContent = useMemoizedFn((id: string, content: string) => {
+  const setMessageContent = useRefFunction((id: string, content: string) => {
     dispatchMessage({ type: 'updateMessage', id, key: 'content', value: content });
   });
 
-  const setMessageValue = useMemoizedFn(
+  const setMessageValue = useRefFunction(
     (id: string, key: keyof ChatMessage<Record<string, any>>, value) => {
       dispatchMessage({ type: 'updateMessage', id, key, value });
     },

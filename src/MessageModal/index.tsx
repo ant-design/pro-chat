@@ -1,6 +1,6 @@
 import { useResponsive } from 'antd-style';
+import { useMergedState } from 'rc-util';
 import { CSSProperties, ReactNode, memo } from 'react';
-import useControlledState from 'use-merge-value';
 
 import MessageInput, { type MessageInputProps } from '@/MessageInput';
 import { Markdown } from '@ant-design/pro-editor';
@@ -59,12 +59,12 @@ const MessageModal = memo<MessageModalProps>(
   }) => {
     const { mobile } = useResponsive();
 
-    const [isEdit, setTyping] = useControlledState(false, {
+    const [isEdit, setTyping] = useMergedState(false, {
       onChange: onEditingChange,
       value: editing,
     });
 
-    const [expand, setExpand] = useControlledState(false, {
+    const [expand, setExpand] = useMergedState(false, {
       onChange: onOpenChange,
       value: open,
     });

@@ -21,7 +21,6 @@ export const ProChatProvider = memo<ProChatProviderProps<any>>(
     userMeta,
     assistantMeta,
     request,
-    chatRef,
     ...props
   }) => {
     let isWrapped = true;
@@ -30,7 +29,7 @@ export const ProChatProvider = memo<ProChatProviderProps<any>>(
       <>
         {children}
         <StoreUpdater
-          chatRef={chatRef}
+          chatRef={props.chatRef}
           init={!loading}
           helloMessage={helloMessage}
           chats={chats}
@@ -56,7 +55,7 @@ export const ProChatProvider = memo<ProChatProviderProps<any>>(
       <Provider createStore={() => createStore(props, devtoolOptions)}>
         {Content}
         <StoreUpdater
-          chatRef={chatRef}
+          chatRef={props.chatRef}
           init={!loading}
           helloMessage={helloMessage}
           chats={chats}

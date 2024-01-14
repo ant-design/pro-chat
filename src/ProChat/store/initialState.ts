@@ -5,6 +5,7 @@ import { ChatMessage, ChatMessageMap } from '@/types/message';
 import { TextAreaProps } from 'antd/es/input';
 import { ReactNode } from 'react';
 import { FlexBasicProps } from 'react-layout-kit/lib/FlexBasic';
+import { ProChatChatReference } from '../container/StoreUpdater';
 
 export type ChatRequest = (messages: ChatMessage[], config: ModelConfig) => Promise<Response>;
 
@@ -17,6 +18,7 @@ export interface ChatPropsState<T extends Record<string, any> = Record<string, a
    * 聊天记录
    */
   chats: ChatMessageMap<T>;
+  chatRef?: ProChatChatReference;
   onChatsChange?: (chats: ChatMessageMap<T>) => void;
   displayMode: 'chat' | 'docs';
   userMeta: MetaData;
