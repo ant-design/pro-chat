@@ -5,6 +5,7 @@ import { memo, useMemo } from 'react';
 import { useStore } from '@/ProChat/store';
 import { chatSelectors } from '@/ProChat/store/selectors';
 
+import { ChatListItemProps } from '@/ChatList/Item';
 import { useRefFunction } from '@/ProChat/hooks/useRefFunction';
 import { renderActions } from './Actions';
 import { renderMessagesExtra } from './Extras';
@@ -13,8 +14,9 @@ import SkeletonList from './SkeletonList';
 
 interface ListProps {
   showTitle?: boolean;
+  itemShouldUpdate?: (prevProps: ChatListItemProps, nextProps: ChatListItemProps) => boolean;
 }
-const List = memo<ListProps>(({ showTitle }) => {
+const List = memo<ListProps>(({ showTitle, itemShouldUpdate }) => {
   const data = useStore(chatSelectors.currentChatsWithGuideMessage, isEqual);
 
   const [
@@ -82,6 +84,7 @@ const List = memo<ListProps>(({ showTitle }) => {
       showTitle={showTitle}
       // @ts-ignore
       data={data}
+      itemShouldUpdate={itemShouldUpdate}
       enableHistoryCount={enableHistoryCount}
       historyCount={historyCount}
       loadingId={chatLoadingId}

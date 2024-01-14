@@ -4,6 +4,7 @@ import RcResizeObserver from 'rc-resize-observer';
 import { CSSProperties, ReactNode, memo, useEffect, useRef, useState } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
+import { ChatListItemProps } from '@/ChatList/Item';
 import ChatList from '../components/ChatList';
 import InputArea from '../components/InputArea';
 import ChatScrollAnchor from '../components/ScrollAnchor';
@@ -25,6 +26,7 @@ interface ConversationProps {
   showTitle?: boolean;
   style?: CSSProperties;
   className?: string;
+  itemShouldUpdate?: (prevProps: ChatListItemProps, nextProps: ChatListItemProps) => boolean;
 }
 
 const App = memo<ConversationProps>(({ chatInput, className, style, showTitle }) => {
