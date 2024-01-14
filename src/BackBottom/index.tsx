@@ -11,7 +11,6 @@ import {
 } from 'react';
 
 import Icon from '@/Icon';
-
 import { useStyles } from './style';
 
 export interface BackBottomProps {
@@ -74,6 +73,10 @@ const BackBottom = memo<BackBottomProps>(
       onClick?.(e);
     };
 
+    /**
+     * @description
+     * 为了解决在使用了 ProChatProvider 的情况下，BackBottom 无法正常工作的问题
+     */
     useEffect(() => {
       (target as any)?.current?.scrollTo({ behavior: 'smooth', left: 0, top: scrollHeight });
     }, []);

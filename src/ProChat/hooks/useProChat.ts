@@ -34,6 +34,11 @@ export interface ProChatInstance
    * @returns  void
    */
   setMessageValue: (id: string, key: keyof ChatMessage<Record<string, any>>, value: any) => void;
+  /**
+   * 滚动到底部
+   * @returns
+   */
+  scrollToBottom?: () => void;
 }
 
 export const useProChat = () => {

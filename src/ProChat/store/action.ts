@@ -29,6 +29,7 @@ export interface ChatAction {
    * 清除消息
    */
   clearMessage: () => void;
+
   /**
    * 删除消息
    * @param id - 消息 ID
