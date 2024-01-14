@@ -84,7 +84,6 @@ export const InputArea = ({}) => {
         <ActionBar />
         <Flexbox horizontal gap={8} align={'center'} className={styles.boxShadow}>
           <AutoCompleteTextArea
-            size={'large'}
             placeholder={placeholder || '请输入内容...'}
             {...inputAreaProps}
             className={cx(styles.input, inputAreaProps?.className)}

@@ -1,10 +1,11 @@
 import ChatList from '@/ChatList';
 import isEqual from 'fast-deep-equal';
-import { memo } from 'react';
+import { memo, useMemo } from 'react';
 
 import { useStore } from '@/ProChat/store';
 import { chatSelectors } from '@/ProChat/store/selectors';
 
+import { useRefFunction } from '@/ProChat/hooks/useRefFunction';
 import { renderActions } from './Actions';
 import { renderMessagesExtra } from './Extras';
 import { renderMessages } from './Messages';
@@ -40,6 +41,40 @@ const List = memo<ListProps>(({ showTitle }) => {
     ];
   });
 
+  const onActionsClick = useRefFunction((action, { id, error }) => {
+    switch (action.key) {
+      case 'del': {
+        deleteMessage(id);
+        break;
+      }
+      case 'regenerate': {
+        resendMessage(id);
+
+        // if this message is an error message, we need to delete it
+        if (error) deleteMessage(id);
+        break;
+      }
+    }
+
+    // TODO: need a custom callback
+  });
+
+  const onMessageChange = useRefFunction((id, content) =>
+    dispatchMessage({ id, key: 'content', type: 'updateMessage', value: content }),
+  );
+
+  const textObj = useMemo(() => {
+    return {
+      cancel: '取消',
+      confirm: '确认',
+      copy: '复制',
+      copySuccess: '复制成功',
+      delete: '删除',
+      edit: '编辑',
+      history: '历史范围',
+      regenerate: '重新生成',
+    };
+  }, []);
   if (!init) return <SkeletonList />;
 
   return (
@@ -50,41 +85,14 @@ const List = memo<ListProps>(({ showTitle }) => {
       enableHistoryCount={enableHistoryCount}
       historyCount={historyCount}
       loadingId={chatLoadingId}
-      onActionsClick={(action, { id, error }) => {
-        switch (action.key) {
-          case 'del': {
-            deleteMessage(id);
-            break;
-          }
-          case 'regenerate': {
-            resendMessage(id);
-
-            // if this message is an error message, we need to delete it
-            if (error) deleteMessage(id);
-            break;
-          }
-        }
-
-        // TODO: need a custom callback
-      }}
-      onMessageChange={(id, content) =>
-        dispatchMessage({ id, key: 'content', type: 'updateMessage', value: content })
-      }
+      onActionsClick={onActionsClick}
+      onMessageChange={onMessageChange}
       renderActions={renderActions}
       // need support custom Render
       renderMessages={renderMessages}
       renderMessagesExtra={renderMessagesExtra}
       style={{ marginTop: 24 }}
-      text={{
-        cancel: '取消',
-        confirm: '确认',
-        copy: '复制',
-        copySuccess: '复制成功',
-        delete: '删除',
-        edit: '编辑',
-        history: '历史范围',
-        regenerate: '重新生成',
-      }}
+      text={textObj}
       type={displayMode || 'chat'}
     />
   );

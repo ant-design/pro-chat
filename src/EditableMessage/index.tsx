@@ -1,5 +1,5 @@
+import { useMergedState } from 'rc-util';
 import { CSSProperties, memo } from 'react';
-import useControlledState from 'use-merge-value';
 
 import MessageInput, { type MessageInputProps } from '@/MessageInput';
 import MessageModal, { type MessageModalProps } from '@/MessageModal';
@@ -94,12 +94,12 @@ const EditableMessage = memo<EditableMessageProps>(
     text,
     model,
   }) => {
-    const [isEdit, setTyping] = useControlledState(false, {
+    const [isEdit, setTyping] = useMergedState(false, {
       onChange: onEditingChange,
       value: editing,
     });
 
-    const [expand, setExpand] = useControlledState<boolean>(false, {
+    const [expand, setExpand] = useMergedState<boolean>(false, {
       onChange: onOpenChange,
       value: openModal,
     });

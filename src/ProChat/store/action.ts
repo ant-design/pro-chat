@@ -190,7 +190,6 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
       },
       onMessageHandle: (text) => {
         output += text;
-
         dispatchMessage({
           id: assistantId,
           key: 'content',
@@ -206,7 +205,9 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
       },
     });
 
-    toggleChatLoading(false, undefined, t('generateMessage(end)') as string);
+    requestIdleCallback(() => {
+      toggleChatLoading(false, undefined, t('generateMessage(end)') as string);
+    });
 
     return { isFunctionCall };
   },

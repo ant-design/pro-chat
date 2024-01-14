@@ -1,5 +1,5 @@
-import { useControllableValue } from 'ahooks';
 import { createStyles } from 'antd-style';
+import { useMergedState } from 'rc-util';
 import React, { memo } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
@@ -48,6 +48,7 @@ interface OtpInputProps extends PartialInputProps {
    * full value of the otp input, up to {size} characters
    */
   value?: string;
+  defaultValue?: string;
 }
 
 const handleKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -74,11 +75,12 @@ const OtpInput = memo<OtpInputProps>((props) => {
     //Default validation is digits
     validationPattern = /\d/,
     value: outerValue,
+    defaultValue,
     onChange,
     className,
     ...restProps
   } = props;
-  const [value, setValue] = useControllableValue({ onChange, value: outerValue });
+  const [value, setValue] = useMergedState(defaultValue!, { onChange, value: outerValue });
 
   const { styles, cx } = useStyles();
   // Create an array based on the size.

@@ -1,6 +1,7 @@
 import BackBottom from '@/BackBottom';
 import { createStyles } from 'antd-style';
-import { CSSProperties, ReactNode, memo, useRef } from 'react';
+import RcResizeObserver from 'rc-resize-observer';
+import { CSSProperties, ReactNode, memo, useEffect, useRef, useState } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
 import ChatList from '../components/ChatList';
@@ -30,17 +31,43 @@ const App = memo<ConversationProps>(({ chatInput, className, style, showTitle })
   const ref = useRef(null);
   const { styles, cx } = useStyles();
   const { styles: override } = useOverrideStyles();
+  const [isRender, setIsRender] = useState(false);
+  const [height, setHeight] = useState('100%' as string | number);
+  useEffect(() => {
+    setIsRender(true);
+  }, []);
   return (
-    <Flexbox className={cx(override.container, className)} style={style}>
-      <div style={{ flex: 1, overflow: 'hidden', position: 'relative' }}>
-        <div className={styles} ref={ref}>
-          <ChatList showTitle={showTitle} />
-          <ChatScrollAnchor />
+    <RcResizeObserver
+      onResize={(e) => {
+        if (e.height !== height) {
+          setHeight(e.height);
+        }
+      }}
+    >
+      <Flexbox
+        className={cx(override.container, className)}
+        style={{
+          maxHeight: '100vh',
+          height: height,
+          ...style,
+        }}
+      >
+        <div style={{ position: 'relative' }}>
+          <div
+            className={styles}
+            ref={ref}
+            style={{
+              height: (height as number) - 112 || '100%',
+            }}
+          >
+            <ChatList showTitle={showTitle} />
+            <ChatScrollAnchor />
+          </div>
+          {isRender ? <BackBottom target={ref} text={'返回底部'} /> : null}
         </div>
-        <BackBottom target={ref} text={'返回底部'} />
-      </div>
-      {chatInput ?? <InputArea />}
-    </Flexbox>
+        {chatInput ?? <InputArea />}
+      </Flexbox>
+    </RcResizeObserver>
   );
 });
 

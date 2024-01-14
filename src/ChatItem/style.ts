@@ -84,7 +84,8 @@ export const useStyles = createStyles(
           width: 100%;
           max-width: 100vw;
           padding: 12px 16px;
-
+          content-visibility: auto;
+          contain-intrinsic-size: 100px;
           time {
             display: inline-block;
             white-space: nowrap;

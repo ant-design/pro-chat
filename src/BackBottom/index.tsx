@@ -1,14 +1,13 @@
-import { useScroll } from 'ahooks';
-import type { Target } from 'ahooks/lib/useScroll';
 import { Button, type BackTopProps } from 'antd';
 import { ListEnd } from 'lucide-react';
 import {
+  MouseEventHandler,
   memo,
   useEffect,
+  useMemo,
   useRef,
   useState,
   type CSSProperties,
-  type MouseEventHandler,
 } from 'react';
 
 import Icon from '@/Icon';
@@ -19,7 +18,7 @@ export interface BackBottomProps {
   className?: string;
   onClick?: BackTopProps['onClick'];
   style?: CSSProperties;
-  target: Target;
+  target: React.RefObject<HTMLDivElement>;
   text?: string;
   visibilityHeight?: BackTopProps['visibilityHeight'];
 }
@@ -29,10 +28,40 @@ const BackBottom = memo<BackBottomProps>(
     const [visible, setVisible] = useState<boolean>(false);
     const { styles, cx } = useStyles(visible);
     const ref = useRef<HTMLAnchorElement | HTMLButtonElement>(null);
-    const current = (target as any)?.current;
+    const current = useMemo(() => {
+      if (target.current && target.current.scrollHeight > target.current.clientHeight) {
+        return target.current;
+      }
+      return document.body;
+    }, []);
+
     const scrollHeight = current?.scrollHeight || 0;
     const clientHeight = current?.clientHeight || 0;
-    const scroll = useScroll(target);
+    const [scroll, setScroll] = useState({ top: 0, left: 0 });
+
+    const timeRef = useRef<number | null>(null);
+
+    useEffect(() => {
+      if (typeof window === 'undefined') return;
+      const scroll = (e: any) => {
+        timeRef.current = window.setTimeout(() => {
+          setVisible(current?.scrollTop + clientHeight + visibilityHeight < scrollHeight);
+          setScroll({
+            top: e?.scrollTop,
+            left: e?.scrollLeft,
+          });
+        }, 60);
+      };
+      current?.addEventListener?.('scroll', scroll, {
+        passive: true,
+      });
+      return () => {
+        if (timeRef.current) {
+          clearTimeout(timeRef.current);
+        }
+        current?.removeEventListener?.('scroll', scroll);
+      };
+    }, []);
 
     useEffect(() => {
       if (scroll?.top) {
@@ -44,6 +73,10 @@ const BackBottom = memo<BackBottomProps>(
       (target as any)?.current?.scrollTo({ behavior: 'smooth', left: 0, top: scrollHeight });
       onClick?.(e);
     };
+
+    useEffect(() => {
+      (target as any)?.current?.scrollTo({ behavior: 'smooth', left: 0, top: scrollHeight });
+    }, []);
 
     return (
       <Button
