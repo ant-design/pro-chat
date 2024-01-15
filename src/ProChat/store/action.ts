@@ -191,11 +191,13 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
       },
       onMessageHandle: (text) => {
         output += text;
-        dispatchMessage({
-          id: assistantId,
-          key: 'content',
-          type: 'updateMessage',
-          value: output,
+        (window.requestIdleCallback || window.setTimeout)(() => {
+          dispatchMessage({
+            id: assistantId,
+            key: 'content',
+            type: 'updateMessage',
+            value: output,
+          });
         });
 
         // TODO: need a function call judge callback
@@ -206,7 +208,7 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
       },
     });
 
-    requestIdleCallback(() => {
+    (window.requestIdleCallback || window.setTimeout)(() => {
       toggleChatLoading(false, undefined, t('generateMessage(end)') as string);
     });
 
