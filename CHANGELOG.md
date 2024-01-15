@@ -1,5 +1,30 @@
 # Changelog
 
+### [Version&nbsp;1.2.1](https://github.com/ant-design/pro-chat/compare/v1.2.0...v1.2.1)
+
+<sup>Released on **2024-01-15**</sup>
+
+#### 🐛 修复
+
+- 修复回到最下方按钮丢失的问题.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- 修复回到最下方按钮丢失的问题, closes [#36](https://github.com/ant-design/pro-chat/issues/36) ([dc268da](https://github.com/ant-design/pro-chat/commit/dc268da))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;1.2.0](https://github.com/ant-design/pro-chat/compare/v1.1.0...v1.2.0)
 
 <sup>Released on **2024-01-11**</sup>
