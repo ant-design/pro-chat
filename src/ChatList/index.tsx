@@ -3,7 +3,7 @@ import { Fragment, memo } from 'react';
 import type { ChatMessage, DivProps } from '@/types';
 
 import HistoryDivider from './HistoryDivider';
-import Item, { ListItemProps } from './Item';
+import ChatItem, { ListItemProps } from './Item';
 import ShouldUpdateItem from './ShouldUpdateItem';
 import { useStyles } from './style';
 
@@ -81,7 +81,7 @@ const ChatList = memo<ChatListProps>(
             >
               <Fragment>
                 <HistoryDivider enable={enableHistoryDivider} text={text?.history} />
-                <Item {...itemProps} {...item} />
+                <ChatItem {...itemProps} {...item} />
               </Fragment>
             </ShouldUpdateItem>
           );
