@@ -1,6 +1,6 @@
 import { App } from 'antd';
 import copy from 'copy-to-clipboard';
-import { FC, ReactNode, useCallback, useMemo, useState } from 'react';
+import { FC, ReactNode, useMemo, useState } from 'react';
 
 import { ActionEvent } from '@/ActionIconGroup';
 import ChatItem, { type ChatItemProps } from '@/ChatItem';
@@ -141,39 +141,36 @@ const Item = (props: ChatListItemProps) => {
     return <RenderFunction {...data} />;
   });
 
-  const Actions = useCallback(
-    ({ data }: { data: ChatMessage }) => {
-      if (!renderActions || !item?.role) return;
-      let RenderFunction;
-      if (renderActions?.[item.role]) RenderFunction = renderActions[item.role];
-      if (renderActions?.['default']) RenderFunction = renderActions['default'];
-      if (!RenderFunction) RenderFunction = ActionsBar;
+  const Actions = useRefFunction(({ data }: { data: ChatMessage }) => {
+    if (!renderActions || !item?.role) return;
+    let RenderFunction;
+    if (renderActions?.[item.role]) RenderFunction = renderActions[item.role];
+    if (renderActions?.['default']) RenderFunction = renderActions['default'];
+    if (!RenderFunction) RenderFunction = ActionsBar;
 
-      const handleActionClick: ListItemProps['onActionsClick'] = (action, data) => {
-        switch (action.key) {
-          case 'copy': {
-            copy(data.content as string);
-            message.success(text?.copySuccess || 'Copy Success');
-            break;
-          }
-          case 'edit': {
-            setEditing(true);
-          }
+    const handleActionClick: ListItemProps['onActionsClick'] = (action, data) => {
+      switch (action.key) {
+        case 'copy': {
+          copy(data.content as string);
+          message.success(text?.copySuccess || 'Copy Success');
+          break;
         }
+        case 'edit': {
+          setEditing(true);
+        }
+      }
 
-        onActionsClick?.(action, data);
-      };
+      onActionsClick?.(action, data);
+    };
 
-      return (
-        <RenderFunction
-          {...data}
-          onActionClick={(actionKey) => handleActionClick?.(actionKey, data)}
-          text={text}
-        />
-      );
-    },
-    [renderActions?.[item.role], text, onActionsClick],
-  );
+    return (
+      <RenderFunction
+        {...data}
+        onActionClick={(actionKey) => handleActionClick?.(actionKey, data)}
+        text={text}
+      />
+    );
+  });
 
   const error = useMemo(() => {
     if (!item.error) return;
