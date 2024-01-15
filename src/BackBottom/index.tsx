@@ -27,12 +27,22 @@ const BackBottom = memo<BackBottomProps>(
     const [visible, setVisible] = useState<boolean>(false);
     const { styles, cx } = useStyles(visible);
     const ref = useRef<HTMLAnchorElement | HTMLButtonElement>(null);
+
+    const [isWindowAvailable, setIsWindowAvailable] = useState(false);
+
+    useEffect(() => {
+      // 检查window对象是否已经可用
+      if (typeof window !== 'undefined') {
+        setIsWindowAvailable(true);
+      }
+    }, []);
+
     const current = useMemo(() => {
       if (target.current && target.current.scrollHeight > target.current.clientHeight) {
         return target.current;
       }
       return document.body;
-    }, []);
+    }, [isWindowAvailable]);
 
     const scrollHeight = current?.scrollHeight || 0;
     const clientHeight = current?.clientHeight || 0;
@@ -42,12 +52,13 @@ const BackBottom = memo<BackBottomProps>(
 
     useEffect(() => {
       if (typeof window === 'undefined') return;
-      const scroll = (e: any) => {
+      if (typeof current === 'undefined') return;
+      const scroll = () => {
         timeRef.current = window.setTimeout(() => {
           setVisible(current?.scrollTop + clientHeight + visibilityHeight < scrollHeight);
           setScroll({
-            top: e?.scrollTop,
-            left: e?.scrollLeft,
+            top: current?.scrollTop,
+            left: current?.scrollLeft,
           });
         }, 60);
       };
@@ -60,13 +71,13 @@ const BackBottom = memo<BackBottomProps>(
         }
         current?.removeEventListener?.('scroll', scroll);
       };
-    }, []);
+    }, [current]);
 
     useEffect(() => {
       if (scroll?.top) {
         setVisible(scroll?.top + clientHeight + visibilityHeight < scrollHeight);
       }
-    }, [scrollHeight, scroll, visibilityHeight]);
+    }, [scrollHeight, scroll, visibilityHeight, current]);
 
     const scrollToBottom: MouseEventHandler<HTMLDivElement> = (e) => {
       (target as any)?.current?.scrollTo({ behavior: 'smooth', left: 0, top: scrollHeight });

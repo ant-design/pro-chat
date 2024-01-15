@@ -83,7 +83,7 @@ export const useStyles = createStyles(
           position: relative;
           width: 100%;
           max-width: 100vw;
-          padding: 12px 16px;
+          padding: 16px;
           content-visibility: auto;
           contain-intrinsic-size: 100px;
           time {
