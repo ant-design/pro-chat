@@ -185,13 +185,20 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
     let output = '';
     let isFunctionCall = false;
 
+    let timeId = 0;
+
     await fetchSSE(fetcher, {
       onErrorHandle: (error) => {
         dispatchMessage({ id: assistantId, key: 'error', type: 'updateMessage', value: error });
       },
       onMessageHandle: (text) => {
         output += text;
-        (window.requestIdleCallback || window.setTimeout)(() => {
+
+        // 如果存在上一个定时器，那么清除
+        if (timeId) clearTimeout(timeId);
+
+        // 使用定时器来监听性能，保证出入的时候不会太卡顿
+        timeId = (window.requestIdleCallback || window.setTimeout)(() => {
           dispatchMessage({
             id: assistantId,
             key: 'content',
