@@ -1,22 +1,23 @@
-import ChatList from '@/ChatList';
+import ChatList, { ChatListProps } from '@/ChatList';
 import isEqual from 'fast-deep-equal';
 import { memo, useMemo } from 'react';
 
 import { useStore } from '@/ProChat/store';
 import { chatSelectors } from '@/ProChat/store/selectors';
 
-import { ChatListItemProps } from '@/ChatList/Item';
+import { ChatListItemProps } from '@/ChatList/ChatListItem';
 import { useRefFunction } from '@/ProChat/hooks/useRefFunction';
 import { renderActions } from './Actions';
 import { renderMessagesExtra } from './Extras';
 import { renderMessages } from './Messages';
 import SkeletonList from './SkeletonList';
 
-interface ListProps {
+interface ListProps extends Partial<ChatListProps> {
   showTitle?: boolean;
   itemShouldUpdate?: (prevProps: ChatListItemProps, nextProps: ChatListItemProps) => boolean;
 }
-const List = memo<ListProps>(({ showTitle, itemShouldUpdate }) => {
+
+const List = memo<ListProps>(({ showTitle, itemShouldUpdate, chatItemRenderConfig }) => {
   const data = useStore(chatSelectors.currentChatsWithGuideMessage, isEqual);
 
   const [
@@ -82,7 +83,6 @@ const List = memo<ListProps>(({ showTitle, itemShouldUpdate }) => {
   return (
     <ChatList
       showTitle={showTitle}
-      // @ts-ignore
       data={data}
       itemShouldUpdate={itemShouldUpdate}
       enableHistoryCount={enableHistoryCount}
@@ -95,6 +95,7 @@ const List = memo<ListProps>(({ showTitle, itemShouldUpdate }) => {
       renderMessages={renderMessages}
       renderMessagesExtra={renderMessagesExtra}
       style={{ marginTop: 24 }}
+      chatItemRenderConfig={chatItemRenderConfig}
       text={textObj}
       type={displayMode || 'chat'}
     />

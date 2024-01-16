@@ -74,6 +74,17 @@ export interface ListItemProps {
    * @default 'chat'
    */
   type?: 'docs' | 'chat';
+
+  /**
+   * @description 聊天项的类名
+   * @default ''
+   */
+  chatItemClassName?: string;
+
+  /**
+   * @description 聊天项的渲染函数
+   */
+  chatItemRenderConfig: ChatItemProps['chatItemRenderConfig'];
 }
 
 export type ChatListItemProps = ChatMessage & ListItemProps;
@@ -92,6 +103,8 @@ const Item = (props: ChatListItemProps) => {
     loading,
     groupNav,
     renderItems,
+    chatItemRenderConfig,
+    chatItemClassName,
     ...item
   } = props;
 
@@ -183,8 +196,9 @@ const Item = (props: ChatListItemProps) => {
    * @description memoize the chat item
    */
   const memoItem = useMemo(() => {
-    return (
+    const dom = (
       <ChatItem
+        className={chatItemClassName}
         data-id={item.id}
         actions={<Actions data={item} />}
         avatar={(item as any).meta}
@@ -212,8 +226,10 @@ const Item = (props: ChatListItemProps) => {
         text={text}
         time={item.updateAt || item.createAt}
         type={type === 'chat' ? 'block' : 'pure'}
+        chatItemRenderConfig={chatItemRenderConfig}
       />
     );
+    return dom;
   }, [props.content, props.loading, props.id, item.updateAt || item.createAt]);
 
   if (RenderItem) return <RenderItem key={item.id} {...props} />;

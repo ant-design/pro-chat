@@ -18,6 +18,10 @@ description: a Chat Solution
 
 <code src="./demos/sse.tsx"></code>
 
+## 大数据渲染
+
+<code src="./demos/bigData.tsx"></code>
+
 ## 非流式模式
 
 非流式模式下，会话消息会一次性全部返回，适用于消息量较少的场景。如果消息量较大，可能用户体验较差。

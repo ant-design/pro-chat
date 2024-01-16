@@ -120,8 +120,8 @@ Let's showcase some of ProChat's signature features:
 | :-: | :-: |
 | Engage in Streamlined Conversations that flow as naturally as a river | Refine, reshape, and perfect your dialogue with tools that allow for real-time edits. |
 | ![][prevew-1] | ![][prevew-3] |
-| **Integrated Renderer** |  |
-| Dive into the vivid world of chat with our Built-in Renderer, a tool designed to bring text to life. |  |
+| **Integrated Render** |  |
+| Dive into the vivid world of chat with our Built-in Render, a tool designed to bring text to life. |  |
 | ![][prevew-2] |  |
 
 <br/>
