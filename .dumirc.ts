@@ -56,7 +56,7 @@ export default defineConfig({
         actions: [
           {
             text: '快速开始 →',
-            link: '/guide/intro',
+            link: '/guide/intro-start',
           },
           {
             text: 'Github',
