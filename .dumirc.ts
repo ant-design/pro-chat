@@ -70,7 +70,7 @@ export default defineConfig({
         actions: [
           {
             text: 'Quick Start →',
-            link: '/guide/intro',
+            link: '/guide/intro-start',
           },
         ],
       },
