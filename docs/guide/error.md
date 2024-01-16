@@ -1,6 +1,6 @@
 ---
 title: 错误处理
-order: 2
+order: 4
 group:
   title: 快速上手
   order: 2
