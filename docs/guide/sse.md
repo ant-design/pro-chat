@@ -176,3 +176,9 @@ export default function Home() {
 }
 
 ```
+
+### 完整的代码
+
+详见 Github [ChatGPT-NextJs](https://github.com/ant-design/pro-chat/tree/main/demos/chatgpt-nextjs)
+
+> 记得在安装完依赖后，去 api 的地方配置 openai 的 api-key（或者是转发的地址）

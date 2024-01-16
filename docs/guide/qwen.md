@@ -2,7 +2,7 @@
 title: 通义千问
 group:
   title: 模型案例
-  order: 5
+  order: 7
 nav:
   title: 文档
   order: 0
