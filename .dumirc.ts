@@ -2,6 +2,9 @@ import { defineConfig } from 'dumi';
 import { homepage } from './package.json';
 
 export default defineConfig({
+  favicons: [
+    'https://mdn.alipayobjects.com/huamei_re70wt/afts/img/A*Mo27Sr3kS4kAAAAAAAAAAAAADmuEAQ/original',
+  ],
   themeConfig: {
     name: '@ant-design/pro-chat',
     github: homepage,
