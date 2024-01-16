@@ -14,6 +14,7 @@ export const useStyles = createStyles(({ token, css, stylish, cx }, visible: boo
       background: ${token.colorFillSecondary};
       border-color: ${token.colorFillTertiary} !important;
       border-radius: 16px !important;
+      backdrop-filter: blur(16px);
     `,
   ),
 );

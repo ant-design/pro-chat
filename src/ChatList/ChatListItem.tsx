@@ -84,7 +84,7 @@ export interface ListItemProps {
   /**
    * @description 聊天项的渲染函数
    */
-  chatItemRenderConfig: ChatItemProps['chatItemRenderConfig'];
+  chatItemRenderConfig?: ChatItemProps['chatItemRenderConfig'];
 }
 
 export type ChatListItemProps = ChatMessage & ListItemProps;

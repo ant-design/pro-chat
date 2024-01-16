@@ -33,6 +33,7 @@ interface ConversationProps extends ProChatProps<any> {
 const App = memo<ConversationProps>(
   ({ chatInput, className, style, showTitle, chatRef, itemShouldUpdate, chatItemRenderConfig }) => {
     const ref = useRef<HTMLDivElement>(null);
+    const areaHtml = useRef<HTMLDivElement>(null);
     const { styles, cx } = useStyles();
     const { styles: override } = useOverrideStyles();
     const [isRender, setIsRender] = useState(false);
@@ -54,7 +55,6 @@ const App = memo<ConversationProps>(
       <RcResizeObserver
         onResize={(e) => {
           if (e.height !== height) {
-            console.log(e.height);
             setHeight(e.height);
           }
         }}
@@ -72,7 +72,7 @@ const App = memo<ConversationProps>(
               className={styles}
               ref={ref}
               style={{
-                height: (height as number) - 112 || '100%',
+                height: (height as number) - (areaHtml.current?.clientHeight || 120) || '100%',
               }}
             >
               <ChatList
@@ -84,7 +84,7 @@ const App = memo<ConversationProps>(
             </div>
             {isRender ? <BackBottom target={ref} text={'返回底部'} /> : null}
           </div>
-          {chatInput ?? <InputArea />}
+          <div ref={areaHtml}>{chatInput ?? <InputArea />}</div>
         </Flexbox>
       </RcResizeObserver>
     );
