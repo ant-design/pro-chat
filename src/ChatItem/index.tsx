@@ -63,7 +63,7 @@ const ChatItem = memo<ChatItemProps>((props) => {
       />
     );
     return chatItemRenderConfig?.avatarRender?.(props, dom) || dom;
-  }, [avatar, placement, mobile]);
+  }, [avatar, placement, mobile, loading]);
 
   const messageContentDom = useMemo(() => {
     if (chatItemRenderConfig?.contentRender === false) return null;
