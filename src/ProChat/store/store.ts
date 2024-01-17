@@ -1,5 +1,6 @@
 import { StateCreator } from 'zustand/vanilla';
 
+import { ChatListProps } from '@/ChatList';
 import { MetaData } from '@/ProChat/types/meta';
 import isEqual from 'fast-deep-equal';
 import { merge } from 'lodash-es';
@@ -16,6 +17,14 @@ export interface ChatProps<T extends Record<string, any> = Record<string, any>>
   initialChats?: ChatPropsState<T>['chats'];
   userMeta?: MetaData;
   assistantMeta?: MetaData;
+  /**
+   * @description 聊天项的渲染函数
+   */
+  chatItemRenderConfig?: ChatListProps['chatItemRenderConfig'];
+  /**
+   * @description 判断聊天项的更新函数
+   */
+  itemShouldUpdate?: ChatListProps['itemShouldUpdate'];
 }
 
 //  ===============  聚合 createStoreFn ============ //

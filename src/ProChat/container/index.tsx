@@ -23,12 +23,14 @@ export function ProChat<T extends Record<string, any> = Record<string, any>>({
   showTitle,
   style,
   className,
+  chatItemRenderConfig,
   ...props
 }: ProChatProps<T>) {
   return (
     <ProChatProvider {...props} devtoolOptions={__PRO_CHAT_STORE_DEVTOOLS__}>
       <Container>
         <App
+          chatItemRenderConfig={chatItemRenderConfig}
           chatInput={renderInput}
           chatRef={props.chatRef}
           showTitle={showTitle}

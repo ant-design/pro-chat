@@ -1,5 +1,30 @@
 # Changelog
 
+## [Version&nbsp;1.4.0](https://github.com/ant-design/pro-chat/compare/v1.3.2...v1.4.0)
+
+<sup>Released on **2024-01-17**</sup>
+
+#### ✨ 新特性
+
+- Support chatItemRenderConfig.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- Support chatItemRenderConfig, closes [#42](https://github.com/ant-design/pro-chat/issues/42) ([0f4b47e](https://github.com/ant-design/pro-chat/commit/0f4b47e))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ### [Version&nbsp;1.3.2](https://github.com/ant-design/pro-chat/compare/v1.3.1...v1.3.2)
 
 <sup>Released on **2024-01-16**</sup>

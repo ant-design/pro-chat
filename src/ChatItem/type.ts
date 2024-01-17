@@ -4,6 +4,8 @@ import { ReactNode } from 'react';
 import { EditableMessageProps } from '@/EditableMessage';
 import { DivProps, MetaData } from '@/types';
 
+export type WithFalse<T> = T | false;
+
 export interface ChatItemProps {
   /**
    * @description Actions to be displayed in the chat item
@@ -72,4 +74,27 @@ export interface ChatItemProps {
    * @default 'block'
    */
   type?: 'block' | 'pure';
+
+  /**
+   * @description 聊天项渲染函数,为了保证性能他是惰性的，只有在列表项内容修改的时候才会重新执行
+   * @default (props, defaultDom) => defaultDom
+   */
+  chatItemRenderConfig?: {
+    titleRender?: WithFalse<(props: ChatItemProps, defaultDom: ReactNode) => ReactNode>;
+    contentRender?: WithFalse<(props: ChatItemProps, defaultDom: ReactNode) => ReactNode>;
+    actionsRender?: WithFalse<(props: ChatItemProps, defaultDom: ReactNode) => ReactNode>;
+    avatarRender?: WithFalse<(props: ChatItemProps, defaultDom: ReactNode) => ReactNode>;
+    render?: WithFalse<
+      (
+        props: ChatItemProps,
+        defaultDom: {
+          avatar: ReactNode;
+          title: ReactNode;
+          messageContent: ReactNode;
+          actions: ReactNode;
+          itemDom: ReactNode;
+        },
+      ) => ReactNode
+    >;
+  };
 }
