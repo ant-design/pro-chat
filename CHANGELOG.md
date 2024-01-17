@@ -1,5 +1,31 @@
 # Changelog
 
+### [Version&nbsp;1.4.1](https://github.com/ant-design/pro-chat/compare/v1.4.0...v1.4.1)
+
+<sup>Released on **2024-01-17**</sup>
+
+#### 🐛 修复
+
+- 修复特殊情况下 avatar 配置不生效的问题, 兼容 NextJs 的 window 不存在问题.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- 修复特殊情况下 avatar 配置不生效的问题, closes [#44](https://github.com/ant-design/pro-chat/issues/44) ([4444f40](https://github.com/ant-design/pro-chat/commit/4444f40))
+- 兼容 NextJs 的 window 不存在问题, closes [#38](https://github.com/ant-design/pro-chat/issues/38) ([7bb47a5](https://github.com/ant-design/pro-chat/commit/7bb47a5))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;1.4.0](https://github.com/ant-design/pro-chat/compare/v1.3.2...v1.4.0)
 
 <sup>Released on **2024-01-17**</sup>
