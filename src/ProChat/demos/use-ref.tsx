@@ -12,7 +12,7 @@ import { example } from '../mocks/basic';
 export default () => {
   const theme = useTheme();
   const proChatRef = useRef<ProChatInstance>();
-  console.log(proChatRef.current);
+
   return (
     <div style={{ background: theme.colorBgLayout }}>
       <Button

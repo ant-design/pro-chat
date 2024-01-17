@@ -18,6 +18,10 @@ description: a Chat Solution
 
 <code src="./demos/sse.tsx"></code>
 
+## 大数据渲染
+
+<code src="./demos/bigData.tsx"></code>
+
 ## 非流式模式
 
 非流式模式下，会话消息会一次性全部返回，适用于消息量较少的场景。如果消息量较大，可能用户体验较差。
@@ -123,6 +127,7 @@ useProChat hooks 必须在包裹 `ProChatProvider` 后方可使用。
 | actions | 信息框顶部的操作列表 | `{ flexConfig?: FlexBasicProps, render?: (defaultDoms: JSX.Element[]) => JSX.Element[] }` | - |
 | actions.flexConfig | 控制 input 顶部的操作区域的 flex 布局 | `FlexBasicProps` | - |
 | actions.render | 控制 input 顶部的操作区域的操作按钮 | `(defaultDoms: JSX.Element[]) => JSX.Element[]` | - |
+| chatItemRenderConfig | 聊天项渲染配置 | `ChatItemRenderConfig` | - |
 
 ## ProChatChatReference
 
@@ -138,3 +143,13 @@ useProChat hooks 必须在包裹 `ProChatProvider` 后方可使用。
 | sendMessage | 发送消息 | (content: string) => void | - |
 | deleteMessage | 删除消息 | (messageId: string) => void | - |
 | clearMessage | 清除消息 | () => void | - |
+
+## chatItemRenderConfig
+
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| titleRender | 标题渲染函数 | WithFalse<(props: ChatItemProps, defaultDom: ReactNode) => ReactNode> | - |
+| contentRender | 内容渲染函数 | WithFalse<(props: ChatItemProps, defaultDom: ReactNode) => ReactNode> | - |
+| actionsRender | 操作渲染函数 | WithFalse<(props: ChatItemProps, defaultDom: ReactNode) => ReactNode> | - |
+| avatarRender | 头像渲染函数 | WithFalse<(props: ChatItemProps, defaultDom: ReactNode) => ReactNode> | - |
+| render | 自定义渲染函数 | WithFalse<(props: ChatItemProps, defaultDom: { avatar: ReactNode; title: ReactNode; messageContent: ReactNode; actions: ReactNode; itemDom: ReactNode; }) => ReactNode> | - |

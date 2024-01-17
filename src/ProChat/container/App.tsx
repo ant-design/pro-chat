@@ -4,12 +4,12 @@ import RcResizeObserver from 'rc-resize-observer';
 import { CSSProperties, ReactNode, memo, useEffect, useRef, useState } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
-import { ChatListItemProps } from '@/ChatList/Item';
 import ChatList from '../components/ChatList';
 import InputArea from '../components/InputArea';
 import ChatScrollAnchor from '../components/ScrollAnchor';
 import { useOverrideStyles } from './OverrideStyle';
 import { ProChatChatReference } from './StoreUpdater';
+import { ProChatProps } from './index';
 
 const useStyles = createStyles(
   ({ css, responsive, stylish }) => css`
@@ -22,18 +22,18 @@ const useStyles = createStyles(
   `,
 );
 
-interface ConversationProps {
+interface ConversationProps extends ProChatProps<any> {
   chatInput?: ReactNode;
   showTitle?: boolean;
   style?: CSSProperties;
   className?: string;
   chatRef?: ProChatChatReference;
-  itemShouldUpdate?: (prevProps: ChatListItemProps, nextProps: ChatListItemProps) => boolean;
 }
 
 const App = memo<ConversationProps>(
-  ({ chatInput, className, style, showTitle, chatRef, itemShouldUpdate }) => {
+  ({ chatInput, className, style, showTitle, chatRef, itemShouldUpdate, chatItemRenderConfig }) => {
     const ref = useRef<HTMLDivElement>(null);
+    const areaHtml = useRef<HTMLDivElement>(null);
     const { styles, cx } = useStyles();
     const { styles: override } = useOverrideStyles();
     const [isRender, setIsRender] = useState(false);
@@ -63,7 +63,7 @@ const App = memo<ConversationProps>(
           className={cx(override.container, className)}
           style={{
             maxHeight: '100vh',
-            height: height,
+            height: '100%',
             ...style,
           }}
         >
@@ -72,15 +72,19 @@ const App = memo<ConversationProps>(
               className={styles}
               ref={ref}
               style={{
-                height: (height as number) - 112 || '100%',
+                height: (height as number) - (areaHtml.current?.clientHeight || 120) || '100%',
               }}
             >
-              <ChatList showTitle={showTitle} itemShouldUpdate={itemShouldUpdate} />
+              <ChatList
+                showTitle={showTitle}
+                itemShouldUpdate={itemShouldUpdate}
+                chatItemRenderConfig={chatItemRenderConfig}
+              />
               <ChatScrollAnchor />
             </div>
             {isRender ? <BackBottom target={ref} text={'返回底部'} /> : null}
           </div>
-          {chatInput ?? <InputArea />}
+          <div ref={areaHtml}>{chatInput ?? <InputArea />}</div>
         </Flexbox>
       </RcResizeObserver>
     );
