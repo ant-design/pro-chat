@@ -1,5 +1,38 @@
 # Changelog
 
+## [Version&nbsp;1.5.0-beta.1](https://github.com/ant-design/pro-chat/compare/v1.4.1...v1.5.0-beta.1)
+
+<sup>Released on **2024-01-17**</sup>
+
+#### ✨ 新特性
+
+- 平滑的 Stream 输出.
+
+#### 🐛 修复
+
+- Stream was done but loading icon is show.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- 平滑的 Stream 输出 ([cffbbbf](https://github.com/ant-design/pro-chat/commit/cffbbbf))
+
+#### What's fixed
+
+- Stream was done but loading icon is show ([7b951af](https://github.com/ant-design/pro-chat/commit/7b951af))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ### [Version&nbsp;1.4.1](https://github.com/ant-design/pro-chat/compare/v1.4.0...v1.4.1)
 
 <sup>Released on **2024-01-17**</sup>
