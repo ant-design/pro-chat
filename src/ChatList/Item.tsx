@@ -214,7 +214,7 @@ const Item = (props: ChatListItemProps) => {
         type={type === 'chat' ? 'block' : 'pure'}
       />
     );
-  }, [props.content, props.loading, props.id, item.updateAt || item.createAt]);
+  }, [props.content, props.loading, props.id, (item as any).meta, item.updateAt || item.createAt]);
 
   if (RenderItem) return <RenderItem key={item.id} {...props} />;
 
