@@ -109,7 +109,7 @@ const ChatItem = memo<ChatItemProps>((props) => {
     if (chatItemRenderConfig?.titleRender === false) return null;
     const dom = <Title avatar={avatar} placement={placement} showTitle={showTitle} time={time} />;
     return chatItemRenderConfig?.titleRender?.(props, dom) || dom;
-  }, [time]);
+  }, [time, avatar]);
 
   if (chatItemRenderConfig?.render === false) return null;
 
