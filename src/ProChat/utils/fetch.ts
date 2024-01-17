@@ -12,9 +12,16 @@ export const getMessageError = async (response: Response) => {
 };
 
 export interface FetchSSEOptions {
+  onAbort?: (text: string) => Promise<void>;
   onErrorHandle?: (error: ChatMessageError) => void;
   onMessageHandle?: (text: string, response: Response) => void;
+  onFinish?: (text: string, type: SSEFinishType) => Promise<void>;
 }
+
+/**
+ * SSE finish type
+ */
+type SSEFinishType = 'done' | 'error' | 'abort';
 
 /**
  * 使用流式方法获取数据
@@ -38,19 +45,37 @@ export const fetchSSE = async (fetchFn: () => Promise<Response>, options: FetchS
   const data = response.body;
 
   if (!data) return;
+  let output = '';
 
   const reader = data.getReader();
   const decoder = new TextDecoder();
 
   let done = false;
 
-  while (!done) {
-    const { value, done: doneReading } = await reader.read();
-    done = doneReading;
-    const chunkValue = decoder.decode(value, { stream: !doneReading });
+  let finishedType: SSEFinishType = 'done';
 
-    options.onMessageHandle?.(chunkValue, returnRes);
+  while (!done) {
+    try {
+      const { value, done: doneReading } = await reader.read();
+      done = doneReading;
+      const chunkValue = decoder.decode(value, { stream: true });
+
+      output += chunkValue;
+      options.onMessageHandle?.(chunkValue, returnRes);
+    } catch (error) {
+      done = true;
+
+      if ((error as TypeError).name === 'AbortError') {
+        finishedType = 'abort';
+        options?.onAbort?.(output);
+      } else {
+        finishedType = 'error';
+        console.error(error);
+      }
+    }
   }
+
+  await options?.onFinish?.(output, finishedType);
 
   return returnRes;
 };
