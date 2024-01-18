@@ -6,7 +6,7 @@ import { DivProps, MetaData } from '@/types';
 
 export type WithFalse<T> = T | false;
 
-export interface ChatItemProps {
+export interface ChatItemProps<T = Record<string, any>> {
   /**
    * @description Actions to be displayed in the chat item
    */
@@ -97,4 +97,6 @@ export interface ChatItemProps {
       ) => ReactNode
     >;
   };
+
+  originData?: T;
 }

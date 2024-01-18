@@ -82,7 +82,12 @@ const ChatList = memo<ChatListProps>(
             >
               <Fragment>
                 <HistoryDivider enable={enableHistoryDivider} text={text?.history} />
-                <ChatItem {...itemProps} {...item} chatItemRenderConfig={chatItemRenderConfig} />
+                <ChatItem
+                  {...itemProps}
+                  {...item}
+                  originData={item}
+                  chatItemRenderConfig={chatItemRenderConfig}
+                />
               </Fragment>
             </ShouldUpdateItem>
           );
