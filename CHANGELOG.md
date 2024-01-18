@@ -1,5 +1,30 @@
 # Changelog
 
+### [Version&nbsp;1.4.3](https://github.com/ant-design/pro-chat/compare/v1.4.2...v1.4.3)
+
+<sup>Released on **2024-01-18**</sup>
+
+#### 🐛 修复
+
+- ChatItem support originData.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- ChatItem support originData ([0e04f7a](https://github.com/ant-design/pro-chat/commit/0e04f7a))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ### [Version&nbsp;1.4.2](https://github.com/ant-design/pro-chat/compare/v1.4.1...v1.4.2)
 
 <sup>Released on **2024-01-17**</sup>
