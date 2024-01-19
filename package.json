@@ -101,7 +101,6 @@
     "father": "4.3.1",
     "husky": "^8.0.3",
     "jsdom": "^22.1.0",
-    "leva": "^0.9.35",
     "lint-staged": "^15.2.0",
     "prettier": "^3.2.1",
     "prettier-plugin-organize-imports": "^3.2.4",
