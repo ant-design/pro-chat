@@ -1,5 +1,30 @@
 # Changelog
 
+## [Version&nbsp;1.5.0](https://github.com/ant-design/pro-chat/compare/v1.4.4...v1.5.0)
+
+<sup>Released on **2024-01-19**</sup>
+
+#### ✨ 新特性
+
+- 清理无用依赖.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- 清理无用依赖, closes [#53](https://github.com/ant-design/pro-chat/issues/53) ([14e8a66](https://github.com/ant-design/pro-chat/commit/14e8a66))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ### [Version&nbsp;1.4.4](https://github.com/ant-design/pro-chat/compare/v1.4.3...v1.4.4)
 
 <sup>Released on **2024-01-19**</sup>
