@@ -1,5 +1,30 @@
 # Changelog
 
+### [Version&nbsp;1.4.4](https://github.com/ant-design/pro-chat/compare/v1.4.3...v1.4.4)
+
+<sup>Released on **2024-01-19**</sup>
+
+#### 🐛 修复
+
+- Slove Editable Button was not work.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- Slove Editable Button was not work, closes [#50](https://github.com/ant-design/pro-chat/issues/50) ([e77c39e](https://github.com/ant-design/pro-chat/commit/e77c39e))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ### [Version&nbsp;1.4.3](https://github.com/ant-design/pro-chat/compare/v1.4.2...v1.4.3)
 
 <sup>Released on **2024-01-18**</sup>
