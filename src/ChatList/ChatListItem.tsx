@@ -19,7 +19,7 @@ export type RenderMessageExtra = FC<ChatMessage>;
 export type RenderErrorMessage = FC<ChatMessage>;
 export type RenderAction = FC<ActionsBarProps & ChatMessage>;
 
-export interface ListItemProps {
+export interface ListItemProps<T = Record<string, any>> {
   groupNav?: ChatItemProps['avatarAddon'];
   loading?: boolean;
   /**
@@ -85,16 +85,19 @@ export interface ListItemProps {
    * @description 聊天项的渲染函数
    */
   chatItemRenderConfig?: ChatItemProps['chatItemRenderConfig'];
+
+  originData?: ChatItemProps<T>['originData'];
 }
 
-export type ChatListItemProps = ChatMessage & ListItemProps;
+export type ChatListItemProps<T = Record<string, any>> = ChatMessage & ListItemProps<T>;
 
-const Item = (props: ChatListItemProps) => {
+const ChatListItem = (props: ChatListItemProps) => {
   const {
     renderMessagesExtra,
     showTitle,
     onActionsClick,
     onMessageChange,
+    originData,
     type,
     text,
     renderMessages,
@@ -204,6 +207,7 @@ const Item = (props: ChatListItemProps) => {
         avatar={(item as any).meta}
         avatarAddon={groupNav}
         editing={editing}
+        originData={originData}
         error={error}
         errorMessage={<ErrorMessage data={item} />}
         loading={loading}
@@ -230,11 +234,18 @@ const Item = (props: ChatListItemProps) => {
       />
     );
     return dom;
-  }, [props.content, props.loading, props.id, (item as any).meta, item.updateAt || item.createAt]);
+  }, [
+    props.content,
+    props.loading,
+    props.id,
+    (item as any).meta,
+    item.updateAt || item.createAt,
+    editing,
+  ]);
 
   if (RenderItem) return <RenderItem key={item.id} {...props} />;
 
   return memoItem;
 };
 
-export default Item;
+export default ChatListItem;
