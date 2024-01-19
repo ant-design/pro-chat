@@ -85,7 +85,6 @@ const ChatItem = memo<ChatItemProps>((props) => {
       />
     );
     return chatItemRenderConfig?.contentRender?.(props, dom) || dom;
-    return;
   }, [
     error,
     message,
