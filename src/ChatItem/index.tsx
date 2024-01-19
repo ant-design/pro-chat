@@ -37,6 +37,7 @@ const ChatItem = memo<ChatItemProps>((props) => {
     errorMessage,
     chatItemRenderConfig,
     onDoubleClick,
+    originData = {},
     ...restProps
   } = props;
   const { mobile } = useResponsive();
@@ -55,7 +56,7 @@ const ChatItem = memo<ChatItemProps>((props) => {
     const dom = (
       <Avatar
         addon={avatarAddon}
-        avatar={avatar}
+        avatar={originData.avatar}
         loading={loading}
         onClick={onAvatarClick}
         placement={placement}
@@ -63,7 +64,7 @@ const ChatItem = memo<ChatItemProps>((props) => {
       />
     );
     return chatItemRenderConfig?.avatarRender?.(props, dom) || dom;
-  }, [avatar, placement, mobile, loading]);
+  }, [originData.avatar, placement, mobile, loading]);
 
   const messageContentDom = useMemo(() => {
     if (chatItemRenderConfig?.contentRender === false) return null;
