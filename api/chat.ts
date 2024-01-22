@@ -7,7 +7,7 @@ export const config = {
 
 export default async (req: Request) => {
   const openai = new OpenAI();
-  const payload = (await req.json()) as OpenAIChatStreamPayload;
+  const payload = (await req.json()) as any;
   const { messages, ...params } = payload;
 
   const formatMessages = messages.map((m) => ({
