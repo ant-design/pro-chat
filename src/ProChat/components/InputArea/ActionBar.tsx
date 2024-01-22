@@ -1,5 +1,4 @@
-import { createStyles } from 'antd-style';
-import { memo } from 'react';
+import { createStyles, cx } from 'antd-style';
 import { Flexbox } from 'react-layout-kit';
 
 import ActionIcon from '@/ActionIcon';
@@ -14,7 +13,7 @@ const useStyles = createStyles(({ css, token }) => ({
   `,
 }));
 
-export const ActionBar = () => {
+export const ActionBar = ({ className }: { className?: string }) => {
   const [clearMessage, actionsRender, flexConfig] = useStore((s) => [
     s.clearMessage,
     s.actions?.render,
@@ -42,7 +41,7 @@ export const ActionBar = () => {
         align={'center'}
         direction={'horizontal-reverse'}
         paddingInline={12}
-        className={styles.extra}
+        className={cx(styles.extra, className)}
         gap={8}
         {...flexConfig}
       >
@@ -52,4 +51,4 @@ export const ActionBar = () => {
   );
 };
 
-export default memo(ActionBar);
+export default ActionBar;

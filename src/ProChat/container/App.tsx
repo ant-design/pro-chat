@@ -6,7 +6,7 @@ import { Flexbox } from 'react-layout-kit';
 
 import { ConfigProvider } from 'antd';
 import ChatList from '../components/ChatList';
-import InputArea from '../components/InputArea';
+import ChatInputArea from '../components/InputArea';
 import ChatScrollAnchor from '../components/ScrollAnchor';
 import { useOverrideStyles } from './OverrideStyle';
 import { ProChatChatReference } from './StoreUpdater';
@@ -88,7 +88,7 @@ const App = memo<ConversationProps>(
             </div>
             {isRender ? <BackBottom target={ref} text={'返回底部'} /> : null}
           </>
-          <div ref={areaHtml}>{chatInput ?? <InputArea />}</div>
+          <div ref={areaHtml}>{chatInput ?? <ChatInputArea />}</div>
         </Flexbox>
       </RcResizeObserver>
     );

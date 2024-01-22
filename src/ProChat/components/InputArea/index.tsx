@@ -1,7 +1,7 @@
 import { SendOutlined } from '@ant-design/icons';
 import { Button, ConfigProvider } from 'antd';
 import { createStyles, cx, useResponsive } from 'antd-style';
-import { memo, useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
 import { useStore } from '../../store';
@@ -51,13 +51,14 @@ const useStyles = createStyles(({ css, responsive, token }) => ({
   `,
 }));
 
-export const InputArea = ({}) => {
+export const ChatInputArea = ({ className }: { className?: string }) => {
   const [sendMessage, isLoading, placeholder, inputAreaProps] = useStore((s) => [
     s.sendMessage,
     !!s.chatLoadingId,
     s.placeholder,
     s.inputAreaProps,
   ]);
+  const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
   const [message, setMessage] = useState('');
   const isChineseInput = useRef(false);
   const { styles, theme } = useStyles();
@@ -67,6 +68,8 @@ export const InputArea = ({}) => {
     sendMessage(message);
     setMessage('');
   };
+
+  const prefixClass = getPrefixCls('pro-chat-input-area');
 
   return (
     <ConfigProvider
@@ -80,13 +83,18 @@ export const InputArea = ({}) => {
         },
       }}
     >
-      <Flexbox gap={8} padding={16} className={styles.container}>
-        <ActionBar />
-        <Flexbox horizontal gap={8} align={'center'} className={styles.boxShadow}>
+      <Flexbox gap={8} padding={16} className={cx(styles.container, `${prefixClass}`, className)}>
+        <ActionBar className={`${prefixClass}-action-bar`} />
+        <Flexbox
+          horizontal
+          gap={8}
+          align={'center'}
+          className={cx(styles.boxShadow, `${prefixClass}-text-container`)}
+        >
           <AutoCompleteTextArea
             placeholder={placeholder || '请输入内容...'}
             {...inputAreaProps}
-            className={cx(styles.input, inputAreaProps?.className)}
+            className={cx(styles.input, inputAreaProps?.className, `${prefixClass}-component`)}
             value={message}
             onChange={(e) => {
               setMessage(e.target.value);
@@ -120,4 +128,4 @@ export const InputArea = ({}) => {
   );
 };
 
-export default memo(InputArea);
+export default ChatInputArea;
