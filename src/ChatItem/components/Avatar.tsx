@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
-import A from '@/components/Avatar';
+import AvatarComponent from '@/components/Avatar';
 
 import { useStyles } from '../style';
 import type { ChatItemProps } from '../type';
@@ -16,28 +16,30 @@ export interface AvatarProps {
   size?: number;
 }
 
-const Avatar = memo<AvatarProps>(({ loading, avatar, placement, addon, onClick, size = 40 }) => {
-  const { styles } = useStyles({ avatarSize: size });
-  const avatarContent = (
-    <div className={styles.avatarContainer}>
-      <A
-        avatar={avatar.avatar}
-        background={avatar.backgroundColor}
-        onClick={onClick}
-        size={size}
-        title={avatar.title}
-      />
-      <Loading loading={loading} placement={placement} />
-    </div>
-  );
+const Avatar = memo<AvatarProps>(
+  ({ loading, avatar = {}, placement, addon, onClick, size = 40 }) => {
+    const { styles } = useStyles({ avatarSize: size });
+    const avatarContent = (
+      <div className={styles.avatarContainer}>
+        <AvatarComponent
+          avatar={avatar.avatar}
+          background={avatar.backgroundColor}
+          onClick={onClick}
+          size={size}
+          title={avatar.title}
+        />
+        <Loading loading={loading} placement={placement} />
+      </div>
+    );
 
-  if (!addon) return avatarContent;
-  return (
-    <Flexbox align={'center'} className={styles.avatarGroupContainer} gap={8}>
-      {avatarContent}
-      {addon}
-    </Flexbox>
-  );
-});
+    if (!addon) return avatarContent;
+    return (
+      <Flexbox align={'center'} className={styles.avatarGroupContainer} gap={8}>
+        {avatarContent}
+        {addon}
+      </Flexbox>
+    );
+  },
+);
 
 export default Avatar;

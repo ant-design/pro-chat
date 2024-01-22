@@ -19,6 +19,7 @@ export interface MessageContentProps {
   renderMessage?: ChatItemProps['renderMessage'];
   text?: ChatItemProps['text'];
   type?: ChatItemProps['type'];
+  className?: string;
 }
 
 const MessageContent = memo<MessageContentProps>(
@@ -26,6 +27,7 @@ const MessageContent = memo<MessageContentProps>(
     editing,
     onChange,
     onEditingChange,
+    className,
     text,
     message,
     placement,
@@ -55,7 +57,7 @@ const MessageContent = memo<MessageContentProps>(
 
     return (
       <Flexbox
-        className={cx(styles.message, editing && styles.editingContainer)}
+        className={cx(styles.message, className, editing && styles.editingContainer)}
         onDoubleClick={onDoubleClick}
       >
         {messageContent}

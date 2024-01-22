@@ -4,21 +4,18 @@ import { Flexbox } from 'react-layout-kit';
 import { ChatItemProps } from '@/ChatItem';
 import { formatTime } from '@/ChatItem/utils/formatTime';
 
-import { useStyles } from '../style';
-
 export interface TitleProps {
   avatar: ChatItemProps['avatar'];
   placement?: ChatItemProps['placement'];
   showTitle?: ChatItemProps['showTitle'];
   time?: ChatItemProps['time'];
+  className?: string;
 }
 
-const Title = memo<TitleProps>(({ showTitle, placement, time, avatar }) => {
-  const { styles } = useStyles({ placement, showTitle });
-
+const Title = memo<TitleProps>(({ showTitle, className, placement, time, avatar }) => {
   return (
     <Flexbox
-      className={styles.name}
+      className={className}
       direction={placement === 'left' ? 'horizontal' : 'horizontal-reverse'}
       gap={4}
     >

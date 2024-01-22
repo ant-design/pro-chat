@@ -1,7 +1,8 @@
-import { Fragment, memo } from 'react';
+import { Fragment, memo, useContext } from 'react';
 
 import type { ChatMessage, DivProps } from '@/types';
 
+import { ConfigProvider } from 'antd';
 import ChatItem, { ChatListItemProps, ListItemProps } from './ChatListItem';
 import HistoryDivider from './HistoryDivider';
 import ShouldUpdateItem from './ShouldUpdateItem';
@@ -49,9 +50,10 @@ const ChatList = memo<ChatListProps>(
     ...props
   }) => {
     const { cx, styles } = useStyles();
-
+    const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
+    const prefixClass = getPrefixCls('pro-chat');
     return (
-      <div className={cx(styles.container, className)} {...props}>
+      <div className={cx(styles.container, `${prefixClass}-list`, className)} {...props}>
         {data.map((item, index) => {
           const itemProps = {
             loading: loadingId === item.id,
