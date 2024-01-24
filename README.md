@@ -47,6 +47,13 @@ To install `@ant-design/pro-chat`, run the following command:
 $ pnpm install @ant-design/pro-chat
 ```
 
+This project is based on `antd` `antd-style`, so if you have not installed these two dependencies, please install them.
+
+```bash
+$ pnpm install @ant-design/antd-style // peerDependencies
+$ pnpm install @ant-design/antd // peerDependencies
+```
+
 ### Compile with Next.js
 
 > \[!NOTE]
@@ -62,6 +69,10 @@ const nextConfig = {
   ],
 };
 ```
+
+> \[!NOTE]
+>
+> If you are using a new version of NextJs (higher than 14), you no longer need to configure transpilePackages to run in NextJs.
 
 <br/>
 

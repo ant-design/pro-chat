@@ -56,35 +56,11 @@ ProChat 提供的最关键的组件就是 ProChat 组件，你可以你可以非
 
 ProChat 后续会提供一系列原子化的组件，在特殊情况下你可能会想要使用某些 ProChat 中的独立组件，这些需求我们也会提供类似的组件来帮助大家更好的搭建应用。
 
+如果你有更多想法和需求，欢迎来 [Issue](https://github.com/ant-design/pro-chat/issues) 和 [讨论区](https://github.com/ant-design/pro-chat/discussions) 和我们沟通！
+
+> 我们下一个计划是提供一个复杂的模型参数面板：欢迎围观 [「RFC」New Component：ModalConfig 模型参数面板](https://github.com/ant-design/pro-chat/discussions/58)
+
 有部分的底层组件，例如 Markdown、Highlight 之类的，我们会依赖于 [ProEditor - 编辑器 UI 组件库](https://github.com/ant-design/pro-editor)，因此如果你也有搭建编辑器的场景，可以来这里看看。
-
-## 与框架集成
-
-### 与 Umi 集成
-
-在中后台的研发场景， umi 是一个非常不错的选择。ProEditor 与 umi 的集成非常容易。安装后直接使用即可。
-
-### 与 Next.js 集成
-
-[Next.js](https://nextjs.org/) 是社区中非常流行的研发框架。ProChat 与 Next.js 的集成也非常容易。
-
-由于 Next.js 是一个 CSR、SSR 同构的 React 框架，而 ProChat 默认只提供 esm 模块，因此在安装后，需要在 `next.config.(m)js` 中 `transpilePackages` 中加入相关依赖：
-
-> 在最新版本 NextJS 14 AppRoute 中可以不需要配置了
-
-```js
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  // 将纯 esm 模块转为 node 兼容模块
-  transpilePackages: [
-    '@ant-design/pro-chat',
-    'react-intersection-observer',
-    '@ant-design/pro-editor',
-  ],
-};
-```
-
-接下来和其他组件一样使用即可。
 
 ## 工程化能力
 

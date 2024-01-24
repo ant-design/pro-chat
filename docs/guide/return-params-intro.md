@@ -7,8 +7,6 @@ order: 5
 
 # 大模型出参介绍
 
-# LLM (Large Language Models) 及其返回参数介绍
-
 ## 市面上的大模型概览
 
 在人工智能领域，LLM（Large Language Models）指的是被训练来处理、理解和生成自然语言文本的大规模机器学习模型。目前市面上知名的LLM主要包括：

@@ -2,7 +2,7 @@
 title: ChatGPT
 group:
   title: 模型案例
-  order: 6
+  order: 1000
 nav:
   title: 文档
   order: 0
