@@ -16,6 +16,8 @@ description: a Chat Solution
 
 对于后台直接返回 Server Side Event 数据的情况需要前端自己封装 `ReadableStream`
 
+一般来说直接采用三方方案，例如 Vercel 的 AI 库进行解析即可，详情见 [文档 - 什么是流式输出](../guide/sse)
+
 <code src="./demos/sse.tsx"></code>
 
 ## 大数据渲染

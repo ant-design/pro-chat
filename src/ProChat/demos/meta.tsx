@@ -1,3 +1,6 @@
+/**
+ * compact: true
+ */
 import { chats } from '@/ProChat/mocks/threebody';
 import { ProChat } from '@ant-design/pro-chat';
 import { useTheme } from 'antd-style';
