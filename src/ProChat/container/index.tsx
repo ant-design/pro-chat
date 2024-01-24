@@ -15,6 +15,7 @@ export interface ProChatProps<T extends Record<string, any>> extends ChatProps<T
   style?: CSSProperties;
   className?: string;
   chatRef?: ProChatChatReference;
+  appStyle?: CSSProperties;
 }
 
 export function ProChat<T extends Record<string, any> = Record<string, any>>({
@@ -24,6 +25,7 @@ export function ProChat<T extends Record<string, any> = Record<string, any>>({
   style,
   className,
   chatItemRenderConfig,
+  appStyle,
   ...props
 }: ProChatProps<T>) {
   return (
@@ -31,7 +33,10 @@ export function ProChat<T extends Record<string, any> = Record<string, any>>({
       <Container
         style={{
           height: '100%',
+          width: '100%',
+          ...appStyle,
         }}
+        className={className}
       >
         <App
           chatItemRenderConfig={chatItemRenderConfig}

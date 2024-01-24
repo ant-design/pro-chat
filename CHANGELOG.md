@@ -1,5 +1,63 @@
 # Changelog
 
+### [Version&nbsp;1.6.1](https://github.com/ant-design/pro-chat/compare/v1.6.0...v1.6.1)
+
+<sup>Released on **2024-01-22**</sup>
+
+#### 🐛 修复
+
+- ProChat InputArea support className.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- ProChat InputArea support className ([5185073](https://github.com/ant-design/pro-chat/commit/5185073))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
+## [Version&nbsp;1.6.0](https://github.com/ant-design/pro-chat/compare/v1.5.0...v1.6.0)
+
+<sup>Released on **2024-01-22**</sup>
+
+#### ✨ 新特性
+
+- ProChat support className.
+
+#### 🐛 修复
+
+- Remove originData for dom.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- ProChat support className ([83d8bb3](https://github.com/ant-design/pro-chat/commit/83d8bb3))
+
+#### What's fixed
+
+- Remove originData for dom ([76f45f8](https://github.com/ant-design/pro-chat/commit/76f45f8))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;1.5.0](https://github.com/ant-design/pro-chat/compare/v1.4.4...v1.5.0)
 
 <sup>Released on **2024-01-19**</sup>

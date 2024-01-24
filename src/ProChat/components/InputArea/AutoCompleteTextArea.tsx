@@ -32,6 +32,7 @@ export const AutoCompleteTextArea: React.FC<TextAreaProps> = (props) => {
       <Input.TextArea
         size="large"
         {...props}
+        className={`${props.className}-textarea`}
         onFocus={(e) => {
           setOpen(false);
           props.onFocus?.(e);

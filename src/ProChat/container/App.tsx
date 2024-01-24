@@ -1,11 +1,12 @@
 import BackBottom from '@/BackBottom';
 import { createStyles } from 'antd-style';
 import RcResizeObserver from 'rc-resize-observer';
-import { CSSProperties, ReactNode, memo, useEffect, useRef, useState } from 'react';
+import { CSSProperties, ReactNode, memo, useContext, useEffect, useRef, useState } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
+import { ConfigProvider } from 'antd';
 import ChatList from '../components/ChatList';
-import InputArea from '../components/InputArea';
+import ChatInputArea from '../components/InputArea';
 import ChatScrollAnchor from '../components/ScrollAnchor';
 import { useOverrideStyles } from './OverrideStyle';
 import { ProChatChatReference } from './StoreUpdater';
@@ -38,6 +39,7 @@ const App = memo<ConversationProps>(
     const { styles: override } = useOverrideStyles();
     const [isRender, setIsRender] = useState(false);
     const [height, setHeight] = useState('100%' as string | number);
+    const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
     useEffect(() => {
       // 保证 ref 永远存在
       setIsRender(true);
@@ -51,6 +53,8 @@ const App = memo<ConversationProps>(
         };
       }
     }, []);
+
+    const prefixClass = getPrefixCls('pro-chat');
     return (
       <RcResizeObserver
         onResize={(e) => {
@@ -60,17 +64,17 @@ const App = memo<ConversationProps>(
         }}
       >
         <Flexbox
-          className={cx(override.container, className)}
+          className={cx(override.container, className, `${prefixClass}-container`)}
           style={{
             maxHeight: '100vh',
             height: '100%',
             ...style,
           }}
         >
-          <div style={{ position: 'relative' }}>
+          <>
             <div
-              className={styles}
               ref={ref}
+              className={cx(`${prefixClass}-chat-list-container`, styles)}
               style={{
                 height: (height as number) - (areaHtml.current?.clientHeight || 120) || '100%',
               }}
@@ -83,8 +87,8 @@ const App = memo<ConversationProps>(
               <ChatScrollAnchor />
             </div>
             {isRender ? <BackBottom target={ref} text={'返回底部'} /> : null}
-          </div>
-          <div ref={areaHtml}>{chatInput ?? <InputArea />}</div>
+          </>
+          <div ref={areaHtml}>{chatInput ?? <ChatInputArea />}</div>
         </Flexbox>
       </RcResizeObserver>
     );

@@ -1,7 +1,8 @@
 import { useResponsive } from 'antd-style';
-import { memo, useMemo } from 'react';
+import { memo, useContext, useMemo } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
+import { ConfigProvider } from 'antd';
 import Actions from './components/Actions';
 import Avatar from './components/Avatar';
 import BorderSpacing from './components/BorderSpacing';
@@ -37,6 +38,7 @@ const ChatItem = memo<ChatItemProps>((props) => {
     errorMessage,
     chatItemRenderConfig,
     onDoubleClick,
+    originData,
     ...restProps
   } = props;
   const { mobile } = useResponsive();
@@ -49,9 +51,11 @@ const ChatItem = memo<ChatItemProps>((props) => {
     type,
   });
 
+  const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
+  const prefixClass = getPrefixCls('pro-chat');
+
   const avatarDom = useMemo(() => {
     if (chatItemRenderConfig?.avatarRender === false) return null;
-
     const dom = (
       <Avatar
         addon={avatarAddon}
@@ -73,6 +77,7 @@ const ChatItem = memo<ChatItemProps>((props) => {
       <MessageContent
         editing={editing}
         message={message}
+        className={`${prefixClass}-list-item-message-content`}
         messageExtra={messageExtra}
         onChange={onChange}
         onDoubleClick={onDoubleClick}
@@ -96,17 +101,31 @@ const ChatItem = memo<ChatItemProps>((props) => {
     type,
     editing,
     errorMessage,
+    originData,
   ]);
 
   const actionsDom = useMemo(() => {
     if (chatItemRenderConfig?.actionsRender === false) return null;
-    const dom = <Actions actions={actions} editing={editing} placement={placement} type={type} />;
+    const dom = (
+      <Actions
+        actions={actions}
+        className={`${cx(styles.actions, `${prefixClass}-list-item-actions`)}`}
+      />
+    );
     return chatItemRenderConfig?.actionsRender?.(props, dom) || dom;
   }, [actions]);
 
   const titleDom = useMemo(() => {
     if (chatItemRenderConfig?.titleRender === false) return null;
-    const dom = <Title avatar={avatar} placement={placement} showTitle={showTitle} time={time} />;
+    const dom = (
+      <Title
+        className={`${cx(styles.name, `${prefixClass}-list-item-title`)}`}
+        avatar={avatar}
+        placement={placement}
+        showTitle={showTitle}
+        time={time}
+      />
+    );
     return chatItemRenderConfig?.titleRender?.(props, dom) || dom;
   }, [time, avatar]);
 
@@ -114,7 +133,12 @@ const ChatItem = memo<ChatItemProps>((props) => {
 
   const itemDom = (
     <Flexbox
-      className={cx(styles.container, className)}
+      className={cx(
+        styles.container,
+        `${prefixClass}-list-item`,
+        `${prefixClass}-list-item-${placement}`,
+        className,
+      )}
       direction={placement === 'left' ? 'horizontal' : 'horizontal-reverse'}
       gap={mobile ? 6 : 12}
       {...restProps}
@@ -122,7 +146,7 @@ const ChatItem = memo<ChatItemProps>((props) => {
       {avatarDom}
       <Flexbox
         align={placement === 'left' ? 'flex-start' : 'flex-end'}
-        className={styles.messageContainer}
+        className={cx(styles.messageContainer, `${prefixClass}-list-item-message-container`)}
       >
         {titleDom}
         <Flexbox
