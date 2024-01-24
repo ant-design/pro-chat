@@ -70,7 +70,7 @@ ProChat 后续会提供一系列原子化的组件，在特殊情况下你可能
 
 由于 Next.js 是一个 CSR、SSR 同构的 React 框架，而 ProChat 默认只提供 esm 模块，因此在安装后，需要在 `next.config.(m)js` 中 `transpilePackages` 中加入相关依赖：
 
-> 这里需要转换的内容除了 ProChat 外，另外几个是底层的 @ant-design/pro-editor 以及配套的依赖内容，后续我们会尝试优化让你可以少配置一些。
+> 在最新版本 NextJS 14 AppRoute 中可以不需要配置了
 
 ```js
 /** @type {import('next').NextConfig} */
