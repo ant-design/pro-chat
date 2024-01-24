@@ -22,6 +22,8 @@ npx create-next-app@latest
 
 修改 `next.config.(m)js` 中 `transpilePackages` 中加入相关依赖
 
+> 在最新版本 NextJS 14 AppRoute 中可以不需要配置了
+
 ```ts
 /** @type {import('next').NextConfig} */
 const nextConfig = {
