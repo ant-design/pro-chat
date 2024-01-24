@@ -28,7 +28,11 @@ export function ProChat<T extends Record<string, any> = Record<string, any>>({
 }: ProChatProps<T>) {
   return (
     <ProChatProvider {...props} devtoolOptions={__PRO_CHAT_STORE_DEVTOOLS__}>
-      <Container>
+      <Container
+        style={{
+          height: '100%',
+        }}
+      >
         <App
           chatItemRenderConfig={chatItemRenderConfig}
           chatInput={renderInput}

@@ -16,21 +16,22 @@ export default () => {
       mode={'float'}
       defaultPosition={{ x: 400, y: 30 }}
       minHeight={400}
-      style={{ background: theme.colorBgLayout }}
+      style={{ background: theme.colorBgLayout, display: 'flex', flexDirection: 'column' }}
     >
-      <Flexbox align={'center'} style={{ fontSize: 12 }}>
+      <Flexbox align={'center'} style={{ fontSize: 18 }}>
         客服助理
       </Flexbox>
-      <ProChat
-        request={async (messages) => {
-          const mockedData: string = `这是一段模拟的流式字符串数据。本次会话传入了${messages.length}条消息`;
+      <div style={{ flex: '1' }}>
+        <ProChat
+          request={async (messages) => {
+            const mockedData: string = `这是一段模拟的流式字符串数据。本次会话传入了${messages.length}条消息`;
 
-          const mockResponse = new MockResponse(mockedData);
+            const mockResponse = new MockResponse(mockedData);
 
-          return mockResponse.getResponse();
-        }}
-        style={{ height: '100vh' }}
-      />
+            return mockResponse.getResponse();
+          }}
+        />
+      </div>
     </DraggablePanel>
   );
 };
