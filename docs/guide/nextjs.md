@@ -2,7 +2,7 @@
 title: NextJs
 group:
   title: 前端框架
-  order: 10
+  order: 50
 nav:
   title: 文档
   order: 0
