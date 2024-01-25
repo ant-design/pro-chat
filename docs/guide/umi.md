@@ -2,7 +2,7 @@
 title: Umi
 group:
   title: 前端框架
-  order: 11
+  order: 51
 nav:
   title: 文档
   order: 0
