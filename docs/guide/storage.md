@@ -87,7 +87,7 @@ export default () => {
 
 ### 从 Request 拿到返回并更新到缓存中
 
-你只需要从 Request 拿到当前的 Message 上下文，我们会帮你排版好所有的顺序和内容，有一点是要知道的，当前的返回需要你手动拼接进去。
+你只需要从 onChatsChange 监听当前所有数据的变更，我们会帮你排版好所有的顺序和内容，全量更新即可。
 
 ```tsx
 import { ProChat } from '@ant-design/pro-chat';
