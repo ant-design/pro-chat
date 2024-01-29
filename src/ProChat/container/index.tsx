@@ -4,6 +4,7 @@ import { CSSProperties, ReactNode } from 'react';
 import App from './App';
 
 import { DevtoolsOptions } from 'zustand/middleware';
+import { BackBottomProps } from '../../BackBottom';
 import { ChatProps } from '../store';
 import { ProChatProvider } from './Provider';
 import { ProChatChatReference } from './StoreUpdater';
@@ -16,6 +17,7 @@ export interface ProChatProps<T extends Record<string, any>> extends ChatProps<T
   className?: string;
   chatRef?: ProChatChatReference;
   appStyle?: CSSProperties;
+  backtoBottomConfig?: Omit<BackBottomProps, 'target'>;
 }
 
 export function ProChat<T extends Record<string, any> = Record<string, any>>({
@@ -25,6 +27,7 @@ export function ProChat<T extends Record<string, any> = Record<string, any>>({
   style,
   className,
   chatItemRenderConfig,
+  backtoBottomConfig,
   appStyle,
   ...props
 }: ProChatProps<T>) {
@@ -34,6 +37,7 @@ export function ProChat<T extends Record<string, any> = Record<string, any>>({
         style={{
           height: '100%',
           width: '100%',
+          position: 'relative',
           ...appStyle,
         }}
         className={className}
@@ -44,6 +48,7 @@ export function ProChat<T extends Record<string, any> = Record<string, any>>({
           chatRef={props.chatRef}
           showTitle={showTitle}
           style={style}
+          backtoBottomConfig={backtoBottomConfig}
           className={className}
         />
       </Container>

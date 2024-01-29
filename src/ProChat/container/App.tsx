@@ -32,7 +32,16 @@ interface ConversationProps extends ProChatProps<any> {
 }
 
 const App = memo<ConversationProps>(
-  ({ chatInput, className, style, showTitle, chatRef, itemShouldUpdate, chatItemRenderConfig }) => {
+  ({
+    chatInput,
+    className,
+    style,
+    showTitle,
+    chatRef,
+    itemShouldUpdate,
+    chatItemRenderConfig,
+    backtoBottomConfig,
+  }) => {
     const ref = useRef<HTMLDivElement>(null);
     const areaHtml = useRef<HTMLDivElement>(null);
     const { styles, cx } = useStyles();
@@ -86,7 +95,16 @@ const App = memo<ConversationProps>(
               />
               <ChatScrollAnchor />
             </div>
-            {isRender ? <BackBottom target={ref} text={'返回底部'} /> : null}
+            {isRender ? (
+              <BackBottom
+                style={{
+                  bottom: 138,
+                }}
+                target={ref}
+                text={'返回底部'}
+                {...backtoBottomConfig}
+              />
+            ) : null}
           </>
           <div ref={areaHtml}>{chatInput ?? <ChatInputArea />}</div>
         </Flexbox>
