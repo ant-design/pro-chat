@@ -1,5 +1,30 @@
 # Changelog
 
+## [Version&nbsp;1.7.0](https://github.com/ant-design/pro-chat/compare/v1.6.1...v1.7.0)
+
+<sup>Released on **2024-01-29**</sup>
+
+#### ✨ 新特性
+
+- 添加 BackToBottom 按钮的各种配置透出.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- 添加 BackToBottom 按钮的各种配置透出, closes [#69](https://github.com/ant-design/pro-chat/issues/69) ([7edb085](https://github.com/ant-design/pro-chat/commit/7edb085))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ### [Version&nbsp;1.6.1](https://github.com/ant-design/pro-chat/compare/v1.6.0...v1.6.1)
 
 <sup>Released on **2024-01-22**</sup>
