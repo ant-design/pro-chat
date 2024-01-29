@@ -37,6 +37,7 @@ export function ProChat<T extends Record<string, any> = Record<string, any>>({
         style={{
           height: '100%',
           width: '100%',
+          position: 'relative',
           ...appStyle,
         }}
         className={className}

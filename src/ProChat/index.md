@@ -171,7 +171,7 @@ useProChat hooks 必须在包裹 `ProChatProvider` 后方可使用。
 | --- | --- | --- | --- | --- | --- |
 | className | 类名 | string | - |
 | style | 额外添加的css内容 | CSSProperties | - |
-| onClick | 点击按钮的回掉 | React.MouseEventHandler<`HTMLElement`> | - |
-| text | 展示的内容 | string | `Back to bottom` | --> | --> |
+| onClick | 点击按钮的回掉 | `React.MouseEventHandler<HTMLElement>` | - |
+| text | 展示的内容 | string | `Back to bottom` | -- | -- |
 | render | 自定义渲染的方法 | (defaultDom: React.ReactNode,scrollToBottom,BackBottomConfig: BackBottomProps) => React.ReactNode | - |
 | alwaysShow | 是否一直显示按钮 | boolean | false |
