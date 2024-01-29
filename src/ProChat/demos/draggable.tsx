@@ -1,6 +1,5 @@
 /**
  * iframe: 500
- * title: 作为侧边栏使用
  */
 import { MockResponse } from '@/ProChat/mocks/streamResponse';
 import { ProChat } from '@ant-design/pro-chat';
