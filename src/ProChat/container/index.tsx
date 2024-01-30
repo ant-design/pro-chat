@@ -10,7 +10,11 @@ import { ProChatProvider } from './Provider';
 import { ProChatChatReference } from './StoreUpdater';
 
 export interface ProChatProps<T extends Record<string, any>> extends ChatProps<T> {
-  renderInput?: ReactNode;
+  renderInputArea?: (
+    defaultDom: ReactNode,
+    onMessageSend: (message: string) => void | Promise<any>,
+    onClearAllHistory: () => void,
+  ) => ReactNode;
   __PRO_CHAT_STORE_DEVTOOLS__?: boolean | DevtoolsOptions;
   showTitle?: boolean;
   style?: CSSProperties;
@@ -21,7 +25,7 @@ export interface ProChatProps<T extends Record<string, any>> extends ChatProps<T
 }
 
 export function ProChat<T extends Record<string, any> = Record<string, any>>({
-  renderInput,
+  renderInputArea,
   __PRO_CHAT_STORE_DEVTOOLS__,
   showTitle,
   style,
@@ -44,7 +48,7 @@ export function ProChat<T extends Record<string, any> = Record<string, any>>({
       >
         <App
           chatItemRenderConfig={chatItemRenderConfig}
-          chatInput={renderInput}
+          renderInputArea={renderInputArea}
           chatRef={props.chatRef}
           showTitle={showTitle}
           style={style}

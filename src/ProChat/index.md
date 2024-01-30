@@ -76,6 +76,14 @@ ProChat 使用 `meta` 来表意会话双方的头像、名称等信息。设定�
 
 <code src="./demos/backtoBottomConfig.tsx"></code>
 
+## 自定义输入区域
+
+有些时候会觉得默认的输入区域不够好用，或是你有一些输入模块的自定义需求，可以使用 renderInputArea 来进行自定义输入
+
+下面是一个支持图片上传的示范案例，试试上传文件并提交看看吧。
+
+<code src="./demos/renderInputArea.tsx"></code>
+
 ## 悬浮窗使用
 
 将 `ProChat` 组件作为会话解决方案
@@ -165,13 +173,11 @@ useProChat hooks 必须在包裹 `ProChatProvider` 后方可使用。
 
 ## backtoBottomConfig
 
-回到底部按钮所支持的 api 内容
-
 | 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- |
 | className | 类名 | string | - |
 | style | 额外添加的css内容 | CSSProperties | - |
 | onClick | 点击按钮的回掉 | `React.MouseEventHandler<HTMLElement>` | - |
-| text | 展示的内容 | string | `Back to bottom` | -- | -- |
+| text | 展示的内容 | string | `Back to bottom` |
 | render | 自定义渲染的方法 | (defaultDom: React.ReactNode,scrollToBottom,BackBottomConfig: BackBottomProps) => React.ReactNode | - |
 | alwaysShow | 是否一直显示按钮 | boolean | false |
