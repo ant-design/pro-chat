@@ -1,5 +1,38 @@
 # Changelog
 
+## [Version&nbsp;1.9.0](https://github.com/ant-design/pro-chat/compare/v1.8.0...v1.9.0)
+
+<sup>Released on **2024-02-02**</sup>
+
+#### ✨ 新特性
+
+- Chats should use array.
+
+#### 🐛 修复
+
+- 修复因为 Delete 导致的一些问题.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- Chats should use array ([e31a403](https://github.com/ant-design/pro-chat/commit/e31a403))
+
+#### What's fixed
+
+- 修复因为 Delete 导致的一些问题, closes [#80](https://github.com/ant-design/pro-chat/issues/80) ([dc439f4](https://github.com/ant-design/pro-chat/commit/dc439f4))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;1.8.0](https://github.com/ant-design/pro-chat/compare/v1.7.0...v1.8.0)
 
 <sup>Released on **2024-02-02**</sup>
