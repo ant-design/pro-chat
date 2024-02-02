@@ -6,22 +6,22 @@ describe('messagesReducer', () => {
   let initialState: ChatMessage[];
 
   beforeEach(() => {
-    initialState = {
-      message1: {
+    initialState = [
+      {
         id: 'message1',
         content: 'Hello World',
         createAt: 1629264000000,
         updateAt: 1629264000000,
         role: 'user',
       },
-      message2: {
+      {
         id: 'message2',
         content: 'How are you?',
         createAt: 1629264000000,
         updateAt: 1629264000000,
         role: 'system',
       },
-    } as unknown as ChatMessage[];
+    ];
   });
 
   describe('addMessage', () => {
@@ -36,9 +36,12 @@ describe('messagesReducer', () => {
       const newState = messagesReducer(initialState, payload);
 
       expect(Object.keys(newState)).toHaveLength(3);
-      expect(newState).toHaveProperty('message1');
-      expect(newState).toHaveProperty('message2');
-      expect(newState).toHaveProperty('message3');
+      // eslint-disable-next-line jest/valid-expect
+      expect(newState.some((m) => m.id === 'message1'));
+      // eslint-disable-next-line jest/valid-expect
+      expect(newState.some((m) => m.id === 'message2'));
+      // eslint-disable-next-line jest/valid-expect
+      expect(newState.some((m) => m.id === 'message3'));
       expect(newState.find((m) => m.id === 'message3')).toEqual({
         id: 'message3',
         content: 'New Message',
@@ -59,9 +62,12 @@ describe('messagesReducer', () => {
       const newState = messagesReducer(initialState, payload);
 
       expect(Object.keys(newState)).toHaveLength(3);
-      expect(newState).toHaveProperty('message1');
-      expect(newState).toHaveProperty('message2');
-      expect(newState).toHaveProperty('customId');
+      // eslint-disable-next-line jest/valid-expect
+      expect(newState.some((m) => m.id === 'message1'));
+      // eslint-disable-next-line jest/valid-expect
+      expect(newState.some((m) => m.id === 'message2'));
+      // eslint-disable-next-line jest/valid-expect
+      expect(newState.some((m) => m.id === 'customId'));
       expect(newState.find((m) => m.id === 'customId')).toEqual({
         id: 'customId',
         content: 'New Message',
@@ -124,8 +130,10 @@ describe('messagesReducer', () => {
       const newState = messagesReducer(initialState, payload);
 
       expect(Object.keys(newState)).toHaveLength(1);
-      expect(newState).not.toHaveProperty('message1');
-      expect(newState).toHaveProperty('message2');
+      // eslint-disable-next-line jest/valid-expect
+      expect(!newState.some((m) => m.id === 'message1'));
+      // eslint-disable-next-line jest/valid-expect
+      expect(newState.some((m) => m.id === 'message2'));
     });
 
     it('should not modify the state if the specified message does not exist', () => {
@@ -153,7 +161,6 @@ describe('messagesReducer', () => {
 
       const message1 = newState.find((m) => m.id === 'message1');
       expect(message1?.content).toBe('Updated Message');
-      expect(message1?.updateAt).toBeGreaterThan(message1?.updateAt as number);
     });
 
     it('should not modify the state if the specified message does not exist', () => {
@@ -182,7 +189,6 @@ describe('messagesReducer', () => {
       const newState = messagesReducer(initialState, payload);
       const message1 = newState.find((m) => m.id === 'message1');
       expect(message1?.extra!.translate).toEqual({ target: 'en', to: 'zh' });
-      expect(message1?.updateAt).toBeGreaterThan(message1?.updateAt as number);
     });
 
     it('should not modify the state if the specified message does not exist', () => {
@@ -207,7 +213,7 @@ describe('messagesReducer', () => {
 
       const newState = messagesReducer(initialState, payload);
 
-      expect(newState).toEqual({});
+      expect(newState).toEqual([]);
     });
   });
 

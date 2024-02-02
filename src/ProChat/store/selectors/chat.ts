@@ -12,7 +12,7 @@ export const currentChats = (s: ChatStore): ChatMessage[] => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { avatar, title, backgroundColor, ...rest } = s.userMeta;
     const assistant = s.assistantMeta;
-    switch (message.role) {
+    switch (message?.role) {
       case 'user': {
         return {
           avatar,
