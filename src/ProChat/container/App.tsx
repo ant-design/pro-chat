@@ -24,16 +24,20 @@ const useStyles = createStyles(
 );
 
 interface ConversationProps extends ProChatProps<any> {
-  chatInput?: ReactNode;
   showTitle?: boolean;
   style?: CSSProperties;
   className?: string;
   chatRef?: ProChatChatReference;
+  renderInputArea?: (
+    defaultDom: ReactNode,
+    onMessageSend: (message: string) => void | Promise<any>,
+    onClearAllHistory: () => void,
+  ) => ReactNode;
 }
 
 const App = memo<ConversationProps>(
   ({
-    chatInput,
+    renderInputArea,
     className,
     style,
     showTitle,
@@ -106,7 +110,7 @@ const App = memo<ConversationProps>(
               />
             ) : null}
           </>
-          <div ref={areaHtml}>{chatInput ?? <ChatInputArea />}</div>
+          <div ref={areaHtml}>{<ChatInputArea renderInputArea={renderInputArea} />}</div>
         </Flexbox>
       </RcResizeObserver>
     );

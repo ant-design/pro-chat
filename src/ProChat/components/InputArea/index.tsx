@@ -1,11 +1,12 @@
 import { SendOutlined } from '@ant-design/icons';
 import { Button, ConfigProvider } from 'antd';
 import { createStyles, cx, useResponsive } from 'antd-style';
-import { useContext, useRef, useState } from 'react';
+import { ReactNode, useContext, useRef, useState } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
 import { useStore } from '../../store';
 
+import { useMergedState } from 'rc-util';
 import ActionBar from './ActionBar';
 import { AutoCompleteTextArea } from './AutoCompleteTextArea';
 
@@ -51,12 +52,24 @@ const useStyles = createStyles(({ css, responsive, token }) => ({
   `,
 }));
 
-export const ChatInputArea = ({ className }: { className?: string }) => {
-  const [sendMessage, isLoading, placeholder, inputAreaProps] = useStore((s) => [
+type ChatInputAreaProps = {
+  className?: string;
+  onSend?: (message: string) => boolean | Promise<boolean>;
+  renderInputArea?: (
+    defaultDom: ReactNode,
+    onMessageSend: (message: string) => void | Promise<any>,
+    onClearAllHistory: () => void,
+  ) => ReactNode;
+};
+
+export const ChatInputArea = (props: ChatInputAreaProps) => {
+  const { className, onSend, renderInputArea } = props || {};
+  const [sendMessage, isLoading, placeholder, inputAreaProps, clearMessage] = useStore((s) => [
     s.sendMessage,
     !!s.chatLoadingId,
     s.placeholder,
     s.inputAreaProps,
+    s.clearMessage,
   ]);
   const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
   const [message, setMessage] = useState('');
@@ -64,14 +77,26 @@ export const ChatInputArea = ({ className }: { className?: string }) => {
   const { styles, theme } = useStyles();
   const { mobile } = useResponsive();
 
-  const send = () => {
-    sendMessage(message);
-    setMessage('');
+  const [ButtonLoading, setButtonLoading] = useMergedState(isLoading);
+
+  const send = async () => {
+    if (onSend) {
+      setButtonLoading(true);
+      const success = await onSend(message);
+      setButtonLoading(false);
+      if (success) {
+        sendMessage(message);
+        setMessage('');
+      }
+    } else {
+      sendMessage(message);
+      setMessage('');
+    }
   };
 
   const prefixClass = getPrefixCls('pro-chat-input-area');
 
-  return (
+  const defaultInputArea = (
     <ConfigProvider
       theme={{
         token: {
@@ -115,7 +140,7 @@ export const ChatInputArea = ({ className }: { className?: string }) => {
           />
           {mobile ? null : (
             <Button
-              loading={isLoading}
+              loading={ButtonLoading}
               type="text"
               className={styles.btn}
               onClick={() => send()}
@@ -126,6 +151,18 @@ export const ChatInputArea = ({ className }: { className?: string }) => {
       </Flexbox>
     </ConfigProvider>
   );
+
+  if (renderInputArea) {
+    return renderInputArea(
+      defaultInputArea,
+      (message) => {
+        sendMessage(message);
+      },
+      clearMessage,
+    );
+  }
+
+  return defaultInputArea;
 };
 
 export default ChatInputArea;
