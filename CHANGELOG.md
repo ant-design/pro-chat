@@ -1,5 +1,39 @@
 # Changelog
 
+## [Version&nbsp;1.8.0](https://github.com/ant-design/pro-chat/compare/v1.7.0...v1.8.0)
+
+<sup>Released on **2024-02-02**</sup>
+
+#### ✨ 新特性
+
+- 支持自定义 InputAreaRender.
+
+#### 🐛 修复
+
+- ChatItemRenderConfig.render support defaultDom, slove chatItemRenderConfig render not work use Default dom.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- 支持自定义 InputAreaRender, closes [#74](https://github.com/ant-design/pro-chat/issues/74) ([d09e04a](https://github.com/ant-design/pro-chat/commit/d09e04a))
+
+#### What's fixed
+
+- ChatItemRenderConfig.render support defaultDom ([5a1df54](https://github.com/ant-design/pro-chat/commit/5a1df54))
+- Slove chatItemRenderConfig render not work use Default dom, closes [#79](https://github.com/ant-design/pro-chat/issues/79) ([a5763fd](https://github.com/ant-design/pro-chat/commit/a5763fd))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ### [Version&nbsp;1.7.1](https://github.com/ant-design/pro-chat/compare/v1.7.0...v1.7.1)
 
 <sup>Released on **2024-02-02**</sup>
