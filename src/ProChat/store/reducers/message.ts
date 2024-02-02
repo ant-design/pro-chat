@@ -66,10 +66,12 @@ export const messagesReducer = (
     }
 
     case 'deleteMessage': {
-      return produce(state, (draftState) => {
-        const index = draftState.findIndex((m) => m.id === payload.id);
-        delete draftState[index];
-      });
+      return state
+        .map((m) => {
+          if (m.id !== payload.id) return m;
+          return false;
+        })
+        .filter(Boolean) as ChatMessage<any>[];
     }
 
     case 'updateMessage': {
@@ -87,6 +89,7 @@ export const messagesReducer = (
     case 'updateMessageExtra': {
       return produce(state, (draftState) => {
         const { id, key, value } = payload;
+
         const message = draftState.find((m) => m.id === id);
         if (!message) return;
 
@@ -101,15 +104,7 @@ export const messagesReducer = (
     }
 
     case 'resetMessages': {
-      return produce(state, (draftState) => {
-        const messages = Object.values(draftState);
-
-        // 删除上述找到的消息
-        for (const message of messages) {
-          const index = draftState.findIndex((m) => m.id === message.id);
-          delete draftState[index];
-        }
-      });
+      return [];
     }
 
     default: {

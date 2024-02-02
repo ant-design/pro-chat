@@ -17,7 +17,7 @@ export default () => {
           title: 'Ant Design',
         }}
         assistantMeta={{ avatar: '🛸', title: '三体世界', backgroundColor: '#67dedd' }}
-        initialChats={chats.chats}
+        initialChats={Object.values(chats.chats)}
       />
     </div>
   );
