@@ -7,7 +7,12 @@ import { useRefFunction } from './useRefFunction';
 export interface ProChatInstance
   extends Pick<
     ChatStore,
-    'resendMessage' | 'stopGenerateMessage' | 'sendMessage' | 'deleteMessage' | 'clearMessage'
+    | 'resendMessage'
+    | 'stopGenerateMessage'
+    | 'sendMessage'
+    | 'deleteMessage'
+    | 'clearMessage'
+    | 'createAIMessage'
   > {
   /**
    * 获取当前聊天列表对象
@@ -51,14 +56,11 @@ export const useProChat = () => {
     deleteMessage,
     clearMessage,
     dispatchMessage,
+    createAIMessage,
   } = storeApi.getState();
 
   const getChats = useRefFunction(() => storeApi.getState().chats);
   const getChatMessages = useRefFunction(() => chatSelectors.currentChats(storeApi.getState()));
-
-  const setMessageContent = useRefFunction((id: string, content: string) => {
-    dispatchMessage({ type: 'updateMessage', id, key: 'content', value: content });
-  });
 
   const setMessageValue = useRefFunction(
     (id: string, key: keyof ChatMessage<Record<string, any>>, value) => {
@@ -66,12 +68,17 @@ export const useProChat = () => {
     },
   );
 
+  const setMessageContent = useRefFunction((id: string, content: string) => {
+    dispatchMessage({ type: 'updateMessage', id, key: 'content', value: content });
+  });
+
   return useMemo<ProChatInstance>(() => {
     return {
       getChats,
       getChatMessages,
       resendMessage,
       sendMessage,
+      createAIMessage,
       stopGenerateMessage,
       deleteMessage,
       clearMessage,

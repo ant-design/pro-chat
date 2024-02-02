@@ -40,6 +40,14 @@ const Control = () => {
           发送一条消息
         </Button>
         <Button
+          type={'primary'}
+          onClick={() => {
+            proChat.createAIMessage('这是一条创建出来的 AI 的消息');
+          }}
+        >
+          创建一条 AI 的消息
+        </Button>
+        <Button
           onClick={() => {
             const messages = proChat.getChatMessages();
 
