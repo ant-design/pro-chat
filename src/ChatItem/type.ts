@@ -87,13 +87,14 @@ export interface ChatItemProps<T = Record<string, any>> {
     render?: WithFalse<
       (
         props: ChatItemProps,
-        defaultDom: {
+        domsMap: {
           avatar: ReactNode;
           title: ReactNode;
           messageContent: ReactNode;
           actions: ReactNode;
           itemDom: ReactNode;
         },
+        defaultDom: ReactNode,
       ) => ReactNode
     >;
   };

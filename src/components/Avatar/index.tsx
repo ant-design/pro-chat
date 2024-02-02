@@ -31,6 +31,23 @@ export interface AvatarProps extends AntAvatarProps {
   title?: string;
 }
 
+/**
+ * @module Avatar
+ * @description 头像组件，用于显示用户头像信息
+ * @exports Avatar
+ * @component
+ *
+ * @param {string} [avatar] - 头像图片的URL或base64数据
+ * @param {string} [background] - 头像的背景颜色
+ * @param {'circle' | 'square'} [shape='circle'] - 头像的形状，默认为圆形
+ * @param {number} [size=40] - 头像的尺寸（像素）
+ * @param {string} [title] - 如果未提供头像，则显示的标题文本
+ * @param {string} [className] - 自定义的CSS类名
+ * @param {Function} [onClick] - 点击头像时触发的回调函数
+ * @param {Object} [style] - 自定义的行内样式
+ * @param {Object} [props] - 其他传递给AntAvatar组件的属性
+ *
+ */
 const Avatar = memo<AvatarProps>(
   ({
     className,

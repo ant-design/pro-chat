@@ -19,48 +19,64 @@ export type RenderMessageExtra = FC<ChatMessage>;
 export type RenderErrorMessage = FC<ChatMessage>;
 export type RenderAction = FC<ActionsBarProps & ChatMessage>;
 
+/**
+ * 聊天列表项的属性。
+ * @template T 聊天列表项的额外数据类型。
+ */
 export interface ListItemProps<T = Record<string, any>> {
+  /**
+   * 聊天项的导航组件。
+   */
   groupNav?: ChatItemProps['avatarAddon'];
+  /**
+   * 是否正在加载。
+   */
   loading?: boolean;
   /**
-   * @description 点击操作按钮的回调函数
+   * 点击操作按钮的回调函数。
    */
   onActionsClick?: OnActionClick;
   /**
-   * @description 消息变化的回调函数
+   * 消息变化的回调函数。
    */
   onMessageChange?: OnMessageChange;
+  /**
+   * 渲染操作按钮的函数。
+   */
   renderActions?: {
     [actionKey: string]: RenderAction;
   };
   /**
-   * @description 渲染错误消息的函数
+   * 渲染错误消息的函数。
    */
   renderErrorMessages?: {
     [errorType: 'default' | string]: RenderErrorMessage;
   };
+  /**
+   * 渲染列表项的函数。
+   */
   renderItems?: {
     [role: RenderRole]: RenderItem;
   };
   /**
-   * @description 渲染消息的函数
+   * 渲染消息的函数。
    */
   renderMessages?: {
     [role: RenderRole]: RenderMessage;
   };
   /**
-   * @description 渲染消息额外内容的函数
+   * 渲染消息额外内容的函数。
    */
   renderMessagesExtra?: {
     [role: RenderRole]: RenderMessageExtra;
   };
   /**
-   * @description 是否显示聊天项的名称
+   * 是否显示聊天项的名称。
    * @default false
    */
   showTitle?: boolean;
   /**
-   * @description 文本内容
+   * 文本内容。
    */
   text?: ChatItemProps['text'] &
     ActionsBarProps['text'] & {
@@ -70,27 +86,36 @@ export interface ListItemProps<T = Record<string, any>> {
       [key: string]: string;
     };
   /**
-   * @description 聊天列表的类型
+   * 聊天列表的类型。
    * @default 'chat'
    */
   type?: 'docs' | 'chat';
-
   /**
-   * @description 聊天项的类名
+   * 聊天项的类名。
    * @default ''
    */
   chatItemClassName?: string;
-
   /**
-   * @description 聊天项的渲染函数
+   * 聊天项的渲染函数。
    */
   chatItemRenderConfig?: ChatItemProps['chatItemRenderConfig'];
-
+  /**
+   * 原始数据。
+   */
   originData?: ChatItemProps<T>['originData'];
 }
 
+/**
+ * 聊天列表项的属性。
+ * @template T 聊天列表项的额外数据类型。
+ */
 export type ChatListItemProps<T = Record<string, any>> = ChatMessage & ListItemProps<T>;
 
+/**
+ * 聊天列表项组件。
+ * @param props 组件属性。
+ * @returns 聊天列表项组件。
+ */
 const ChatListItem = (props: ChatListItemProps) => {
   const {
     renderMessagesExtra,
@@ -115,6 +140,10 @@ const ChatListItem = (props: ChatListItemProps) => {
 
   const { message } = App.useApp();
 
+  /**
+   * 渲染列表项的函数。
+   * @returns 渲染列表项的函数。
+   */
   const RenderItem = useMemo(() => {
     if (!renderItems || !item?.role) return;
     let renderFunction;
@@ -124,6 +153,12 @@ const ChatListItem = (props: ChatListItemProps) => {
     return renderFunction;
   }, [renderItems?.[item.role]]);
 
+  /**
+   * 渲染消息的函数。
+   * @param editableContent 可编辑的内容。
+   * @param data 聊天消息的数据。
+   * @returns 渲染消息的组件。
+   */
   const RenderMessage = useRefFunction(
     ({ editableContent, data }: { data: ChatMessage; editableContent: ReactNode }) => {
       if (!renderMessages || !item?.role) return;
@@ -136,6 +171,11 @@ const ChatListItem = (props: ChatListItemProps) => {
     },
   );
 
+  /**
+   * 渲染消息额外内容的函数。
+   * @param data 聊天消息的数据。
+   * @returns 渲染消息额外内容的组件。
+   */
   const MessageExtra = useRefFunction(({ data }: { data: ChatMessage }) => {
     if (!renderMessagesExtra || !item?.role) return;
     let RenderFunction;
@@ -146,6 +186,11 @@ const ChatListItem = (props: ChatListItemProps) => {
     return <RenderFunction {...data} />;
   });
 
+  /**
+   * 渲染错误消息的函数。
+   * @param data 聊天消息的数据。
+   * @returns 渲染错误消息的组件。
+   */
   const ErrorMessage = useRefFunction(({ data }: { data: ChatMessage }) => {
     if (!renderErrorMessages || !item?.error?.type) return;
     let RenderFunction;
@@ -157,6 +202,11 @@ const ChatListItem = (props: ChatListItemProps) => {
     return <RenderFunction {...data} />;
   });
 
+  /**
+   * 渲染操作按钮的函数。
+   * @param data 聊天消息的数据。
+   * @returns 渲染操作按钮的组件。
+   */
   const Actions = useRefFunction(({ data }: { data: ChatMessage }) => {
     if (!renderActions || !item?.role) return;
     let RenderFunction;
@@ -188,6 +238,10 @@ const ChatListItem = (props: ChatListItemProps) => {
     );
   });
 
+  /**
+   * 错误信息。
+   * @returns 错误信息对象。
+   */
   const error = useMemo(() => {
     if (!item.error) return;
     return {

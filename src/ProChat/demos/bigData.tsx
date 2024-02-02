@@ -5,6 +5,7 @@
 import { ProChat } from '@ant-design/pro-chat';
 import { useTheme } from 'antd-style';
 
+import { Alert } from 'antd';
 import { MockResponse } from '../mocks/streamResponse';
 
 const initialChats = new Array(100)
@@ -25,6 +26,16 @@ const initialChats = new Array(100)
     },
     {} as Record<string, any>,
   );
+
+initialChats['chat-20'] = {
+  id: 'chat-20',
+  content: '这是一条通知消息' + 20,
+  role: 'notification',
+  updateAt: Date.now(),
+  createAt: Date.now(),
+};
+
+console.log(initialChats);
 
 export default () => {
   const theme = useTheme();
@@ -64,6 +75,22 @@ export default () => {
             );
           },
           actionsRender: false,
+          render: (item, dom, defaultDom) => {
+            if (item?.originData?.role === 'notification') {
+              return (
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <Alert message={item.message} type="info" showIcon />
+                </div>
+              );
+            }
+            return defaultDom;
+          },
         }}
         request={async (messages) => {
           const mockedData: string = `这是一段模拟的流式字符串数据。本次会话传入了${messages.length}条消息`;

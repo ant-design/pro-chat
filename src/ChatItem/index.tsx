@@ -168,14 +168,16 @@ const ChatItem = memo<ChatItemProps>((props) => {
       {mobile && type === 'block' && <BorderSpacing borderSpacing={MOBILE_AVATAR_SIZE} />}
     </Flexbox>
   );
-  return (
-    chatItemRenderConfig?.render?.(props, {
+  return chatItemRenderConfig?.render?.(
+    props,
+    {
       avatar: avatarDom,
       messageContent: messageContentDom,
       actions: actionsDom,
       title: titleDom,
       itemDom,
-    }) || itemDom
+    },
+    itemDom,
   );
 });
 
