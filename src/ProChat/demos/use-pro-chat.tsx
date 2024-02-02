@@ -71,8 +71,12 @@ const Control = () => {
           danger
           onClick={() => {
             const messages = proChat.getChatMessages();
-            proChat.deleteMessage(messages[0].id);
-            message.success('已删除第一条消息');
+            if (!messages.length) {
+              message.warning('会话为空');
+            } else {
+              proChat.deleteMessage(messages[0].id);
+              message.success('已删除第一条消息');
+            }
           }}
         >
           删除第一条消息
