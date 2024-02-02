@@ -72,9 +72,9 @@ ProChat 使用 `meta` 来表意会话双方的头像、名称等信息。设定�
 
 ## 自定义「回到底部」按钮
 
-你可以通过 backtoBottomConfig 参数对「回到底部」按钮进行不同程度的自定义
+你可以通过 backToBottomConfig 参数对「回到底部」按钮进行不同程度的自定义
 
-<code src="./demos/backtoBottomConfig.tsx"></code>
+<code src="./demos/backToBottomConfig.tsx"></code>
 
 ## 自定义输入区域
 
@@ -129,8 +129,8 @@ useProChat hooks 必须在包裹 `ProChatProvider` 后方可使用。
 | userMeta | 用户元数据 | MetaData | - |
 | assistantMeta | 助手元数据 | MetaData | - |
 | config | 语言模型角色设定 | ModelConfig | - |
-| chats | 聊天记录 | ChatMessageMap | - |
-| onChatsChange | 聊天记录变化回调函数， | (chats: ChatMessageMap) => void | chat |
+| chats | 聊天记录 | ChatMessage[] | - |
+| onChatsChange | 聊天记录变化回调函数， | (chats: ChatMessage[]) => void | chat |
 | displayMode | 显示模式，默认是 chat | 'chat' \| 'docs' | - |
 | helloMessage | 欢迎消息 | string\| ReactNode | - |
 | request | 请求消息 | string \| ChatRequest | - |
@@ -144,7 +144,7 @@ useProChat hooks 必须在包裹 `ProChatProvider` 后方可使用。
 | actions.flexConfig | 控制 input 顶部的操作区域的 flex 布局 | `FlexBasicProps` | - |
 | actions.render | 控制 input 顶部的操作区域的操作按钮 | `(defaultDoms: JSX.Element[]) => JSX.Element[]` | - |
 | chatItemRenderConfig | 聊天项渲染配置 | `ChatItemRenderConfig` | - |
-| backtoBottomConfig | 透传给「回到底部」组件的 api | `BackBottomProps` | - |
+| backToBottomConfig | 透传给「回到底部」组件的 api | `BackBottomProps` | - |
 
 ## ProChatChatReference
 
@@ -171,7 +171,7 @@ useProChat hooks 必须在包裹 `ProChatProvider` 后方可使用。
 | avatarRender | 头像渲染函数 | WithFalse<(props: ChatItemProps, defaultDom: ReactNode) => ReactNode> | - |
 | render | 自定义渲染函数 | WithFalse<(props: ChatItemProps, defaultDom: { avatar: ReactNode; title: ReactNode; messageContent: ReactNode; actions: ReactNode; itemDom: ReactNode; }) => ReactNode> | - |
 
-## backtoBottomConfig
+## backToBottomConfig
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |

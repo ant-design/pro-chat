@@ -37,9 +37,7 @@ export const currentChats = (s: ChatStore): ChatMessage[] => {
     return {};
   };
 
-  const basic = Object.values<ChatMessage>(s.chats)
-    // 首先按照时间顺序排序，越早的在越前面
-    .sort((pre, next) => pre.createAt - next.createAt)
+  const basic = s.chats
     // 映射头像关系
     .map((m) => {
       return {

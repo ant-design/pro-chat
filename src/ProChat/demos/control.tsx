@@ -1,7 +1,7 @@
 /**
  * compact: true
  */
-import { ChatMessageMap, ProChat } from '@ant-design/pro-chat';
+import { ChatMessage, ProChat } from '@ant-design/pro-chat';
 
 import { useTheme } from 'antd-style';
 import { useState } from 'react';
@@ -11,14 +11,13 @@ import { MockResponse } from '../mocks/streamResponse';
 export default () => {
   const theme = useTheme();
 
-  const [chats, setChats] = useState<ChatMessageMap>();
+  const [chats, setChats] = useState<ChatMessage<Record<string, any>>[]>();
 
   return (
     <div style={{ background: theme.colorBgLayout }}>
       <ProChat
         chats={chats}
         onChatsChange={(chats) => {
-          console.log(chats);
           setChats(chats);
         }}
         request={async (messages) => {

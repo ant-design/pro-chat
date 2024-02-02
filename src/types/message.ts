@@ -31,10 +31,6 @@ export interface ChatMessage<T extends Record<string, any> = Record<string, any>
   extra?: T;
 }
 
-export type ChatMessageMap<T extends Record<string, any> = Record<string, any>> = Record<
-  string,
-  ChatMessage<T>
->;
 export interface OpenAIFunctionCall {
   arguments?: string;
   name: string;

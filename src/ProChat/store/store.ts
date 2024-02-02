@@ -41,9 +41,11 @@ const vanillaStore =
   (...parameters) => {
     // initState = innerState + props
 
+    const finalInitChats = chats ?? initialChats;
+
     const state = merge({}, initialState, {
       init: !loading,
-      chats: chats ?? initialChats,
+      chats: Array.isArray(finalInitChats) ? finalInitChats : Object.values(finalInitChats || {}),
       ...props,
     } as ChatState);
 

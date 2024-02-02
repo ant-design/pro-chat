@@ -1,7 +1,7 @@
 import { produce } from 'immer';
 
 import { LLMRoleType } from '@/types/llm';
-import { ChatMessage, ChatMessageMap } from '@/types/message';
+import { ChatMessage } from '@/types/message';
 import { MetaData } from '@/types/meta';
 import { nanoid } from '../../utils/uuid';
 
@@ -46,35 +46,36 @@ export type MessageDispatch =
   | UpdateMessageExtra;
 
 export const messagesReducer = (
-  state: ChatMessageMap,
+  state: ChatMessage<any>[],
   payload: MessageDispatch,
-): ChatMessageMap => {
+): ChatMessage<any>[] => {
   switch (payload.type) {
     case 'addMessage': {
       return produce(state, (draftState) => {
         const mid = payload.id || nanoid();
 
-        draftState[mid] = {
+        draftState.push({
           content: payload.message,
           createAt: Date.now(),
           id: mid,
           parentId: payload.parentId,
           role: payload.role,
           updateAt: Date.now(),
-        };
+        });
       });
     }
 
     case 'deleteMessage': {
       return produce(state, (draftState) => {
-        delete draftState[payload.id];
+        const index = draftState.findIndex((m) => m.id === payload.id);
+        delete draftState[index];
       });
     }
 
     case 'updateMessage': {
       return produce(state, (draftState) => {
         const { id, key, value } = payload;
-        const message = draftState[id];
+        const message = draftState.find((m) => m.id === id);
         if (!message) return;
 
         // @ts-ignore
@@ -86,7 +87,7 @@ export const messagesReducer = (
     case 'updateMessageExtra': {
       return produce(state, (draftState) => {
         const { id, key, value } = payload;
-        const message = draftState[id];
+        const message = draftState.find((m) => m.id === id);
         if (!message) return;
 
         if (!message.extra) {
@@ -105,7 +106,8 @@ export const messagesReducer = (
 
         // 删除上述找到的消息
         for (const message of messages) {
-          delete draftState[message.id];
+          const index = draftState.findIndex((m) => m.id === message.id);
+          delete draftState[index];
         }
       });
     }

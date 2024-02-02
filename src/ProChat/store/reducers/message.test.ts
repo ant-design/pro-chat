@@ -1,9 +1,9 @@
-import { ChatMessageMap } from '@/types/message';
+import { ChatMessage } from '@/types/message';
 
 import { MessageDispatch, messagesReducer } from './message';
 
 describe('messagesReducer', () => {
-  let initialState: ChatMessageMap;
+  let initialState: ChatMessage[];
 
   beforeEach(() => {
     initialState = {
@@ -21,7 +21,7 @@ describe('messagesReducer', () => {
         updateAt: 1629264000000,
         role: 'system',
       },
-    } as unknown as ChatMessageMap;
+    } as unknown as ChatMessage[];
   });
 
   describe('addMessage', () => {
@@ -39,7 +39,7 @@ describe('messagesReducer', () => {
       expect(newState).toHaveProperty('message1');
       expect(newState).toHaveProperty('message2');
       expect(newState).toHaveProperty('message3');
-      expect(newState.message3).toEqual({
+      expect(newState.find((m) => m.id === 'message3')).toEqual({
         id: 'message3',
         content: 'New Message',
         createAt: expect.any(Number),
@@ -62,7 +62,7 @@ describe('messagesReducer', () => {
       expect(newState).toHaveProperty('message1');
       expect(newState).toHaveProperty('message2');
       expect(newState).toHaveProperty('customId');
-      expect(newState.customId).toEqual({
+      expect(newState.find((m) => m.id === 'customId')).toEqual({
         id: 'customId',
         content: 'New Message',
         createAt: expect.any(Number),
@@ -82,7 +82,7 @@ describe('messagesReducer', () => {
 
       const newState = messagesReducer(initialState, payload);
 
-      expect(newState.message3).toEqual({
+      expect(newState.find((m) => m.id === 'message3')).toEqual({
         id: 'message3',
         content: 'New Message',
         createAt: expect.any(Number),
@@ -103,7 +103,7 @@ describe('messagesReducer', () => {
 
       const newState = messagesReducer(initialState, payload);
 
-      expect(newState.message3).toEqual({
+      expect(newState.find((m) => m.id === 'message3')).toEqual({
         id: 'message3',
         content: 'New Message',
         createAt: expect.any(Number),
@@ -151,8 +151,9 @@ describe('messagesReducer', () => {
 
       const newState = messagesReducer(initialState, payload);
 
-      expect(newState.message1.content).toBe('Updated Message');
-      expect(newState.message1.updateAt).toBeGreaterThan(initialState.message1.updateAt);
+      const message1 = newState.find((m) => m.id === 'message1');
+      expect(message1?.content).toBe('Updated Message');
+      expect(message1?.updateAt).toBeGreaterThan(message1?.updateAt as number);
     });
 
     it('should not modify the state if the specified message does not exist', () => {
@@ -179,9 +180,9 @@ describe('messagesReducer', () => {
       };
 
       const newState = messagesReducer(initialState, payload);
-
-      expect(newState.message1.extra!.translate).toEqual({ target: 'en', to: 'zh' });
-      expect(newState.message1.updateAt).toBeGreaterThan(initialState.message1.updateAt);
+      const message1 = newState.find((m) => m.id === 'message1');
+      expect(message1?.extra!.translate).toEqual({ target: 'en', to: 'zh' });
+      expect(message1?.updateAt).toBeGreaterThan(message1?.updateAt as number);
     });
 
     it('should not modify the state if the specified message does not exist', () => {

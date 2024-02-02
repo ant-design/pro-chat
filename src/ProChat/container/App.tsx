@@ -44,7 +44,7 @@ const App = memo<ConversationProps>(
     chatRef,
     itemShouldUpdate,
     chatItemRenderConfig,
-    backtoBottomConfig,
+    backToBottomConfig,
   }) => {
     const ref = useRef<HTMLDivElement>(null);
     const areaHtml = useRef<HTMLDivElement>(null);
@@ -106,7 +106,7 @@ const App = memo<ConversationProps>(
                 }}
                 target={ref}
                 text={'返回底部'}
-                {...backtoBottomConfig}
+                {...backToBottomConfig}
               />
             ) : null}
           </>

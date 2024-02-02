@@ -8,34 +8,23 @@ import { useTheme } from 'antd-style';
 import { Alert } from 'antd';
 import { MockResponse } from '../mocks/streamResponse';
 
-const initialChats = new Array(100)
-  .fill(0)
-  .map((_, index) => {
-    return {
-      id: 'chat-' + index,
-      content: '这是一段模拟的流式字符串数据。' + index,
-      role: index % 2 === 1 ? 'user' : 'assistant',
-      updateAt: Date.now(),
-      createAt: Date.now(),
-    };
-  })
-  .reduce(
-    (acc, cur) => {
-      acc[cur.id] = cur;
-      return acc;
-    },
-    {} as Record<string, any>,
-  );
+const initialChats = new Array(100).fill(0).map((_, index) => {
+  return {
+    id: 'chat-' + index,
+    content: '这是一段模拟的流式字符串数据。' + index,
+    role: index % 2 === 1 ? 'user' : 'assistant',
+    updateAt: Date.now(),
+    createAt: Date.now(),
+  };
+});
 
-initialChats['chat-20'] = {
+initialChats[20] = {
   id: 'chat-20',
   content: '这是一条通知消息' + 20,
   role: 'notification',
   updateAt: Date.now(),
   createAt: Date.now(),
 };
-
-console.log(initialChats);
 
 export default () => {
   const theme = useTheme();
