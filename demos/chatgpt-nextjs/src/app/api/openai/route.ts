@@ -1,7 +1,7 @@
 import { OpenAIStream, StreamingTextResponse } from 'ai';
 import OpenAI from 'openai';
 
-export const POST = async (request: Request) => {
+export async function POST(request: Request) {
   const { messages = [] }: Partial<{ messages: Array<any> }> = await request.json();
 
   const openai = new OpenAI({
@@ -17,4 +17,4 @@ export const POST = async (request: Request) => {
 
   const stream = OpenAIStream(response);
   return new StreamingTextResponse(stream);
-};
+}
