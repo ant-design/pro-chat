@@ -33,6 +33,8 @@ bun add openai
 
 我们借助 Vercel 的库来解析 数据流，不需要自己手动配置 Reader
 
+> 这里我们需要将 role 和 content 组合一下，因为 messages 包含的内容会更多一些，但是对于 ChatGPT 来说只需要这两个内容
+
 ```ts
 import OpenAI from 'openai';
 import { OpenAIStream, StreamingTextResponse } from 'ai';
@@ -43,6 +45,13 @@ export const POST = async (request: Request) => {
   const openai = new OpenAI({
     apiKey: 'OpenAI Key',
     baseURL: 'base url',
+  });
+
+  const PickMessages = messages.map((message) => {
+    return {
+      role: message.role,
+      content: message.content,
+    };
   });
 
   const response = await openai.chat.completions.create({

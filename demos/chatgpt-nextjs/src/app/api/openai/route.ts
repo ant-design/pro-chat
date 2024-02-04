@@ -9,9 +9,16 @@ export async function POST(request: Request) {
     baseURL: 'base url', // if u dont need change baseUrl，you can delete this line
   });
 
+  const PickMessages = messages.map((message) => {
+    return {
+      role: message.role,
+      content: message.content,
+    };
+  });
+
   const response = await openai.chat.completions.create({
     model: 'gpt-3.5-turbo',
-    messages: [...messages],
+    messages: [...PickMessages],
     stream: true,
   });
 
