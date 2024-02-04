@@ -74,7 +74,7 @@ ProChat 使用 `meta` 来表意会话双方的头像、名称等信息。设定�
 
 你可以通过 backToBottomConfig 参数对「回到底部」按钮进行不同程度的自定义
 
-<code src="./demos/backToBottomConfig.tsx"></code>
+<code src="./demos/toBottomConfig.tsx.tsx"></code>
 
 ## 自定义输入区域
 
