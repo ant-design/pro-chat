@@ -88,9 +88,8 @@ export default function Home() {
               method: 'POST',
               body: JSON.stringify({ messages: messages }),
             });
-            const data = await response.json();
-            return new Response(data.output?.text);
-          }}
+            return response
+            }}
         />
       }
     </div>
