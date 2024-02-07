@@ -1,5 +1,30 @@
 # Changelog
 
+### [Version&nbsp;1.9.1](https://github.com/ant-design/pro-chat/compare/v1.9.0...v1.9.1)
+
+<sup>Released on **2024-02-07**</sup>
+
+#### 🐛 修复
+
+- Slove button loading not work.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- Slove button loading not work, closes [#87](https://github.com/ant-design/pro-chat/issues/87) ([5e272e5](https://github.com/ant-design/pro-chat/commit/5e272e5))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;1.9.0](https://github.com/ant-design/pro-chat/compare/v1.8.0...v1.9.0)
 
 <sup>Released on **2024-02-02**</sup>
