@@ -6,7 +6,6 @@ import { Flexbox } from 'react-layout-kit';
 
 import { useStore } from '../../store';
 
-import { useMergedState } from 'rc-util';
 import ActionBar from './ActionBar';
 import { AutoCompleteTextArea } from './AutoCompleteTextArea';
 
@@ -77,13 +76,9 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
   const { styles, theme } = useStyles();
   const { mobile } = useResponsive();
 
-  const [ButtonLoading, setButtonLoading] = useMergedState(isLoading);
-
   const send = async () => {
     if (onSend) {
-      setButtonLoading(true);
       const success = await onSend(message);
-      setButtonLoading(false);
       if (success) {
         sendMessage(message);
         setMessage('');
@@ -140,7 +135,7 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
           />
           {mobile ? null : (
             <Button
-              loading={ButtonLoading}
+              loading={isLoading}
               type="text"
               className={styles.btn}
               onClick={() => send()}
