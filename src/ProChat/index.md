@@ -12,6 +12,8 @@ description: a Chat Solution
 
 <code src="./demos/request.tsx"></code>
 
+<code src="./demos/default.tsx"></code>
+
 ## SSE 数据流处理
 
 对于后台直接返回 Server Side Event 数据的情况需要前端自己封装 `ReadableStream`
