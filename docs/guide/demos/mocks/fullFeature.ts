@@ -1,36 +1,36 @@
 export const example = {
-  initialChats: {
-    ZGxiX2p4: {
+  initialChats: [
+    {
       content: '你是谁？',
       createAt: 1697862242452,
       id: 'ZGxiX2p4',
       role: 'user',
       updateAt: 1697862243540,
     },
-    ZGxiX2JQ: {
+    {
       content: '请回复我！我要生气了！',
       createAt: 1697862242453,
       id: 'ZGxiX2JQ',
       role: 'user',
       updateAt: 1697862243540,
     },
-    Sb5pAzLL: {
+    {
       content: `我怎么知道我是谁！`,
       createAt: 1697862242458,
       id: 'Sb5pAzLL',
       role: 'assistant',
       updateAt: 1697862243540,
     },
-  },
-  chats: {
-    ZGxiX2p4: {
+  ],
+  chats: [
+    {
       content: '请展示完整的会话高亮效果？',
       createAt: 1697862242452,
       id: 'ZGxiX2p4',
       role: 'user',
       updateAt: 1697862243540,
     },
-    Sb5pAzLL: {
+    {
       content: `
 # This is an H1
 ## This is an H2
@@ -58,18 +58,18 @@ an example | *an example* | **an example**
 1. Bird
 1. McHale
 1. Parish
-    1. Bird
-    1. McHale
-        1. Parish
+  1. Bird
+  1. McHale
+      1. Parish
 
 ---
 
 - Red
 - Green
 - Blue
-    - Red
-    - Green
-        - Blue
+  - Red
+  - Green
+      - Blue
 
 ---
 
@@ -127,7 +127,7 @@ $$
       updateAt: 1697862249387,
       model: 'gpt-3.5-turbo',
     },
-  },
+  ],
   config: {
     model: 'gpt-3.5-turbo',
     params: {

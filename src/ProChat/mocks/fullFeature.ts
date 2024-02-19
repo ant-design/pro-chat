@@ -1,13 +1,13 @@
 export const example = {
-  chats: {
-    ZGxiX2p4: {
+  chats: [
+    {
       content: '请展示完整的会话高亮效果？',
       createAt: 1697862242452,
       id: 'ZGxiX2p4',
       role: 'user',
       updateAt: 1697862243540,
     },
-    Sb5pAzLL: {
+    {
       content: `
 # This is an H1
 ## This is an H2
@@ -19,12 +19,7 @@ The point of reference-style links is not that they’re easier to write. The po
 
 ---
 
-> This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
-> consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
-> Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
->
-> Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
-> id sem consectetuer libero luctus adipiscing.
+> This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet.
 
 ---
 
@@ -104,7 +99,7 @@ $$
       updateAt: 1697862249387,
       model: 'gpt-3.5-turbo',
     },
-  },
+  ],
   config: {
     model: 'gpt-3.5-turbo',
     params: {

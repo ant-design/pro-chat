@@ -10,7 +10,7 @@ export default () => {
   const theme = useTheme();
   return (
     <div style={{ background: theme.colorBgLayout }}>
-      <ProChat initialChats={Object.values(example.chats)} />
+      <ProChat initialChats={example.chats} />
     </div>
   );
 };

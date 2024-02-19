@@ -96,7 +96,7 @@ const Control = () => {
 };
 
 export default () => (
-  <ProChatProvider initialChats={Object.values(example.chats)}>
+  <ProChatProvider initialChats={example.chats}>
     <Control />
     <Divider>🔼 程序化控制 | 🔽 用户控制</Divider>
     <Chat />

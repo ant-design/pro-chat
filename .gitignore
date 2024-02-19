@@ -40,3 +40,4 @@ example/.temp/*
 techUI*
 .vercel
 bun.lockb
+yarn.lock

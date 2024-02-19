@@ -56,7 +56,7 @@ export default () => {
 };
 ```
 
-上述代码中，我们将 `Object.values(example.chats)` 作为初始聊天数据传递给 ProChat 组件。注意，在使用该属性时需要提供正确格式的初始聊天数据。
+上述代码中，我们将 `example.chats` 作为初始聊天数据传递给 ProChat 组件。注意，在使用该属性时需要提供正确格式的初始聊天数据。
 
 ## 使用骨架屏
 
