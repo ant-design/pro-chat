@@ -6,10 +6,12 @@ import { PlusOutlined } from '@ant-design/icons';
 import { ProChat } from '@ant-design/pro-chat';
 import { Button, Form, Input, Space, Upload, message } from 'antd';
 import { useTheme } from 'antd-style';
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 
 export default () => {
   const theme = useTheme();
+
+  const [isRender, setIsRender] = useState(true);
 
   const renderInputArea = (
     _: ReactNode,
@@ -76,7 +78,10 @@ export default () => {
 
   return (
     <div style={{ background: theme.colorBgLayout, height: '100vh' }}>
-      <ProChat renderInputArea={renderInputArea} />
+      <Button type="primary" onClick={() => setIsRender(!isRender)}>
+        切换是否渲染输入框
+      </Button>
+      <ProChat renderInputArea={isRender ? renderInputArea : () => null} />
     </div>
   );
 };
