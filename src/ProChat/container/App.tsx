@@ -89,7 +89,7 @@ const App = memo<ConversationProps>(
               ref={ref}
               className={cx(`${prefixClass}-chat-list-container`, styles)}
               style={{
-                height: (height as number) - (areaHtml.current?.clientHeight || 120) || '100%',
+                height: (height as number) - (areaHtml.current?.clientHeight || 0) || '100%',
               }}
             >
               <ChatList
