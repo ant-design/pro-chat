@@ -47,6 +47,7 @@ describe('messagesReducer', () => {
         content: 'New Message',
         createAt: expect.any(Number),
         updateAt: expect.any(Number),
+        parentId: undefined,
         role: 'user',
       });
     });
@@ -73,6 +74,7 @@ describe('messagesReducer', () => {
         content: 'New Message',
         createAt: expect.any(Number),
         updateAt: expect.any(Number),
+        parentId: undefined,
         role: 'user',
       });
     });
@@ -222,7 +224,7 @@ describe('messagesReducer', () => {
       // @ts-ignore
       const payload: MessageDispatch = { type: 'unimplementedType' };
 
-      expect(() => messagesReducer(initialState, payload)).toThrowError(
+      expect(() => messagesReducer(initialState, payload)).toThrow(
         '暂未实现的 type，请检查 reducer',
       );
     });
