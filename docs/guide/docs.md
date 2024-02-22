@@ -1,6 +1,6 @@
 ---
 title: 文档模式和普通模式的细节
-order: 20
+order: 25
 group:
   title: 使用案例
 nav:
