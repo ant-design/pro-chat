@@ -6,6 +6,8 @@ import { useStore } from '../../store';
 export const AutoCompleteTextArea: React.FC<TextAreaProps> = (props) => {
   const [autocompleteRequest] = useStore((s) => [s.autocompleteRequest]);
 
+  const { disabled } = props;
+
   const [options, setOptions] = useState<{ value: string; label: string }[]>([]);
   const [open, setOpen] = useState(false);
   return (
@@ -15,6 +17,7 @@ export const AutoCompleteTextArea: React.FC<TextAreaProps> = (props) => {
       style={{
         height: 'max-content',
       }}
+      disabled={disabled}
       open={open}
       onDropdownVisibleChange={(open) => {
         setOpen(open);
@@ -32,6 +35,7 @@ export const AutoCompleteTextArea: React.FC<TextAreaProps> = (props) => {
       <Input.TextArea
         size="large"
         {...props}
+        disabled={disabled}
         className={`${props.className}-textarea`}
         onFocus={(e) => {
           setOpen(false);
