@@ -89,7 +89,7 @@ const App = memo<ConversationProps>(
               ref={ref}
               className={cx(`${prefixClass}-chat-list-container`, styles)}
               style={{
-                height: (height as number) - (areaHtml.current?.clientHeight || 120) || '100%',
+                height: (height as number) - (areaHtml.current?.clientHeight || 0) || '100%',
               }}
             >
               <ChatList
@@ -110,7 +110,9 @@ const App = memo<ConversationProps>(
               />
             ) : null}
           </>
-          <div ref={areaHtml}>{<ChatInputArea renderInputArea={renderInputArea} />}</div>
+          {renderInputArea !== null && (
+            <div ref={areaHtml}>{<ChatInputArea renderInputArea={renderInputArea} />}</div>
+          )}
         </Flexbox>
       </RcResizeObserver>
     );
