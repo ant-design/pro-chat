@@ -50,8 +50,8 @@ $ pnpm install @ant-design/pro-chat
 This project is based on `antd` `antd-style`, so if you have not installed these two dependencies, please install them.
 
 ```bash
-$ pnpm install @ant-design/antd-style // peerDependencies
-$ pnpm install @ant-design/antd // peerDependencies
+$ pnpm install antd-style // peerDependencies
+$ pnpm install antd // peerDependencies
 ```
 
 ### Compile with Next.js
