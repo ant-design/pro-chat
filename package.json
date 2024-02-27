@@ -64,6 +64,7 @@
     "@ant-design/pro-editor": "latest",
     "@babel/runtime": "^7.23.8",
     "@emotion/react": "^11.11.3",
+    "@testing-library/jest-dom": "^6.4.2",
     "copy-to-clipboard": "^3.3.3",
     "dayjs": "^1.11.10",
     "emoji-regex": "^10.3.0",
