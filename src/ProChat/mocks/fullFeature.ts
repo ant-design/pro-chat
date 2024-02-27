@@ -2,10 +2,10 @@ export const example = {
   chats: [
     {
       content: '请展示完整的会话高亮效果？',
-      createAt: 1697862242452,
+      createAt: 1709025601,
       id: 'ZGxiX2p4',
       role: 'user',
-      updateAt: 1697862243540,
+      updateAt: 1709025603,
     },
     {
       content: `
@@ -92,11 +92,11 @@ $$
 \\int_{a}^{b} f(x) \\, dx
 $$
 `,
-      createAt: 1697862247302,
+      createAt: 1709025605,
       id: 'Sb5pAzLL',
       parentId: 'ZGxiX2p4',
       role: 'assistant',
-      updateAt: 1697862249387,
+      updateAt: 1709025607,
       model: 'gpt-3.5-turbo',
     },
   ],
