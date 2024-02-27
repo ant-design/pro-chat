@@ -3,6 +3,8 @@ import { theme } from 'antd';
 // Not use dynamic hashed for test env since version will change hash dynamically.
 theme.defaultConfig.hashed = false;
 
+process.env.TZ = 'UTC';
+
 if (typeof window !== 'undefined') {
   global.window.resizeTo = (width, height) => {
     // @ts-ignore-next-line
