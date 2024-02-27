@@ -13,6 +13,8 @@ export interface TitleProps {
 }
 
 const Title = memo<TitleProps>(({ showTitle, className, placement, time, avatar }) => {
+  console.log('time', time);
+
   return (
     <Flexbox
       className={className}

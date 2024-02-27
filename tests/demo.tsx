@@ -2,14 +2,12 @@ import { cleanup, render } from '@testing-library/react';
 import { glob } from 'glob';
 import path from 'path';
 import { afterEach, beforeEach, describe, it, vi } from 'vitest';
-import { resetMockDate } from './utils';
+import { resetMockDate, setMockDate } from './utils';
 
 function demoTest(component: string) {
   beforeEach(() => {
     process.env.NODE_ENV = 'TEST';
-    // setMockDate('2020-07-15T05:20:00.795');
-    // mock time 2024-02-27 17:20:02
-    vi.useFakeTimers({ now: 1709025603 });
+    setMockDate('2020-07-15T05:20:00.795');
   });
 
   afterEach(() => {
