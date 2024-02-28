@@ -94,8 +94,6 @@ const ListItem = forwardRef<HTMLDivElement, ListItemProps & HTMLAttributes<any>>
   ) => {
     const { styles, cx } = useStyles();
 
-    console.log('date', date);
-
     return (
       <Flexbox
         align={'flex-start'}
