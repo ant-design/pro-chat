@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from 'react';
+import { memo, useEffect, useMemo, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 
 import { useStore } from '@/ProChat/store';
@@ -6,7 +6,7 @@ import { chatSelectors } from '../../store/selectors';
 
 import { useAtBottom } from './useAtBottom';
 
-const ChatScrollAnchor = memo(() => {
+const ChatScrollAnchor = memo(({ target }: { target: React.RefObject<HTMLDivElement> }) => {
   const trackVisibility = useStore((s) => !!s.chatLoadingId);
   const str = useStore(chatSelectors.currentChats);
 
@@ -18,6 +18,14 @@ const ChatScrollAnchor = memo(() => {
       setIsWindowAvailable(true);
     }
   }, []);
+
+  // 获取上方列表的实例化 ref，会传入给 useAtBottom 用于判断当前是否在滚动
+  const current = useMemo(() => {
+    if (target.current && target.current.scrollHeight > target.current.clientHeight) {
+      return target.current;
+    }
+    return document.body;
+  }, [isWindowAvailable]);
 
   const { ref, entry, inView } = useInView({
     delay: 100,
@@ -34,7 +42,7 @@ const ChatScrollAnchor = memo(() => {
     }
   }, [isWindowAvailable]);
 
-  const isAtBottom = useAtBottom(scrollOffset);
+  const isAtBottom = useAtBottom(scrollOffset, current);
 
   useEffect(() => {
     if (isAtBottom && trackVisibility && !inView) {
