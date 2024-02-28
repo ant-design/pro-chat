@@ -16,7 +16,6 @@ export default () => {
     onMessageSend: (message: string) => void | Promise<any>,
     onClear: () => void,
   ) => {
-    return <></>;
     return (
       <Form
         onFinish={async (value) => {
