@@ -151,7 +151,7 @@ const ChatItem = memo<ChatItemProps>((props) => {
         {titleDom}
         <Flexbox
           align={placement === 'left' ? 'flex-start' : 'flex-end'}
-          className={styles.messageContent}
+          className={cx(styles.messageContent, `${prefixClass}-message-content`)}
           direction={
             type === 'block'
               ? placement === 'left'
