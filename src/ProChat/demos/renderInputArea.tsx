@@ -74,11 +74,9 @@ export default () => {
     );
   };
 
-  console.log(renderInputArea);
-
   return (
     <div style={{ background: theme.colorBgLayout, height: '100vh' }}>
-      <ProChat />
+      <ProChat renderInputArea={renderInputArea} />
     </div>
   );
 };
