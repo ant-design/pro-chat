@@ -172,7 +172,7 @@ export const useStyles = createStyles(
           }
         `,
       ),
-      messageExtra: cx('message-extra'),
+      messageExtra: css``,
       name: css`
         position: ${showTitle ? 'relative' : 'absolute'};
         top: ${showTitle ? 'unset' : '-16px'};
