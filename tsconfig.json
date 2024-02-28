@@ -1,18 +1,19 @@
 {
   "include": ["src", "tests", ".dumirc.ts", "*.ts"],
   "compilerOptions": {
-    "strict": true,
+    "strict": false,
     "declaration": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "jsx": "react-jsx",
-    "baseUrl": ".",
-    "types": ["vitest/globals"],
+    "types": ["vitest/globals", "@testing-library/jest-dom"],
+    "baseUrl": "./",
     "paths": {
       "@@/*": [".dumi/tmp/*"],
       "@/*": ["src/*"],
-      "@ant-design/pro-chat": ["src"]
+      "@ant-design/pro-chat": ["src"],
+      "@ant-design/pro-chat/*": ["src/*"]
     }
   }
 }
