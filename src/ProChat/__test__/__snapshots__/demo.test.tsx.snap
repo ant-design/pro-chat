@@ -13248,183 +13248,101 @@ exports[`<ProChat /> > renders renderInputArea.tsx correctly 1`] = `
           </span>
         </button>
         <div>
-          <form
-            class="ant-form ant-form-horizontal"
+          <div
+            class="layoutkit-flexbox css-1r7zaxo acss-1ckeg12 ant-pro-chat-input-area"
           >
             <div
-              class="ant-form-item"
+              class="layoutkit-flexbox css-1gzsvii acss-1qxitnl ant-pro-chat-input-area-action-bar"
             >
-              <div
-                class="ant-row ant-form-item-row"
+              <button
+                class="ant-btn ant-btn-text ant-btn-icon-only ant-editor-icon zcss-1lwi3pj"
+                type="button"
               >
-                <div
-                  class="ant-col ant-form-item-label"
-                >
-                  <label
-                    class="ant-form-item-required"
-                    for="question"
-                    title="Question"
-                  >
-                    Question
-                  </label>
-                </div>
-                <div
-                  class="ant-col ant-form-item-control"
+                <span
+                  class="ant-btn-icon"
                 >
                   <div
-                    class="ant-form-item-control-input"
+                    class="acss-1o4i853"
+                    style="border-radius: 5px; height: 36px; width: 36px;"
                   >
-                    <div
-                      class="ant-form-item-control-input-content"
+                    <span
+                      class="anticon"
+                      role="img"
                     >
-                      <textarea
-                        aria-required="true"
-                        class="ant-input ant-input-outlined"
-                        id="question"
-                        style="height: 100px;"
+                      <svg
+                        class="lucide lucide-trash2"
+                        fill="transparent"
+                        focusable="false"
+                        height="20"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        width="20"
+                        xmlns="http://www.w3.org/2000/svg"
                       >
-                        下面的图片是什么意思？
-                      </textarea>
-                    </div>
+                        <path
+                          d="M3 6h18"
+                        />
+                        <path
+                          d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"
+                        />
+                        <path
+                          d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"
+                        />
+                        <line
+                          x1="10"
+                          x2="10"
+                          y1="11"
+                          y2="17"
+                        />
+                        <line
+                          x1="14"
+                          x2="14"
+                          y1="11"
+                          y2="17"
+                        />
+                      </svg>
+                    </span>
                   </div>
-                </div>
-              </div>
+                </span>
+              </button>
             </div>
             <div
-              class="ant-form-item"
+              class="layoutkit-flexbox css-bx6voh acss-p1380z ant-pro-chat-input-area-text-container"
             >
               <div
-                class="ant-row ant-form-item-row"
+                class="ant-select ant-select-outlined ant-select-auto-complete acss-6ckfqf ant-pro-chat-input-area-component ant-select-single ant-select-customize-input ant-select-show-search"
               >
                 <div
-                  class="ant-col ant-form-item-label"
+                  class="ant-select-selector"
                 >
-                  <label
-                    class="ant-form-item-required"
-                    for="files"
-                    title="FileUpload"
+                  <span
+                    class="ant-select-selection-search"
                   >
-                    FileUpload
-                  </label>
-                </div>
-                <div
-                  class="ant-col ant-form-item-control"
-                >
-                  <div
-                    class="ant-form-item-control-input"
-                  >
-                    <div
-                      class="ant-form-item-control-input-content"
-                    >
-                      <span
-                        class="ant-upload-wrapper ant-upload-picture-card-wrapper"
-                      >
-                        <div
-                          class="ant-upload-list ant-upload-list-picture-card"
-                        >
-                          <div
-                            class="ant-upload ant-upload-select"
-                          >
-                            <span
-                              class="ant-upload"
-                            >
-                              <input
-                                accept=""
-                                aria-required="true"
-                                id="files"
-                                style="display: none;"
-                                type="file"
-                              />
-                              <button
-                                style="border: 0px; background: none;"
-                                type="button"
-                              >
-                                <span
-                                  aria-label="plus"
-                                  class="anticon anticon-plus"
-                                  role="img"
-                                >
-                                  <svg
-                                    aria-hidden="true"
-                                    data-icon="plus"
-                                    fill="currentColor"
-                                    focusable="false"
-                                    height="1em"
-                                    viewBox="64 64 896 896"
-                                    width="1em"
-                                  >
-                                    <path
-                                      d="M482 152h60q8 0 8 8v704q0 8-8 8h-60q-8 0-8-8V160q0-8 8-8z"
-                                    />
-                                    <path
-                                      d="M192 474h672q8 0 8 8v60q0 8-8 8H160q-8 0-8-8v-60q0-8 8-8z"
-                                    />
-                                  </svg>
-                                </span>
-                                <div
-                                  style="margin-top: 8px;"
-                                >
-                                  Upload
-                                </div>
-                              </button>
-                            </span>
-                          </div>
-                        </div>
-                      </span>
-                    </div>
-                  </div>
+                    <textarea
+                      aria-autocomplete="list"
+                      aria-controls="rc_select_TEST_OR_SSR_list"
+                      aria-expanded="false"
+                      aria-haspopup="listbox"
+                      aria-owns="rc_select_TEST_OR_SSR_list"
+                      autocomplete="off"
+                      class="ant-input ant-input-lg ant-input-outlined ant-select-selection-search-input acss-6ckfqf ant-pro-chat-input-area-component-textarea"
+                      id="rc_select_TEST_OR_SSR"
+                      placeholder="请输入内容..."
+                      role="combobox"
+                      style="resize: none; height: -152px; max-height: -152px;"
+                      type="search"
+                    />
+                  </span>
+                  <span
+                    class="ant-select-selection-placeholder"
+                  />
                 </div>
               </div>
             </div>
-            <div
-              class="ant-form-item"
-            >
-              <div
-                class="ant-row ant-form-item-row"
-              >
-                <div
-                  class="ant-col ant-form-item-control"
-                >
-                  <div
-                    class="ant-form-item-control-input"
-                  >
-                    <div
-                      class="ant-form-item-control-input-content"
-                    >
-                      <div
-                        class="ant-space ant-space-horizontal ant-space-align-center ant-space-gap-row-small ant-space-gap-col-small"
-                      >
-                        <div
-                          class="ant-space-item"
-                        >
-                          <button
-                            class="ant-btn ant-btn-primary"
-                            type="submit"
-                          >
-                            <span>
-                              发送对话消息
-                            </span>
-                          </button>
-                        </div>
-                        <div
-                          class="ant-space-item"
-                        >
-                          <button
-                            class="ant-btn ant-btn-default"
-                            type="button"
-                          >
-                            <span>
-                              清空当前对话内容
-                            </span>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>
