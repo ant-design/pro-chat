@@ -1,7 +1,7 @@
 ---
 title: Core API Request Design Ideas
 group:
-title: Get Start
+  title: Get Started
 order: 6
 ---
 

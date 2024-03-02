@@ -1,7 +1,7 @@
 ---
 title: Why use ProChat
 group:
-  title: Get Start
+  title: Get Started
 nav:
   title: Documents
   order: 0

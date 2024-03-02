@@ -2,7 +2,7 @@
 title: Error handling
 order: 99
 group:
-  title: Get started
+  title: Get Started
   order: 2
 ---
 

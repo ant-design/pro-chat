@@ -1,7 +1,7 @@
 ---
 title: Introduction to large model output parameters
 group:
-title: Get Start
+  title: Get Started
 order: 5
 ---
 

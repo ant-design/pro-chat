@@ -1,7 +1,7 @@
 ---
 title: Introduction to Large Model Input Parameters
 group:
-title: Get Start
+  title: Get Started
 order: 4
 ---
 

@@ -1,14 +1,14 @@
 ---
-title: Thousands of Questions
+title: Tongyi Qianwen
 group:
-title: Model Case
+  title: Model Case
   order: 7
 nav:
   title: Documents
   order: 0
 ---
 
-# Thousands of questions & quick access
+# Tongyi Qianwen & quick access
 
 The following is the simplest way to access the general meaning of Qianwen
 

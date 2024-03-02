@@ -1,7 +1,7 @@
 ---
-title: Get started
+title: Get Started
 group:
-  title: Get started
+  title: Get Started
   order: 0
 nav:
   title: Documents

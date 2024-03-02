@@ -2,7 +2,7 @@
 title: What is streaming output
 order: 3
 group:
-title: Quick Start
+  title: Get Started
   order: 2
 ---
 
