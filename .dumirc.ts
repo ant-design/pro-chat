@@ -83,4 +83,8 @@ export default defineConfig({
   outputPath: 'docs-dist',
   html2sketch: {},
   extraBabelPlugins: ['antd-style'],
+  locales: [
+    { id: 'zh-CN', name: '中文' },
+    { id: 'en-US', name: 'EN' },
+  ],
 });
