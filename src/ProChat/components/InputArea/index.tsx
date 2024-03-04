@@ -1,6 +1,6 @@
 import { SendOutlined } from '@ant-design/icons';
 import { Button, ConfigProvider } from 'antd';
-import { createStyles, cx, useResponsive } from 'antd-style';
+import { createStyles, cx } from 'antd-style';
 import { ReactNode, useContext, useRef, useState } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
@@ -8,6 +8,7 @@ import { useStore } from '../../store';
 
 import ActionBar from './ActionBar';
 import { AutoCompleteTextArea } from './AutoCompleteTextArea';
+import StopLoadingIcon from './StopLoading';
 
 const useStyles = createStyles(({ css, responsive, token }) => ({
   container: css`
@@ -63,18 +64,19 @@ type ChatInputAreaProps = {
 
 export const ChatInputArea = (props: ChatInputAreaProps) => {
   const { className, onSend, renderInputArea } = props || {};
-  const [sendMessage, isLoading, placeholder, inputAreaProps, clearMessage] = useStore((s) => [
-    s.sendMessage,
-    !!s.chatLoadingId,
-    s.placeholder,
-    s.inputAreaProps,
-    s.clearMessage,
-  ]);
+  const [sendMessage, isLoading, placeholder, inputAreaProps, clearMessage, stopGenerateMessage] =
+    useStore((s) => [
+      s.sendMessage,
+      !!s.chatLoadingId,
+      s.placeholder,
+      s.inputAreaProps,
+      s.clearMessage,
+      s.stopGenerateMessage,
+    ]);
   const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
   const [message, setMessage] = useState('');
   const isChineseInput = useRef(false);
   const { styles, theme } = useStyles();
-  const { mobile } = useResponsive();
 
   const send = async () => {
     if (onSend) {
@@ -133,9 +135,15 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
               }
             }}
           />
-          {mobile ? null : (
+          {isLoading ? (
             <Button
-              loading={isLoading}
+              type="text"
+              className={styles.btn}
+              onClick={() => stopGenerateMessage()}
+              icon={<StopLoadingIcon />}
+            />
+          ) : (
+            <Button
               type="text"
               className={styles.btn}
               onClick={() => send()}

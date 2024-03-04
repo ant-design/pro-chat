@@ -142,7 +142,6 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
       t('generateMessage(start)', { assistantId, messages }) as string,
     );
 
-
     // ========================== //
     //   对 messages 做统一预处理    //
     // ========================== //
@@ -151,8 +150,8 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
     const slicedMessages = getSlicedMessagesWithConfig(messages, config);
 
     // 2. 替换 inputMessage 模板
-    const compilerMessages =(slicedMessages:ChatMessage[])=>{
-    const compiler = template(config.inputTemplate, { interpolate: /{{([\S\s]+?)}}/g });
+    const compilerMessages = (slicedMessages: ChatMessage[]) => {
+      const compiler = template(config.inputTemplate, { interpolate: /{{([\S\s]+?)}}/g });
       return slicedMessages.map((m) => {
         if (m.role === 'user') {
           try {
@@ -165,10 +164,8 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
         }
         return m;
       });
-    }
-    const postMessages = !config.inputTemplate
-      ? slicedMessages
-      : compilerMessages(slicedMessages);
+    };
+    const postMessages = !config.inputTemplate ? slicedMessages : compilerMessages(slicedMessages);
 
     // 3. 添加 systemRole
     if (config.systemRole) {
@@ -196,6 +193,11 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
       },
       onMessageHandle: (text) => {
         output += text;
+
+        if (abortController?.signal.aborted) {
+          // aborted 后停止当前输出
+          return;
+        }
 
         // 如果存在上一个定时器，那么清除
         if (timeId) clearTimeout(timeId);
