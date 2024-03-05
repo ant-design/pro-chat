@@ -10,7 +10,7 @@ description: a Chat Solution
 
 By returning a streaming response request, achieve the typewriter output effect of the conversation message.
 
-<code src="./demos/request.tsx"></code>
+<code src="./demos/request.tsx">Streaming requests</code>
 
 <code src="./demos/default.tsx"></code>
 
@@ -24,13 +24,13 @@ Generally speaking, a third-party solution can be directly adopted, such as pars
 
 ## Big data rendering
 
-<code src="./demos/bigData.tsx"></code>
+<code src="./demos/bigData.tsx">Stream requests</code>
 
 ## Non streaming mode
 
 In non streaming mode, all session messages will be returned at once, which is suitable for scenarios with low message volume. If the message volume is large, the user experience may be poor.
 
-<code src="./demos/no-stream.tsx"></code>
+<code src="./demos/no-stream.tsx">Non streams requests</code>
 
 ## Controlled mode
 
@@ -54,7 +54,7 @@ Set greeting messages through `helloMessage`.
 
 Use the loading field to control the loading status. Suitable for use when loading data for the first time.
 
-<code src="./demos/loading.tsx"></code>
+<code src="./demos/loading.tsx">Set loading to add data acquisition status</code>
 
 ## Document Mode
 
