@@ -1,5 +1,5 @@
 export default {
-  placeholder: '请输入消息',
+  placeholder: '请输入消息...',
   backToBottom: '返回底部',
   clearCurrentDialogue: '清空当前对话',
   clearDialogue: '清空对话',

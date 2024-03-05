@@ -1,5 +1,5 @@
 export default {
-  placeholder: 'Please enter a message',
+  placeholder: 'Please enter a message...',
   backToBottom: 'Back to bottom',
   clearCurrentDialogue: 'Clear current dialogue',
   clearDialogue: 'Clear dialogue',
