@@ -30,7 +30,7 @@ Generally speaking, a third-party solution can be directly adopted, such as pars
 
 In non streaming mode, all session messages will be returned at once, which is suitable for scenarios with low message volume. If the message volume is large, the user experience may be poor.
 
-<code src="./demos/no-stream.tsx">Non streams requests</code>
+<code src="./demos/no-stream.tsx" description='The message will return after waiting for 5 seconds'>Non streams requests</code>
 
 ## Controlled mode
 
