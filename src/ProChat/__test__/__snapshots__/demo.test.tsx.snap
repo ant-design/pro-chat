@@ -13182,7 +13182,7 @@ exports[`<ProChat /> > renders request.tsx correctly 1`] = `
                           class="zcss-1hxup8p"
                         >
                           <p>
-                            让我们开始对话吧
+                            Let us start chatting
                           </p>
                         </div>
                       </article>
