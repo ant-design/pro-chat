@@ -5,6 +5,7 @@ import ActionIcon from '@/ActionIcon';
 import { ConfigProvider, Popconfirm } from 'antd';
 import { Trash2 } from 'lucide-react';
 
+import { gLocaleObject } from '@/locale';
 import { useStore } from '../../store';
 
 const useStyles = createStyles(({ css, token }) => ({
@@ -14,24 +15,25 @@ const useStyles = createStyles(({ css, token }) => ({
 }));
 
 export const ActionBar = ({ className }: { className?: string }) => {
-  const [clearMessage, actionsRender, flexConfig] = useStore((s) => [
+  const [clearMessage, actionsRender, flexConfig, locale] = useStore((s) => [
     s.clearMessage,
     s.actions?.render,
     s.actions?.flexConfig,
+    s.locale,
   ]);
 
   const { styles, theme } = useStyles();
   const defaultDoms = [
     <Popconfirm
-      title={'你即将要清空会话，清空后将无法找回。是否清空当前会话？'}
+      title={gLocaleObject(locale).clearModalTitle}
       okButtonProps={{ danger: true }}
-      okText={'清空会话'}
+      okText={gLocaleObject(locale).clearDialogue}
       key={'clear'}
       onConfirm={() => {
         clearMessage();
       }}
     >
-      <ActionIcon title={'清空当前会话'} icon={Trash2} />
+      <ActionIcon title={gLocaleObject(locale).clearCurrentDialogue} icon={Trash2} />
     </Popconfirm>,
   ];
 
