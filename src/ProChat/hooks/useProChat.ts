@@ -39,6 +39,11 @@ export interface ProChatInstance
    * @returns
    */
   scrollToBottom?: () => void;
+  /**
+   * 获取当前 loading 生成的消息 id
+   * @returns  消息 id ｜ undefined
+   */
+  getChatLoadingId: () => string | undefined;
 }
 
 export const useProChat = () => {
@@ -51,6 +56,7 @@ export const useProChat = () => {
     deleteMessage,
     clearMessage,
     dispatchMessage,
+    getChatLoadingId,
   } = storeApi.getState();
 
   const getChats = useRefFunction(() => storeApi.getState().chats);
@@ -72,6 +78,7 @@ export const useProChat = () => {
       getChatMessages,
       resendMessage,
       sendMessage,
+      getChatLoadingId,
       stopGenerateMessage,
       deleteMessage,
       clearMessage,
