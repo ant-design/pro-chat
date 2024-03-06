@@ -56,7 +56,7 @@ exports[`<ProChat /> > renders actions.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -78,7 +78,7 @@ exports[`<ProChat /> > renders actions.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                   <div
@@ -240,6 +240,37 @@ exports[`<ProChat /> > renders actions.tsx correctly 1`] = `
                   />
                 </div>
               </div>
+              <button
+                class="ant-btn ant-btn-text ant-btn-icon-only acss-b9746z"
+                type="button"
+              >
+                <span
+                  class="ant-btn-icon"
+                >
+                  <span
+                    aria-label="send"
+                    class="anticon anticon-send"
+                    role="img"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      data-icon="send"
+                      fill="currentColor"
+                      focusable="false"
+                      height="1em"
+                      viewBox="64 64 896 896"
+                      width="1em"
+                    >
+                      <defs>
+                        <style />
+                      </defs>
+                      <path
+                        d="M931.4 498.9L94.9 79.5c-3.4-1.7-7.3-2.1-11-1.2a15.99 15.99 0 00-11.7 19.3l86.2 352.2c1.3 5.3 5.2 9.6 10.4 11.3l147.7 50.7-147.6 50.7c-5.2 1.8-9.1 6-10.3 11.3L72.2 926.5c-.9 3.7-.5 7.6 1.2 10.9 3.9 7.9 13.5 11.1 21.5 7.2l836.5-417c3.1-1.5 5.6-4.1 7.2-7.1 3.9-8 .7-17.6-7.2-21.6zM170.8 826.3l50.3-205.6 295.2-101.3c2.3-.8 4.2-2.6 5-5 1.4-4.2-.8-8.7-5-10.2L221.1 403 171 198.2l628 314.9-628.2 313.2z"
+                      />
+                    </svg>
+                  </span>
+                </span>
+              </button>
             </div>
           </div>
         </div>
@@ -307,7 +338,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -329,7 +360,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -373,7 +404,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -395,7 +426,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -446,7 +477,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -468,7 +499,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -512,7 +543,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -534,7 +565,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -585,7 +616,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -607,7 +638,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -651,7 +682,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -673,7 +704,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -724,7 +755,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -746,7 +777,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -790,7 +821,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -812,7 +843,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -863,7 +894,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -885,7 +916,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -929,7 +960,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -951,7 +982,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -1002,7 +1033,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -1024,7 +1055,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -1068,7 +1099,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -1090,7 +1121,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -1141,7 +1172,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -1163,7 +1194,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -1207,7 +1238,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -1229,7 +1260,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -1280,7 +1311,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -1302,7 +1333,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -1346,7 +1377,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -1368,7 +1399,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -1419,7 +1450,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -1441,7 +1472,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -1485,7 +1516,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -1507,7 +1538,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -1558,7 +1589,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -1580,7 +1611,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -1624,7 +1655,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -1646,7 +1677,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -1733,7 +1764,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -1755,7 +1786,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -1806,7 +1837,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -1828,7 +1859,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -1872,7 +1903,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -1894,7 +1925,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -1945,7 +1976,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -1967,7 +1998,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -2011,7 +2042,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -2033,7 +2064,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -2084,7 +2115,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -2106,7 +2137,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -2150,7 +2181,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -2172,7 +2203,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -2223,7 +2254,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -2245,7 +2276,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -2289,7 +2320,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -2311,7 +2342,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -2362,7 +2393,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -2384,7 +2415,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -2428,7 +2459,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -2450,7 +2481,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -2501,7 +2532,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -2523,7 +2554,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -2567,7 +2598,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -2589,7 +2620,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -2640,7 +2671,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -2662,7 +2693,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -2706,7 +2737,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -2728,7 +2759,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -2779,7 +2810,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -2801,7 +2832,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -2845,7 +2876,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -2867,7 +2898,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -2918,7 +2949,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -2940,7 +2971,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -2984,7 +3015,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -3006,7 +3037,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -3057,7 +3088,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -3079,7 +3110,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -3123,7 +3154,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -3145,7 +3176,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -3196,7 +3227,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -3218,7 +3249,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -3262,7 +3293,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -3284,7 +3315,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -3335,7 +3366,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -3357,7 +3388,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -3401,7 +3432,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -3423,7 +3454,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -3474,7 +3505,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -3496,7 +3527,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -3540,7 +3571,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -3562,7 +3593,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -3613,7 +3644,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -3635,7 +3666,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -3679,7 +3710,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -3701,7 +3732,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -3752,7 +3783,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -3774,7 +3805,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -3818,7 +3849,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -3840,7 +3871,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -3891,7 +3922,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -3913,7 +3944,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -3957,7 +3988,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -3979,7 +4010,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -4030,7 +4061,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -4052,7 +4083,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -4096,7 +4127,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -4118,7 +4149,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -4169,7 +4200,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -4191,7 +4222,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -4235,7 +4266,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -4257,7 +4288,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -4308,7 +4339,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -4330,7 +4361,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -4374,7 +4405,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -4396,7 +4427,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -4447,7 +4478,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -4469,7 +4500,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -4513,7 +4544,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -4535,7 +4566,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -4586,7 +4617,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -4608,7 +4639,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -4652,7 +4683,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -4674,7 +4705,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -4725,7 +4756,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -4747,7 +4778,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -4791,7 +4822,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -4813,7 +4844,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -4864,7 +4895,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -4886,7 +4917,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -4930,7 +4961,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -4952,7 +4983,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -5003,7 +5034,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -5025,7 +5056,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -5069,7 +5100,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -5091,7 +5122,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -5142,7 +5173,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -5164,7 +5195,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -5208,7 +5239,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -5230,7 +5261,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -5281,7 +5312,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -5303,7 +5334,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -5347,7 +5378,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -5369,7 +5400,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -5420,7 +5451,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -5442,7 +5473,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -5486,7 +5517,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -5508,7 +5539,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -5559,7 +5590,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -5581,7 +5612,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -5625,7 +5656,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -5647,7 +5678,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -5698,7 +5729,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -5720,7 +5751,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -5764,7 +5795,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -5786,7 +5817,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -5837,7 +5868,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -5859,7 +5890,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -5903,7 +5934,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -5925,7 +5956,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -5976,7 +6007,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -5998,7 +6029,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -6042,7 +6073,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -6064,7 +6095,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -6115,7 +6146,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -6137,7 +6168,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -6181,7 +6212,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -6203,7 +6234,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -6254,7 +6285,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -6276,7 +6307,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -6320,7 +6351,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -6342,7 +6373,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -6393,7 +6424,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -6415,7 +6446,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -6459,7 +6490,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -6481,7 +6512,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -6532,7 +6563,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -6554,7 +6585,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -6598,7 +6629,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -6620,7 +6651,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -6671,7 +6702,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -6693,7 +6724,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -6737,7 +6768,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -6759,7 +6790,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -6810,7 +6841,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -6832,7 +6863,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -6876,7 +6907,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -6898,7 +6929,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -6949,7 +6980,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -6971,7 +7002,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -7015,7 +7046,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -7037,7 +7068,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -7088,7 +7119,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </span>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -7110,7 +7141,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                 </div>
@@ -7154,7 +7185,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -7176,7 +7207,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -7336,6 +7367,37 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
                   />
                 </div>
               </div>
+              <button
+                class="ant-btn ant-btn-text ant-btn-icon-only acss-b9746z"
+                type="button"
+              >
+                <span
+                  class="ant-btn-icon"
+                >
+                  <span
+                    aria-label="send"
+                    class="anticon anticon-send"
+                    role="img"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      data-icon="send"
+                      fill="currentColor"
+                      focusable="false"
+                      height="1em"
+                      viewBox="64 64 896 896"
+                      width="1em"
+                    >
+                      <defs>
+                        <style />
+                      </defs>
+                      <path
+                        d="M931.4 498.9L94.9 79.5c-3.4-1.7-7.3-2.1-11-1.2a15.99 15.99 0 00-11.7 19.3l86.2 352.2c1.3 5.3 5.2 9.6 10.4 11.3l147.7 50.7-147.6 50.7c-5.2 1.8-9.1 6-10.3 11.3L72.2 926.5c-.9 3.7-.5 7.6 1.2 10.9 3.9 7.9 13.5 11.1 21.5 7.2l836.5-417c3.1-1.5 5.6-4.1 7.2-7.1 3.9-8 .7-17.6-7.2-21.6zM170.8 826.3l50.3-205.6 295.2-101.3c2.3-.8 4.2-2.6 5-5 1.4-4.2-.8-8.7-5-10.2L221.1 403 171 198.2l628 314.9-628.2 313.2z"
+                      />
+                    </svg>
+                  </span>
+                </span>
+              </button>
             </div>
           </div>
         </div>
@@ -7401,7 +7463,7 @@ exports[`<ProChat /> > renders control.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -7423,7 +7485,7 @@ exports[`<ProChat /> > renders control.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                   <div
@@ -7582,6 +7644,37 @@ exports[`<ProChat /> > renders control.tsx correctly 1`] = `
                   />
                 </div>
               </div>
+              <button
+                class="ant-btn ant-btn-text ant-btn-icon-only acss-b9746z"
+                type="button"
+              >
+                <span
+                  class="ant-btn-icon"
+                >
+                  <span
+                    aria-label="send"
+                    class="anticon anticon-send"
+                    role="img"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      data-icon="send"
+                      fill="currentColor"
+                      focusable="false"
+                      height="1em"
+                      viewBox="64 64 896 896"
+                      width="1em"
+                    >
+                      <defs>
+                        <style />
+                      </defs>
+                      <path
+                        d="M931.4 498.9L94.9 79.5c-3.4-1.7-7.3-2.1-11-1.2a15.99 15.99 0 00-11.7 19.3l86.2 352.2c1.3 5.3 5.2 9.6 10.4 11.3l147.7 50.7-147.6 50.7c-5.2 1.8-9.1 6-10.3 11.3L72.2 926.5c-.9 3.7-.5 7.6 1.2 10.9 3.9 7.9 13.5 11.1 21.5 7.2l836.5-417c3.1-1.5 5.6-4.1 7.2-7.1 3.9-8 .7-17.6-7.2-21.6zM170.8 826.3l50.3-205.6 295.2-101.3c2.3-.8 4.2-2.6 5-5 1.4-4.2-.8-8.7-5-10.2L221.1 403 171 198.2l628 314.9-628.2 313.2z"
+                      />
+                    </svg>
+                  </span>
+                </span>
+              </button>
             </div>
           </div>
         </div>
@@ -7647,7 +7740,7 @@ exports[`<ProChat /> > renders default.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -7669,7 +7762,7 @@ exports[`<ProChat /> > renders default.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                   <div
@@ -7828,6 +7921,37 @@ exports[`<ProChat /> > renders default.tsx correctly 1`] = `
                   />
                 </div>
               </div>
+              <button
+                class="ant-btn ant-btn-text ant-btn-icon-only acss-b9746z"
+                type="button"
+              >
+                <span
+                  class="ant-btn-icon"
+                >
+                  <span
+                    aria-label="send"
+                    class="anticon anticon-send"
+                    role="img"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      data-icon="send"
+                      fill="currentColor"
+                      focusable="false"
+                      height="1em"
+                      viewBox="64 64 896 896"
+                      width="1em"
+                    >
+                      <defs>
+                        <style />
+                      </defs>
+                      <path
+                        d="M931.4 498.9L94.9 79.5c-3.4-1.7-7.3-2.1-11-1.2a15.99 15.99 0 00-11.7 19.3l86.2 352.2c1.3 5.3 5.2 9.6 10.4 11.3l147.7 50.7-147.6 50.7c-5.2 1.8-9.1 6-10.3 11.3L72.2 926.5c-.9 3.7-.5 7.6 1.2 10.9 3.9 7.9 13.5 11.1 21.5 7.2l836.5-417c3.1-1.5 5.6-4.1 7.2-7.1 3.9-8 .7-17.6-7.2-21.6zM170.8 826.3l50.3-205.6 295.2-101.3c2.3-.8 4.2-2.6 5-5 1.4-4.2-.8-8.7-5-10.2L221.1 403 171 198.2l628 314.9-628.2 313.2z"
+                      />
+                    </svg>
+                  </span>
+                </span>
+              </button>
             </div>
           </div>
         </div>
@@ -7893,7 +8017,7 @@ exports[`<ProChat /> > renders doc-mode.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-14jdfs3 acss-j11nrd"
+                  class="layoutkit-flexbox css-14jdfs3 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-yb6bwp ant-pro-chat-list-item-message-content"
@@ -7915,7 +8039,7 @@ exports[`<ProChat /> > renders doc-mode.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -8076,7 +8200,7 @@ exports[`<ProChat /> > renders doc-mode.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-14jdfs3 acss-j11nrd"
+                  class="layoutkit-flexbox css-14jdfs3 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-yb6bwp ant-pro-chat-list-item-message-content"
@@ -10228,7 +10352,7 @@ exports[`<ProChat /> > renders doc-mode.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                   <div
@@ -10500,6 +10624,37 @@ exports[`<ProChat /> > renders doc-mode.tsx correctly 1`] = `
                   />
                 </div>
               </div>
+              <button
+                class="ant-btn ant-btn-text ant-btn-icon-only acss-b9746z"
+                type="button"
+              >
+                <span
+                  class="ant-btn-icon"
+                >
+                  <span
+                    aria-label="send"
+                    class="anticon anticon-send"
+                    role="img"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      data-icon="send"
+                      fill="currentColor"
+                      focusable="false"
+                      height="1em"
+                      viewBox="64 64 896 896"
+                      width="1em"
+                    >
+                      <defs>
+                        <style />
+                      </defs>
+                      <path
+                        d="M931.4 498.9L94.9 79.5c-3.4-1.7-7.3-2.1-11-1.2a15.99 15.99 0 00-11.7 19.3l86.2 352.2c1.3 5.3 5.2 9.6 10.4 11.3l147.7 50.7-147.6 50.7c-5.2 1.8-9.1 6-10.3 11.3L72.2 926.5c-.9 3.7-.5 7.6 1.2 10.9 3.9 7.9 13.5 11.1 21.5 7.2l836.5-417c3.1-1.5 5.6-4.1 7.2-7.1 3.9-8 .7-17.6-7.2-21.6zM170.8 826.3l50.3-205.6 295.2-101.3c2.3-.8 4.2-2.6 5-5 1.4-4.2-.8-8.7-5-10.2L221.1 403 171 198.2l628 314.9-628.2 313.2z"
+                      />
+                    </svg>
+                  </span>
+                </span>
+              </button>
             </div>
           </div>
         </div>
@@ -10576,7 +10731,7 @@ exports[`<ProChat /> > renders draggable.tsx correctly 1`] = `
                     </time>
                   </div>
                   <div
-                    class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                    class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                   >
                     <div
                       class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -10598,7 +10753,7 @@ exports[`<ProChat /> > renders draggable.tsx correctly 1`] = `
                         </article>
                       </div>
                       <div
-                        class="message-extra"
+                        class="acss-0 ant-pro-chat-message-extra"
                       />
                     </div>
                     <div
@@ -10757,6 +10912,37 @@ exports[`<ProChat /> > renders draggable.tsx correctly 1`] = `
                     />
                   </div>
                 </div>
+                <button
+                  class="ant-btn ant-btn-text ant-btn-icon-only acss-b9746z"
+                  type="button"
+                >
+                  <span
+                    class="ant-btn-icon"
+                  >
+                    <span
+                      aria-label="send"
+                      class="anticon anticon-send"
+                      role="img"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        data-icon="send"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <defs>
+                          <style />
+                        </defs>
+                        <path
+                          d="M931.4 498.9L94.9 79.5c-3.4-1.7-7.3-2.1-11-1.2a15.99 15.99 0 00-11.7 19.3l86.2 352.2c1.3 5.3 5.2 9.6 10.4 11.3l147.7 50.7-147.6 50.7c-5.2 1.8-9.1 6-10.3 11.3L72.2 926.5c-.9 3.7-.5 7.6 1.2 10.9 3.9 7.9 13.5 11.1 21.5 7.2l836.5-417c3.1-1.5 5.6-4.1 7.2-7.1 3.9-8 .7-17.6-7.2-21.6zM170.8 826.3l50.3-205.6 295.2-101.3c2.3-.8 4.2-2.6 5-5 1.4-4.2-.8-8.7-5-10.2L221.1 403 171 198.2l628 314.9-628.2 313.2z"
+                        />
+                      </svg>
+                    </span>
+                  </span>
+                </button>
               </div>
             </div>
           </div>
@@ -10857,7 +11043,7 @@ exports[`<ProChat /> > renders helloMessage.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -10866,7 +11052,7 @@ exports[`<ProChat /> > renders helloMessage.tsx correctly 1`] = `
                       这是一条自定义 ReactNode 消息
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                   <div
@@ -11025,6 +11211,37 @@ exports[`<ProChat /> > renders helloMessage.tsx correctly 1`] = `
                   />
                 </div>
               </div>
+              <button
+                class="ant-btn ant-btn-text ant-btn-icon-only acss-b9746z"
+                type="button"
+              >
+                <span
+                  class="ant-btn-icon"
+                >
+                  <span
+                    aria-label="send"
+                    class="anticon anticon-send"
+                    role="img"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      data-icon="send"
+                      fill="currentColor"
+                      focusable="false"
+                      height="1em"
+                      viewBox="64 64 896 896"
+                      width="1em"
+                    >
+                      <defs>
+                        <style />
+                      </defs>
+                      <path
+                        d="M931.4 498.9L94.9 79.5c-3.4-1.7-7.3-2.1-11-1.2a15.99 15.99 0 00-11.7 19.3l86.2 352.2c1.3 5.3 5.2 9.6 10.4 11.3l147.7 50.7-147.6 50.7c-5.2 1.8-9.1 6-10.3 11.3L72.2 926.5c-.9 3.7-.5 7.6 1.2 10.9 3.9 7.9 13.5 11.1 21.5 7.2l836.5-417c3.1-1.5 5.6-4.1 7.2-7.1 3.9-8 .7-17.6-7.2-21.6zM170.8 826.3l50.3-205.6 295.2-101.3c2.3-.8 4.2-2.6 5-5 1.4-4.2-.8-8.7-5-10.2L221.1 403 171 198.2l628 314.9-628.2 313.2z"
+                      />
+                    </svg>
+                  </span>
+                </span>
+              </button>
             </div>
           </div>
         </div>
@@ -11081,7 +11298,7 @@ exports[`<ProChat /> > renders helloMessage.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -11110,7 +11327,7 @@ exports[`<ProChat /> > renders helloMessage.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                   <div
@@ -11269,6 +11486,37 @@ exports[`<ProChat /> > renders helloMessage.tsx correctly 1`] = `
                   />
                 </div>
               </div>
+              <button
+                class="ant-btn ant-btn-text ant-btn-icon-only acss-b9746z"
+                type="button"
+              >
+                <span
+                  class="ant-btn-icon"
+                >
+                  <span
+                    aria-label="send"
+                    class="anticon anticon-send"
+                    role="img"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      data-icon="send"
+                      fill="currentColor"
+                      focusable="false"
+                      height="1em"
+                      viewBox="64 64 896 896"
+                      width="1em"
+                    >
+                      <defs>
+                        <style />
+                      </defs>
+                      <path
+                        d="M931.4 498.9L94.9 79.5c-3.4-1.7-7.3-2.1-11-1.2a15.99 15.99 0 00-11.7 19.3l86.2 352.2c1.3 5.3 5.2 9.6 10.4 11.3l147.7 50.7-147.6 50.7c-5.2 1.8-9.1 6-10.3 11.3L72.2 926.5c-.9 3.7-.5 7.6 1.2 10.9 3.9 7.9 13.5 11.1 21.5 7.2l836.5-417c3.1-1.5 5.6-4.1 7.2-7.1 3.9-8 .7-17.6-7.2-21.6zM170.8 826.3l50.3-205.6 295.2-101.3c2.3-.8 4.2-2.6 5-5 1.4-4.2-.8-8.7-5-10.2L221.1 403 171 198.2l628 314.9-628.2 313.2z"
+                      />
+                    </svg>
+                  </span>
+                </span>
+              </button>
             </div>
           </div>
         </div>
@@ -11334,7 +11582,7 @@ exports[`<ProChat /> > renders initialChats.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -11356,7 +11604,7 @@ exports[`<ProChat /> > renders initialChats.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -11520,7 +11768,7 @@ exports[`<ProChat /> > renders initialChats.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -11542,7 +11790,7 @@ exports[`<ProChat /> > renders initialChats.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                   <div
@@ -11817,6 +12065,37 @@ exports[`<ProChat /> > renders initialChats.tsx correctly 1`] = `
                   />
                 </div>
               </div>
+              <button
+                class="ant-btn ant-btn-text ant-btn-icon-only acss-b9746z"
+                type="button"
+              >
+                <span
+                  class="ant-btn-icon"
+                >
+                  <span
+                    aria-label="send"
+                    class="anticon anticon-send"
+                    role="img"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      data-icon="send"
+                      fill="currentColor"
+                      focusable="false"
+                      height="1em"
+                      viewBox="64 64 896 896"
+                      width="1em"
+                    >
+                      <defs>
+                        <style />
+                      </defs>
+                      <path
+                        d="M931.4 498.9L94.9 79.5c-3.4-1.7-7.3-2.1-11-1.2a15.99 15.99 0 00-11.7 19.3l86.2 352.2c1.3 5.3 5.2 9.6 10.4 11.3l147.7 50.7-147.6 50.7c-5.2 1.8-9.1 6-10.3 11.3L72.2 926.5c-.9 3.7-.5 7.6 1.2 10.9 3.9 7.9 13.5 11.1 21.5 7.2l836.5-417c3.1-1.5 5.6-4.1 7.2-7.1 3.9-8 .7-17.6-7.2-21.6zM170.8 826.3l50.3-205.6 295.2-101.3c2.3-.8 4.2-2.6 5-5 1.4-4.2-.8-8.7-5-10.2L221.1 403 171 198.2l628 314.9-628.2 313.2z"
+                      />
+                    </svg>
+                  </span>
+                </span>
+              </button>
             </div>
           </div>
         </div>
@@ -12070,6 +12349,37 @@ exports[`<ProChat /> > renders loading.tsx correctly 1`] = `
                   />
                 </div>
               </div>
+              <button
+                class="ant-btn ant-btn-text ant-btn-icon-only acss-b9746z"
+                type="button"
+              >
+                <span
+                  class="ant-btn-icon"
+                >
+                  <span
+                    aria-label="send"
+                    class="anticon anticon-send"
+                    role="img"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      data-icon="send"
+                      fill="currentColor"
+                      focusable="false"
+                      height="1em"
+                      viewBox="64 64 896 896"
+                      width="1em"
+                    >
+                      <defs>
+                        <style />
+                      </defs>
+                      <path
+                        d="M931.4 498.9L94.9 79.5c-3.4-1.7-7.3-2.1-11-1.2a15.99 15.99 0 00-11.7 19.3l86.2 352.2c1.3 5.3 5.2 9.6 10.4 11.3l147.7 50.7-147.6 50.7c-5.2 1.8-9.1 6-10.3 11.3L72.2 926.5c-.9 3.7-.5 7.6 1.2 10.9 3.9 7.9 13.5 11.1 21.5 7.2l836.5-417c3.1-1.5 5.6-4.1 7.2-7.1 3.9-8 .7-17.6-7.2-21.6zM170.8 826.3l50.3-205.6 295.2-101.3c2.3-.8 4.2-2.6 5-5 1.4-4.2-.8-8.7-5-10.2L221.1 403 171 198.2l628 314.9-628.2 313.2z"
+                      />
+                    </svg>
+                  </span>
+                </span>
+              </button>
             </div>
           </div>
         </div>
@@ -12129,7 +12439,7 @@ exports[`<ProChat /> > renders meta.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -12151,7 +12461,7 @@ exports[`<ProChat /> > renders meta.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -12316,7 +12626,7 @@ exports[`<ProChat /> > renders meta.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -12338,7 +12648,7 @@ exports[`<ProChat /> > renders meta.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                   <div
@@ -12613,6 +12923,37 @@ exports[`<ProChat /> > renders meta.tsx correctly 1`] = `
                   />
                 </div>
               </div>
+              <button
+                class="ant-btn ant-btn-text ant-btn-icon-only acss-b9746z"
+                type="button"
+              >
+                <span
+                  class="ant-btn-icon"
+                >
+                  <span
+                    aria-label="send"
+                    class="anticon anticon-send"
+                    role="img"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      data-icon="send"
+                      fill="currentColor"
+                      focusable="false"
+                      height="1em"
+                      viewBox="64 64 896 896"
+                      width="1em"
+                    >
+                      <defs>
+                        <style />
+                      </defs>
+                      <path
+                        d="M931.4 498.9L94.9 79.5c-3.4-1.7-7.3-2.1-11-1.2a15.99 15.99 0 00-11.7 19.3l86.2 352.2c1.3 5.3 5.2 9.6 10.4 11.3l147.7 50.7-147.6 50.7c-5.2 1.8-9.1 6-10.3 11.3L72.2 926.5c-.9 3.7-.5 7.6 1.2 10.9 3.9 7.9 13.5 11.1 21.5 7.2l836.5-417c3.1-1.5 5.6-4.1 7.2-7.1 3.9-8 .7-17.6-7.2-21.6zM170.8 826.3l50.3-205.6 295.2-101.3c2.3-.8 4.2-2.6 5-5 1.4-4.2-.8-8.7-5-10.2L221.1 403 171 198.2l628 314.9-628.2 313.2z"
+                      />
+                    </svg>
+                  </span>
+                </span>
+              </button>
             </div>
           </div>
         </div>
@@ -12675,7 +13016,7 @@ exports[`<ProChat /> > renders modal.tsx correctly 1`] = `
                 </time>
               </div>
               <div
-                class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
               >
                 <div
                   class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -12697,7 +13038,7 @@ exports[`<ProChat /> > renders modal.tsx correctly 1`] = `
                     </article>
                   </div>
                   <div
-                    class="message-extra"
+                    class="acss-0 ant-pro-chat-message-extra"
                   />
                 </div>
                 <div
@@ -12856,6 +13197,37 @@ exports[`<ProChat /> > renders modal.tsx correctly 1`] = `
                 />
               </div>
             </div>
+            <button
+              class="ant-btn ant-btn-text ant-btn-icon-only acss-b9746z"
+              type="button"
+            >
+              <span
+                class="ant-btn-icon"
+              >
+                <span
+                  aria-label="send"
+                  class="anticon anticon-send"
+                  role="img"
+                >
+                  <svg
+                    aria-hidden="true"
+                    data-icon="send"
+                    fill="currentColor"
+                    focusable="false"
+                    height="1em"
+                    viewBox="64 64 896 896"
+                    width="1em"
+                  >
+                    <defs>
+                      <style />
+                    </defs>
+                    <path
+                      d="M931.4 498.9L94.9 79.5c-3.4-1.7-7.3-2.1-11-1.2a15.99 15.99 0 00-11.7 19.3l86.2 352.2c1.3 5.3 5.2 9.6 10.4 11.3l147.7 50.7-147.6 50.7c-5.2 1.8-9.1 6-10.3 11.3L72.2 926.5c-.9 3.7-.5 7.6 1.2 10.9 3.9 7.9 13.5 11.1 21.5 7.2l836.5-417c3.1-1.5 5.6-4.1 7.2-7.1 3.9-8 .7-17.6-7.2-21.6zM170.8 826.3l50.3-205.6 295.2-101.3c2.3-.8 4.2-2.6 5-5 1.4-4.2-.8-8.7-5-10.2L221.1 403 171 198.2l628 314.9-628.2 313.2z"
+                    />
+                  </svg>
+                </span>
+              </span>
+            </button>
           </div>
         </div>
       </div>
@@ -12920,7 +13292,7 @@ exports[`<ProChat /> > renders no-stream.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -12942,7 +13314,7 @@ exports[`<ProChat /> > renders no-stream.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                   <div
@@ -13101,6 +13473,37 @@ exports[`<ProChat /> > renders no-stream.tsx correctly 1`] = `
                   />
                 </div>
               </div>
+              <button
+                class="ant-btn ant-btn-text ant-btn-icon-only acss-b9746z"
+                type="button"
+              >
+                <span
+                  class="ant-btn-icon"
+                >
+                  <span
+                    aria-label="send"
+                    class="anticon anticon-send"
+                    role="img"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      data-icon="send"
+                      fill="currentColor"
+                      focusable="false"
+                      height="1em"
+                      viewBox="64 64 896 896"
+                      width="1em"
+                    >
+                      <defs>
+                        <style />
+                      </defs>
+                      <path
+                        d="M931.4 498.9L94.9 79.5c-3.4-1.7-7.3-2.1-11-1.2a15.99 15.99 0 00-11.7 19.3l86.2 352.2c1.3 5.3 5.2 9.6 10.4 11.3l147.7 50.7-147.6 50.7c-5.2 1.8-9.1 6-10.3 11.3L72.2 926.5c-.9 3.7-.5 7.6 1.2 10.9 3.9 7.9 13.5 11.1 21.5 7.2l836.5-417c3.1-1.5 5.6-4.1 7.2-7.1 3.9-8 .7-17.6-7.2-21.6zM170.8 826.3l50.3-205.6 295.2-101.3c2.3-.8 4.2-2.6 5-5 1.4-4.2-.8-8.7-5-10.2L221.1 403 171 198.2l628 314.9-628.2 313.2z"
+                      />
+                    </svg>
+                  </span>
+                </span>
+              </button>
             </div>
           </div>
         </div>
@@ -13166,7 +13569,7 @@ exports[`<ProChat /> > renders request.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -13188,7 +13591,7 @@ exports[`<ProChat /> > renders request.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                   <div
@@ -13347,6 +13750,37 @@ exports[`<ProChat /> > renders request.tsx correctly 1`] = `
                   />
                 </div>
               </div>
+              <button
+                class="ant-btn ant-btn-text ant-btn-icon-only acss-b9746z"
+                type="button"
+              >
+                <span
+                  class="ant-btn-icon"
+                >
+                  <span
+                    aria-label="send"
+                    class="anticon anticon-send"
+                    role="img"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      data-icon="send"
+                      fill="currentColor"
+                      focusable="false"
+                      height="1em"
+                      viewBox="64 64 896 896"
+                      width="1em"
+                    >
+                      <defs>
+                        <style />
+                      </defs>
+                      <path
+                        d="M931.4 498.9L94.9 79.5c-3.4-1.7-7.3-2.1-11-1.2a15.99 15.99 0 00-11.7 19.3l86.2 352.2c1.3 5.3 5.2 9.6 10.4 11.3l147.7 50.7-147.6 50.7c-5.2 1.8-9.1 6-10.3 11.3L72.2 926.5c-.9 3.7-.5 7.6 1.2 10.9 3.9 7.9 13.5 11.1 21.5 7.2l836.5-417c3.1-1.5 5.6-4.1 7.2-7.1 3.9-8 .7-17.6-7.2-21.6zM170.8 826.3l50.3-205.6 295.2-101.3c2.3-.8 4.2-2.6 5-5 1.4-4.2-.8-8.7-5-10.2L221.1 403 171 198.2l628 314.9-628.2 313.2z"
+                      />
+                    </svg>
+                  </span>
+                </span>
+              </button>
             </div>
           </div>
         </div>
@@ -13412,7 +13846,7 @@ exports[`<ProChat /> > renders sse.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -13434,7 +13868,7 @@ exports[`<ProChat /> > renders sse.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                   <div
@@ -13593,6 +14027,37 @@ exports[`<ProChat /> > renders sse.tsx correctly 1`] = `
                   />
                 </div>
               </div>
+              <button
+                class="ant-btn ant-btn-text ant-btn-icon-only acss-b9746z"
+                type="button"
+              >
+                <span
+                  class="ant-btn-icon"
+                >
+                  <span
+                    aria-label="send"
+                    class="anticon anticon-send"
+                    role="img"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      data-icon="send"
+                      fill="currentColor"
+                      focusable="false"
+                      height="1em"
+                      viewBox="64 64 896 896"
+                      width="1em"
+                    >
+                      <defs>
+                        <style />
+                      </defs>
+                      <path
+                        d="M931.4 498.9L94.9 79.5c-3.4-1.7-7.3-2.1-11-1.2a15.99 15.99 0 00-11.7 19.3l86.2 352.2c1.3 5.3 5.2 9.6 10.4 11.3l147.7 50.7-147.6 50.7c-5.2 1.8-9.1 6-10.3 11.3L72.2 926.5c-.9 3.7-.5 7.6 1.2 10.9 3.9 7.9 13.5 11.1 21.5 7.2l836.5-417c3.1-1.5 5.6-4.1 7.2-7.1 3.9-8 .7-17.6-7.2-21.6zM170.8 826.3l50.3-205.6 295.2-101.3c2.3-.8 4.2-2.6 5-5 1.4-4.2-.8-8.7-5-10.2L221.1 403 171 198.2l628 314.9-628.2 313.2z"
+                      />
+                    </svg>
+                  </span>
+                </span>
+              </button>
             </div>
           </div>
         </div>
@@ -13658,7 +14123,7 @@ exports[`<ProChat /> > renders toBottomConfig.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-14jdfs3 acss-j11nrd"
+                  class="layoutkit-flexbox css-14jdfs3 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-yb6bwp ant-pro-chat-list-item-message-content"
@@ -13680,7 +14145,7 @@ exports[`<ProChat /> > renders toBottomConfig.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -13841,7 +14306,7 @@ exports[`<ProChat /> > renders toBottomConfig.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-14jdfs3 acss-j11nrd"
+                  class="layoutkit-flexbox css-14jdfs3 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-yb6bwp ant-pro-chat-list-item-message-content"
@@ -15993,7 +16458,7 @@ exports[`<ProChat /> > renders toBottomConfig.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                   <div
@@ -16227,6 +16692,37 @@ exports[`<ProChat /> > renders toBottomConfig.tsx correctly 1`] = `
                   />
                 </div>
               </div>
+              <button
+                class="ant-btn ant-btn-text ant-btn-icon-only acss-b9746z"
+                type="button"
+              >
+                <span
+                  class="ant-btn-icon"
+                >
+                  <span
+                    aria-label="send"
+                    class="anticon anticon-send"
+                    role="img"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      data-icon="send"
+                      fill="currentColor"
+                      focusable="false"
+                      height="1em"
+                      viewBox="64 64 896 896"
+                      width="1em"
+                    >
+                      <defs>
+                        <style />
+                      </defs>
+                      <path
+                        d="M931.4 498.9L94.9 79.5c-3.4-1.7-7.3-2.1-11-1.2a15.99 15.99 0 00-11.7 19.3l86.2 352.2c1.3 5.3 5.2 9.6 10.4 11.3l147.7 50.7-147.6 50.7c-5.2 1.8-9.1 6-10.3 11.3L72.2 926.5c-.9 3.7-.5 7.6 1.2 10.9 3.9 7.9 13.5 11.1 21.5 7.2l836.5-417c3.1-1.5 5.6-4.1 7.2-7.1 3.9-8 .7-17.6-7.2-21.6zM170.8 826.3l50.3-205.6 295.2-101.3c2.3-.8 4.2-2.6 5-5 1.4-4.2-.8-8.7-5-10.2L221.1 403 171 198.2l628 314.9-628.2 313.2z"
+                      />
+                    </svg>
+                  </span>
+                </span>
+              </button>
             </div>
           </div>
         </div>
@@ -16357,7 +16853,7 @@ exports[`<ProChat /> > renders use-pro-chat.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -16379,7 +16875,7 @@ exports[`<ProChat /> > renders use-pro-chat.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -16543,7 +17039,7 @@ exports[`<ProChat /> > renders use-pro-chat.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -16565,7 +17061,7 @@ exports[`<ProChat /> > renders use-pro-chat.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                   <div
@@ -16840,6 +17336,37 @@ exports[`<ProChat /> > renders use-pro-chat.tsx correctly 1`] = `
                   />
                 </div>
               </div>
+              <button
+                class="ant-btn ant-btn-text ant-btn-icon-only acss-b9746z"
+                type="button"
+              >
+                <span
+                  class="ant-btn-icon"
+                >
+                  <span
+                    aria-label="send"
+                    class="anticon anticon-send"
+                    role="img"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      data-icon="send"
+                      fill="currentColor"
+                      focusable="false"
+                      height="1em"
+                      viewBox="64 64 896 896"
+                      width="1em"
+                    >
+                      <defs>
+                        <style />
+                      </defs>
+                      <path
+                        d="M931.4 498.9L94.9 79.5c-3.4-1.7-7.3-2.1-11-1.2a15.99 15.99 0 00-11.7 19.3l86.2 352.2c1.3 5.3 5.2 9.6 10.4 11.3l147.7 50.7-147.6 50.7c-5.2 1.8-9.1 6-10.3 11.3L72.2 926.5c-.9 3.7-.5 7.6 1.2 10.9 3.9 7.9 13.5 11.1 21.5 7.2l836.5-417c3.1-1.5 5.6-4.1 7.2-7.1 3.9-8 .7-17.6-7.2-21.6zM170.8 826.3l50.3-205.6 295.2-101.3c2.3-.8 4.2-2.6 5-5 1.4-4.2-.8-8.7-5-10.2L221.1 403 171 198.2l628 314.9-628.2 313.2z"
+                      />
+                    </svg>
+                  </span>
+                </span>
+              </button>
             </div>
           </div>
         </div>
@@ -16913,7 +17440,7 @@ exports[`<ProChat /> > renders use-ref.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd"
+                  class="layoutkit-flexbox css-1g62d18 acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -16935,7 +17462,7 @@ exports[`<ProChat /> > renders use-ref.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     >
                       <div
                         class="layoutkit-flexbox css-1yd7uym"
@@ -17099,7 +17626,7 @@ exports[`<ProChat /> > renders use-ref.tsx correctly 1`] = `
                   </time>
                 </div>
                 <div
-                  class="layoutkit-flexbox css-d8kryp acss-j11nrd"
+                  class="layoutkit-flexbox css-d8kryp acss-j11nrd ant-pro-chat-message-content"
                 >
                   <div
                     class="layoutkit-flexbox css-1euyney acss-1aas3xx ant-pro-chat-list-item-message-content"
@@ -17121,7 +17648,7 @@ exports[`<ProChat /> > renders use-ref.tsx correctly 1`] = `
                       </article>
                     </div>
                     <div
-                      class="message-extra"
+                      class="acss-0 ant-pro-chat-message-extra"
                     />
                   </div>
                   <div
@@ -17396,6 +17923,37 @@ exports[`<ProChat /> > renders use-ref.tsx correctly 1`] = `
                   />
                 </div>
               </div>
+              <button
+                class="ant-btn ant-btn-text ant-btn-icon-only acss-b9746z"
+                type="button"
+              >
+                <span
+                  class="ant-btn-icon"
+                >
+                  <span
+                    aria-label="send"
+                    class="anticon anticon-send"
+                    role="img"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      data-icon="send"
+                      fill="currentColor"
+                      focusable="false"
+                      height="1em"
+                      viewBox="64 64 896 896"
+                      width="1em"
+                    >
+                      <defs>
+                        <style />
+                      </defs>
+                      <path
+                        d="M931.4 498.9L94.9 79.5c-3.4-1.7-7.3-2.1-11-1.2a15.99 15.99 0 00-11.7 19.3l86.2 352.2c1.3 5.3 5.2 9.6 10.4 11.3l147.7 50.7-147.6 50.7c-5.2 1.8-9.1 6-10.3 11.3L72.2 926.5c-.9 3.7-.5 7.6 1.2 10.9 3.9 7.9 13.5 11.1 21.5 7.2l836.5-417c3.1-1.5 5.6-4.1 7.2-7.1 3.9-8 .7-17.6-7.2-21.6zM170.8 826.3l50.3-205.6 295.2-101.3c2.3-.8 4.2-2.6 5-5 1.4-4.2-.8-8.7-5-10.2L221.1 403 171 198.2l628 314.9-628.2 313.2z"
+                      />
+                    </svg>
+                  </span>
+                </span>
+              </button>
             </div>
           </div>
         </div>

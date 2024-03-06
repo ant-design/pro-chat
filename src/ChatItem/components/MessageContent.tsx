@@ -2,9 +2,9 @@ import { useResponsive } from 'antd-style';
 import { memo, useContext, type ReactNode } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
-import { ConfigProvider } from 'antd';
 import { ChatItemProps } from '@/ChatItem';
 import EditableMessage from '@/EditableMessage';
+import { ConfigProvider } from 'antd';
 
 import { useStyles } from '../style';
 
@@ -66,7 +66,9 @@ const MessageContent = memo<MessageContentProps>(
       >
         {messageContent}
         {messageExtra && !editing ? (
-          <div className={`${cx(styles.messageExtra, `${prefixClass}-message-extra`)}`}>{messageExtra}</div>
+          <div className={`${cx(styles.messageExtra, `${prefixClass}-message-extra`)}`}>
+            {messageExtra}
+          </div>
         ) : null}
       </Flexbox>
     );

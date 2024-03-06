@@ -103,6 +103,15 @@ export interface ChatAction {
    * @returns  消息 id
    */
   getMessageId: (messages: ChatMessage[], parentId: string) => Promise<string>;
+
+  updateMessageContent: (id: string, content: string) => Promise<void>;
+
+  createSmoothMessage: (id: string) => {
+    startAnimation: (speed?: number) => Promise<void>;
+    stopAnimation: () => void;
+    outputQueue: string[];
+    isAnimationActive: boolean;
+  };
 }
 
 export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], [], ChatAction> = (
@@ -124,6 +133,12 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
     get().dispatchMessage({ id, type: 'deleteMessage' });
   },
 
+  updateMessageContent: async (id, content) => {
+    const { dispatchMessage, updateMessageContent } = get();
+    dispatchMessage({ id, key: 'content', type: 'updateMessage', value: content });
+    updateMessageContent(id, content);
+  },
+
   dispatchMessage: (payload) => {
     const { chats, onChatsChange } = get();
 
@@ -134,14 +149,20 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
     onChatsChange?.(nextChats);
   },
   generateMessage: async (messages, assistantId) => {
-    const { dispatchMessage, toggleChatLoading, config, defaultModelFetcher } = get();
+    const {
+      dispatchMessage,
+      toggleChatLoading,
+      config,
+      defaultModelFetcher,
+      createSmoothMessage,
+      updateMessageContent,
+    } = get();
 
     const abortController = toggleChatLoading(
       true,
       assistantId,
       t('generateMessage(start)', { assistantId, messages }) as string,
     );
-
 
     // ========================== //
     //   对 messages 做统一预处理    //
@@ -151,8 +172,8 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
     const slicedMessages = getSlicedMessagesWithConfig(messages, config);
 
     // 2. 替换 inputMessage 模板
-    const compilerMessages =(slicedMessages:ChatMessage[])=>{
-    const compiler = template(config.inputTemplate, { interpolate: /{{([\S\s]+?)}}/g });
+    const compilerMessages = (slicedMessages: ChatMessage[]) => {
+      const compiler = template(config.inputTemplate, { interpolate: /{{([\S\s]+?)}}/g });
       return slicedMessages.map((m) => {
         if (m.role === 'user') {
           try {
@@ -165,10 +186,8 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
         }
         return m;
       });
-    }
-    const postMessages = !config.inputTemplate
-      ? slicedMessages
-      : compilerMessages(slicedMessages);
+    };
+    const postMessages = !config.inputTemplate ? slicedMessages : compilerMessages(slicedMessages);
 
     // 3. 添加 systemRole
     if (config.systemRole) {
@@ -188,27 +207,36 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
     let output = '';
     let isFunctionCall = false;
 
-    let timeId = 0;
+    const { startAnimation, stopAnimation, outputQueue, isAnimationActive } =
+      createSmoothMessage(assistantId);
 
     await fetchSSE(fetcher, {
       onErrorHandle: (error) => {
         dispatchMessage({ id: assistantId, key: 'error', type: 'updateMessage', value: error });
       },
+      onAbort: async () => {
+        stopAnimation();
+      },
+      onFinish: async (content) => {
+        stopAnimation();
+
+        if (outputQueue.length > 0 && !isFunctionCall) {
+          await startAnimation(15);
+        }
+
+        await updateMessageContent(assistantId, content);
+      },
       onMessageHandle: (text) => {
         output += text;
 
-        // 如果存在上一个定时器，那么清除
-        if (timeId) clearTimeout(timeId);
+        if (!isAnimationActive && !isFunctionCall) startAnimation();
 
-        // 使用定时器来监听性能，保证出入的时候不会太卡顿
-        timeId = (window.requestIdleCallback || window.setTimeout)(() => {
-          dispatchMessage({
-            id: assistantId,
-            key: 'content',
-            type: 'updateMessage',
-            value: output,
-          });
-        });
+        if (abortController?.signal.aborted) {
+          // aborted 后停止当前输出
+          return;
+        } else {
+          outputQueue.push(...text.split(''));
+        }
 
         // TODO: need a function call judge callback
         // 如果是 function call
@@ -218,11 +246,74 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
       },
     });
 
-    (window.requestIdleCallback || window.setTimeout)(() => {
-      toggleChatLoading(false, undefined, t('generateMessage(end)') as string);
-    });
+    toggleChatLoading(false, undefined, t('generateMessage(end)') as string);
 
     return { isFunctionCall };
+  },
+
+  createSmoothMessage: (id) => {
+    const { dispatchMessage } = get();
+
+    let buffer = '';
+    // why use queue: https://shareg.pt/GLBrjpK
+    let outputQueue: string[] = [];
+
+    // eslint-disable-next-line no-undef
+    let animationTimeoutId: NodeJS.Timeout | null = null;
+    let isAnimationActive = false;
+
+    // when you need to stop the animation, call this function
+    const stopAnimation = () => {
+      isAnimationActive = false;
+      if (animationTimeoutId !== null) {
+        clearTimeout(animationTimeoutId);
+        animationTimeoutId = null;
+      }
+    };
+
+    // define startAnimation function to display the text in buffer smooth
+    // when you need to start the animation, call this function
+    const startAnimation = (speed = 2) =>
+      new Promise<void>((resolve) => {
+        if (isAnimationActive) {
+          resolve();
+          return;
+        }
+
+        isAnimationActive = true;
+
+        const updateText = () => {
+          // 如果动画已经不再激活，则停止更新文本
+          if (!isAnimationActive) {
+            clearTimeout(animationTimeoutId!);
+            animationTimeoutId = null;
+            resolve();
+          }
+
+          // 如果还有文本没有显示
+          // 检查队列中是否有字符待显示
+          if (outputQueue.length > 0) {
+            // 从队列中获取前两个字符（如果存在）
+            const charsToAdd = outputQueue.splice(0, speed).join('');
+            buffer += charsToAdd;
+
+            // 更新消息内容，这里可能需要结合实际情况调整
+            dispatchMessage({ id, key: 'content', type: 'updateMessage', value: buffer });
+
+            // 设置下一个字符的延迟
+            animationTimeoutId = setTimeout(updateText, 16); // 16 毫秒的延迟模拟打字机效果
+          } else {
+            // 当所有字符都显示完毕时，清除动画状态
+            isAnimationActive = false;
+            animationTimeoutId = null;
+            resolve();
+          }
+        };
+
+        updateText();
+      });
+
+    return { startAnimation, stopAnimation, outputQueue, isAnimationActive };
   },
 
   realFetchAIResponse: async (messages, userMessageId) => {
@@ -337,7 +428,8 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
       params,
     );
 
-    if (typeof request === 'function') return request(payload.messages as ChatMessage[], payload);
+    if (typeof request === 'function')
+      return request(payload.messages as ChatMessage[], payload, options?.signal);
 
     const url = typeof request === 'string' ? request : '/api/openai/chat';
 
