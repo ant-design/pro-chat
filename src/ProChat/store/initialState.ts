@@ -7,7 +7,11 @@ import { ReactNode } from 'react';
 import { FlexBasicProps } from 'react-layout-kit/lib/FlexBasic';
 import { ProChatChatReference } from '../container/StoreUpdater';
 
-export type ChatRequest = (messages: ChatMessage[], config: ModelConfig) => Promise<Response>;
+export type ChatRequest = (
+  messages: ChatMessage[],
+  config: ModelConfig,
+  signal: AbortSignal | undefined,
+) => Promise<Response>;
 
 export interface ChatPropsState<T extends Record<string, any> = Record<string, any>> {
   /**
