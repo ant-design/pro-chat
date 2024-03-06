@@ -2,6 +2,7 @@ import { DEFAULT_AVATAR, DEFAULT_USER_AVATAR } from '@/ProChat/const/meta';
 import { ModelConfig } from '@/ProChat/types/config';
 import { MetaData } from '@/ProChat/types/meta';
 import { ChatMessage } from '@/types/message';
+import { AutoCompleteProps } from 'antd';
 import { TextAreaProps } from 'antd/es/input';
 import { ReactNode } from 'react';
 import { FlexBasicProps } from 'react-layout-kit/lib/FlexBasic';
@@ -66,7 +67,7 @@ export interface ChatPropsState<T extends Record<string, any> = Record<string, a
   /**
    * 输入框的 props,优先级最高
    */
-  inputAreaProps?: TextAreaProps;
+  inputAreaProps?: TextAreaProps & { autoCompleteProps?: AutoCompleteProps };
 
   /**
    * 信息框额外渲染
