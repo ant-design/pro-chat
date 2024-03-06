@@ -97,7 +97,7 @@ const App = memo<ConversationProps>(
                 itemShouldUpdate={itemShouldUpdate}
                 chatItemRenderConfig={chatItemRenderConfig}
               />
-              <ChatScrollAnchor />
+              <ChatScrollAnchor target={ref} />
             </div>
             {isRender ? (
               <BackBottom

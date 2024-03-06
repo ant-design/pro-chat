@@ -1,9 +1,10 @@
 import { useResponsive } from 'antd-style';
-import { memo, type ReactNode } from 'react';
+import { memo, useContext, type ReactNode } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
 import { ChatItemProps } from '@/ChatItem';
 import EditableMessage from '@/EditableMessage';
+import { ConfigProvider } from 'antd';
 
 import { useStyles } from '../style';
 
@@ -40,6 +41,9 @@ const MessageContent = memo<MessageContentProps>(
     const { cx, styles } = useStyles({ editing, placement, primary, type });
     const { mobile } = useResponsive();
 
+    const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
+    const prefixClass = getPrefixCls('pro-chat');
+
     const content = (
       <EditableMessage
         classNames={{ input: styles.editingInput }}
@@ -62,7 +66,9 @@ const MessageContent = memo<MessageContentProps>(
       >
         {messageContent}
         {messageExtra && !editing ? (
-          <div className={styles.messageExtra}>{messageExtra}</div>
+          <div className={`${cx(styles.messageExtra, `${prefixClass}-message-extra`)}`}>
+            {messageExtra}
+          </div>
         ) : null}
       </Flexbox>
     );
