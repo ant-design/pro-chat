@@ -8,6 +8,7 @@ import { isFunctionMessage } from '@/ProChat/utils/message';
 import { setNamespace } from '@/ProChat/utils/storeDebug';
 import { nanoid } from '@/ProChat/utils/uuid';
 import { ChatMessage } from '@/types/message';
+import { startTransition } from 'react';
 
 import { initialModelConfig } from '@/ProChat/store/initialState';
 import { ChatStreamPayload } from '@/ProChat/types/chat';
@@ -110,16 +111,6 @@ export interface ChatAction {
   updateMessageContent: (id: string, content: string) => Promise<void>;
 
   /**
-   * 创建一条平滑输出的内容
-   */
-  createSmoothMessage: (id: string) => {
-    startAnimation: (speed?: number) => Promise<void>;
-    stopAnimation: () => void;
-    outputQueue: string[];
-    isAnimationActive: boolean;
-  };
-
-  /**
    * 获取当前 loading 生成的消息 id
    * @returns  消息 id ｜ undefined
    */
@@ -161,14 +152,7 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
     onChatsChange?.(nextChats);
   },
   generateMessage: async (messages, assistantId) => {
-    const {
-      dispatchMessage,
-      toggleChatLoading,
-      config,
-      defaultModelFetcher,
-      createSmoothMessage,
-      updateMessageContent,
-    } = get();
+    const { dispatchMessage, toggleChatLoading, config, defaultModelFetcher } = get();
 
     const abortController = toggleChatLoading(
       true,
@@ -219,35 +203,23 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
     let output = '';
     let isFunctionCall = false;
 
-    const { startAnimation, stopAnimation, outputQueue, isAnimationActive } =
-      createSmoothMessage(assistantId);
-
     await fetchSSE(fetcher, {
       onErrorHandle: (error) => {
         dispatchMessage({ id: assistantId, key: 'error', type: 'updateMessage', value: error });
       },
-      onAbort: async () => {
-        stopAnimation();
-      },
-      onFinish: async (content) => {
-        stopAnimation();
-
-        if (outputQueue.length > 0 && !isFunctionCall) {
-          await startAnimation(15);
-        }
-
-        await updateMessageContent(assistantId, content);
-      },
       onMessageHandle: (text) => {
         output += text;
-
-        if (!isAnimationActive && !isFunctionCall) startAnimation();
-
-        if (abortController?.signal.aborted) {
-          // aborted 后停止当前输出
-          return;
+        if (!abortController.signal.aborted) {
+          startTransition(() => {
+            dispatchMessage({
+              id: assistantId,
+              key: 'content',
+              type: 'updateMessage',
+              value: output,
+            });
+          });
         } else {
-          outputQueue.push(...text.split(''));
+          return;
         }
 
         // TODO: need a function call judge callback
@@ -258,74 +230,11 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
       },
     });
 
-    toggleChatLoading(false, undefined, t('generateMessage(end)') as string);
+    startTransition(() => {
+      toggleChatLoading(false, undefined, t('generateMessage(end)') as string);
+    });
 
     return { isFunctionCall };
-  },
-
-  createSmoothMessage: (id) => {
-    const { dispatchMessage } = get();
-
-    let buffer = '';
-    // why use queue: https://shareg.pt/GLBrjpK
-    let outputQueue: string[] = [];
-
-    // eslint-disable-next-line no-undef
-    let animationTimeoutId: NodeJS.Timeout | null = null;
-    let isAnimationActive = false;
-
-    // when you need to stop the animation, call this function
-    const stopAnimation = () => {
-      isAnimationActive = false;
-      if (animationTimeoutId !== null) {
-        clearTimeout(animationTimeoutId);
-        animationTimeoutId = null;
-      }
-    };
-
-    // define startAnimation function to display the text in buffer smooth
-    // when you need to start the animation, call this function
-    const startAnimation = (speed = 2) =>
-      new Promise<void>((resolve) => {
-        if (isAnimationActive) {
-          resolve();
-          return;
-        }
-
-        isAnimationActive = true;
-
-        const updateText = () => {
-          // 如果动画已经不再激活，则停止更新文本
-          if (!isAnimationActive) {
-            clearTimeout(animationTimeoutId!);
-            animationTimeoutId = null;
-            resolve();
-          }
-
-          // 如果还有文本没有显示
-          // 检查队列中是否有字符待显示
-          if (outputQueue.length > 0) {
-            // 从队列中获取前两个字符（如果存在）
-            const charsToAdd = outputQueue.splice(0, speed).join('');
-            buffer += charsToAdd;
-
-            // 更新消息内容，这里可能需要结合实际情况调整
-            dispatchMessage({ id, key: 'content', type: 'updateMessage', value: buffer });
-
-            // 设置下一个字符的延迟
-            animationTimeoutId = setTimeout(updateText, 16); // 16 毫秒的延迟模拟打字机效果
-          } else {
-            // 当所有字符都显示完毕时，清除动画状态
-            isAnimationActive = false;
-            animationTimeoutId = null;
-            resolve();
-          }
-        };
-
-        updateText();
-      });
-
-    return { startAnimation, stopAnimation, outputQueue, isAnimationActive };
   },
 
   realFetchAIResponse: async (messages, userMessageId) => {
@@ -412,7 +321,20 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
   },
 
   stopGenerateMessage: () => {
-    const { abortController, toggleChatLoading } = get();
+    const { abortController, toggleChatLoading, chatLoadingId, chats, dispatchMessage } = get();
+    // 如果当前 最后一条为 chatLoadingId 停止前需要清空
+    if (chats && chats.length > 0) {
+      const lastChat = chats[chats.length - 1];
+      if (lastChat.content === LOADING_FLAT) {
+        dispatchMessage({
+          id: chatLoadingId,
+          key: 'content',
+          type: 'updateMessage',
+          value: '',
+        });
+      }
+    }
+
     if (!abortController) return;
 
     abortController.abort();
