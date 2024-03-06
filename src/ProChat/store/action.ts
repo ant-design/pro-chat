@@ -104,14 +104,26 @@ export interface ChatAction {
    */
   getMessageId: (messages: ChatMessage[], parentId: string) => Promise<string>;
 
+  /**
+   * 用于更新一条消息的内容（目前仅用于平滑输出时候，其余情况请直接使用 dispatchMessage ）
+   */
   updateMessageContent: (id: string, content: string) => Promise<void>;
 
+  /**
+   * 创建一条平滑输出的内容
+   */
   createSmoothMessage: (id: string) => {
     startAnimation: (speed?: number) => Promise<void>;
     stopAnimation: () => void;
     outputQueue: string[];
     isAnimationActive: boolean;
   };
+
+  /**
+   * 获取当前 loading 生成的消息 id
+   * @returns  消息 id ｜ undefined
+   */
+  getChatLoadingId: () => string | undefined;
 }
 
 export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], [], ChatAction> = (
@@ -444,5 +456,10 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
     const { genMessageId } = get();
     if (typeof genMessageId === 'function') return genMessageId(messages, parentId);
     return nanoid();
+  },
+
+  getChatLoadingId: () => {
+    const { chatLoadingId } = get();
+    return chatLoadingId;
   },
 });
