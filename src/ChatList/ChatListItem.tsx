@@ -100,6 +100,10 @@ export interface ListItemProps<T = Record<string, any>> {
    */
   chatItemRenderConfig?: ChatItemProps['chatItemRenderConfig'];
   /**
+   * markdown组件的配置。
+   */
+  markdownProps?: ChatItemProps['markdownProps'];
+  /**
    * 原始数据。
    */
   originData?: ChatItemProps<T>['originData'];
@@ -133,6 +137,7 @@ const ChatListItem = (props: ChatListItemProps) => {
     renderItems,
     chatItemRenderConfig,
     chatItemClassName,
+    markdownProps,
     ...item
   } = props;
 
@@ -285,6 +290,7 @@ const ChatListItem = (props: ChatListItemProps) => {
         time={item.updateAt || item.createAt}
         type={type === 'chat' ? 'block' : 'pure'}
         chatItemRenderConfig={chatItemRenderConfig}
+        markdownProps={markdownProps}
       />
     );
     return dom;

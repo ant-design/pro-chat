@@ -21,6 +21,7 @@ export interface MessageContentProps {
   text?: ChatItemProps['text'];
   type?: ChatItemProps['type'];
   className?: string;
+  markdownProps?: ChatItemProps['markdownProps'];
 }
 
 const MessageContent = memo<MessageContentProps>(
@@ -34,6 +35,7 @@ const MessageContent = memo<MessageContentProps>(
     placement,
     messageExtra,
     renderMessage,
+    markdownProps,
     type,
     primary,
     onDoubleClick,
@@ -55,6 +57,8 @@ const MessageContent = memo<MessageContentProps>(
         openModal={mobile ? editing : undefined}
         text={text}
         value={String(message || '...')}
+        remarkPlugins={markdownProps?.remarkPlugins}
+        rehypePlugins={markdownProps?.rehypePlugins}
       />
     );
     const messageContent = renderMessage ? renderMessage(content) : content;

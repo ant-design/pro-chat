@@ -22,6 +22,10 @@ export interface ChatProps<T extends Record<string, any> = Record<string, any>>
    */
   chatItemRenderConfig?: ChatListProps['chatItemRenderConfig'];
   /**
+   * @description markdown组件的参数
+   */
+  markdownProps?: ChatListProps['markdownProps'];
+  /**
    * @description 判断聊天项的更新函数
    */
   itemShouldUpdate?: ChatListProps['itemShouldUpdate'];

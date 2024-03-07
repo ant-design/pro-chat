@@ -4,6 +4,7 @@ import { CSSProperties, memo } from 'react';
 import MessageInput, { type MessageInputProps } from '@/MessageInput';
 import MessageModal, { type MessageModalProps } from '@/MessageModal';
 import { Markdown } from '@ant-design/pro-editor';
+import { PluggableList } from 'react-markdown/lib/react-markdown';
 
 export interface EditableMessageProps {
   /**
@@ -74,6 +75,8 @@ export interface EditableMessageProps {
    * @title The current text value
    */
   value: string;
+  rehypePlugins?: PluggableList;
+  remarkPlugins?: PluggableList;
 }
 
 const EditableMessage = memo<EditableMessageProps>(
@@ -93,6 +96,8 @@ const EditableMessage = memo<EditableMessageProps>(
     editButtonSize,
     text,
     model,
+    rehypePlugins,
+    remarkPlugins,
   }) => {
     const [isEdit, setTyping] = useMergedState(false, {
       onChange: onEditingChange,
@@ -135,6 +140,8 @@ const EditableMessage = memo<EditableMessageProps>(
         ) : (
           <Markdown
             className={classNames?.markdown}
+            rehypePlugins={rehypePlugins}
+            remarkPlugins={remarkPlugins}
             style={{
               height: isAutoSize ? 'unset' : height,
               overflowX: 'hidden',
