@@ -3,9 +3,8 @@ import { useMergedState } from 'rc-util';
 import { CSSProperties, ReactNode, memo } from 'react';
 
 import MessageInput, { type MessageInputProps } from '@/MessageInput';
-import { Markdown } from '@ant-design/pro-editor';
+import { Markdown, MarkdownProps } from '@ant-design/pro-editor';
 import { Modal, type ModalProps } from 'antd';
-import { PluggableList } from 'react-markdown/lib/react-markdown';
 
 export interface MessageModalProps extends Pick<ModalProps, 'open' | 'footer'> {
   /**
@@ -42,8 +41,10 @@ export interface MessageModalProps extends Pick<ModalProps, 'open' | 'footer'> {
    * @description The value of the message content
    */
   value: string;
-  rehypePlugins?: PluggableList;
-  remarkPlugins?: PluggableList;
+  /**
+   * @description The props for the Markdown component
+   */
+  markdownProps?: MarkdownProps;
 }
 
 const MessageModal = memo<MessageModalProps>(
@@ -59,8 +60,7 @@ const MessageModal = memo<MessageModalProps>(
     text,
     footer,
     extra,
-    remarkPlugins,
-    rehypePlugins,
+    markdownProps,
   }) => {
     const { mobile } = useResponsive();
 
@@ -112,9 +112,16 @@ const MessageModal = memo<MessageModalProps>(
           <>
             {extra}
             <Markdown
-              style={value ? markdownStyle : { ...markdownStyle, opacity: 0.5 }}
-              rehypePlugins={rehypePlugins}
-              remarkPlugins={remarkPlugins}
+              {...markdownProps}
+              style={
+                value
+                  ? { ...markdownStyle, ...markdownProps.style }
+                  : {
+                      ...markdownStyle,
+                      ...markdownProps.style,
+                      opacity: 0.5,
+                    }
+              }
             >
               {String(value || placeholder)}
             </Markdown>

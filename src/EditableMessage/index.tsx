@@ -3,8 +3,7 @@ import { CSSProperties, memo } from 'react';
 
 import MessageInput, { type MessageInputProps } from '@/MessageInput';
 import MessageModal, { type MessageModalProps } from '@/MessageModal';
-import { Markdown } from '@ant-design/pro-editor';
-import { PluggableList } from 'react-markdown/lib/react-markdown';
+import { Markdown, MarkdownProps } from '@ant-design/pro-editor';
 
 export interface EditableMessageProps {
   /**
@@ -15,10 +14,6 @@ export interface EditableMessageProps {
      * @title The class name for the MessageInput component
      */
     input?: string;
-    /**
-     * @title The class name for the Markdown component
-     */
-    markdown?: string;
     textarea?: string;
   };
   editButtonSize?: MessageInputProps['editButtonSize'];
@@ -65,18 +60,16 @@ export interface EditableMessageProps {
      * @title The style for the MessageInput component
      */
     input?: CSSProperties;
-    /**
-     * @title The style for the Markdown component
-     */
-    markdown?: CSSProperties;
   };
   text?: MessageModalProps['text'];
   /**
    * @title The current text value
    */
   value: string;
-  rehypePlugins?: PluggableList;
-  remarkPlugins?: PluggableList;
+  /**
+   * @title The props for the Markdown component
+   */
+  markdownProps?: MarkdownProps;
 }
 
 const EditableMessage = memo<EditableMessageProps>(
@@ -96,8 +89,7 @@ const EditableMessage = memo<EditableMessageProps>(
     editButtonSize,
     text,
     model,
-    rehypePlugins,
-    remarkPlugins,
+    markdownProps,
   }) => {
     const [isEdit, setTyping] = useMergedState(false, {
       onChange: onEditingChange,
@@ -139,14 +131,12 @@ const EditableMessage = memo<EditableMessageProps>(
           input
         ) : (
           <Markdown
-            className={classNames?.markdown}
-            rehypePlugins={rehypePlugins}
-            remarkPlugins={remarkPlugins}
+            {...markdownProps}
             style={{
               height: isAutoSize ? 'unset' : height,
               overflowX: 'hidden',
               overflowY: 'auto',
-              ...styles?.markdown,
+              ...markdownProps.style,
             }}
           >
             {value || placeholder}
@@ -163,6 +153,7 @@ const EditableMessage = memo<EditableMessageProps>(
             setExpand(e);
             setTyping(false);
           }}
+          markdownProps={markdownProps}
           open={expand}
           placeholder={placeholder}
           text={text}

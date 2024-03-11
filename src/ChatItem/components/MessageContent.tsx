@@ -6,6 +6,7 @@ import { ChatItemProps } from '@/ChatItem';
 import EditableMessage from '@/EditableMessage';
 import { ConfigProvider } from 'antd';
 
+import { MarkdownProps } from '@ant-design/pro-editor';
 import { useStyles } from '../style';
 
 export interface MessageContentProps {
@@ -21,7 +22,7 @@ export interface MessageContentProps {
   text?: ChatItemProps['text'];
   type?: ChatItemProps['type'];
   className?: string;
-  markdownProps?: ChatItemProps['markdownProps'];
+  markdownProps?: MarkdownProps;
 }
 
 const MessageContent = memo<MessageContentProps>(
@@ -57,8 +58,7 @@ const MessageContent = memo<MessageContentProps>(
         openModal={mobile ? editing : undefined}
         text={text}
         value={String(message || '...')}
-        remarkPlugins={markdownProps?.remarkPlugins}
-        rehypePlugins={markdownProps?.rehypePlugins}
+        markdownProps={markdownProps}
       />
     );
     const messageContent = renderMessage ? renderMessage(content) : content;
