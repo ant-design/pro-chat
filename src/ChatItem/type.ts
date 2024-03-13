@@ -3,6 +3,7 @@ import { ReactNode } from 'react';
 
 import { EditableMessageProps } from '@/EditableMessage';
 import { DivProps, MetaData } from '@/types';
+import { MarkdownProps } from '@ant-design/pro-editor';
 
 export type WithFalse<T> = T | false;
 
@@ -74,6 +75,12 @@ export interface ChatItemProps<T = Record<string, any>> {
    * @default 'block'
    */
   type?: 'block' | 'pure';
+
+  /**
+   * @description The configuration for the markdown component
+   * @default {}
+   */
+  markdownProps?: MarkdownProps;
 
   /**
    * @description 聊天项渲染函数,为了保证性能他是惰性的，只有在列表项内容修改的时候才会重新执行

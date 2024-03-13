@@ -71,6 +71,7 @@ const ChatList = memo<ChatListProps>(
     renderActions,
     historyCount = 0,
     chatItemRenderConfig,
+    markdownProps,
     ...props
   }) => {
     const { cx, styles } = useStyles();
@@ -114,6 +115,7 @@ const ChatList = memo<ChatListProps>(
                   {...item}
                   originData={item}
                   chatItemRenderConfig={chatItemRenderConfig}
+                  markdownProps={markdownProps}
                 />
               </Fragment>
             </ShouldUpdateItem>
