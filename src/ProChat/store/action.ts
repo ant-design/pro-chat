@@ -259,9 +259,10 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
     const checkAndToggleChatLoading = () => {
       clearTimeout(timeoutId); // 清除任何现有的计时器
       // 等待队列内容输出完毕
-      if (outputQueue === undefined || outputQueue.length === 0) {
+      if (outputQueue === undefined || outputQueue.length === 0 || outputQueue.toString() === '') {
         // 当队列为空时
         toggleChatLoading(false, undefined, t('generateMessage(end)') as string);
+        clearTimeout(timeoutId);
       } else {
         // 如果队列不为空，则设置一个延迟或者使用某种形式的轮询来再次检查队列
         timeoutId = setTimeout(checkAndToggleChatLoading, 30); // CHECK_INTERVAL 是毫秒数，代表检查间隔时间
