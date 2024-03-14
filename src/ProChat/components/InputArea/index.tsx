@@ -149,14 +149,12 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
           className={cx(styles.boxShadow, `${prefixClass}-text-container`)}
         >
           {inputDom}
-          {mobile ? null : (
-            <Button
-              type="text"
-              className={styles.btn}
-              onClick={() => send()}
-              icon={<SendOutlined />}
-            />
-          )}
+          <Button
+            type="text"
+            className={styles.btn}
+            onClick={() => send()}
+            icon={<SendOutlined />}
+          />
         </Flexbox>
       </Flexbox>
     </ConfigProvider>
