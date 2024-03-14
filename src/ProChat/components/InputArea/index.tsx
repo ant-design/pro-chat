@@ -52,10 +52,14 @@ const useStyles = createStyles(({ css, responsive, token }) => ({
   `,
 }));
 
-type ChatInputAreaProps = {
+export type ChatInputAreaProps = {
   className?: string;
   onSend?: (message: string) => boolean | Promise<boolean>;
-  renderInputArea?: (
+  inputRender?: (
+    defaultDom: ReactNode,
+    onMessageSend: (message: string) => void | Promise<any>,
+  ) => ReactNode;
+  inputAreaRender?: (
     defaultDom: ReactNode,
     onMessageSend: (message: string) => void | Promise<any>,
     onClearAllHistory: () => void,
@@ -63,7 +67,7 @@ type ChatInputAreaProps = {
 };
 
 export const ChatInputArea = (props: ChatInputAreaProps) => {
-  const { className, onSend, renderInputArea } = props || {};
+  const { className, onSend, inputAreaRender, inputRender } = props || {};
   const [sendMessage, isLoading, placeholder, inputAreaProps, clearMessage, stopGenerateMessage] =
     useStore((s) => [
       s.sendMessage,
@@ -93,6 +97,40 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
 
   const prefixClass = getPrefixCls('pro-chat-input-area');
 
+  const defaultInput = (
+    <AutoCompleteTextArea
+      placeholder={placeholder || '请输入内容...'}
+      {...inputAreaProps}
+      className={cx(styles.input, inputAreaProps?.className, `${prefixClass}-component`)}
+      value={message}
+      onChange={(e) => {
+        setMessage(e.target.value);
+      }}
+      autoSize={{ maxRows: 8 }}
+      onCompositionStart={() => {
+        isChineseInput.current = true;
+      }}
+      onCompositionEnd={() => {
+        isChineseInput.current = false;
+      }}
+      onPressEnter={(e) => {
+        if (!isLoading && !e.shiftKey && !isChineseInput.current) {
+          e.preventDefault();
+          send();
+        }
+      }}
+    />
+  );
+
+  /**
+   * 支持下自定义输入框
+   */
+  const inputDom = inputRender
+    ? inputRender?.(defaultInput, (message) => {
+        sendMessage(message);
+      })
+    : defaultInput;
+
   const defaultInputArea = (
     <ConfigProvider
       theme={{
@@ -113,28 +151,7 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
           align={'center'}
           className={cx(styles.boxShadow, `${prefixClass}-text-container`)}
         >
-          <AutoCompleteTextArea
-            placeholder={placeholder || '请输入内容...'}
-            {...inputAreaProps}
-            className={cx(styles.input, inputAreaProps?.className, `${prefixClass}-component`)}
-            value={message}
-            onChange={(e) => {
-              setMessage(e.target.value);
-            }}
-            autoSize={{ maxRows: 8 }}
-            onCompositionStart={() => {
-              isChineseInput.current = true;
-            }}
-            onCompositionEnd={() => {
-              isChineseInput.current = false;
-            }}
-            onPressEnter={(e) => {
-              if (!isLoading && !e.shiftKey && !isChineseInput.current) {
-                e.preventDefault();
-                send();
-              }
-            }}
-          />
+          {inputDom}
           {isLoading ? (
             <Button
               type="text"
@@ -155,8 +172,8 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
     </ConfigProvider>
   );
 
-  if (renderInputArea) {
-    return renderInputArea(
+  if (inputAreaRender) {
+    return inputAreaRender(
       defaultInputArea,
       (message) => {
         sendMessage(message);

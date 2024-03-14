@@ -22,17 +22,17 @@ nav:
 
 ## 自定义输入部分
 
-我们提供了一个 renderInputArea 的 api，来帮助你对多模态的情况下进行支持，以及和 ProChat 的数据流进行接入和交互
+我们提供了一个 inputAreaRender 的 api，来帮助你对多模态的情况下进行支持，以及和 ProChat 的数据流进行接入和交互
 
 ```ts
-  renderInputArea?: (
+  inputAreaRender?: (
     defaultDom: ReactNode,
     onMessageSend: (message: string) => void | Promise<any>,
     onClearAllHistory: () => void,
   ) => ReactNode;
 ```
 
-renderInputArea 共有三个参数：
+inputAreaRender 共有三个参数：
 
 - defaultDom ：即默认渲染的 dom，你如果是想包裹或者添加一些小内容，可以直接在这个基础上进行组合
 - onMessageSend ：发送数据的方法，这个方法和 ProChat.sendMessage（Hooks） 本质上是一个方法，用于向 ProChat 的数据流发送一条数据

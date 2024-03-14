@@ -1,12 +1,12 @@
 import BackBottom from '@/BackBottom';
 import { createStyles } from 'antd-style';
 import RcResizeObserver from 'rc-resize-observer';
-import { CSSProperties, ReactNode, memo, useContext, useEffect, useRef, useState } from 'react';
+import { CSSProperties, memo, useContext, useEffect, useRef, useState } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
 import { ConfigProvider } from 'antd';
 import ChatList from '../components/ChatList';
-import ChatInputArea from '../components/InputArea';
+import ChatInputArea, { ChatInputAreaProps } from '../components/InputArea';
 import ChatScrollAnchor from '../components/ScrollAnchor';
 import { useOverrideStyles } from './OverrideStyle';
 import { ProChatChatReference } from './StoreUpdater';
@@ -23,26 +23,52 @@ const useStyles = createStyles(
   `,
 );
 
-interface ConversationProps extends ProChatProps<any> {
+/**
+ * 对话组件的属性接口
+ */
+export interface ConversationProps extends ProChatProps<any> {
+  /**
+   * 是否显示标题
+   */
   showTitle?: boolean;
+  /**
+   * 样式对象
+   */
   style?: CSSProperties;
+  /**
+   * CSS类名
+   */
   className?: string;
+  /**
+   * 聊天引用
+   */
   chatRef?: ProChatChatReference;
-  renderInputArea?: (
-    defaultDom: ReactNode,
-    onMessageSend: (message: string) => void | Promise<any>,
-    onClearAllHistory: () => void,
-  ) => ReactNode;
+  /**
+   * 输入区域的渲染函数
+   * @param defaultDom 默认的 DOM 元素
+   * @param onMessageSend 发送消息的回调函数
+   * @param onClearAllHistory 清除所有历史记录的回调函数
+   * @returns 渲染的 React 元素
+   */
+  inputAreaRender?: ChatInputAreaProps['inputAreaRender'];
+  /**
+   * 输入框的渲染函数
+   * @param defaultDom 默认的 DOM 元素
+   * @param onMessageSend 发送消息的回调函数
+   */
+  inputRender: ChatInputAreaProps['inputRender'];
 }
 
 const App = memo<ConversationProps>(
   ({
     renderInputArea,
+    inputAreaRender,
     className,
     style,
     showTitle,
     chatRef,
     itemShouldUpdate,
+    inputRender,
     chatItemRenderConfig,
     backToBottomConfig,
     markdownProps,
@@ -112,8 +138,15 @@ const App = memo<ConversationProps>(
               />
             ) : null}
           </>
-          {renderInputArea !== null && (
-            <div ref={areaHtml}>{<ChatInputArea renderInputArea={renderInputArea} />}</div>
+          {renderInputArea !== null && inputAreaRender !== null && (
+            <div ref={areaHtml}>
+              {
+                <ChatInputArea
+                  inputAreaRender={inputAreaRender || renderInputArea}
+                  inputRender={inputRender}
+                />
+              }
+            </div>
           )}
         </Flexbox>
       </RcResizeObserver>
