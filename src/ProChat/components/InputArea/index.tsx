@@ -8,6 +8,7 @@ import { useStore } from '../../store';
 
 import ActionBar from './ActionBar';
 import { AutoCompleteTextArea } from './AutoCompleteTextArea';
+import StopLoadingIcon from './StopLoading';
 
 const useStyles = createStyles(({ css, responsive, token }) => ({
   container: css`
@@ -67,13 +68,15 @@ export type ChatInputAreaProps = {
 
 export const ChatInputArea = (props: ChatInputAreaProps) => {
   const { className, onSend, inputAreaRender, inputRender } = props || {};
-  const [sendMessage, isLoading, placeholder, inputAreaProps, clearMessage] = useStore((s) => [
-    s.sendMessage,
-    !!s.chatLoadingId,
-    s.placeholder,
-    s.inputAreaProps,
-    s.clearMessage,
-  ]);
+  const [sendMessage, isLoading, placeholder, inputAreaProps, clearMessage, stopGenerateMessage] =
+    useStore((s) => [
+      s.sendMessage,
+      !!s.chatLoadingId,
+      s.placeholder,
+      s.inputAreaProps,
+      s.clearMessage,
+      s.stopGenerateMessage,
+    ]);
   const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
   const [message, setMessage] = useState('');
   const isChineseInput = useRef(false);
@@ -149,12 +152,21 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
           className={cx(styles.boxShadow, `${prefixClass}-text-container`)}
         >
           {inputDom}
-          <Button
-            type="text"
-            className={styles.btn}
-            onClick={() => send()}
-            icon={<SendOutlined />}
-          />
+          {isLoading ? (
+            <Button
+              type="text"
+              className={styles.btn}
+              onClick={() => stopGenerateMessage()}
+              icon={<StopLoadingIcon />}
+            />
+          ) : (
+            <Button
+              type="text"
+              className={styles.btn}
+              onClick={() => send()}
+              icon={<SendOutlined />}
+            />
+          )}
         </Flexbox>
       </Flexbox>
     </ConfigProvider>
