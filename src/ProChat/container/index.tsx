@@ -80,6 +80,7 @@ export function ProChat<T extends Record<string, any> = Record<string, any>>({
   backToBottomConfig,
   appStyle,
   inputRender,
+  markdownProps,
   inputAreaRender,
   ...props
 }: ProChatProps<T>) {
