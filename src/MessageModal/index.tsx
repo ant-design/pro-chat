@@ -115,10 +115,10 @@ const MessageModal = memo<MessageModalProps>(
               {...markdownProps}
               style={
                 value
-                  ? { ...markdownStyle, ...markdownProps.style }
+                  ? { ...markdownStyle, ...markdownProps?.style }
                   : {
                       ...markdownStyle,
-                      ...markdownProps.style,
+                      ...markdownProps?.style,
                       opacity: 0.5,
                     }
               }

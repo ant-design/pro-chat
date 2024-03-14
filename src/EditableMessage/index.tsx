@@ -136,7 +136,7 @@ const EditableMessage = memo<EditableMessageProps>(
               height: isAutoSize ? 'unset' : height,
               overflowX: 'hidden',
               overflowY: 'auto',
-              ...markdownProps.style,
+              ...markdownProps?.style,
             }}
           >
             {value || placeholder}
