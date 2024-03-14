@@ -37,8 +37,8 @@ const ChatScrollAnchor = memo(({ target }: { target: React.RefObject<HTMLDivElem
 
   useEffect(() => {
     if (isWindowAvailable) {
-      // 如果是移动端，可能200太多了，认为超过 1/3 即可，PC默认200
-      setScrollOffset(window.innerHeight / 3 > 200 ? 200 : window.innerHeight / 4);
+      // 如果是移动端，可能100太多了，认为超过 1/3 即可，PC默认100
+      setScrollOffset(window.innerHeight / 3 > 100 ? 100 : window.innerHeight / 4);
     }
   }, [isWindowAvailable]);
 

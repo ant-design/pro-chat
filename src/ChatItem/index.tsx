@@ -37,6 +37,7 @@ const ChatItem = memo<ChatItemProps>((props) => {
     text,
     errorMessage,
     chatItemRenderConfig,
+    markdownProps,
     onDoubleClick,
     originData,
     ...restProps
@@ -87,6 +88,7 @@ const ChatItem = memo<ChatItemProps>((props) => {
         renderMessage={renderMessage}
         text={text}
         type={type}
+        markdownProps={markdownProps}
       />
     );
     return chatItemRenderConfig?.contentRender?.(props, dom) || dom;

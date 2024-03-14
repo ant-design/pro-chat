@@ -59,6 +59,9 @@ dependencies:
   react-layout-kit:
     specifier: ^1.7.4
     version: 1.7.4(react@18.2.0)
+  react-markdown:
+    specifier: ^8.0.7
+    version: 8.0.7(@types/react@18.2.31)(react@18.2.0)
   zustand:
     specifier: ^4.5.1
     version: 4.5.1(@types/react@18.2.31)(immer@10.0.3)(react@18.2.0)

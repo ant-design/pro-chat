@@ -1,6 +1,6 @@
 import { SendOutlined } from '@ant-design/icons';
 import { Button, ConfigProvider } from 'antd';
-import { createStyles, cx, useResponsive } from 'antd-style';
+import { createStyles, cx } from 'antd-style';
 import { ReactNode, useContext, useRef, useState } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
@@ -9,6 +9,7 @@ import { useStore } from '../../store';
 import { gLocaleObject } from '@/locale';
 import ActionBar from './ActionBar';
 import { AutoCompleteTextArea } from './AutoCompleteTextArea';
+import StopLoadingIcon from './StopLoading';
 
 const useStyles = createStyles(({ css, responsive, token }) => ({
   container: css`
@@ -52,10 +53,14 @@ const useStyles = createStyles(({ css, responsive, token }) => ({
   `,
 }));
 
-type ChatInputAreaProps = {
+export type ChatInputAreaProps = {
   className?: string;
   onSend?: (message: string) => boolean | Promise<boolean>;
-  renderInputArea?: (
+  inputRender?: (
+    defaultDom: ReactNode,
+    onMessageSend: (message: string) => void | Promise<any>,
+  ) => ReactNode;
+  inputAreaRender?: (
     defaultDom: ReactNode,
     onMessageSend: (message: string) => void | Promise<any>,
     onClearAllHistory: () => void,
@@ -63,22 +68,28 @@ type ChatInputAreaProps = {
 };
 
 export const ChatInputArea = (props: ChatInputAreaProps) => {
-  const { className, onSend, renderInputArea } = props || {};
-  const [sendMessage, isLoading, placeholder, inputAreaProps, clearMessage, locale] = useStore(
-    (s) => [
-      s.sendMessage,
-      !!s.chatLoadingId,
-      s.placeholder,
-      s.inputAreaProps,
-      s.clearMessage,
-      s.locale,
-    ],
-  );
+  const { className, onSend, inputAreaRender, inputRender } = props || {};
+  const [
+    sendMessage,
+    isLoading,
+    placeholder,
+    inputAreaProps,
+    locale,
+    clearMessage,
+    stopGenerateMessage,
+  ] = useStore((s) => [
+    s.sendMessage,
+    !!s.chatLoadingId,
+    s.placeholder,
+    s.inputAreaProps,
+    s.locale,
+    s.clearMessage,
+    s.stopGenerateMessage,
+  ]);
   const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
   const [message, setMessage] = useState('');
   const isChineseInput = useRef(false);
   const { styles, theme } = useStyles();
-  const { mobile } = useResponsive();
 
   const send = async () => {
     if (onSend) {
@@ -94,6 +105,40 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
   };
 
   const prefixClass = getPrefixCls('pro-chat-input-area');
+
+  const defaultInput = (
+    <AutoCompleteTextArea
+      placeholder={placeholder || gLocaleObject(locale).clearModalTitle}
+      {...inputAreaProps}
+      className={cx(styles.input, inputAreaProps?.className, `${prefixClass}-component`)}
+      value={message}
+      onChange={(e) => {
+        setMessage(e.target.value);
+      }}
+      autoSize={{ maxRows: 8 }}
+      onCompositionStart={() => {
+        isChineseInput.current = true;
+      }}
+      onCompositionEnd={() => {
+        isChineseInput.current = false;
+      }}
+      onPressEnter={(e) => {
+        if (!isLoading && !e.shiftKey && !isChineseInput.current) {
+          e.preventDefault();
+          send();
+        }
+      }}
+    />
+  );
+
+  /**
+   * 支持下自定义输入框
+   */
+  const inputDom = inputRender
+    ? inputRender?.(defaultInput, (message) => {
+        sendMessage(message);
+      })
+    : defaultInput;
 
   const defaultInputArea = (
     <ConfigProvider
@@ -115,31 +160,16 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
           align={'center'}
           className={cx(styles.boxShadow, `${prefixClass}-text-container`)}
         >
-          <AutoCompleteTextArea
-            placeholder={placeholder || gLocaleObject(locale).placeholder}
-            {...inputAreaProps}
-            className={cx(styles.input, inputAreaProps?.className, `${prefixClass}-component`)}
-            value={message}
-            onChange={(e) => {
-              setMessage(e.target.value);
-            }}
-            autoSize={{ maxRows: 8 }}
-            onCompositionStart={() => {
-              isChineseInput.current = true;
-            }}
-            onCompositionEnd={() => {
-              isChineseInput.current = false;
-            }}
-            onPressEnter={(e) => {
-              if (!isLoading && !e.shiftKey && !isChineseInput.current) {
-                e.preventDefault();
-                send();
-              }
-            }}
-          />
-          {mobile ? null : (
+          {inputDom}
+          {isLoading ? (
             <Button
-              loading={isLoading}
+              type="text"
+              className={styles.btn}
+              onClick={() => stopGenerateMessage()}
+              icon={<StopLoadingIcon />}
+            />
+          ) : (
+            <Button
               type="text"
               className={styles.btn}
               onClick={() => send()}
@@ -151,8 +181,8 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
     </ConfigProvider>
   );
 
-  if (renderInputArea) {
-    return renderInputArea(
+  if (inputAreaRender) {
+    return inputAreaRender(
       defaultInputArea,
       (message) => {
         sendMessage(message);

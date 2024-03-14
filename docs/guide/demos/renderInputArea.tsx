@@ -6,13 +6,13 @@ import { PlusOutlined } from '@ant-design/icons';
 import { ProChat } from '@ant-design/pro-chat';
 import { Button, Form, Input, Space, Upload, message } from 'antd';
 import { useTheme } from 'antd-style';
-import { ReactNode } from 'react';
+import React from 'react';
 
 export default () => {
   const theme = useTheme();
 
-  const renderInputArea = (
-    _: ReactNode,
+  const inputAreaRender = (
+    _: React.ReactNode,
     onMessageSend: (message: string) => void | Promise<any>,
     onClear: () => void,
   ) => {
@@ -76,7 +76,7 @@ export default () => {
 
   return (
     <div style={{ background: theme.colorBgLayout, height: '100vh' }}>
-      <ProChat renderInputArea={renderInputArea} />
+      <ProChat inputAreaRender={inputAreaRender} />
     </div>
   );
 };

@@ -26,6 +26,11 @@ export default () => {
           }
           return [];
         }}
+        inputAreaProps={{
+          autoCompleteProps: {
+            placement: 'topRight',
+          },
+        }}
         userMeta={{
           extra: 'extra',
         }}
