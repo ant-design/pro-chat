@@ -2,6 +2,7 @@ import { StateCreator } from 'zustand/vanilla';
 
 import { ChatListProps } from '@/ChatList';
 import { MetaData } from '@/ProChat/types/meta';
+import { MarkdownProps } from '@ant-design/pro-editor';
 import isEqual from 'fast-deep-equal';
 import { merge } from 'lodash-es';
 import { optionalDevtools } from 'zustand-utils';
@@ -21,6 +22,10 @@ export interface ChatProps<T extends Record<string, any> = Record<string, any>>
    * @description 聊天项的渲染函数
    */
   chatItemRenderConfig?: ChatListProps['chatItemRenderConfig'];
+  /**
+   * @description markdown组件的参数
+   */
+  markdownProps?: MarkdownProps;
   /**
    * @description 判断聊天项的更新函数
    */

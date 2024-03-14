@@ -1,12 +1,16 @@
-﻿import { AutoComplete, Input } from 'antd';
+﻿import { AutoComplete, AutoCompleteProps, Input } from 'antd';
 import { TextAreaProps } from 'antd/es/input';
 import { useState } from 'react';
 import { useStore } from '../../store';
 
-export const AutoCompleteTextArea: React.FC<TextAreaProps> = (props) => {
+type AutoCompleteTextAreaProps = TextAreaProps & {
+  autoCompleteProps?: AutoCompleteProps;
+};
+
+export const AutoCompleteTextArea: React.FC<AutoCompleteTextAreaProps> = (props) => {
   const [autocompleteRequest] = useStore((s) => [s.autocompleteRequest]);
 
-  const { disabled } = props;
+  const { disabled, autoCompleteProps = {}, ...rest } = props;
 
   const [options, setOptions] = useState<{ value: string; label: string }[]>([]);
   const [open, setOpen] = useState(false);
@@ -31,10 +35,11 @@ export const AutoCompleteTextArea: React.FC<TextAreaProps> = (props) => {
         const result = await autocompleteRequest?.(value);
         setOptions((result as any[]) || []);
       }}
+      {...autoCompleteProps}
     >
       <Input.TextArea
         size="large"
-        {...props}
+        {...rest}
         disabled={disabled}
         className={`${props.className}-textarea`}
         onFocus={(e) => {

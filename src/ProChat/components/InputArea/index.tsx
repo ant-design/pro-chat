@@ -1,6 +1,6 @@
 import { SendOutlined } from '@ant-design/icons';
 import { Button, ConfigProvider } from 'antd';
-import { createStyles, cx, useResponsive } from 'antd-style';
+import { createStyles, cx } from 'antd-style';
 import { ReactNode, useContext, useRef, useState } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
@@ -78,7 +78,6 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
   const [message, setMessage] = useState('');
   const isChineseInput = useRef(false);
   const { styles, theme } = useStyles();
-  const { mobile } = useResponsive();
 
   const send = async () => {
     if (onSend) {
@@ -152,7 +151,6 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
           {inputDom}
           {mobile ? null : (
             <Button
-              loading={isLoading}
               type="text"
               className={styles.btn}
               onClick={() => send()}

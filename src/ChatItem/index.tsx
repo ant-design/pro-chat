@@ -37,6 +37,7 @@ const ChatItem = memo<ChatItemProps>((props) => {
     text,
     errorMessage,
     chatItemRenderConfig,
+    markdownProps,
     onDoubleClick,
     originData,
     ...restProps
@@ -87,6 +88,7 @@ const ChatItem = memo<ChatItemProps>((props) => {
         renderMessage={renderMessage}
         text={text}
         type={type}
+        markdownProps={markdownProps}
       />
     );
     return chatItemRenderConfig?.contentRender?.(props, dom) || dom;
@@ -151,7 +153,7 @@ const ChatItem = memo<ChatItemProps>((props) => {
         {titleDom}
         <Flexbox
           align={placement === 'left' ? 'flex-start' : 'flex-end'}
-          className={styles.messageContent}
+          className={cx(styles.messageContent, `${prefixClass}-message-content`)}
           direction={
             type === 'block'
               ? placement === 'left'

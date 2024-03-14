@@ -11,9 +11,13 @@ export const getMessageError = async (response: Response) => {
   return chatMessageError;
 };
 
+type SSEFinishType = 'done' | 'error' | 'abort';
+
 export interface FetchSSEOptions {
   onErrorHandle?: (error: ChatMessageError) => void;
   onMessageHandle?: (text: string, response: Response) => void;
+  onAbort?: (text: string) => Promise<void>;
+  onFinish?: (text: string, type: SSEFinishType) => Promise<void>;
 }
 
 /**

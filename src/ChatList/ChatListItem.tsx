@@ -8,6 +8,7 @@ import { LLMRoleType } from '@/types/llm';
 import { ChatMessage } from '@/types/message';
 
 import { useRefFunction } from '@/ProChat/hooks/useRefFunction';
+import { MarkdownProps } from '@ant-design/pro-editor';
 import ActionsBar, { type ActionsBarProps } from './ActionsBar';
 
 export type OnMessageChange = (id: string, content: string) => void;
@@ -100,6 +101,10 @@ export interface ListItemProps<T = Record<string, any>> {
    */
   chatItemRenderConfig?: ChatItemProps['chatItemRenderConfig'];
   /**
+   * markdown组件的配置。
+   */
+  markdownProps?: MarkdownProps;
+  /**
    * 原始数据。
    */
   originData?: ChatItemProps<T>['originData'];
@@ -133,6 +138,7 @@ const ChatListItem = (props: ChatListItemProps) => {
     renderItems,
     chatItemRenderConfig,
     chatItemClassName,
+    markdownProps,
     ...item
   } = props;
 
@@ -285,6 +291,7 @@ const ChatListItem = (props: ChatListItemProps) => {
         time={item.updateAt || item.createAt}
         type={type === 'chat' ? 'block' : 'pure'}
         chatItemRenderConfig={chatItemRenderConfig}
+        markdownProps={markdownProps}
       />
     );
     return dom;

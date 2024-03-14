@@ -103,6 +103,7 @@ export function ProChat<T extends Record<string, any> = Record<string, any>>({
           style={style}
           backToBottomConfig={backToBottomConfig}
           className={className}
+          markdownProps={markdownProps}
         />
       </Container>
     </ProChatProvider>

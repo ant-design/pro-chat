@@ -71,6 +71,7 @@ const App = memo<ConversationProps>(
     inputRender,
     chatItemRenderConfig,
     backToBottomConfig,
+    markdownProps,
   }) => {
     const ref = useRef<HTMLDivElement>(null);
     const areaHtml = useRef<HTMLDivElement>(null);
@@ -122,8 +123,9 @@ const App = memo<ConversationProps>(
                 showTitle={showTitle}
                 itemShouldUpdate={itemShouldUpdate}
                 chatItemRenderConfig={chatItemRenderConfig}
+                markdownProps={markdownProps}
               />
-              <ChatScrollAnchor />
+              <ChatScrollAnchor target={ref} />
             </div>
             {isRender ? (
               <BackBottom

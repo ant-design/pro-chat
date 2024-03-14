@@ -1,5 +1,32 @@
 # Changelog
 
+### [Version&nbsp;1.9.3](https://github.com/ant-design/pro-chat/compare/v1.9.2...v1.9.3)
+
+<sup>Released on **2024-02-22**</sup>
+
+#### ✨ 新特性
+
+- 添加 messageExtra prefixClass 缺失的类名
+- 修复发送信息时候，无法向上滚动的问题
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+### [Version&nbsp;1.9.2](https://github.com/ant-design/pro-chat/compare/v1.9.1...v1.9.2)
+
+<sup>Released on **2024-02-22**</sup>
+
+#### 🐛 修复
+
+- fix: 根据需要隐藏自定义输入区域
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
 ### [Version&nbsp;1.9.1](https://github.com/ant-design/pro-chat/compare/v1.9.0...v1.9.1)
 
 <sup>Released on **2024-02-07**</sup>
