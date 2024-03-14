@@ -13,7 +13,7 @@ export default () => {
 
   const [isRender, setIsRender] = useState(true);
 
-  const renderInputArea = (
+  const inputAreaRender = (
     _: ReactNode,
     onMessageSend: (message: string) => void | Promise<any>,
     onClear: () => void,
@@ -81,7 +81,7 @@ export default () => {
       <Button type="primary" onClick={() => setIsRender(!isRender)}>
         切换是否渲染输入框
       </Button>
-      <ProChat renderInputArea={isRender ? renderInputArea : () => null} />
+      <ProChat inputAreaRender={isRender ? inputAreaRender : () => null} />
     </div>
   );
 };
