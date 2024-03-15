@@ -1,6 +1,7 @@
 import { ChatMessage } from '@/types/message';
 
 import { MetaData } from '@/ProChat/types/meta';
+import { gLocaleObject } from '@/locale';
 import { getSlicedMessagesWithConfig } from '../../utils/message';
 import type { ChatStore } from '../store';
 
@@ -80,7 +81,7 @@ export const currentChatsWithGuideMessage = (s: ChatStore): ChatMessage[] => {
   if (!isBrandNewChat) return data;
 
   const emptyInboxGuideMessage = {
-    content: s.helloMessage ?? '让我们开始对话吧',
+    content: s.helloMessage ?? gLocaleObject(s.locale).defaultHelloMessage,
     createAt: Date.now(),
     extra: {},
     id: 'default',

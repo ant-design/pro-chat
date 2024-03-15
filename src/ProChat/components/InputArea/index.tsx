@@ -6,6 +6,7 @@ import { Flexbox } from 'react-layout-kit';
 
 import { useStore } from '../../store';
 
+import { gLocaleObject } from '@/locale';
 import ActionBar from './ActionBar';
 import { AutoCompleteTextArea } from './AutoCompleteTextArea';
 import StopLoadingIcon from './StopLoading';
@@ -68,15 +69,23 @@ export type ChatInputAreaProps = {
 
 export const ChatInputArea = (props: ChatInputAreaProps) => {
   const { className, onSend, inputAreaRender, inputRender } = props || {};
-  const [sendMessage, isLoading, placeholder, inputAreaProps, clearMessage, stopGenerateMessage] =
-    useStore((s) => [
-      s.sendMessage,
-      !!s.chatLoadingId,
-      s.placeholder,
-      s.inputAreaProps,
-      s.clearMessage,
-      s.stopGenerateMessage,
-    ]);
+  const [
+    sendMessage,
+    isLoading,
+    placeholder,
+    inputAreaProps,
+    locale,
+    clearMessage,
+    stopGenerateMessage,
+  ] = useStore((s) => [
+    s.sendMessage,
+    !!s.chatLoadingId,
+    s.placeholder,
+    s.inputAreaProps,
+    s.locale,
+    s.clearMessage,
+    s.stopGenerateMessage,
+  ]);
   const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
   const [message, setMessage] = useState('');
   const isChineseInput = useRef(false);
@@ -99,7 +108,7 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
 
   const defaultInput = (
     <AutoCompleteTextArea
-      placeholder={placeholder || '请输入内容...'}
+      placeholder={placeholder || gLocaleObject(locale).placeholder}
       {...inputAreaProps}
       className={cx(styles.input, inputAreaProps?.className, `${prefixClass}-component`)}
       value={message}

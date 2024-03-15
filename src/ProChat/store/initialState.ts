@@ -6,6 +6,7 @@ import { AutoCompleteProps } from 'antd';
 import { TextAreaProps } from 'antd/es/input';
 import { ReactNode } from 'react';
 import { FlexBasicProps } from 'react-layout-kit/lib/FlexBasic';
+import { Locale } from '../../locale';
 import { ProChatChatReference } from '../container/StoreUpdater';
 
 export type ChatRequest = (
@@ -63,6 +64,11 @@ export interface ChatPropsState<T extends Record<string, any> = Record<string, a
    * 输入框的 placeholder
    */
   placeholder?: string;
+
+  /**
+   * 国际化
+   */
+  locale?: Locale;
 
   /**
    * 输入框的 props,优先级最高

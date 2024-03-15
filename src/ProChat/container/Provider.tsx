@@ -51,10 +51,6 @@ export const ProChatProvider = memo<ProChatProviderProps<any>>(
       return Content;
     }
 
-    return (
-      <Provider createStore={() => createStore(props, devtoolOptions)}>
-        {Content}
-      </Provider>
-    );
+    return <Provider createStore={() => createStore(props, devtoolOptions)}>{Content}</Provider>;
   },
 );

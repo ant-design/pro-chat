@@ -13,7 +13,7 @@
       "@@/*": [".dumi/tmp/*"],
       "@/*": ["src/*"],
       "@ant-design/pro-chat": ["src"],
-      "@ant-design/pro-chat/*": ["src/*"],
-    },
-  },
+      "@ant-design/pro-chat/*": ["src/*"]
+    }
+  }
 }

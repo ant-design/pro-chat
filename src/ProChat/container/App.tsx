@@ -4,6 +4,8 @@ import RcResizeObserver from 'rc-resize-observer';
 import { CSSProperties, memo, useContext, useEffect, useRef, useState } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
+import { useStore } from '@/ProChat/store';
+import { gLocaleObject } from '@/locale';
 import { ConfigProvider } from 'antd';
 import ChatList from '../components/ChatList';
 import ChatInputArea, { ChatInputAreaProps } from '../components/InputArea';
@@ -80,6 +82,8 @@ const App = memo<ConversationProps>(
     const [isRender, setIsRender] = useState(false);
     const [height, setHeight] = useState('100%' as string | number);
     const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
+    const locale = useStore((s) => s.locale);
+
     useEffect(() => {
       // 保证 ref 永远存在
       setIsRender(true);
@@ -133,7 +137,7 @@ const App = memo<ConversationProps>(
                   bottom: 138,
                 }}
                 target={ref}
-                text={'返回底部'}
+                text={gLocaleObject(locale).backToBottom}
                 {...backToBottomConfig}
               />
             ) : null}

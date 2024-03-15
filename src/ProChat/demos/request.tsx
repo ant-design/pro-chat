@@ -10,7 +10,7 @@ export default () => {
 
   return (
     <div style={{ background: theme.colorBgLayout }}>
-      <ProChat />
+      <ProChat locale="en-US" />
     </div>
   );
 };
