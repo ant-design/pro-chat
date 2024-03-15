@@ -108,7 +108,7 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
 
   const defaultInput = (
     <AutoCompleteTextArea
-      placeholder={placeholder || gLocaleObject(locale).clearModalTitle}
+      placeholder={placeholder || gLocaleObject(locale).placeholder}
       {...inputAreaProps}
       className={cx(styles.input, inputAreaProps?.className, `${prefixClass}-component`)}
       value={message}
