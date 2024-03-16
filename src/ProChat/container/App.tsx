@@ -57,8 +57,16 @@ export interface ConversationProps extends ProChatProps<any> {
    * 输入框的渲染函数
    * @param defaultDom 默认的 DOM 元素
    * @param onMessageSend 发送消息的回调函数
+   * @param props 输入框的属性
    */
   inputRender: ChatInputAreaProps['inputRender'];
+
+  /**
+   * 聊天发送按钮的渲染配置
+   * @param defaultDom 默认的 DOM 元素
+   * @param defaultProps 默认的属性
+   */
+  sendButtonRender?: ChatInputAreaProps['sendButtonRender'];
 }
 
 const App = memo<ConversationProps>(
@@ -73,6 +81,7 @@ const App = memo<ConversationProps>(
     inputRender,
     chatItemRenderConfig,
     backToBottomConfig,
+    sendButtonRender,
     markdownProps,
   }) => {
     const ref = useRef<HTMLDivElement>(null);
@@ -146,6 +155,7 @@ const App = memo<ConversationProps>(
             <div ref={areaHtml}>
               {
                 <ChatInputArea
+                  sendButtonRender={sendButtonRender}
                   inputAreaRender={inputAreaRender || renderInputArea}
                   inputRender={inputRender}
                 />

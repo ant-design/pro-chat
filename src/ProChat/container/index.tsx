@@ -35,6 +35,13 @@ export interface ProChatProps<T extends Record<string, any>> extends ChatProps<T
   inputRender?: ConversationProps['inputRender'];
 
   /**
+   * 聊天发送按钮的渲染配置
+   * @param defaultDom 默认的 DOM 元素
+   * @param defaultProps 默认的属性
+   */
+  sendButtonRender?: ConversationProps['sendButtonRender'];
+
+  /**
    * __PRO_CHAT_STORE_DEVTOOLS__ 是一个可选的布尔值或 DevtoolsOptions 对象，用于开启 ProChat 的开发者工具。
    */
   __PRO_CHAT_STORE_DEVTOOLS__?: boolean | DevtoolsOptions;
@@ -82,6 +89,7 @@ export function ProChat<T extends Record<string, any> = Record<string, any>>({
   inputRender,
   markdownProps,
   inputAreaRender,
+  sendButtonRender,
   ...props
 }: ProChatProps<T>) {
   return (
@@ -98,6 +106,7 @@ export function ProChat<T extends Record<string, any> = Record<string, any>>({
         <App
           chatItemRenderConfig={chatItemRenderConfig}
           inputRender={inputRender}
+          sendButtonRender={sendButtonRender}
           inputAreaRender={renderInputArea || inputAreaRender}
           chatRef={props.chatRef}
           showTitle={showTitle}
