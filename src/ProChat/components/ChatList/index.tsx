@@ -7,6 +7,7 @@ import { chatSelectors } from '@/ProChat/store/selectors';
 
 import { ChatListItemProps } from '@/ChatList/ChatListItem';
 import { useRefFunction } from '@/ProChat/hooks/useRefFunction';
+import { gLocaleObject } from '@/locale';
 import { renderActions } from './Actions';
 import { renderMessagesExtra } from './Extras';
 import { renderMessages } from './Messages';
@@ -20,6 +21,7 @@ interface ListProps extends Partial<ChatListProps> {
 const List = memo<ListProps>(
   ({ showTitle, itemShouldUpdate, chatItemRenderConfig, markdownProps }) => {
     const data = useStore(chatSelectors.currentChatsWithGuideMessage, isEqual);
+    const locale = useStore((s) => s.locale);
 
     const [
       init,
@@ -68,15 +70,16 @@ const List = memo<ListProps>(
     );
 
     const textObj = useMemo(() => {
+      const localeObj = gLocaleObject(locale);
       return {
-        cancel: '取消',
-        confirm: '确认',
-        copy: '复制',
-        copySuccess: '复制成功',
-        delete: '删除',
-        edit: '编辑',
-        history: '历史范围',
-        regenerate: '重新生成',
+        cancel: localeObj.cancel,
+        confirm: localeObj.confirm,
+        copy: localeObj.copy,
+        copySuccess: localeObj.copySuccess,
+        delete: localeObj.delete,
+        edit: localeObj.edit,
+        history: localeObj.history,
+        regenerate: localeObj.regenerate,
       };
     }, []);
     if (!init) return <SkeletonList />;

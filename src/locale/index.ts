@@ -1,3 +1,4 @@
+import { LocaleProps } from '@/types/locale';
 import enUSLocal from './en-US';
 import zhCNLocal from './zh-CN';
 export type Locale = 'zh-CN' | 'en-US';
@@ -7,6 +8,6 @@ const locales = {
   'zh-CN': zhCNLocal,
 };
 
-export const gLocaleObject = (glocale: Locale): Record<string, string> => {
+export const gLocaleObject = (glocale: Locale): LocaleProps => {
   return locales[glocale as 'zh-CN'] || locales['zh-CN'];
 };

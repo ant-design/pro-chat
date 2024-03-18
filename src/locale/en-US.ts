@@ -6,4 +6,12 @@ export default {
   clearModalTitle:
     'You are about to clear the session, and you will not be able to retrieve it after clearing. Do you want to clear the current session?',
   defaultHelloMessage: 'Let us start chatting',
+  cancel: 'Cancel',
+  confirm: 'Confirm',
+  copy: 'Copy',
+  copySuccess: 'Copy Success',
+  delete: 'Delete',
+  edit: 'Edit',
+  history: 'History',
+  regenerate: 'Regenerate',
 };
