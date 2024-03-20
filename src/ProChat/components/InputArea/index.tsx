@@ -1,7 +1,7 @@
 import { SendOutlined } from '@ant-design/icons';
 import { Button, ButtonProps, ConfigProvider } from 'antd';
 import { createStyles, cx } from 'antd-style';
-import { ReactNode, useContext, useMemo, useRef, useState } from 'react';
+import { ReactNode, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
 import { useStore } from '../../store';
@@ -94,7 +94,14 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
   const isChineseInput = useRef(false);
   const { styles, theme } = useStyles();
 
+  useEffect(() => {
+    console.log('message', message);
+  }, [message]);
+
   const send = async () => {
+    console.log('send');
+    console.log('message', message);
+
     if (onSend) {
       const success = await onSend(message);
       if (success) {
@@ -185,7 +192,7 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
           onClick: () => send(),
           icon: <SendOutlined />,
         } as const);
-  }, [isLoading]);
+  }, [isLoading, message]);
 
   const defaultButtonDom = <Button {...defaultButtonProps} />;
 
