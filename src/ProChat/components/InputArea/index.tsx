@@ -185,7 +185,7 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
           onClick: () => send(),
           icon: <SendOutlined />,
         } as const);
-  }, [isLoading]);
+  }, [isLoading, message]);
 
   const defaultButtonDom = <Button {...defaultButtonProps} />;
 
