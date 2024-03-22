@@ -21,7 +21,12 @@ class ShouldUpdateItem extends Component<
       return nextProps.shouldUpdate(this.props, nextProps);
     }
     try {
-      return !isEqual(this.props, nextProps);
+      return (
+        !isEqual(this.props.content, nextProps?.content) ||
+        !isEqual(this.props.loading, nextProps?.loading) ||
+        !isEqual(this.props.chatItemRenderConfig, nextProps?.chatItemRenderConfig) ||
+        !isEqual(this.props.meta, nextProps?.meta)
+      );
     } catch (error) {
       return true;
     }

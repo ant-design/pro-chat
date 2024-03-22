@@ -9,6 +9,10 @@ export const UserMessageExtra: RenderMessageExtra = memo(({ extra, ...rest }) =>
   const hasTranslate = !!extra?.translate;
 
   const [messageItemExtraRender] = useStore((s) => [s.messageItemExtraRender]);
+
+  const dom = messageItemExtraRender?.({ extra, ...rest }, 'user');
+
+  if (!dom) return;
   return (
     <Flexbox gap={8} style={{ marginTop: hasTranslate ? 8 : 0 }}>
       {extra?.translate && (
@@ -16,7 +20,7 @@ export const UserMessageExtra: RenderMessageExtra = memo(({ extra, ...rest }) =>
           <Divider style={{ margin: '12px 0' }} />
         </div>
       )}
-      {messageItemExtraRender?.({ extra, ...rest }, 'user')}
+      {dom}
     </Flexbox>
   );
 });
