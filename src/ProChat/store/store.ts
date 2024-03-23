@@ -1,7 +1,6 @@
 import { StateCreator } from 'zustand/vanilla';
 
 import { MetaData } from '@/ProChat/types/meta';
-import { MarkdownProps } from '@ant-design/pro-editor';
 import { merge } from 'lodash-es';
 import { optionalDevtools } from 'zustand-utils';
 import { DevtoolsOptions } from 'zustand/middleware';
@@ -21,10 +20,6 @@ export interface ChatProps<T extends Record<string, any> = Record<string, any>>
    * @description 聊天项的渲染函数
    */
   chatItemRenderConfig?: ChatListProps['chatItemRenderConfig'];
-  /**
-   * @description markdown组件的参数
-   */
-  markdownProps?: MarkdownProps;
 }
 
 //  ===============  聚合 createStoreFn ============ //

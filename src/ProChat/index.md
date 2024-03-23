@@ -64,7 +64,7 @@ description: a Chat Solution
 
 ## 指定会话双方的头像、名称
 
-ProChat 使用 `meta` 来表意会话双方的头像、名称等信息。设定助手的头像、名称使用 `assistantMeta`，设定用户的头像、名称使用 `userMeta`。 使用 `showTitle` 显示名称。
+ProChat 使用 `meta` 来表意会话双方的头像、名称等信息。设定助手的头像、名称使用 `assistantMeta`，设定用户的头像、名称使用 `userMeta`。
 
 <code src="./demos/meta.tsx"></code>
 
@@ -112,7 +112,6 @@ ProChat 使用 `meta` 来表意会话双方的头像、名称等信息。设定�
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| showTitle | 是否显示标题 | Boolean | - |
 | style | 样式 | CSSProperties | - |
 | className | 主类名 | string | - |
 | chatRef | 聊天引用，用于操作数据 | ProChatChatReference | - |

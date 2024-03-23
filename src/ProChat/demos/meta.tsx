@@ -11,7 +11,6 @@ export default () => {
   return (
     <div style={{ background: theme.colorBgLayout }}>
       <ProChat
-        showTitle
         userMeta={{
           avatar: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
           title: 'Ant Design',

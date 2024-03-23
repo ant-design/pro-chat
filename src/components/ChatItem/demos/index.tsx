@@ -1,7 +1,7 @@
-import { ActionIconGroup, ChatItem, ChatItemProps } from '@ant-design/pro-chat';
+import { ChatItem, ChatItemProps } from '@ant-design/pro-chat';
 import { useState } from 'react';
 
-import { avatar, dropdownMenu, items } from './data';
+import { avatar } from './data';
 
 export default () => {
   const [edit, setEdit] = useState(false);
@@ -17,7 +17,6 @@ export default () => {
       value: 'left',
     },
     primary: false,
-    showTitle: false,
     time: 1_686_538_950_084,
     type: {
       options: ['block', 'pure'],
@@ -25,24 +24,5 @@ export default () => {
     },
   };
 
-  return (
-    <ChatItem
-      {...control}
-      actions={
-        <ActionIconGroup
-          dropdownMenu={dropdownMenu}
-          items={items}
-          onActionClick={(action) => {
-            if (action.key === 'edit') {
-              setEdit(true);
-            }
-          }}
-          type="ghost"
-        />
-      }
-      avatar={avatar}
-      editing={edit}
-      onEditingChange={setEdit}
-    />
-  );
+  return <ChatItem {...control} avatar={avatar} editing={edit} onEditingChange={setEdit} />;
 };

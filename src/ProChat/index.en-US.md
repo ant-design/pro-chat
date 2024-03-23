@@ -64,9 +64,7 @@ OpenAI like document mode, using the `doc` field to control document mode. Suita
 
 ## Specify the avatars and names of both parties in the conversation
 
-ProChat uses `meta` to represent the avatars, names, and other information of both parties in the conversation. Set the assistant's avatar and name to use `assistantMeta` , and set the user's avatar and name to use `userMeta`. Use `showTitle` to display the name.
-
-<code src="./demos/meta.tsx"></code>
+ProChat uses `meta` to represent the avatars, names, and other information of both parties in the conversation. Set the assistant's avatar and name to use `assistantMeta` , and set the user's avatar and name to use `userMeta`. <code src="./demos/meta.tsx"></code>
 
 ## Custom Actions
 
@@ -122,7 +120,6 @@ All initialization props such as `initialChatsList` need to be moved from `ProCh
 
 | Parameter | description | type | default |
 | --- | --- | --- | --- |
-| showTitle | Is the title displayed | Boolean | - |
 | style | style | CSSProperties | - |
 | className | Main className | string | - |
 | chatRef | Chat references, used for manipulating data | ProChatChatReference | - |

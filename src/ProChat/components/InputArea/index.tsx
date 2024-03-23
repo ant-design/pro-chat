@@ -1,10 +1,8 @@
-import { gLocaleObject } from '@/locale';
 import { SendOutlined } from '@ant-design/icons';
 import { Button, ButtonProps, ConfigProvider, Flex } from 'antd';
 import { createStyles, cx } from 'antd-style';
 import { TextAreaProps } from 'antd/es/input';
 import { ReactNode, useContext, useMemo, useRef, useState } from 'react';
-import { useStore } from '../../store';
 import ActionBar from './ActionBar';
 import { AutoCompleteTextArea } from './AutoCompleteTextArea';
 import StopLoadingIcon from './StopLoading';
@@ -66,28 +64,27 @@ export type ChatInputAreaProps = {
     onMessageSend: (message: string) => void | Promise<any>,
     onClearAllHistory: () => void,
   ) => ReactNode;
+
+  placeholder?: string;
+  loading?: boolean;
 };
 
 export const ChatInputArea = (props: ChatInputAreaProps) => {
-  const { className, onSend, inputAreaRender, areaRef, inputRender, sendButtonRender } =
-    props || {};
-  const [
-    sendMessage,
-    isLoading,
+  const {
+    className,
     placeholder,
+    onSend,
+    inputAreaRender,
+    areaRef,
+    loading,
+    inputRender,
+    sendButtonRender,
     inputAreaProps,
-    locale,
     clearMessage,
     stopGenerateMessage,
-  ] = useStore((s) => [
-    s.sendMessage,
-    !!s.chatLoadingId,
-    s.placeholder,
-    s.inputAreaProps,
-    s.locale,
-    s.clearMessage,
-    s.stopGenerateMessage,
-  ]);
+    sendMessage,
+  } = props || {};
+
   const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
   const [message, setMessage] = useState('');
   const isChineseInput = useRef(false);
@@ -125,7 +122,7 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
    */
 
   const defaultAutoCompleteTextAreaProps = {
-    placeholder: placeholder || gLocaleObject(locale).placeholder,
+    placeholder: placeholder,
     ...inputAreaProps,
     className: cx(styles.input, inputAreaProps?.className, `${prefixClass}-component`),
     value: message,
@@ -140,7 +137,7 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
       isChineseInput.current = false;
     },
     onPressEnter: (e) => {
-      if (!isLoading && !e.shiftKey && !isChineseInput.current) {
+      if (!loading && !e.shiftKey && !isChineseInput.current) {
         e.preventDefault();
         send();
       }
@@ -163,15 +160,15 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
     : defaultInput;
 
   /**
-   * 根据 isLoading 状态返回默认的按钮道具。
-   * 如果 isLoading 为 true，则按钮将具有文本类型，即 stopGenerateMessage 点击处理程序，
+   * 根据 loading 状态返回默认的按钮道具。
+   * 如果 loading 为 true，则按钮将具有文本类型，即 stopGenerateMessage 点击处理程序，
    * 和 StopLoadingIcon 作为图标。
-   * 如果 isLoading 为 false，则按钮将具有文本类型、发送点击处理程序、
+   * 如果 loading 为 false，则按钮将具有文本类型、发送点击处理程序、
    * 和 SendOutlined 图标作为图标。
    * @returns The default button props.
    */
   const defaultButtonProps = useMemo(() => {
-    return isLoading
+    return loading
       ? ({
           type: 'text',
           className: styles.btn,
@@ -184,7 +181,7 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
           onClick: () => send(),
           icon: <SendOutlined />,
         } as const);
-  }, [isLoading, message]);
+  }, [loading, message]);
 
   const defaultButtonDom = <Button {...defaultButtonProps} />;
 

@@ -8,6 +8,6 @@ const locales = {
   'zh-CN': zhCNLocal,
 };
 
-export const gLocaleObject = (glocale: Locale): LocaleProps => {
-  return locales[glocale as 'zh-CN'] || locales['zh-CN'];
+export const gLocaleObject = (locale: Locale): LocaleProps => {
+  return locales[locale as 'zh-CN'] || locales['zh-CN'];
 };

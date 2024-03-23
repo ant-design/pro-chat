@@ -1,18 +1,150 @@
-import { CSSProperties, MutableRefObject, useMemo } from 'react';
+import { CSSProperties, MutableRefObject, ReactNode, useMemo } from 'react';
 
 import RcResizeObserver from 'rc-resize-observer';
 import { useContext, useEffect, useRef, useState } from 'react';
 
-import { useStore } from '@/ProChat/store';
-import { BackTop, BackTopProps, ConfigProvider, Flex } from 'antd';
-import ChatList from '../components/ChatList';
-import ChatInputArea, { ChatInputAreaProps } from '../components/InputArea';
-import ChatScrollAnchor from '../components/ScrollAnchor';
+import { AutoCompleteProps, BackTop, BackTopProps, ConfigProvider, Flex, FlexProps } from 'antd';
+import ChatList, { ChatListProps } from './components/ChatList';
+import ChatInputArea, { ChatInputAreaProps } from './components/InputArea';
 import { useStyles } from './style';
 
-import { gLocaleObject } from '@/locale';
-import { ProChatInstance } from '../hooks/useProChat';
-import { ChatProps } from '../store';
+import { Locale, gLocaleObject } from '@/locale';
+import { TextAreaProps } from 'antd/es/input';
+import { ChatMessage } from '.';
+import { DEFAULT_AVATAR, DEFAULT_USER_AVATAR } from './const/meta';
+import { ProChatInstance } from './hooks/useProChat';
+import { ModelConfig } from './types/config';
+import { MetaData } from './types/meta';
+
+export type ChatRequest = (
+  messages: ChatMessage[],
+  config: ModelConfig,
+  signal: AbortSignal | undefined,
+) => Promise<Response>;
+
+export interface ProChatState<T extends Record<string, any> = Record<string, any>> {
+  init?: boolean;
+  abortController?: AbortController;
+  chatLoadingId?: string;
+
+  /**
+   * 语言模型角色设定
+   */
+  config: ModelConfig;
+  /**
+   * 聊天记录
+   */
+  chatList: ChatMessage<T>[];
+  onChatsChange?: (chatList: ChatMessage<T>[]) => void;
+  chatRef?: ProChatChatReference;
+  displayMode: 'chat' | 'docs';
+  userMeta: MetaData;
+  assistantMeta: MetaData;
+  /**
+   * 帮助消息
+   */
+  helloMessage?: ReactNode;
+  request?: string | ChatRequest;
+
+  /**
+   * 生成消息 id
+   * @param message
+   * @returns message id
+   */
+  genMessageId?: (message: ChatMessage<T>[], parentId: string) => Promise<string>;
+
+  /**
+   * 重置消息
+   * @returns
+   */
+  onResetMessage?: () => Promise<void>;
+
+  /**
+   * 获取自动完成列表的  request
+   * @param value
+   * @returns
+   */
+  autocompleteRequest?: (value: string) => Promise<
+    {
+      value: string;
+      label?: string;
+    }[]
+  >;
+
+  /**
+   * 输入框的 placeholder
+   */
+  placeholder?: string;
+
+  /**
+   * 国际化
+   */
+  locale?: Locale;
+
+  /**
+   * 输入框的 props,优先级最高
+   */
+  inputAreaProps?: TextAreaProps & { autoCompleteProps?: AutoCompleteProps };
+
+  /**
+   * 信息框额外渲染
+   */
+  messageItemExtraRender?: (message: ChatMessage<T>, type: 'assistant' | 'user') => React.ReactNode;
+
+  /**
+   * 信息框顶部的操作列表
+   */
+  actions?: {
+    /**
+     * 控制 input 顶部的操作区域的 flex 布局
+     */
+    flexConfig?: FlexProps;
+    /**
+     * 控制 input 顶部的操作区域的操作按钮
+     * @param defaultDoms
+     * @returns
+     */
+    render?: (defaultDoms: JSX.Element[]) => JSX.Element[];
+  };
+}
+
+export const initialModelConfig: ModelConfig = {
+  historyCount: 1,
+  model: 'gpt-3.5-turbo',
+  params: {
+    frequency_penalty: 0,
+    presence_penalty: 0,
+    temperature: 0.6,
+    top_p: 1,
+  },
+  systemRole: '',
+};
+
+export const initialState: ProChatState = {
+  chatList: [],
+  init: true,
+  displayMode: 'chat',
+  userMeta: {
+    avatar: DEFAULT_USER_AVATAR,
+  },
+  assistantMeta: {
+    avatar: DEFAULT_AVATAR,
+  },
+  config: initialModelConfig,
+};
+
+export interface ChatProps<T extends Record<string, any> = Record<string, any>>
+  extends Partial<ProChatState<T>> {
+  // init
+  loading?: boolean;
+  initialChatsList?: ProChatState<T>['chatList'];
+  userMeta?: MetaData;
+  assistantMeta?: MetaData;
+  /**
+   * @description 聊天项的渲染函数
+   */
+  chatItemRenderConfig?: ChatListProps['chatItemRenderConfig'];
+}
 
 export type ProChatChatReference = MutableRefObject<ProChatInstance | undefined>;
 
@@ -31,10 +163,6 @@ export interface ProChatProps<T extends Record<string, any>> extends ChatProps<T
    */
   backToBottomConfig?: Omit<BackTopProps, 'target'>;
 
-  /**
-   * 是否显示标题
-   */
-  showTitle?: boolean;
   /**
    * 样式对象
    */
@@ -72,15 +200,15 @@ export interface ProChatProps<T extends Record<string, any>> extends ChatProps<T
  */
 
 export function ProChat<T extends Record<string, any> = Record<string, any>>({
-  showTitle,
   style,
   className,
   chatItemRenderConfig,
   backToBottomConfig,
   inputRender,
-  markdownProps,
   inputAreaRender,
   chatRef,
+  chatList,
+  loading,
   sendButtonRender,
 }: ProChatProps<T>) {
   const ref = useRef<HTMLDivElement>(null);
@@ -89,7 +217,6 @@ export function ProChat<T extends Record<string, any> = Record<string, any>>({
   const [isRender, setIsRender] = useState(false);
   const [height, setHeight] = useState('100%' as string | number);
   const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
-  const locale = useStore((s) => s.locale);
 
   useEffect(() => {
     // 保证 ref 永远存在
@@ -117,7 +244,7 @@ export function ProChat<T extends Record<string, any> = Record<string, any>>({
         target={() => ref.current as HTMLElement}
         {...backToBottomConfig}
       >
-        {gLocaleObject(locale).backToBottom}
+        {gLocaleObject('zh-CN').backToBottom}
       </BackTop>
     );
   }, [isRender]);
@@ -137,21 +264,16 @@ export function ProChat<T extends Record<string, any> = Record<string, any>>({
           height: '100%',
           ...style,
         }}
+        ref={ref}
       >
-        <div
-          ref={ref}
-          className={cx(`${prefixClass}-chat-list-container`)}
+        <ChatList
+          chatList={chatList}
+          loading={loading}
+          chatItemRenderConfig={chatItemRenderConfig}
           style={{
             height: (height as number) - (areaHtml.current?.clientHeight || 0) || '100%',
           }}
-        >
-          <ChatList
-            showTitle={showTitle}
-            chatItemRenderConfig={chatItemRenderConfig}
-            markdownProps={markdownProps}
-          />
-          <ChatScrollAnchor target={ref} />
-        </div>
+        />
         {backBottomDom}
         <ChatInputArea
           areaRef={areaHtml}

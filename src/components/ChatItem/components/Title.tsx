@@ -7,12 +7,11 @@ import { formatTime } from '../utils/formatTime';
 export interface TitleProps {
   avatar: ChatItemProps['avatar'];
   placement?: ChatItemProps['placement'];
-  showTitle?: ChatItemProps['showTitle'];
   time?: ChatItemProps['time'];
   className?: string;
 }
 
-const Title = memo<TitleProps>(({ showTitle, className, placement, time, avatar }) => {
+const Title = memo<TitleProps>(({ className, placement, time, avatar }) => {
   return (
     <Flex
       className={className}
@@ -21,7 +20,7 @@ const Title = memo<TitleProps>(({ showTitle, className, placement, time, avatar 
       }}
       gap={4}
     >
-      {showTitle ? avatar.title || 'untitled' : undefined}
+      {avatar.title}
       {time && <time>{formatTime(time)}</time>}
     </Flex>
   );

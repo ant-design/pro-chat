@@ -1,10 +1,9 @@
 import { createStyles, cx } from 'antd-style';
 
-import { ConfigProvider, Flex, Popconfirm } from 'antd';
+import { ConfigProvider, Flex, FlexProps, Popconfirm } from 'antd';
 
 import { gLocaleObject } from '@/locale';
 import { DeleteFilled } from '@ant-design/icons';
-import { useStore } from '../../store';
 
 const useStyles = createStyles(({ css, token }) => ({
   extra: css`
@@ -12,14 +11,17 @@ const useStyles = createStyles(({ css, token }) => ({
   `,
 }));
 
-export const ActionBar = ({ className }: { className?: string }) => {
-  const [clearMessage, actionsRender, flexConfig, locale] = useStore((s) => [
-    s.clearMessage,
-    s.actions?.render,
-    s.actions?.flexConfig,
-    s.locale,
-  ]);
-
+export const ActionBar = ({
+  className,
+  clearMessage,
+  actionsRender,
+  flexConfig,
+  locale,
+}: {
+  className?: string;
+  locale: string;
+  flexConfig: FlexProps;
+}) => {
   const { styles, theme } = useStyles();
   const defaultDoms = [
     <Popconfirm
@@ -39,8 +41,9 @@ export const ActionBar = ({ className }: { className?: string }) => {
     <ConfigProvider theme={{ token: { colorText: theme.colorTextSecondary } }}>
       <Flex
         align={'center'}
-        direction={'horizontal-reverse'}
-        paddingInline={12}
+        style={{
+          flexDirection: 'row-reverse',
+        }}
         className={cx(styles.extra, className)}
         gap={8}
         {...flexConfig}

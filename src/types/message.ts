@@ -29,6 +29,8 @@ export interface ChatMessage<T extends Record<string, any> = Record<string, any>
   id: string;
   updateAt: number;
   extra?: T;
+
+  messageItemExtraRender?: (props: ChatMessage) => React.ReactNode;
 }
 
 export interface OpenAIFunctionCall {

@@ -1,16 +1,14 @@
 ﻿import { AutoComplete, AutoCompleteProps, Input } from 'antd';
 import { TextAreaProps } from 'antd/es/input';
 import { useState } from 'react';
-import { useStore } from '../../store';
 
 type AutoCompleteTextAreaProps = TextAreaProps & {
   autoCompleteProps?: AutoCompleteProps;
+  autocompleteRequest?: (value: string) => Promise<{ value: string; label?: string }[]>;
 };
 
 export const AutoCompleteTextArea: React.FC<AutoCompleteTextAreaProps> = (props) => {
-  const [autocompleteRequest] = useStore((s) => [s.autocompleteRequest]);
-
-  const { disabled, autoCompleteProps = {}, ...rest } = props;
+  const { disabled, autoCompleteProps = {}, autocompleteRequest, ...rest } = props;
 
   const [options, setOptions] = useState<{ value: string; label: string }[]>([]);
   const [open, setOpen] = useState(false);

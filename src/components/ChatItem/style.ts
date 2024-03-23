@@ -9,14 +9,12 @@ export const useStyles = createStyles(
       title,
       primary,
       avatarSize,
-      showTitle,
       editing,
     }: {
       avatarSize?: number;
       editing?: boolean;
       placement?: 'left' | 'right';
       primary?: boolean;
-      showTitle?: boolean;
       title?: string;
       type?: 'block' | 'pure';
     },
@@ -174,8 +172,8 @@ export const useStyles = createStyles(
       ),
       messageExtra: css``,
       name: css`
-        position: ${showTitle ? 'relative' : 'absolute'};
-        top: ${showTitle ? 'unset' : '-16px'};
+        position: 'relative';
+        top: 'unset';
         right: ${placement === 'right' ? '0' : 'unset'};
         left: ${placement === 'left' ? '0' : 'unset'};
 

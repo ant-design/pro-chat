@@ -1,4 +1,3 @@
-import { AlertProps } from 'antd';
 import { ReactNode } from 'react';
 
 import { DivProps, MetaData } from '@/types';
@@ -7,27 +6,13 @@ export type WithFalse<T> = T | false;
 
 export interface ChatItemProps<T = Record<string, any>> {
   /**
-   * @description Actions to be displayed in the chat item
-   */
-  actions?: ReactNode;
-  /**
    * @description Metadata for the avatar
    */
   avatar: MetaData;
-  avatarAddon?: ReactNode;
   /**
    * @description Custom CSS class name for the chat item
    */
   className?: string;
-  /**
-   * @description Whether the chat item is in editing mode
-   */
-  editing?: boolean;
-  /**
-   * @description Props for Error render
-   */
-  error?: AlertProps;
-  errorMessage?: ReactNode;
   /**
    * @description Whether the chat item is in loading state
    */
@@ -35,7 +20,7 @@ export interface ChatItemProps<T = Record<string, any>> {
   /**
    * @description The message content of the chat item
    */
-  message?: ReactNode;
+  children?: ReactNode;
   messageExtra?: ReactNode;
   onAvatarClick?: () => void;
   /**
@@ -45,11 +30,6 @@ export interface ChatItemProps<T = Record<string, any>> {
   onChange?: (value: string) => void;
   onDoubleClick?: DivProps['onDoubleClick'];
   /**
-   * @description Callback when the editing mode changes
-   * @param editing - The new editing mode
-   */
-  onEditingChange?: (editing: boolean) => void;
-  /**
    * @description The placement of the chat item
    * @default 'left'
    */
@@ -58,20 +38,10 @@ export interface ChatItemProps<T = Record<string, any>> {
    * @description Whether the chat item is primary
    */
   primary?: boolean;
-  renderMessage?: (content: ReactNode) => ReactNode;
-  /**
-   * @description Whether to show the title of the chat item
-   */
-  showTitle?: boolean;
   /**
    * @description The timestamp of the chat item
    */
   time?: number;
-  /**
-   * @description The type of the chat item
-   * @default 'block'
-   */
-  type?: 'block' | 'pure';
 
   /**
    * @description 聊天项渲染函数,为了保证性能他是惰性的，只有在列表项内容修改的时候才会重新执行
