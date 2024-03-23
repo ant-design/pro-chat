@@ -1,4 +1,3 @@
-import { App } from 'antd';
 import copy from 'copy-to-clipboard';
 import { FC, ReactNode, useMemo, useState } from 'react';
 
@@ -7,7 +6,6 @@ import { ChatMessage } from '@/types/message';
 
 import { useRefFunction } from '@/ProChat/hooks/useRefFunction';
 import ChatItem, { ChatItemProps } from '@/components/ChatItem';
-import { MarkdownProps } from '@ant-design/pro-editor';
 
 export type OnMessageChange = (id: string, content: string) => void;
 export type OnActionClick = (action: any, message: ChatMessage) => void;
@@ -70,15 +68,6 @@ export interface ListItemProps<T = Record<string, any>> {
     [role: RenderRole]: RenderMessageExtra;
   };
   /**
-   * 是否显示聊天项的名称。
-   * @default false
-   */
-  showTitle?: boolean;
-  /**
-   * 文本内容。
-   */
-  text?: ChatItemProps['text'];
-  /**
    * 聊天列表的类型。
    * @default 'chat'
    */
@@ -92,10 +81,6 @@ export interface ListItemProps<T = Record<string, any>> {
    * 聊天项的渲染函数。
    */
   chatItemRenderConfig?: ChatItemProps['chatItemRenderConfig'];
-  /**
-   * markdown组件的配置。
-   */
-  markdownProps?: MarkdownProps;
   /**
    * 原始数据。
    */
@@ -116,12 +101,10 @@ export type ChatListItemProps<T = Record<string, any>> = ChatMessage & ListItemP
 const ChatListItem = (props: ChatListItemProps) => {
   const {
     renderMessagesExtra,
-    showTitle,
     onActionsClick,
     onMessageChange,
     originData,
     type,
-    text,
     renderMessages,
     renderErrorMessages,
     renderActions,
@@ -130,13 +113,10 @@ const ChatListItem = (props: ChatListItemProps) => {
     renderItems,
     chatItemRenderConfig,
     chatItemClassName,
-    markdownProps,
     ...item
   } = props;
 
   const [editing, setEditing] = useState(false);
-
-  const { message } = App.useApp();
 
   /**
    * 渲染列表项的函数。
@@ -215,7 +195,6 @@ const ChatListItem = (props: ChatListItemProps) => {
       switch (action.key) {
         case 'copy': {
           copy(data.content as string);
-          message.success(text?.copySuccess || 'Copy Success');
           break;
         }
         case 'edit': {
@@ -230,7 +209,6 @@ const ChatListItem = (props: ChatListItemProps) => {
       <RenderFunction
         {...data}
         onActionClick={(actionKey) => handleActionClick?.(actionKey, data)}
-        text={text}
       />
     );
   });
@@ -277,12 +255,9 @@ const ChatListItem = (props: ChatListItemProps) => {
         renderMessage={(editableContent) => (
           <RenderMessage data={item} editableContent={editableContent} />
         )}
-        showTitle={showTitle}
-        text={text}
         time={item.updateAt || item.createAt}
         type={type === 'chat' ? 'block' : 'pure'}
         chatItemRenderConfig={chatItemRenderConfig}
-        markdownProps={markdownProps}
       />
     );
     return dom;

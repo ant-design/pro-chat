@@ -1,5 +1,4 @@
-import { ChatListProps } from '@/ChatList';
-
+import { ChatListProps } from '..';
 import { AssistantMessage } from './Assistant';
 import { DefaultMessage } from './Default';
 import { HelloMessage } from './Hello';

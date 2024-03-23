@@ -2,7 +2,6 @@ import { useResponsive } from 'antd-style';
 import { memo, useContext, useMemo } from 'react';
 
 import { ConfigProvider, Flex } from 'antd';
-import Actions from './components/Actions';
 import Avatar from './components/Avatar';
 import BorderSpacing from './components/BorderSpacing';
 import ErrorContent from './components/ErrorContent';
@@ -33,10 +32,8 @@ const ChatItem = memo<ChatItemProps>((props) => {
     onEditingChange,
     messageExtra,
     renderMessage,
-    text,
     errorMessage,
     chatItemRenderConfig,
-    markdownProps,
     onDoubleClick,
     originData,
     ...restProps
@@ -85,9 +82,7 @@ const ChatItem = memo<ChatItemProps>((props) => {
         placement={placement}
         primary={primary}
         renderMessage={renderMessage}
-        text={text}
         type={type}
-        markdownProps={markdownProps}
       />
     );
     return chatItemRenderConfig?.contentRender?.(props, dom) || dom;
@@ -98,23 +93,11 @@ const ChatItem = memo<ChatItemProps>((props) => {
     renderMessage,
     placement,
     primary,
-    text,
     type,
     editing,
     errorMessage,
     originData,
   ]);
-
-  const actionsDom = useMemo(() => {
-    if (chatItemRenderConfig?.actionsRender === false) return null;
-    const dom = (
-      <Actions
-        actions={actions}
-        className={`${cx(styles.actions, `${prefixClass}-list-item-actions`)}`}
-      />
-    );
-    return chatItemRenderConfig?.actionsRender?.(props, dom) || dom;
-  }, [actions]);
 
   const titleDom = useMemo(() => {
     if (chatItemRenderConfig?.titleRender === false) return null;
@@ -162,7 +145,6 @@ const ChatItem = memo<ChatItemProps>((props) => {
           gap={8}
         >
           {messageContentDom}
-          {actionsDom}
         </Flex>
       </Flex>
       {mobile && type === 'block' && <BorderSpacing borderSpacing={MOBILE_AVATAR_SIZE} />}
@@ -174,7 +156,6 @@ const ChatItem = memo<ChatItemProps>((props) => {
       {
         avatar: avatarDom,
         messageContent: messageContentDom,
-        actions: actionsDom,
         title: titleDom,
         itemDom,
       },

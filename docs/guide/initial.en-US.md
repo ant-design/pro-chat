@@ -77,7 +77,7 @@ export default () => {
 
   return (
     <Flex style={{ background: theme.colorBgLayout }}>
-      <Flex padding={16} gap={16} horizontal>
+      <Flex padding={16} gap={16} vertical>
         <Button
           type={'primary'}
           onClick={() => {

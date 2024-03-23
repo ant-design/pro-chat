@@ -62,7 +62,6 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.3.0",
-    "@ant-design/pro-editor": "latest",
     "@babel/runtime": "^7.23.9",
     "copy-to-clipboard": "^3.3.3",
     "dayjs": "^1.11.10",

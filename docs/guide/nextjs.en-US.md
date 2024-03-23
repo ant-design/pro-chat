@@ -35,7 +35,6 @@ const nextConfig = {
   transpilePackages: [
     '@ant-design/pro-chat',
     'react-intersection-observer',
-    '@ant-design/pro-editor',
   ],
 };
 ```

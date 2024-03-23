@@ -42,7 +42,6 @@ const List = memo<ListProps>((props) => {
   const {
     showTitle,
     chatItemRenderConfig,
-    markdownProps,
     renderMessagesExtra,
     className,
     type = 'chat',
@@ -120,7 +119,6 @@ const List = memo<ListProps>((props) => {
             {...item}
             originData={item}
             chatItemRenderConfig={chatItemRenderConfig}
-            markdownProps={markdownProps}
           />
         );
       })}
