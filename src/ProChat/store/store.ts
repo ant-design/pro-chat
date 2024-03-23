@@ -1,21 +1,20 @@
 import { StateCreator } from 'zustand/vanilla';
 
-import { ChatListProps } from '@/ChatList';
 import { MetaData } from '@/ProChat/types/meta';
 import { MarkdownProps } from '@ant-design/pro-editor';
-import isEqual from 'fast-deep-equal';
 import { merge } from 'lodash-es';
 import { optionalDevtools } from 'zustand-utils';
 import { DevtoolsOptions } from 'zustand/middleware';
 import { createWithEqualityFn } from 'zustand/traditional';
+import { ChatListProps } from '../components/ChatList';
 import { ChatAction, chatAction } from './action';
-import { ChatPropsState, ChatState, initialState } from './initialState';
+import { ProChatState, initialState } from './initialState';
 
 export interface ChatProps<T extends Record<string, any> = Record<string, any>>
-  extends Partial<ChatPropsState<T>> {
+  extends Partial<ProChatState<T>> {
   // init
   loading?: boolean;
-  initialChats?: ChatPropsState<T>['chats'];
+  initialChatsList?: ProChatState<T>['chatList'];
   userMeta?: MetaData;
   assistantMeta?: MetaData;
   /**
@@ -26,33 +25,31 @@ export interface ChatProps<T extends Record<string, any> = Record<string, any>>
    * @description markdown组件的参数
    */
   markdownProps?: MarkdownProps;
-  /**
-   * @description 判断聊天项的更新函数
-   */
-  itemShouldUpdate?: ChatListProps['itemShouldUpdate'];
 }
 
 //  ===============  聚合 createStoreFn ============ //
 
-export type ChatStore = ChatAction & ChatState;
+export type ChatStore = ChatAction & ProChatState;
 
 const vanillaStore =
   ({
     loading,
-    initialChats,
-    chats,
+    initialChatsList,
+    chatList,
     ...props
   }: ChatProps): StateCreator<ChatStore, [['zustand/devtools', never]]> =>
   (...parameters) => {
     // initState = innerState + props
 
-    const finalInitChats = chats ?? initialChats;
+    const finalInitChats = chatList ?? initialChatsList;
 
     const state = merge({}, initialState, {
       init: !loading,
-      chats: Array.isArray(finalInitChats) ? finalInitChats : Object.values(finalInitChats || {}),
+      chatList: Array.isArray(finalInitChats)
+        ? finalInitChats
+        : Object.values(finalInitChats || {}),
       ...props,
-    } as ChatState);
+    } as ProChatState);
 
     return {
       ...state,
@@ -77,5 +74,5 @@ export const createStore = (props: ChatProps, options: boolean | DevtoolsOptions
         ? { name: PRO_CHAT + (isDev ? '_DEV' : '') }
         : options;
 
-  return createWithEqualityFn<ChatStore>()(devtools(vanillaStore(props), devtoolOptions), isEqual);
+  return createWithEqualityFn<ChatStore>()(devtools(vanillaStore(props), devtoolOptions));
 };

@@ -34,15 +34,15 @@ In non streaming mode, all session messages will be returned at once, which is s
 
 ## Controlled mode
 
-Implement controlled chat session messages using `chats` and `onChatsChange`
+Implement controlled chat session messages using `chatList` and `onChatsChange`
 
 <code src="./demos/control.tsx"></code>
 
 ## Set initial session messages
 
-Use `initialChats` to set the initial session message.
+Use `initialChatsList` to set the initial session message.
 
-<code src="./demos/initialChats.tsx"></code>
+<code src="./demos/initialChatsList.tsx"></code>
 
 ## Set greeting messages
 
@@ -80,11 +80,11 @@ You can customize the [Back to Bottom] button to varying degrees through the bac
 
 ## Custom input area
 
-Sometimes you may feel that the default input area is not user-friendly enough, or if you have some custom input module requirements, you can use renderInputArea for custom input. If you do not need an input area, you can pass in `renderInputArea={()=>null}`。
+Sometimes you may feel that the default input area is not user-friendly enough, or if you have some custom input module requirements, you can use inputAreaRender for custom input. If you do not need an input area, you can pass in `inputAreaRender={()=>null}`。
 
 Here is a demonstration case that supports image uploading. Try uploading files and submitting them.
 
-<code src="./demos/renderInputArea.tsx"></code>
+<code src="./demos/inputAreaRender.tsx"></code>
 
 ## Suspended window usage
 
@@ -114,7 +114,7 @@ UseProChat hooks must be used in the `ProChatProvider` before they can be used.
 
 :::warning
 
-All initialization props such as `initialChats` need to be moved from `ProChat` to `ProChatProvider`
+All initialization props such as `initialChatsList` need to be moved from `ProChat` to `ProChatProvider`
 
 :::
 
@@ -127,17 +127,16 @@ All initialization props such as `initialChats` need to be moved from `ProChat` 
 | className | Main className | string | - |
 | chatRef | Chat references, used for manipulating data | ProChatChatReference | - |
 | loading | Loading or not | boolean | - |
-| initialChats | Initial chat history | ChatPropsState\['chats'] | - |
+| initialChatsList | Initial chat history | ChatPropsState\['chatList'] | - |
 | userMeta | User Metadata | MetaData | - |
 | assistantMeta | Assistant metadata | MetaData | - |
 | config | Language Model Role Setting | ModelConfig | - |
-| chats | Chat history | ChatMessage[] | - |
-| onChatsChange | Chat record change callback function, | (chats: ChatMessage[]) => void | chat |
+| chatList | Chat history | ChatMessage[] | - |
+| onChatsChange | Chat record change callback function, | (chatList: ChatMessage[]) => void | chat |
 | displayMode | Display mode, default to chat | 'chat' \| 'docs' | - |
 | helloMessage | Welcome message | string\| ReactNode | - |
 | request | Request message | string \| ChatRequest | - |
 | onResetMessage | Reset message callback function | `() => Promise<void>` | - |
-| itemShouldUpdate | Determine if each sub item needs to be re evaluated render | `(prevProps: ChatListItemProps, nextProps: ChatListItemProps) => boolean` | - |
 | genMessageId | The function for generating message IDs is only needed if your project needs persistence | \`() => Promise<string>\`\` | nanoid |
 | autocompleteRequest | Request function for obtaining the auto complete list | \`(value: string) => Promise<{ value: string; label?: string; }\[]>\`\` | - |
 | placeholder | Input box placeholder | string | - |
@@ -152,7 +151,7 @@ All initialization props such as `initialChats` need to be moved from `ProChat` 
 
 | Parameter | description | type | default |
 | --- | --- | --- | --- |
-| getChats | Get the current chat list object | () => ChatStore['chats'] | - |
+| getChats | Get the current chat list object | () => ChatStore['chatList'] | - |
 | getChatMessages | Get the current chat message list | () => ChatMessage[] | - |
 | setMessageContent | Set message content | (id: string, content: string) => void | - |
 | setMessageValue | Modify a certain property of a message | (id: string, key: keyof ChatMessage<Record<string, any>>, value: any) => void | - |

@@ -1,7 +1,6 @@
-import { Skeleton } from 'antd';
+import { Flex, Skeleton } from 'antd';
 import { createStyles } from 'antd-style';
 import { memo } from 'react';
-import { Flexbox } from 'react-layout-kit';
 
 const useStyles = createStyles(({ css, prefixCls }) => ({
   user: css`
@@ -20,7 +19,7 @@ const SkeletonList = memo(() => {
   const { styles } = useStyles();
 
   return (
-    <Flexbox gap={24} padding={12} style={{ marginTop: 24 }}>
+    <Flex gap={24} style={{ marginTop: 24 }}>
       <Skeleton
         active
         avatar={{ size: 40 }}
@@ -29,7 +28,7 @@ const SkeletonList = memo(() => {
         title={false}
       />
       <Skeleton active avatar={{ size: 40 }} paragraph={{ width: ['50%', '30%'] }} title={false} />
-    </Flexbox>
+    </Flex>
   );
 });
 export default SkeletonList;

@@ -1,5 +1,5 @@
-export const chats = {
-  chats: {
+export const chatList = {
+  chatList: {
     ZGxiX2p4: {
       content: '我对三体世界说话。',
       createAt: 1697862242452,

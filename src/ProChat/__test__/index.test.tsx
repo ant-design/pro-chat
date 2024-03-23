@@ -6,12 +6,12 @@ describe('ProChat', () => {
   it('input area render worked', () => {
     const wrapper = render(
       <ProChat
-        renderInputArea={() => {
-          return <div>RenderInputArea</div>;
+        inputAreaRender={() => {
+          return <div>inputAreaRender</div>;
         }}
       />,
     );
-    expect(wrapper.getByText('RenderInputArea')).toBeInTheDocument();
+    expect(wrapper.getByText('inputAreaRender')).toBeInTheDocument();
   });
 
   it('i18n worked', () => {

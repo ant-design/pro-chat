@@ -1,12 +1,12 @@
 import {
-  chatsMessageString,
+  chatListMessageString,
   currentChats,
   currentChatsWithGuideMessage,
   currentChatsWithHistoryConfig,
 } from './chat';
 
 export const chatSelectors = {
-  chatsMessageString,
+  chatListMessageString,
   currentChats,
   currentChatsWithGuideMessage,
   currentChatsWithHistoryConfig,

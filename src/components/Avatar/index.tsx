@@ -1,12 +1,9 @@
-import { Avatar as AntAvatar, type AvatarProps as AntAvatarProps } from 'antd';
-import { memo, useMemo } from 'react';
-
-import Emoji from '@/Emoji';
-import { getEmoji } from '@/components/Avatar/getEmojiByCharacter';
+import { Avatar, type AvatarProps } from 'antd';
+import { memo } from 'react';
 
 import { useStyles } from './style';
 
-export interface AvatarProps extends AntAvatarProps {
+export interface ProChatAvatarProps extends AvatarProps {
   /**
    * @description The URL or base64 data of the avatar image
    */
@@ -48,7 +45,7 @@ export interface AvatarProps extends AntAvatarProps {
  * @param {Object} [props] - 其他传递给AntAvatar组件的属性
  *
  */
-const Avatar = memo<AvatarProps>(
+const ProChatAvatar = memo<ProChatAvatarProps>(
   ({
     className,
     avatar,
@@ -64,9 +61,8 @@ const Avatar = memo<AvatarProps>(
       avatar && ['/', 'http', 'data:'].some((index) => avatar.startsWith(index)),
     );
     const isBase64 = Boolean(avatar?.startsWith('data'));
-    const emoji = useMemo(() => avatar && !isImage && getEmoji(avatar), [avatar]);
 
-    const { styles, cx } = useStyles({ background, isEmoji: Boolean(emoji), size });
+    const { styles, cx } = useStyles({ background, size });
 
     const text = String(isImage ? title : avatar);
 
@@ -78,17 +74,17 @@ const Avatar = memo<AvatarProps>(
     };
 
     return isImage ? (
-      <AntAvatar
+      <Avatar
         src={isBase64 ? avatar : <img src={avatar} alt="avatar" />}
         {...avatarProps}
         {...props}
       />
     ) : (
-      <AntAvatar {...avatarProps} {...props}>
-        {emoji ? <Emoji emoji={emoji} size={size * 0.8} /> : text?.toUpperCase().slice(0, 2)}
-      </AntAvatar>
+      <Avatar {...avatarProps} {...props}>
+        {text?.toUpperCase().slice(0, 2)}
+      </Avatar>
     );
   },
 );
 
-export default Avatar;
+export default ProChatAvatar;

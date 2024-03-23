@@ -4,8 +4,8 @@
 import { MockResponse } from '@/ProChat/mocks/streamResponse';
 import { ProChat } from '@ant-design/pro-chat';
 import { DraggablePanel } from '@ant-design/pro-editor';
+import { Flex } from 'antd';
 import { useTheme } from 'antd-style';
-import { Flexbox } from 'react-layout-kit';
 
 export default () => {
   const theme = useTheme();
@@ -17,9 +17,9 @@ export default () => {
       minHeight={400}
       style={{ background: theme.colorBgLayout, display: 'flex', flexDirection: 'column' }}
     >
-      <Flexbox align={'center'} style={{ fontSize: 18 }}>
+      <Flex align={'center'} style={{ fontSize: 18 }}>
         客服助理
-      </Flexbox>
+      </Flex>
       <div style={{ flex: '1' }}>
         <ProChat
           request={async (messages) => {

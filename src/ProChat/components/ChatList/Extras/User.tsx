@@ -1,9 +1,8 @@
-import { RenderMessageExtra } from '@/index';
-import { Divider } from 'antd';
+import { Divider, Flex } from 'antd';
 import { memo } from 'react';
-import { Flexbox } from 'react-layout-kit';
 
 import { useStore } from '@/ProChat/store';
+import { RenderMessageExtra } from '../ChatListItem';
 
 export const UserMessageExtra: RenderMessageExtra = memo(({ extra, ...rest }) => {
   const hasTranslate = !!extra?.translate;
@@ -14,13 +13,13 @@ export const UserMessageExtra: RenderMessageExtra = memo(({ extra, ...rest }) =>
 
   if (!dom) return;
   return (
-    <Flexbox gap={8} style={{ marginTop: hasTranslate ? 8 : 0 }}>
+    <Flex gap={8} style={{ marginTop: hasTranslate ? 8 : 0 }}>
       {extra?.translate && (
         <div>
           <Divider style={{ margin: '12px 0' }} />
         </div>
       )}
       {dom}
-    </Flexbox>
+    </Flex>
   );
 });

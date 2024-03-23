@@ -1,9 +1,8 @@
 import { ReactNode, memo } from 'react';
-import { Flexbox } from 'react-layout-kit';
 
-import Tag from '@/components/Tag';
 import { DivProps } from '@/types';
 
+import { Flex } from 'antd';
 import { useStyles } from './style';
 
 export interface FormTitleProps extends DivProps {
@@ -13,24 +12,23 @@ export interface FormTitleProps extends DivProps {
   title: string;
 }
 
-const FormTitle = memo<FormTitleProps>(({ className, tag, title, desc, avatar }) => {
+const FormTitle = memo<FormTitleProps>(({ className, title, desc, avatar }) => {
   const { cx, styles } = useStyles();
   const titleNode = (
     <div className={cx(styles.formTitle, className)}>
-      <Flexbox align={'center'} direction={'horizontal'} gap={8}>
+      <Flex align={'center'} vertical gap={8}>
         {title}
-        {tag && <Tag>{tag}</Tag>}
-      </Flexbox>
+      </Flex>
       {desc && <small>{desc}</small>}
     </div>
   );
 
   if (avatar) {
     return (
-      <Flexbox align={`center`} gap={8} horizontal>
+      <Flex align={`center`} gap={8} vertical>
         {avatar}
         {titleNode}
-      </Flexbox>
+      </Flex>
     );
   }
   return titleNode;

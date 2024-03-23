@@ -1,7 +1,7 @@
 /**
  * compact: true
  */
-import { chats } from '@/ProChat/mocks/threebody';
+import { chatList } from '@/ProChat/mocks/threebody';
 import { ProChat } from '@ant-design/pro-chat';
 import { useTheme } from 'antd-style';
 
@@ -17,7 +17,7 @@ export default () => {
           title: 'Ant Design',
         }}
         assistantMeta={{ avatar: '🛸', title: '三体世界', backgroundColor: '#67dedd' }}
-        initialChats={Object.values(chats.chats)}
+        initialChatsList={Object.values(chatList.chatList)}
       />
     </div>
   );

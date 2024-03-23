@@ -7,7 +7,7 @@ import type { ChatStore } from '../store';
 
 // 当前激活的消息列表
 export const currentChats = (s: ChatStore): ChatMessage[] => {
-  if (Object.keys(s.chats).length === 0) return [];
+  if (Object.keys(s.chatList).length === 0) return [];
 
   const getMeta = (message: ChatMessage): MetaData => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -38,7 +38,7 @@ export const currentChats = (s: ChatStore): ChatMessage[] => {
     return {};
   };
 
-  const basic = s.chats
+  const basic = s.chatList
     // 映射头像关系
     .map((m) => {
       return {
@@ -94,12 +94,12 @@ export const currentChatsWithGuideMessage = (s: ChatStore): ChatMessage[] => {
 };
 
 export const currentChatsWithHistoryConfig = (s: ChatStore): ChatMessage[] => {
-  const chats = currentChats(s);
+  const chatList = currentChats(s);
 
-  return getSlicedMessagesWithConfig(chats, s.config);
+  return getSlicedMessagesWithConfig(chatList, s.config);
 };
 
-export const chatsMessageString = (s: ChatStore): string => {
-  const chats = currentChatsWithHistoryConfig(s);
-  return chats.map((m) => m.content).join('');
+export const chatListMessageString = (s: ChatStore): string => {
+  const chatList = currentChatsWithHistoryConfig(s);
+  return chatList.map((m) => m.content).join('');
 };

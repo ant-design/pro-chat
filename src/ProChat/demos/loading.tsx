@@ -3,18 +3,17 @@
  * compact: true
  */
 import { ProChat } from '@ant-design/pro-chat';
-import { Button, Divider } from 'antd';
+import { Button, Divider, Flex } from 'antd';
 import { useTheme } from 'antd-style';
 import { useState } from 'react';
-import { Flexbox } from 'react-layout-kit';
 
 export default () => {
   const [loading, setLoading] = useState(true);
   const theme = useTheme();
 
   return (
-    <Flexbox style={{ background: theme.colorBgLayout }}>
-      <Flexbox padding={16} gap={16} horizontal>
+    <Flex style={{ background: theme.colorBgLayout }}>
+      <Flex gap={16} vertical>
         <Button
           type={'primary'}
           onClick={() => {
@@ -30,9 +29,9 @@ export default () => {
         >
           开始加载
         </Button>
-      </Flexbox>
+      </Flex>
       <Divider />
       <ProChat loading={loading} />
-    </Flexbox>
+    </Flex>
   );
 };

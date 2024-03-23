@@ -1,7 +1,7 @@
+import { Flex } from 'antd';
 import { createStyles } from 'antd-style';
 import { useMergedState } from 'rc-util';
 import React, { memo } from 'react';
-import { Flexbox } from 'react-layout-kit';
 
 const useStyles = createStyles(
   ({ css, token }) => css`
@@ -114,7 +114,7 @@ const OtpInput = memo<OtpInputProps>((props) => {
   };
 
   return (
-    <Flexbox gap={12} horizontal>
+    <Flex gap={12} vertical>
       {arr.map((_, index) => {
         return (
           <input
@@ -131,7 +131,7 @@ const OtpInput = memo<OtpInputProps>((props) => {
           />
         );
       })}
-    </Flexbox>
+    </Flex>
   );
 });
 

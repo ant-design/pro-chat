@@ -1,5 +1,5 @@
 export const example = {
-  chats: [
+  chatList: [
     {
       content: '请展示完整的会话高亮效果？',
       createAt: 1697862242452,

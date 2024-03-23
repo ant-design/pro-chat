@@ -18,7 +18,7 @@ export const Input = forwardRef<InputRef, InputProps>(
 
     return (
       <AntInput
-        bordered={type !== 'pure'}
+        variant={type !== 'pure' ? 'outlined' : 'borderless'}
         className={cx(styles.input, className)}
         ref={reference}
         {...props}

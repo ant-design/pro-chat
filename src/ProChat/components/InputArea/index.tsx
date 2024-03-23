@@ -1,13 +1,10 @@
-import { SendOutlined } from '@ant-design/icons';
-import { Button, ButtonProps, ConfigProvider } from 'antd';
-import { createStyles, cx } from 'antd-style';
-import { ReactNode, useContext, useMemo, useRef, useState } from 'react';
-import { Flexbox } from 'react-layout-kit';
-
-import { useStore } from '../../store';
-
 import { gLocaleObject } from '@/locale';
+import { SendOutlined } from '@ant-design/icons';
+import { Button, ButtonProps, ConfigProvider, Flex } from 'antd';
+import { createStyles, cx } from 'antd-style';
 import { TextAreaProps } from 'antd/es/input';
+import { ReactNode, useContext, useMemo, useRef, useState } from 'react';
+import { useStore } from '../../store';
 import ActionBar from './ActionBar';
 import { AutoCompleteTextArea } from './AutoCompleteTextArea';
 import StopLoadingIcon from './StopLoading';
@@ -55,6 +52,7 @@ const useStyles = createStyles(({ css, responsive, token }) => ({
 }));
 
 export type ChatInputAreaProps = {
+  areaRef?: React.RefObject<HTMLDivElement>;
   className?: string;
   onSend?: (message: string) => boolean | Promise<boolean>;
   inputRender?: (
@@ -71,7 +69,8 @@ export type ChatInputAreaProps = {
 };
 
 export const ChatInputArea = (props: ChatInputAreaProps) => {
-  const { className, onSend, inputAreaRender, inputRender, sendButtonRender } = props || {};
+  const { className, onSend, inputAreaRender, areaRef, inputRender, sendButtonRender } =
+    props || {};
   const [
     sendMessage,
     isLoading,
@@ -205,18 +204,18 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
         },
       }}
     >
-      <Flexbox gap={8} padding={16} className={cx(styles.container, `${prefixClass}`, className)}>
+      <Flex ref={areaRef} gap={8} className={cx(styles.container, `${prefixClass}`, className)}>
         <ActionBar className={`${prefixClass}-action-bar`} />
-        <Flexbox
-          horizontal
+        <Flex
+          vertical
           gap={8}
           align={'center'}
           className={cx(styles.boxShadow, `${prefixClass}-text-container`)}
         >
           {inputDom}
           {buttonDom}
-        </Flexbox>
-      </Flexbox>
+        </Flex>
+      </Flex>
     </ConfigProvider>
   );
 

@@ -1,13 +1,20 @@
-import { App as Container } from 'antd';
-import { CSSProperties } from 'react';
+import { CSSProperties, MutableRefObject, useMemo } from 'react';
 
-import App, { ConversationProps } from './App';
+import RcResizeObserver from 'rc-resize-observer';
+import { useContext, useEffect, useRef, useState } from 'react';
 
-import { DevtoolsOptions } from 'zustand/middleware';
-import { BackBottomProps } from '../../BackBottom';
+import { useStore } from '@/ProChat/store';
+import { BackTop, BackTopProps, ConfigProvider, Flex } from 'antd';
+import ChatList from '../components/ChatList';
+import ChatInputArea, { ChatInputAreaProps } from '../components/InputArea';
+import ChatScrollAnchor from '../components/ScrollAnchor';
+import { useStyles } from './style';
+
+import { gLocaleObject } from '@/locale';
+import { ProChatInstance } from '../hooks/useProChat';
 import { ChatProps } from '../store';
-import { ProChatProvider } from './Provider';
-import { ProChatChatReference } from './StoreUpdater';
+
+export type ProChatChatReference = MutableRefObject<ProChatInstance | undefined>;
 
 /**
  * ProChatProps 是 ProChat 组件的属性类型定义。
@@ -15,107 +22,144 @@ import { ProChatChatReference } from './StoreUpdater';
  */
 export interface ProChatProps<T extends Record<string, any>> extends ChatProps<T> {
   /**
-   * @deprecated 请使用 inputAreaRender 属性替代此属性
+   * chatRef 是一个可选的 ProChatChatReference 对象，用于获取 ProChat 组件的引用。
    */
-  renderInputArea?: ConversationProps['inputAreaRender'];
+  chatRef?: ProChatChatReference;
 
   /**
-   * inputAreaRender 是一个函数，用于自定义输入区域的渲染。
+   * backToBottomConfig 是一个 Omit<BackBottomProps, 'target'> 对象，用于配置返回底部按钮的行为。
+   */
+  backToBottomConfig?: Omit<BackTopProps, 'target'>;
+
+  /**
+   * 是否显示标题
+   */
+  showTitle?: boolean;
+  /**
+   * 样式对象
+   */
+  style?: CSSProperties;
+  /**
+   * CSS类名
+   */
+  className?: string;
+  /**
+   * 输入区域的渲染函数
    * @param defaultDom 默认的 DOM 元素
    * @param onMessageSend 发送消息的回调函数
    * @param onClearAllHistory 清除所有历史记录的回调函数
+   * @returns 渲染的 React 元素
    */
-  inputAreaRender?: ConversationProps['inputAreaRender'];
-
+  inputAreaRender?: ChatInputAreaProps['inputAreaRender'];
   /**
-   * inputRender 是一个函数，用于自定义输入框的渲染。
+   * 输入框的渲染函数
    * @param defaultDom 默认的 DOM 元素
    * @param onMessageSend 发送消息的回调函数
+   * @param props 输入框的属性
    */
-  inputRender?: ConversationProps['inputRender'];
+  inputRender?: ChatInputAreaProps['inputRender'];
 
   /**
    * 聊天发送按钮的渲染配置
    * @param defaultDom 默认的 DOM 元素
    * @param defaultProps 默认的属性
    */
-  sendButtonRender?: ConversationProps['sendButtonRender'];
-
-  /**
-   * __PRO_CHAT_STORE_DEVTOOLS__ 是一个可选的布尔值或 DevtoolsOptions 对象，用于开启 ProChat 的开发者工具。
-   */
-  __PRO_CHAT_STORE_DEVTOOLS__?: boolean | DevtoolsOptions;
-
-  /**
-   * showTitle 是一个可选的布尔值，用于控制是否显示聊天窗口的标题。
-   */
-  showTitle?: boolean;
-
-  /**
-   * style 是一个可选的 CSSProperties 对象，用于自定义聊天窗口的样式。
-   */
-  style?: CSSProperties;
-
-  /**
-   * className 是一个可选的字符串，用于自定义聊天窗口的类名。
-   */
-  className?: string;
-
-  /**
-   * chatRef 是一个可选的 ProChatChatReference 对象，用于获取 ProChat 组件的引用。
-   */
-  chatRef?: ProChatChatReference;
-
-  /**
-   * appStyle 是一个可选的 CSSProperties 对象，用于自定义整个应用的样式。
-   */
-  appStyle?: CSSProperties;
-
-  /**
-   * backToBottomConfig 是一个 Omit<BackBottomProps, 'target'> 对象，用于配置返回底部按钮的行为。
-   */
-  backToBottomConfig?: Omit<BackBottomProps, 'target'>;
+  sendButtonRender?: ChatInputAreaProps['sendButtonRender'];
 }
 
+/**
+ * 对话组件的属性接口
+ */
+
 export function ProChat<T extends Record<string, any> = Record<string, any>>({
-  renderInputArea,
-  __PRO_CHAT_STORE_DEVTOOLS__,
   showTitle,
   style,
   className,
   chatItemRenderConfig,
   backToBottomConfig,
-  appStyle,
   inputRender,
   markdownProps,
   inputAreaRender,
+  chatRef,
   sendButtonRender,
-  ...props
 }: ProChatProps<T>) {
-  return (
-    <ProChatProvider {...props} devtoolOptions={__PRO_CHAT_STORE_DEVTOOLS__}>
-      <Container
+  const ref = useRef<HTMLDivElement>(null);
+  const areaHtml = useRef<HTMLDivElement>(null);
+  const { styles, cx } = useStyles();
+  const [isRender, setIsRender] = useState(false);
+  const [height, setHeight] = useState('100%' as string | number);
+  const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
+  const locale = useStore((s) => s.locale);
+
+  useEffect(() => {
+    // 保证 ref 永远存在
+    setIsRender(true);
+    if (chatRef?.current) {
+      chatRef.current.scrollToBottom = () => {
+        (ref as any)?.current?.scrollTo({
+          behavior: 'smooth',
+          left: 0,
+          top: ref.current?.scrollHeight || 99999,
+        });
+      };
+    }
+  }, []);
+
+  const prefixClass = getPrefixCls('pro-chat');
+
+  const backBottomDom = useMemo(() => {
+    if (!isRender) return null;
+    return (
+      <BackTop
         style={{
-          height: '100%',
-          width: '100%',
-          position: 'relative',
-          ...appStyle,
+          bottom: 138,
         }}
-        className={className}
+        target={() => ref.current as HTMLElement}
+        {...backToBottomConfig}
       >
-        <App
-          chatItemRenderConfig={chatItemRenderConfig}
-          inputRender={inputRender}
+        {gLocaleObject(locale).backToBottom}
+      </BackTop>
+    );
+  }, [isRender]);
+
+  return (
+    <RcResizeObserver
+      onResize={(e) => {
+        if (e.height !== height) {
+          setHeight(e.height);
+        }
+      }}
+    >
+      <Flex
+        className={cx(styles.container, className, `${prefixClass}-container`)}
+        style={{
+          maxHeight: '100vh',
+          height: '100%',
+          ...style,
+        }}
+      >
+        <div
+          ref={ref}
+          className={cx(`${prefixClass}-chat-list-container`)}
+          style={{
+            height: (height as number) - (areaHtml.current?.clientHeight || 0) || '100%',
+          }}
+        >
+          <ChatList
+            showTitle={showTitle}
+            chatItemRenderConfig={chatItemRenderConfig}
+            markdownProps={markdownProps}
+          />
+          <ChatScrollAnchor target={ref} />
+        </div>
+        {backBottomDom}
+        <ChatInputArea
+          areaRef={areaHtml}
           sendButtonRender={sendButtonRender}
-          inputAreaRender={renderInputArea || inputAreaRender}
-          chatRef={props.chatRef}
-          showTitle={showTitle}
-          style={style}
-          backToBottomConfig={backToBottomConfig}
-          className={className}
-          markdownProps={markdownProps}
+          inputAreaRender={inputAreaRender}
+          inputRender={inputRender}
         />
-      </Container>
-    </ProChatProvider>
+      </Flex>
+    </RcResizeObserver>
   );
 }

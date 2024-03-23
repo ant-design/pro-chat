@@ -34,15 +34,15 @@ description: a Chat Solution
 
 ## 受控模式
 
-使用 `chats` 和 `onChatsChange` 实现 chats 会话消息的受控
+使用 `chatList` 和 `onChatsChange` 实现 chatList 会话消息的受控
 
 <code src="./demos/control.tsx"></code>
 
 ## 设定初始会话消息
 
-使用 `initialChats` 设定初始会话消息。
+使用 `initialChatsList` 设定初始会话消息。
 
-<code src="./demos/initialChats.tsx"></code>
+<code src="./demos/initialChatsList.tsx"></code>
 
 ## 设定打招呼消息
 
@@ -84,7 +84,7 @@ ProChat 使用 `meta` 来表意会话双方的头像、名称等信息。设定�
 
 下面是一个支持图片上传的示范案例，试试上传文件并提交看看吧。
 
-<code src="./demos/renderInputArea.tsx"></code>
+<code src="./demos/inputAreaRender.tsx"></code>
 
 ## 悬浮窗使用
 
@@ -100,21 +100,11 @@ ProChat 使用 `meta` 来表意会话双方的头像、名称等信息。设定�
 
 <code src="./demos/use-ref.tsx"></code>
 
-### useProChat
-
-针对一些复杂场景，可以搭配 `ProChatProvider` 和 `useProChat` hooks， 实现编程式消息发送、获取、删除等行为。
-
-<code src="./demos/use-pro-chat.tsx"></code>
-
-:::warning
-
-useProChat hooks 必须在包裹 `ProChatProvider` 后方可使用。
-
 :::
 
 :::warning
 
-所有 `initialChats` 等初始化 props 需要从 `ProChat` 移动至 `ProChatProvider`
+所有 `initialChatsList` 等初始化 props 需要从 `ProChat` 移动至 `ProChatProvider`
 
 :::
 
@@ -127,17 +117,16 @@ useProChat hooks 必须在包裹 `ProChatProvider` 后方可使用。
 | className | 主类名 | string | - |
 | chatRef | 聊天引用，用于操作数据 | ProChatChatReference | - |
 | loading | 是否加载中 | boolean | - |
-| initialChats | 初始聊天记录 | ChatPropsState\['chats'] | - |
+| initialChatsList | 初始聊天记录 | ChatPropsState\['chatList'] | - |
 | userMeta | 用户元数据 | MetaData | - |
 | assistantMeta | 助手元数据 | MetaData | - |
 | config | 语言模型角色设定 | ModelConfig | - |
-| chats | 聊天记录 | ChatMessage[] | - |
-| onChatsChange | 聊天记录变化回调函数， | (chats: ChatMessage[]) => void | chat |
+| chatList | 聊天记录 | ChatMessage[] | - |
+| onChatsChange | 聊天记录变化回调函数， | (chatList: ChatMessage[]) => void | chat |
 | displayMode | 显示模式，默认是 chat | 'chat' \| 'docs' | - |
 | helloMessage | 欢迎消息 | string\| ReactNode | - |
 | request | 请求消息 | string \| ChatRequest | - |
 | onResetMessage | 重置消息回调函数 | `() => Promise<void>` | - |
-| itemShouldUpdate | 判断每个子项是否需要重新 render | `(prevProps: ChatListItemProps, nextProps: ChatListItemProps) => boolean` | - |
 | genMessageId | 生成消息 id 的函数，如果你的项目需要持久化时才需要使用 | \`() => Promise<string>\`\` | nanoid |
 | autocompleteRequest | 获取自动完成列表的请求函数 | \`(value: string) => Promise<{ value: string; label?: string; }\[]>\`\` | - |
 | placeholder | 输入框占位符 | string | - |
@@ -152,7 +141,7 @@ useProChat hooks 必须在包裹 `ProChatProvider` 后方可使用。
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| getChats | 获取当前聊天列表对象 | () => ChatStore['chats'] | - |
+| getChats | 获取当前聊天列表对象 | () => ChatStore['chatList'] | - |
 | getChatMessages | 获取当前聊天消息列表 | () => ChatMessage[] | - |
 | setMessageContent | 设置消息内容 | (id: string, content: string) => void | - |
 | setMessageValue | 修改消息的某个属性 | (id: string, key: keyof ChatMessage<Record<string, any>>, value: any) => void | - |

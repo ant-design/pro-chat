@@ -15,7 +15,7 @@ export default () => {
         <ProChat
           displayMode={'docs'}
           style={{ height: '100%' }}
-          chats={example.chats}
+          chatList={example.chatList}
           config={example.config}
           backToBottomConfig={{
             render: (_, scrollToBottom) => {

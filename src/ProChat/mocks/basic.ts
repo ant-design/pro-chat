@@ -1,5 +1,5 @@
 export const example = {
-  chats: [
+  chatList: [
     {
       content: '昨天的当天是明天的什么？',
       createAt: 1697862242452,

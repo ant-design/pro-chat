@@ -11,9 +11,9 @@ export interface ProChatInstance
   > {
   /**
    * 获取当前聊天列表对象
-   * @returns ChatStore['chats']
+   * @returns ChatStore['chatList']
    */
-  getChats: () => ChatStore['chats'];
+  getChats: () => ChatStore['chatList'];
   /**
    * 获取当前聊天消息列表
    * @returns ChatMessage[]
@@ -59,7 +59,7 @@ export const useProChat = () => {
     getChatLoadingId,
   } = storeApi.getState();
 
-  const getChats = useRefFunction(() => storeApi.getState().chats);
+  const getChats = useRefFunction(() => storeApi.getState().chatList);
   const getChatMessages = useRefFunction(() => chatSelectors.currentChats(storeApi.getState()));
 
   const setMessageContent = useRefFunction((id: string, content: string) => {

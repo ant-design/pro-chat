@@ -152,11 +152,11 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
   },
 
   dispatchMessage: (payload) => {
-    const { chats, onChatsChange } = get();
+    const { chatList, onChatsChange } = get();
 
-    const nextChats = messagesReducer(chats, payload);
+    const nextChats = messagesReducer(chatList, payload);
 
-    set({ chats: nextChats }, false, t('dispatchMessage'));
+    set({ chatList: nextChats }, false, t('dispatchMessage'));
 
     onChatsChange?.(nextChats);
   },
@@ -303,27 +303,27 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
 
   resendMessage: async (messageId) => {
     // 1. 构造所有相关的历史记录
-    const chats = chatSelectors.currentChats(get());
+    const chatList = chatSelectors.currentChats(get());
 
-    const currentIndex = chats.findIndex((c) => c.id === messageId);
+    const currentIndex = chatList.findIndex((c) => c.id === messageId);
     if (currentIndex < 0) return;
 
-    const currentMessage = chats[currentIndex];
+    const currentMessage = chatList[currentIndex];
 
     let contextMessages: ChatMessage[] = [];
 
     switch (currentMessage.role) {
       case 'function':
       case 'user': {
-        contextMessages = chats.slice(0, currentIndex + 1);
+        contextMessages = chatList.slice(0, currentIndex + 1);
         break;
       }
       case 'assistant': {
         // 消息是 AI 发出的因此需要找到它的 user 消息
         const userId = currentMessage.parentId;
-        const userIndex = chats.findIndex((c) => c.id === userId);
+        const userIndex = chatList.findIndex((c) => c.id === userId);
         // 如果消息没有 parentId，那么同 user/function 模式
-        contextMessages = chats.slice(0, userIndex < 0 ? currentIndex + 1 : userIndex + 1);
+        contextMessages = chatList.slice(0, userIndex < 0 ? currentIndex + 1 : userIndex + 1);
         break;
       }
     }
@@ -358,10 +358,10 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
   },
 
   stopGenerateMessage: () => {
-    const { abortController, toggleChatLoading, chatLoadingId, chats, dispatchMessage } = get();
+    const { abortController, toggleChatLoading, chatLoadingId, chatList, dispatchMessage } = get();
     // 如果当前 最后一条为 chatLoadingId 停止前需要清空
-    if (chats && chats.length > 0) {
-      const lastChat = chats[chats.length - 1];
+    if (chatList && chatList.length > 0) {
+      const lastChat = chatList[chatList.length - 1];
       if (lastChat.content === LOADING_FLAT) {
         dispatchMessage({
           id: chatLoadingId,

@@ -8,7 +8,9 @@ import { example } from './mocks/fullFeature';
 
 export default () => {
   const theme = useTheme();
-  const [chats, setChats] = useState<ChatMessage<Record<string, any>>[]>(example.initialChats);
+  const [chatList, setChatList] = useState<ChatMessage<Record<string, any>>[]>(
+    example.initialChatsList,
+  );
 
   const CustomClassName = cx(
     css(`
@@ -21,9 +23,9 @@ export default () => {
   return (
     <div style={{ background: theme.colorBgLayout }} className={CustomClassName}>
       <ProChat
-        chats={chats}
-        onChatsChange={(chats) => {
-          setChats(chats);
+        chatList={chatList}
+        onChatsChange={(chatList) => {
+          setChatList(chatList);
         }}
         chatItemRenderConfig={{
           contentRender: (_, defaultContent) => {

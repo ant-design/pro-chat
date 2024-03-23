@@ -7,7 +7,7 @@ import { TextAreaProps } from 'antd/es/input';
 import { ReactNode } from 'react';
 import { FlexBasicProps } from 'react-layout-kit/lib/FlexBasic';
 import { Locale } from '../../locale';
-import { ProChatChatReference } from '../container/StoreUpdater';
+import { ProChatChatReference } from '../container';
 
 export type ChatRequest = (
   messages: ChatMessage[],
@@ -15,7 +15,11 @@ export type ChatRequest = (
   signal: AbortSignal | undefined,
 ) => Promise<Response>;
 
-export interface ChatPropsState<T extends Record<string, any> = Record<string, any>> {
+export interface ProChatState<T extends Record<string, any> = Record<string, any>> {
+  init?: boolean;
+  abortController?: AbortController;
+  chatLoadingId?: string;
+
   /**
    * 语言模型角色设定
    */
@@ -23,8 +27,8 @@ export interface ChatPropsState<T extends Record<string, any> = Record<string, a
   /**
    * 聊天记录
    */
-  chats: ChatMessage<T>[];
-  onChatsChange?: (chats: ChatMessage<T>[]) => void;
+  chatList: ChatMessage<T>[];
+  onChatsChange?: (chatList: ChatMessage<T>[]) => void;
   chatRef?: ProChatChatReference;
   displayMode: 'chat' | 'docs';
   userMeta: MetaData;
@@ -97,12 +101,6 @@ export interface ChatPropsState<T extends Record<string, any> = Record<string, a
   };
 }
 
-export interface ChatState extends ChatPropsState {
-  init?: boolean;
-  abortController?: AbortController;
-  chatLoadingId?: string;
-}
-
 export const initialModelConfig: ModelConfig = {
   historyCount: 1,
   model: 'gpt-3.5-turbo',
@@ -115,8 +113,8 @@ export const initialModelConfig: ModelConfig = {
   systemRole: '',
 };
 
-export const initialState: ChatState = {
-  chats: [],
+export const initialState: ProChatState = {
+  chatList: [],
   init: true,
   displayMode: 'chat',
   userMeta: {
@@ -126,5 +124,4 @@ export const initialState: ChatState = {
     avatar: DEFAULT_AVATAR,
   },
   config: initialModelConfig,
-  // stream: true,
 };

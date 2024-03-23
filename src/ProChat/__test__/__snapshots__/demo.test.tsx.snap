@@ -11526,7 +11526,7 @@ exports[`<ProChat /> > renders helloMessage.tsx correctly 1`] = `
 </DocumentFragment>
 `;
 
-exports[`<ProChat /> > renders initialChats.tsx correctly 1`] = `
+exports[`<ProChat /> > renders initialChatsList.tsx correctly 1`] = `
 <DocumentFragment>
   <div
     style="background: rgb(245, 245, 245);"

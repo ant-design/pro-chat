@@ -2,10 +2,7 @@ import { createStyles } from 'antd-style';
 import { readableColor } from 'polished';
 
 export const useStyles = createStyles(
-  (
-    { css, token, prefixCls },
-    { background, size, isEmoji }: { background?: string; isEmoji?: boolean; size: number },
-  ) => {
+  ({ css, token, prefixCls }, { background, size }: { background?: string; size: number }) => {
     const backgroundColor = background ?? token.colorBgContainer;
     const color = readableColor(backgroundColor);
 
@@ -21,7 +18,7 @@ export const useStyles = createStyles(
         border: 1px solid ${background ? 'transparent' : token.colorSplit};
 
         > .${prefixCls}-avatar-string {
-          font-size: ${size * (isEmoji ? 0.7 : 0.5)}px;
+          font-size: ${size * 0.5}px;
           font-weight: 700;
           line-height: 1 !important;
           color: ${color};

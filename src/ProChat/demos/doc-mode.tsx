@@ -22,7 +22,7 @@ export default () => {
 
           return mockResponse.getResponse();
         }}
-        chats={example.chats}
+        chatList={example.chatList}
         config={example.config}
       />
     </div>

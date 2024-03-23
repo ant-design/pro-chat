@@ -1,10 +1,8 @@
-import Tag from '@/components/Tag';
-import { RenderMessageExtra } from '@/index';
-
 import { memo } from 'react';
-import { Flexbox } from 'react-layout-kit';
 
 import { useStore } from '@/ProChat/store';
+import { Flex } from 'antd';
+import { RenderMessageExtra } from '../ChatListItem';
 
 export const AssistantMessageExtra: RenderMessageExtra = memo(({ extra, ...rest }) => {
   const [model, messageItemExtraRender] = useStore((s) => [
@@ -21,14 +19,9 @@ export const AssistantMessageExtra: RenderMessageExtra = memo(({ extra, ...rest 
   if (!showExtra && !dom) return;
 
   return (
-    <Flexbox gap={8} style={{ marginTop: 8 }}>
-      {showModelTag && (
-        <div>
-          {/*TODO: need a model icons */}
-          <Tag>{extra?.fromModel as string}</Tag>
-        </div>
-      )}
+    <Flex gap={8} style={{ marginTop: 8 }}>
+      {showModelTag && <div>{extra?.fromModel as string}</div>}
       {dom}
-    </Flexbox>
+    </Flex>
   );
 });

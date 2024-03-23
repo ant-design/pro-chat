@@ -1,11 +1,9 @@
 import { createStyles, cx } from 'antd-style';
-import { Flexbox } from 'react-layout-kit';
 
-import ActionIcon from '@/ActionIcon';
-import { ConfigProvider, Popconfirm } from 'antd';
-import { Trash2 } from 'lucide-react';
+import { ConfigProvider, Flex, Popconfirm } from 'antd';
 
 import { gLocaleObject } from '@/locale';
+import { DeleteFilled } from '@ant-design/icons';
 import { useStore } from '../../store';
 
 const useStyles = createStyles(({ css, token }) => ({
@@ -33,13 +31,13 @@ export const ActionBar = ({ className }: { className?: string }) => {
         clearMessage();
       }}
     >
-      <ActionIcon title={gLocaleObject(locale).clearCurrentDialogue} icon={Trash2} />
+      <DeleteFilled title={gLocaleObject(locale).clearCurrentDialogue} />
     </Popconfirm>,
   ];
 
   return (
     <ConfigProvider theme={{ token: { colorText: theme.colorTextSecondary } }}>
-      <Flexbox
+      <Flex
         align={'center'}
         direction={'horizontal-reverse'}
         paddingInline={12}
@@ -48,7 +46,7 @@ export const ActionBar = ({ className }: { className?: string }) => {
         {...flexConfig}
       >
         {actionsRender?.(defaultDoms) ?? defaultDoms}
-      </Flexbox>
+      </Flex>
     </ConfigProvider>
   );
 };
