@@ -35,10 +35,6 @@ export interface ChatItemProps<T = Record<string, any>> {
    */
   placement?: 'left' | 'right';
   /**
-   * @description Whether the chat item is primary
-   */
-  primary?: boolean;
-  /**
    * @description The timestamp of the chat item
    */
   time?: number;

@@ -14,11 +14,10 @@ export interface MetaData {
    * @description 可选参数，如果不传则使用默认名称
    */
   title?: string;
-}
 
-export interface BaseDataModel {
-  createAt: number;
-  id: string;
-  meta: MetaData;
-  updateAt: number;
+  /**
+   * 附加数据
+   * @description 可选参数，如果不传则使用默认名称
+   */
+  [key: string]: any;
 }

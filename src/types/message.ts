@@ -1,5 +1,6 @@
-import { ModelRoleType } from '@/ProChat/types/config';
+import { ModelRoleType } from '@/types/config';
 import { ReactNode } from 'react';
+import { MetaData } from './meta';
 
 /**
  * 聊天消息错误对象
@@ -29,8 +30,8 @@ export interface ChatMessage<T extends Record<string, any> = Record<string, any>
   id: string;
   updateAt: number;
   extra?: T;
-
   messageItemExtraRender?: (props: ChatMessage) => React.ReactNode;
+  meta?: MetaData;
 }
 
 export interface OpenAIFunctionCall {

@@ -16,7 +16,7 @@ export type CopyButtonProps = {
   content: string;
 } & TooltipProps;
 
-const CopyButton = memo<CopyButtonProps>(
+export const CopyButton = memo<CopyButtonProps>(
   ({ content, className, placement = 'right', ...props }) => {
     const { copied, setCopied } = useCopied();
 
@@ -33,5 +33,3 @@ const CopyButton = memo<CopyButtonProps>(
     );
   },
 );
-
-export default CopyButton;
