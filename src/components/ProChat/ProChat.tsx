@@ -170,6 +170,15 @@ export interface ProChatProps<T extends Record<string, any>> extends ChatProps<T
    * 样式对象
    */
   style?: CSSProperties;
+
+  styles: {
+    chatList?: CSSProperties;
+    chatInputAction?: CSSProperties;
+    chatInputArea?: CSSProperties;
+    chatListItem?: CSSProperties;
+    chatListItemContent?: CSSProperties;
+    chatListItemTitle?: CSSProperties;
+  };
   /**
    * CSS类名
    */
@@ -217,10 +226,11 @@ export function ProChat<T extends Record<string, any> = Record<string, any>>(
     meta,
     sendButtonRender,
     placeholder,
+    styles,
   } = props;
   const ref = useRef<HTMLDivElement>(null);
   const areaHtml = useRef<HTMLDivElement>(null);
-  const [isRender, setIsRender] = useState(false);
+  const [isInitRender, setIsRender] = useState(false);
   const [height, setHeight] = useState('100%' as string | number);
 
   useEffect(() => {
@@ -246,7 +256,7 @@ export function ProChat<T extends Record<string, any> = Record<string, any>>(
   });
 
   const backBottomDom = useMemo(() => {
-    if (!isRender) return null;
+    if (!isInitRender) return null;
     return (
       <BackTop
         style={{
@@ -258,7 +268,7 @@ export function ProChat<T extends Record<string, any> = Record<string, any>>(
         {gLocaleObject('zh-CN').backToBottom}
       </BackTop>
     );
-  }, [isRender]);
+  }, [isInitRender]);
 
   return (
     <RcResizeObserver
@@ -283,8 +293,12 @@ export function ProChat<T extends Record<string, any> = Record<string, any>>(
           loading={loading}
           chatItemRenderConfig={chatItemRenderConfig}
           style={{
+            ...styles.chatList,
             height: (height as number) - (areaHtml.current?.clientHeight || 0) || '100%',
           }}
+          chatListItemStyle={styles.chatListItem}
+          chatListItemContentStyle={styles.chatListItemContent}
+          chatListItemTitleStyle={styles.chatListItemTitle}
         />
         {backBottomDom}
         <ChatInputArea
@@ -297,6 +311,8 @@ export function ProChat<T extends Record<string, any> = Record<string, any>>(
           inputAreaRender={inputAreaRender}
           inputRender={inputRender}
           inputAreaProps={inputAreaProps}
+          actionStyle={styles.chatInputAction}
+          areaStyle={styles.chatInputArea}
         />
       </Flex>
     </RcResizeObserver>

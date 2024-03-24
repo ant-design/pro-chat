@@ -3,7 +3,6 @@ import { useContext } from 'react';
 
 import { ConfigProvider, Flex } from 'antd';
 import cx from 'classnames';
-import MessageContent from '../MessageContent';
 import ProChatAvatar from '../ProChatAvatar';
 import Title from '../Title';
 import type { ChatItemProps } from './type';
@@ -16,10 +15,13 @@ export const ChatItem: React.FC<ChatItemProps> = (props) => {
     children,
     placement = 'left',
     avatar,
+    style,
     time,
-    onChange,
     messageExtra,
+    chatListItemContentStyle,
+    chatListItemTitleStyle,
     chatItemRenderConfig,
+    chatListItemAvatarStyle,
     onDoubleClick,
   } = props;
 
@@ -35,6 +37,7 @@ export const ChatItem: React.FC<ChatItemProps> = (props) => {
       className={cx(`${prefixClass}-list-item`, `${prefixClass}-list-item-${placement}`, className)}
       style={{
         flexDirection: placement === 'left' ? 'row' : 'row-reverse',
+        ...style,
       }}
       gap={mobile ? 6 : 12}
     >
@@ -44,6 +47,7 @@ export const ChatItem: React.FC<ChatItemProps> = (props) => {
         title={avatar?.title}
         onClick={onAvatarClick}
         loading={loading}
+        style={chatListItemAvatarStyle}
       />
       <Flex
         vertical
@@ -51,6 +55,7 @@ export const ChatItem: React.FC<ChatItemProps> = (props) => {
         className={cx(`${prefixClass}-list-item-message-container`)}
       >
         <Title
+          style={chatListItemTitleStyle}
           className={`${cx(`${prefixClass}-list-item-title`)}`}
           avatar={avatar}
           placement={placement}
@@ -59,20 +64,19 @@ export const ChatItem: React.FC<ChatItemProps> = (props) => {
         <Flex
           align={placement === 'left' ? 'flex-start' : 'flex-end'}
           className={cx(`${prefixClass}-message-content`)}
-          style={{
-            flexDirection: placement === 'left' ? 'row' : 'row-reverse',
-          }}
+          vertical
+          onDoubleClick={onDoubleClick}
           gap={8}
+          style={chatListItemContentStyle}
         >
-          <MessageContent
-            className={`${prefixClass}-list-item-message-content`}
-            messageExtra={messageExtra}
-            onChange={onChange}
-            onDoubleClick={onDoubleClick}
-            placement={placement}
-          >
-            {children}
-          </MessageContent>
+          {children}
+          {messageExtra ? (
+            <div
+              className={`${cx(`${prefixClass}-message-extra ${prefixClass}-message-extra-${placement}`)}`}
+            >
+              {messageExtra}
+            </div>
+          ) : null}
         </Flex>
       </Flex>
     </Flex>

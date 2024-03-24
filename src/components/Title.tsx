@@ -7,14 +7,16 @@ export interface TitleProps {
   placement?: ChatItemProps['placement'];
   time?: ChatItemProps['time'];
   className?: string;
+  style?: React.CSSProperties;
 }
 
-const Title: React.FC<TitleProps> = ({ className, placement, time, avatar }) => {
+const Title: React.FC<TitleProps> = ({ style, className, placement, time, avatar }) => {
   return (
     <Flex
       className={className}
       style={{
         flexDirection: placement === 'left' ? 'row' : 'row-reverse',
+        ...style,
       }}
       gap={4}
     >

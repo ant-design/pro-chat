@@ -17,10 +17,24 @@ export type ChatListProps = {
   className?: string;
   chatItemRenderConfig: ChatItemProps['chatItemRenderConfig'];
   style?: React.CSSProperties;
+  chatListItemStyle?: React.CSSProperties;
+  chatListItemContentStyle?: React.CSSProperties;
+  chatListItemTitleStyle?: React.CSSProperties;
+  chatListItemAvatarStyle?: React.CSSProperties;
 };
 
 const ChatList: React.FC<ChatListProps> = (props) => {
-  const { chatItemRenderConfig, className, loading, loadingId, chatList, style } = props;
+  const {
+    chatItemRenderConfig,
+    className,
+    loading,
+    chatListItemContentStyle,
+    chatListItemTitleStyle,
+    chatListItemAvatarStyle,
+    loadingId,
+    chatList,
+    style,
+  } = props;
   const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
 
   const prefixClass = getPrefixCls('pro-chat');
@@ -45,11 +59,15 @@ const ChatList: React.FC<ChatListProps> = (props) => {
                 title: 'Ant Design',
               }
             }
+            style={props.chatListItemStyle}
             originData={item}
             loading={loadingId === item.id}
             placement={item.role === 'user' ? 'right' : 'left'}
             time={item.updateAt || item.createAt}
+            chatListItemContentStyle={chatListItemContentStyle}
+            chatListItemTitleStyle={chatListItemTitleStyle}
             chatItemRenderConfig={chatItemRenderConfig}
+            chatListItemAvatarStyle={chatListItemAvatarStyle}
           >
             <MessageComponent {...item} />
           </ChatItem>

@@ -31,6 +31,7 @@ export type ChatInputAreaProps = {
   onMessageSend: (message: string) => void | Promise<any>;
   actionsRender?: (defaultDoms: React.ReactNode[]) => ReactNode;
   actionStyle?: React.CSSProperties;
+  areaStyle?: React.CSSProperties;
   locale?: ProChatLocale;
 };
 
@@ -42,6 +43,7 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
     inputAreaRender,
     areaRef,
     loading,
+    areaStyle,
     inputRender,
     sendButtonRender,
     inputAreaProps,
@@ -185,6 +187,7 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
           gap={8}
           vertical
           align={'right'}
+          style={areaStyle}
           className={cx(`${prefixClass}`, className)}
         >
           {inputDom}

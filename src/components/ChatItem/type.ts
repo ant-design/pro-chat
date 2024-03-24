@@ -23,11 +23,7 @@ export interface ChatItemProps<T = Record<string, any>> {
   children?: ReactNode;
   messageExtra?: ReactNode;
   onAvatarClick?: () => void;
-  /**
-   * @description Callback when the message content changes
-   * @param value - The new message content
-   */
-  onChange?: (value: string) => void;
+
   onDoubleClick?: DivProps['onDoubleClick'];
   /**
    * @description The placement of the chat item
@@ -62,5 +58,11 @@ export interface ChatItemProps<T = Record<string, any>> {
     >;
   };
 
+  style?: React.CSSProperties;
+
   originData?: T;
+
+  chatListItemContentStyle?: React.CSSProperties;
+  chatListItemTitleStyle?: React.CSSProperties;
+  chatListItemAvatarStyle?: React.CSSProperties;
 }
