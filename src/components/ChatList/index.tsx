@@ -21,6 +21,7 @@ export type ChatListProps = {
   chatListItemContentStyle?: React.CSSProperties;
   chatListItemTitleStyle?: React.CSSProperties;
   chatListItemAvatarStyle?: React.CSSProperties;
+  chatListItemExtraStyle?: React.CSSProperties;
 };
 
 const ChatList: React.FC<ChatListProps> = (props) => {

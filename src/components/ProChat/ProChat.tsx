@@ -165,7 +165,6 @@ export interface ProChatProps<T extends Record<string, any>> extends ChatProps<T
    * backToBottomConfig 是一个 Omit<BackBottomProps, 'target'> 对象，用于配置返回底部按钮的行为。
    */
   backToBottomConfig?: Omit<BackTopProps, 'target'>;
-
   /**
    * 样式对象
    */
@@ -178,6 +177,8 @@ export interface ProChatProps<T extends Record<string, any>> extends ChatProps<T
     chatListItem?: CSSProperties;
     chatListItemContent?: CSSProperties;
     chatListItemTitle?: CSSProperties;
+    chatListItemExtra?: CSSProperties;
+    chatListItemAvatar?: CSSProperties;
   };
   /**
    * CSS类名
@@ -198,7 +199,6 @@ export interface ProChatProps<T extends Record<string, any>> extends ChatProps<T
    * @param props 输入框的属性
    */
   inputRender?: ChatInputAreaProps['inputRender'];
-
   /**
    * 聊天发送按钮的渲染配置
    * @param defaultDom 默认的 DOM 元素
@@ -293,12 +293,14 @@ export function ProChat<T extends Record<string, any> = Record<string, any>>(
           loading={loading}
           chatItemRenderConfig={chatItemRenderConfig}
           style={{
-            ...styles.chatList,
+            ...styles?.chatList,
             height: (height as number) - (areaHtml.current?.clientHeight || 0) || '100%',
           }}
-          chatListItemStyle={styles.chatListItem}
-          chatListItemContentStyle={styles.chatListItemContent}
-          chatListItemTitleStyle={styles.chatListItemTitle}
+          chatListItemStyle={styles?.chatListItem}
+          chatListItemContentStyle={styles?.chatListItemContent}
+          chatListItemTitleStyle={styles?.chatListItemTitle}
+          chatListItemExtraStyle={styles?.chatListItemExtra}
+          chatListItemAvatarStyle={styles?.chatListItemAvatar}
         />
         {backBottomDom}
         <ChatInputArea
@@ -311,8 +313,8 @@ export function ProChat<T extends Record<string, any> = Record<string, any>>(
           inputAreaRender={inputAreaRender}
           inputRender={inputRender}
           inputAreaProps={inputAreaProps}
-          actionStyle={styles.chatInputAction}
-          areaStyle={styles.chatInputArea}
+          actionStyle={styles?.chatInputAction}
+          areaStyle={styles?.chatInputArea}
         />
       </Flex>
     </RcResizeObserver>

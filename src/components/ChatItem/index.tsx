@@ -22,12 +22,14 @@ export const ChatItem: React.FC<ChatItemProps> = (props) => {
     chatListItemTitleStyle,
     chatItemRenderConfig,
     chatListItemAvatarStyle,
+    chatListItemExtraStyle,
     onDoubleClick,
   } = props;
 
   const { mobile } = useResponsive();
 
   const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
+
   const prefixClass = getPrefixCls('pro-chat');
 
   if (chatItemRenderConfig?.render === false) return null;
@@ -73,6 +75,7 @@ export const ChatItem: React.FC<ChatItemProps> = (props) => {
           {messageExtra ? (
             <div
               className={`${cx(`${prefixClass}-message-extra ${prefixClass}-message-extra-${placement}`)}`}
+              style={chatListItemExtraStyle}
             >
               {messageExtra}
             </div>
