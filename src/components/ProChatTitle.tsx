@@ -10,7 +10,7 @@ import cx from 'classnames';
 import { ChatItemProps } from './ChatItem/type';
 
 export interface TitleProps {
-  avatar: ChatItemProps['avatar'];
+  title: ChatItemProps['avatar']['title'];
   placement?: ChatItemProps['placement'];
   time?: ChatItemProps['time'];
   className?: string;
@@ -60,14 +60,7 @@ function useStyle(prefixCls?: string) {
  * @param param0
  * @returns
  */
-const Title: React.FC<TitleProps> = ({
-  style,
-  prefixClass,
-  className,
-  placement,
-  time,
-  avatar,
-}) => {
+const Title: React.FC<TitleProps> = ({ style, prefixClass, className, placement, time, title }) => {
   const { wrapSSR, hashId } = useStyle(prefixClass);
 
   return wrapSSR(
@@ -79,7 +72,7 @@ const Title: React.FC<TitleProps> = ({
       }}
       gap={4}
     >
-      {avatar?.title}
+      {title}
       {time && <time className={cx(`${prefixClass}-time`, hashId)}>{formatTime(time)}</time>}
     </Flex>,
   );

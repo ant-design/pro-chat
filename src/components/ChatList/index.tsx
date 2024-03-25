@@ -39,18 +39,18 @@ const ChatList: React.FC<ChatListProps> = (props) => {
   } = props;
   const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
 
-  const prefixClass = getPrefixCls('pro-chat');
+  const prefixClass = getPrefixCls('pro-chat-list');
   const { wrapSSR, hashId } = useStyle(prefixClass);
 
   if (loading)
     return wrapSSR(
-      <div className={cx(`${prefixClass}-list`, className, hashId)}>
+      <div className={cx(`${prefixClass}`, className, hashId)}>
         <SkeletonList />
       </div>,
     );
 
   return wrapSSR(
-    <div className={cx(`${prefixClass}-list`, className, hashId)} style={style}>
+    <div className={cx(`${prefixClass}`, className, hashId)} style={style}>
       {chatList.map((item) => {
         return (
           <ChatItem

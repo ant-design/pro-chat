@@ -1,4 +1,4 @@
-import { Avatar, type AvatarProps } from 'antd';
+import { Avatar, theme, type AvatarProps } from 'antd';
 
 import cx from 'classnames';
 import { isEmoji } from './isEmoji';
@@ -54,21 +54,24 @@ const ProChatAvatar: React.FC<ProChatAvatarProps> = ({
   size = 40,
   shape = 'circle',
   onClick,
+  prefixCls,
   style,
   ...props
 }) => {
-  if (isEmoji(avatar)) {
-    return <div>{avatar}</div>;
-  }
+  const { hashId } = theme.useToken();
   const isImage = Boolean(
     avatar && ['/', 'http', 'data:'].some((index) => avatar.startsWith(index)),
   );
   const isBase64 = Boolean(avatar?.startsWith('data'));
 
+  if (typeof avatar === 'string' && isEmoji(String(avatar))) {
+    return <div className={cx(`${prefixCls}-emoji`, hashId)}>{avatar}</div>;
+  }
+
   const text = String(isImage ? title : avatar);
 
   const avatarProps = {
-    className: cx(className),
+    className: cx(className, `${prefixCls}`, hashId),
     shape: shape,
     size,
     style: onClick ? style : { cursor: 'default', ...style },

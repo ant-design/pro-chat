@@ -9,7 +9,7 @@ const genStyle: GenerateStyle<ChatTokenType> = (token) => {
   return {
     [token.componentCls]: {
       overflow: 'auto',
-      minHeight: 500,
+      minHeight: 300,
     },
   };
 };

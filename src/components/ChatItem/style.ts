@@ -19,6 +19,15 @@ const genStyle: GenerateStyle<ChatTokenType> = (token) => {
           visibility: 'visible',
         },
       },
+      '&-message-avatar': {
+        width: 40,
+        height: 40,
+      },
+      '&-message-avatar-emoji': {
+        fontSize: 24,
+        textAlign: 'center',
+        lineHeight: '40px',
+      },
       '&-message-container': {},
       '&-message-content': {
         padding: token.paddingXS,

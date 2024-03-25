@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 
 import { ProChatLocale, gLocaleObject } from '@/locale';
 import { ChatMessage } from '@/types';
-import { BackTop, BackTopProps, Flex, FlexProps } from 'antd';
+import { BackTopProps, Flex, FlexProps, FloatButton } from 'antd';
 import cx from 'classnames';
 import { ProChatUserProfile, useChatList } from '../../hooks/useChatList';
 import { ModelConfig } from '../../types/config';
@@ -263,14 +263,14 @@ export function ProChat<T extends Record<string, any> = Record<string, any>>(
     chatList: props.chatList,
     loading: props.loading,
     initialChatList: props.initialChatsList,
-    helloMessage: props.helloMessage,
+    helloMessage: props.helloMessage || '让我们开始对话吧',
     userProfile,
   });
 
   const backBottomDom = useMemo(() => {
     if (!isInitRender) return null;
     return (
-      <BackTop
+      <FloatButton.BackTop
         style={{
           bottom: 138,
         }}
@@ -278,16 +278,14 @@ export function ProChat<T extends Record<string, any> = Record<string, any>>(
         {...backToBottomConfig}
       >
         {gLocaleObject('zh-CN').backToBottom}
-      </BackTop>
+      </FloatButton.BackTop>
     );
   }, [isInitRender]);
 
-  console.log(height as number, areaHtml.current?.clientHeight || 0);
   return (
     <RcResizeObserver
       onResize={(e) => {
         if (e.height !== height) {
-          console.log(e.height);
           setHeight(e.height);
         }
       }}

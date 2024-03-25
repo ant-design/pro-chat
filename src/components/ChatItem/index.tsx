@@ -11,7 +11,6 @@ export const ChatItem: React.FC<ChatItemProps> = (props) => {
   const {
     onAvatarClick,
     className,
-    loading,
     children,
     placement = 'left',
     avatar,
@@ -44,7 +43,7 @@ export const ChatItem: React.FC<ChatItemProps> = (props) => {
       <ProChatTitle
         style={chatListItemTitleStyle}
         prefixClass={cx(`${prefixClass}-message-title`)}
-        avatar={avatar}
+        title={avatar?.title}
         placement={placement}
         time={time}
       />
@@ -62,7 +61,7 @@ export const ChatItem: React.FC<ChatItemProps> = (props) => {
           background={avatar?.backgroundColor}
           title={avatar?.title}
           onClick={onAvatarClick}
-          loading={loading}
+          prefixCls={`${prefixClass}-message-avatar`}
           style={chatListItemAvatarStyle}
         />
         <Flex
