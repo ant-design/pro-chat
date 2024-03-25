@@ -1,6 +1,7 @@
 import { Avatar, type AvatarProps } from 'antd';
 
 import cx from 'classnames';
+import { isEmoji } from './isEmoji';
 
 export interface ProChatAvatarProps extends AvatarProps {
   /**
@@ -56,6 +57,9 @@ const ProChatAvatar: React.FC<ProChatAvatarProps> = ({
   style,
   ...props
 }) => {
+  if (isEmoji(avatar)) {
+    return <div>{avatar}</div>;
+  }
   const isImage = Boolean(
     avatar && ['/', 'http', 'data:'].some((index) => avatar.startsWith(index)),
   );

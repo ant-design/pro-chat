@@ -1,37 +1,7 @@
-import type { ActionIconGroupProps, MetaData } from '@ant-design/pro-chat';
-import { Copy, Edit, RotateCw, Trash } from 'lucide-react';
+import { ProChatMetaData } from '@/hooks/useChatList';
 
-export const avatar: MetaData = {
+export const avatar: ProChatMetaData = {
   avatar: '😎',
   backgroundColor: '#E8DA5A',
   title: 'Advertiser',
 };
-
-export const items: ActionIconGroupProps['items'] = [
-  {
-    icon: Edit,
-    key: 'edit',
-    label: 'Edit',
-  },
-];
-
-export const dropdownMenu: ActionIconGroupProps['dropdownMenu'] = [
-  {
-    icon: Copy,
-    key: 'copy',
-    label: 'Copy',
-  },
-  {
-    icon: RotateCw,
-    key: 'regenerate',
-    label: 'Regenerate',
-  },
-  {
-    type: 'divider',
-  },
-  {
-    icon: Trash,
-    key: 'delete',
-    label: 'Delete',
-  },
-];

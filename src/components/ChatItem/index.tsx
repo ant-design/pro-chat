@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { ConfigProvider, Flex } from 'antd';
 import cx from 'classnames';
 import ProChatAvatar from '../ProChatAvatar';
-import Title from '../Title';
+import ProChatTitle from '../ProChatTitle';
 import { useStyle } from './style';
 import type { ChatItemProps } from './type';
 
@@ -41,7 +41,7 @@ export const ChatItem: React.FC<ChatItemProps> = (props) => {
       vertical
       gap={12}
     >
-      <Title
+      <ProChatTitle
         style={chatListItemTitleStyle}
         prefixClass={cx(`${prefixClass}-message-title`)}
         avatar={avatar}
