@@ -16,7 +16,8 @@ export default defineConfig({
   },
   title: '@ant-design/pro-chat',
   resolve: {
-    docDirs: ['components/ProChat', 'docs'],
+    docDirs: ['docs'],
+    atomDirs: [{ type: 'component', dir: 'src/components' }],
   },
   outputPath: 'docs-dist',
   html2sketch: {},
