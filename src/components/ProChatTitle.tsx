@@ -60,7 +60,14 @@ function useStyle(prefixCls?: string) {
  * @param param0
  * @returns
  */
-const Title: React.FC<TitleProps> = ({ style, prefixClass, className, placement, time, title }) => {
+export const ProChatTitle: React.FC<TitleProps> = ({
+  style,
+  prefixClass,
+  className,
+  placement,
+  time,
+  title,
+}) => {
   const { wrapSSR, hashId } = useStyle(prefixClass);
 
   return wrapSSR(
@@ -77,5 +84,3 @@ const Title: React.FC<TitleProps> = ({ style, prefixClass, className, placement,
     </Flex>,
   );
 };
-
-export default Title;

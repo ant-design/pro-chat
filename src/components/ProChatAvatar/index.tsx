@@ -47,7 +47,7 @@ export interface ProChatAvatarProps extends AvatarProps {
  * @param {Object} [props] - 其他传递给AntAvatar组件的属性
  *
  */
-const ProChatAvatar: React.FC<ProChatAvatarProps> = ({
+export const ProChatAvatar: React.FC<ProChatAvatarProps> = ({
   className,
   avatar,
   title,
@@ -89,5 +89,3 @@ const ProChatAvatar: React.FC<ProChatAvatarProps> = ({
     </Avatar>
   );
 };
-
-export default ProChatAvatar;

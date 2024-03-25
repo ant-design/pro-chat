@@ -19,7 +19,7 @@ export default () => {
         type={'primary'}
         onClick={() => {
           if (!proChatRef.current) return;
-          const messages = proChatRef.current.getChatMessages();
+          const messages = proChatRef.current.getChatList();
           const { id, content } = messages[0] || {};
           proChatRef.current.scrollToBottom?.();
           if (!id) return;

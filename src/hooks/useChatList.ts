@@ -1,9 +1,21 @@
-﻿import { initialModelConfig } from '@/components/ProChat/ProChat';
-import { DEFAULT_AVATAR, DEFAULT_USER_AVATAR } from '@/const/meta';
+﻿import { DEFAULT_AVATAR, DEFAULT_USER_AVATAR } from '@/const/meta';
+import { ChatMessage } from '@/types';
+import { ModelConfig } from '@/types/config';
 import { useMergedState } from 'rc-util';
 import React, { useEffect } from 'react';
-import { ChatMessage } from '..';
 import { useRefFunction } from './useRefFunction';
+
+export const initialModelConfig: ModelConfig = {
+  historyCount: 1,
+  model: 'gpt-3.5-turbo',
+  params: {
+    frequency_penalty: 0,
+    presence_penalty: 0,
+    temperature: 0.6,
+    top_p: 1,
+  },
+  systemRole: '',
+};
 
 export interface ProChatMetaData {
   /**
@@ -52,8 +64,10 @@ export const useChatList = (props: {
   loading: boolean;
   helloMessage?: React.ReactNode;
   userProfile: ProChatUserProfile;
+  request?: () => Promise<ChatMessage<any>[]>;
 }) => {
   let controller: AbortController | null = null;
+
   const [chatList, setChatList] = useMergedState<ChatMessage<any>[]>(
     [
       {
@@ -71,6 +85,23 @@ export const useChatList = (props: {
     },
   );
 
+  const setMessageItem = useRefFunction((id: string, content: ChatMessage<any>) => {
+    const newChatList = chatList.map((item) => {
+      if (item.id === id) {
+        return {
+          ...item,
+          ...content,
+        };
+      }
+      return item;
+    });
+    setChatList(newChatList);
+  });
+
+  const getChatLoadingMessage = useRefFunction(() => {
+    return chatList.find((item) => item.role === 'bot' && item.content === props.helloMessage);
+  });
+
   const [loading, setLoading] = useMergedState<boolean>(true, {
     value: props.loading,
   });
@@ -80,11 +111,8 @@ export const useChatList = (props: {
 
     setLoading(true);
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/chat`, {
-        signal: controller.signal,
-      });
-      const data = await response.json();
-      setChatList(data);
+      const response = await props.request();
+      setChatList(response);
       setLoading(false);
     } catch (error) {
       console.error(error);
@@ -123,6 +151,8 @@ export const useChatList = (props: {
     chatList,
     loading,
     stopGenerateMessage,
+    getChatLoadingMessage,
+    setMessageItem,
     clearMessage,
     sendMessage,
   };

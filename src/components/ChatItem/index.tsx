@@ -2,8 +2,8 @@ import { useContext } from 'react';
 
 import { ConfigProvider, Flex } from 'antd';
 import cx from 'classnames';
-import ProChatAvatar from '../ProChatAvatar';
-import ProChatTitle from '../ProChatTitle';
+import { ProChatAvatar } from '../ProChatAvatar';
+import { ProChatTitle } from '../ProChatTitle';
 import { useStyle } from './style';
 import type { ChatItemProps } from './type';
 
