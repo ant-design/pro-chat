@@ -83,9 +83,9 @@ export interface ProChatProps<
   sendMessageRequest?: (
     message: ChatMessage<T>,
     params: Params & ModelConfig,
-  ) => Response | ChatMessage<T>;
+  ) => Promise<Response | ChatMessage<T>>;
 
-  transformToChatMessage?: (oldChatMessage: ChatMessage) => ChatMessage<T>;
+  transformToChatMessage?: (oldChatMessage: ChatMessage) => Promise<ChatMessage<T>>;
 
   userProfile: ProChatUserProfile;
   /**
