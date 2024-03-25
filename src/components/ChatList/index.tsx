@@ -9,6 +9,7 @@ import { cx } from 'antd-style';
 import { ChatItem } from '../ChatItem';
 import { ChatItemProps } from '../ChatItem/type';
 import { MessageComponent } from './Messages';
+import { useStyle } from './style';
 
 export type ChatListProps = {
   chatList: ChatMessage[];
@@ -39,16 +40,17 @@ const ChatList: React.FC<ChatListProps> = (props) => {
   const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
 
   const prefixClass = getPrefixCls('pro-chat');
+  const { wrapSSR, hashId } = useStyle(prefixClass);
 
   if (loading)
-    return (
-      <div className={cx(`${prefixClass}-list`, className)} {...props}>
+    return wrapSSR(
+      <div className={cx(`${prefixClass}-list`, className, hashId)}>
         <SkeletonList />
-      </div>
+      </div>,
     );
 
-  return (
-    <div className={cx(`${prefixClass}-list`, className)} style={style}>
+  return wrapSSR(
+    <div className={cx(`${prefixClass}-list`, className, hashId)} style={style}>
       {chatList.map((item) => {
         return (
           <ChatItem
@@ -74,7 +76,7 @@ const ChatList: React.FC<ChatListProps> = (props) => {
           </ChatItem>
         );
       })}
-    </div>
+    </div>,
   );
 };
 

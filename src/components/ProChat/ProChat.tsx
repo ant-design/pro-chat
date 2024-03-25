@@ -3,19 +3,15 @@ import { CSSProperties, MutableRefObject, ReactNode, useMemo } from 'react';
 import RcResizeObserver from 'rc-resize-observer';
 import { useEffect, useRef, useState } from 'react';
 
-import { AutoCompleteProps, BackTop, BackTopProps, Flex, FlexProps } from 'antd';
-import cx from 'classnames';
-import ChatList, { ChatListProps } from '../ChatList';
-import ChatInputArea, { ChatInputAreaProps } from '../ProChatInputArea';
-
-import { DEFAULT_AVATAR, DEFAULT_USER_AVATAR } from '@/const/meta';
 import { ProChatLocale, gLocaleObject } from '@/locale';
 import { ChatMessage } from '@/types';
-import { TextAreaProps } from 'antd/es/input';
-import { useChatList } from '../../hooks/useChatList';
-import { ProChatInstance } from '../../hooks/useProChat';
+import { BackTop, BackTopProps, Flex, FlexProps } from 'antd';
+import cx from 'classnames';
+import { ProChatUserProfile, useChatList } from '../../hooks/useChatList';
 import { ModelConfig } from '../../types/config';
-import { MetaData } from '../../types/meta';
+import ChatList, { ChatListProps } from '../ChatList';
+import ChatInputArea, { ChatInputAreaProps } from '../ProChatInputArea';
+import { MentionsTextAreaProps } from '../ProChatInputArea/AutoCompleteTextArea';
 
 export type ChatRequest = (
   messages: ChatMessage[],
@@ -23,9 +19,21 @@ export type ChatRequest = (
   signal: AbortSignal | undefined,
 ) => Promise<Response>;
 
-export interface ProChatState<T extends Record<string, any> = Record<string, any>> {
+export const initialModelConfig: ModelConfig = {
+  historyCount: 1,
+  model: 'gpt-3.5-turbo',
+  params: {
+    frequency_penalty: 0,
+    presence_penalty: 0,
+    temperature: 0.6,
+    top_p: 1,
+  },
+  systemRole: '',
+};
+
+export interface ChatProps<T extends Record<string, any> = Record<string, any>> {
   init?: boolean;
-  abortController?: AbortController;
+  initialChatsList?: ChatMessage<T>[];
   chatLoadingId?: string;
 
   /**
@@ -37,10 +45,10 @@ export interface ProChatState<T extends Record<string, any> = Record<string, any
    */
   chatList: ChatMessage<T>[];
   onChatsChange?: (chatList: ChatMessage<T>[]) => void;
+
   chatRef?: ProChatChatReference;
-  displayMode: 'chat' | 'docs';
-  userMeta: MetaData;
-  assistantMeta: MetaData;
+
+  userProfile: ProChatUserProfile;
   /**
    * 帮助消息
    */
@@ -85,7 +93,7 @@ export interface ProChatState<T extends Record<string, any> = Record<string, any
   /**
    * 输入框的 props,优先级最高
    */
-  inputAreaProps?: TextAreaProps & { autoCompleteProps?: AutoCompleteProps };
+  inputAreaProps?: MentionsTextAreaProps;
 
   /**
    * 信息框额外渲染
@@ -107,46 +115,50 @@ export interface ProChatState<T extends Record<string, any> = Record<string, any
      */
     render?: (defaultDoms: JSX.Element[]) => JSX.Element[];
   };
-}
-
-export const initialModelConfig: ModelConfig = {
-  historyCount: 1,
-  model: 'gpt-3.5-turbo',
-  params: {
-    frequency_penalty: 0,
-    presence_penalty: 0,
-    temperature: 0.6,
-    top_p: 1,
-  },
-  systemRole: '',
-};
-
-export const initialState: ProChatState = {
-  chatList: [],
-  init: true,
-  displayMode: 'chat',
-  userMeta: {
-    avatar: DEFAULT_USER_AVATAR,
-  },
-  assistantMeta: {
-    avatar: DEFAULT_AVATAR,
-  },
-  config: initialModelConfig,
-};
-
-export interface ChatProps<T extends Record<string, any> = Record<string, any>>
-  extends Partial<ProChatState<T>> {
   // init
   loading?: boolean;
-  initialChatsList?: ProChatState<T>['chatList'];
-  meta?: {
-    userMeta?: MetaData;
-    assistantMeta?: MetaData;
-  };
   /**
    * @description 聊天项的渲染函数
    */
   chatItemRenderConfig?: ChatListProps['chatItemRenderConfig'];
+}
+
+export interface ProChatInstance {
+  /**
+   * 获取当前聊天列表对象
+   * @returns ChatStore['chatList']
+   */
+  getChats: () => ['chatList'];
+  /**
+   * 获取当前聊天消息列表
+   * @returns ChatMessage[]
+   */
+  getChatMessages: () => ChatMessage[];
+  /**
+   * 设置消息内容
+   * @param id
+   * @param content
+   * @returns  void
+   */
+  setMessageContent: (id: string, content: string) => void;
+  /**
+   * 修改消息的某个属性
+   * @param id
+   * @param key
+   * @param value
+   * @returns  void
+   */
+  setMessageValue: (id: string, key: keyof ChatMessage<Record<string, any>>, value: any) => void;
+  /**
+   * 滚动到底部
+   * @returns
+   */
+  scrollToBottom?: () => void;
+  /**
+   * 获取当前 loading 生成的消息 id
+   * @returns  消息 id ｜ undefined
+   */
+  getChatLoadingId: () => string | undefined;
 }
 
 export type ProChatChatReference = MutableRefObject<ProChatInstance | undefined>;
@@ -223,7 +235,7 @@ export function ProChat<T extends Record<string, any> = Record<string, any>>(
     inputAreaRender,
     inputAreaProps,
     chatRef,
-    meta,
+    userProfile,
     sendButtonRender,
     placeholder,
     styles,
@@ -252,7 +264,7 @@ export function ProChat<T extends Record<string, any> = Record<string, any>>(
     loading: props.loading,
     initialChatList: props.initialChatsList,
     helloMessage: props.helloMessage,
-    meta,
+    userProfile,
   });
 
   const backBottomDom = useMemo(() => {
@@ -270,10 +282,12 @@ export function ProChat<T extends Record<string, any> = Record<string, any>>(
     );
   }, [isInitRender]);
 
+  console.log(height as number, areaHtml.current?.clientHeight || 0);
   return (
     <RcResizeObserver
       onResize={(e) => {
         if (e.height !== height) {
+          console.log(e.height);
           setHeight(e.height);
         }
       }}

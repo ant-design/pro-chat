@@ -1,5 +1,4 @@
 import { Avatar, type AvatarProps } from 'antd';
-import { memo } from 'react';
 
 import cx from 'classnames';
 
@@ -47,34 +46,41 @@ export interface ProChatAvatarProps extends AvatarProps {
  * @param {Object} [props] - 其他传递给AntAvatar组件的属性
  *
  */
-const ProChatAvatar = memo<ProChatAvatarProps>(
-  ({ className, avatar, title, size = 40, shape = 'circle', onClick, style, ...props }) => {
-    const isImage = Boolean(
-      avatar && ['/', 'http', 'data:'].some((index) => avatar.startsWith(index)),
-    );
-    const isBase64 = Boolean(avatar?.startsWith('data'));
+const ProChatAvatar: React.FC<ProChatAvatarProps> = ({
+  className,
+  avatar,
+  title,
+  size = 40,
+  shape = 'circle',
+  onClick,
+  style,
+  ...props
+}) => {
+  const isImage = Boolean(
+    avatar && ['/', 'http', 'data:'].some((index) => avatar.startsWith(index)),
+  );
+  const isBase64 = Boolean(avatar?.startsWith('data'));
 
-    const text = String(isImage ? title : avatar);
+  const text = String(isImage ? title : avatar);
 
-    const avatarProps = {
-      className: cx(className),
-      shape: shape,
-      size,
-      style: onClick ? style : { cursor: 'default', ...style },
-    };
+  const avatarProps = {
+    className: cx(className),
+    shape: shape,
+    size,
+    style: onClick ? style : { cursor: 'default', ...style },
+  };
 
-    return isImage ? (
-      <Avatar
-        src={isBase64 ? avatar : <img src={avatar} alt="avatar" />}
-        {...avatarProps}
-        {...props}
-      />
-    ) : (
-      <Avatar {...avatarProps} {...props}>
-        {text?.toUpperCase().slice(0, 2)}
-      </Avatar>
-    );
-  },
-);
+  return isImage ? (
+    <Avatar
+      src={isBase64 ? avatar : <img src={avatar} alt="avatar" />}
+      {...avatarProps}
+      {...props}
+    />
+  ) : (
+    <Avatar {...avatarProps} {...props}>
+      {text?.toUpperCase().slice(0, 2)}
+    </Avatar>
+  );
+};
 
 export default ProChatAvatar;

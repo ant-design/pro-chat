@@ -41,7 +41,7 @@ const genStyle: GenerateStyle<ChatTokenType> = (token) => {
 };
 
 /**
- * prochat 的标题组件
+ * ProChat 的标题组件
  * @param prefixCls
  * @returns
  */

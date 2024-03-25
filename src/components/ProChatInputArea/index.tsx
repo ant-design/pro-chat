@@ -1,12 +1,12 @@
 import { ProChatLocale } from '@/locale';
 import { SendOutlined } from '@ant-design/icons';
 import { Button, ButtonProps, ConfigProvider, Divider, Flex } from 'antd';
-import { TextAreaProps } from 'antd/es/input';
 import cx from 'classnames';
 import { ReactNode, useContext, useMemo, useRef, useState } from 'react';
 import ActionBar from './ActionBar';
-import { MentionsTextArea } from './AutoCompleteTextArea';
+import { MentionsTextArea, MentionsTextAreaProps } from './AutoCompleteTextArea';
 import StopLoadingIcon from './StopLoading';
+import { useStyle } from './style';
 
 export type ChatInputAreaProps = {
   areaRef?: React.RefObject<HTMLDivElement>;
@@ -15,7 +15,7 @@ export type ChatInputAreaProps = {
   inputRender?: (
     defaultDom: ReactNode,
     onMessageSend: (message: string) => void | Promise<any>,
-    defaultProps: TextAreaProps,
+    defaultProps: MentionsTextAreaProps,
   ) => ReactNode;
   sendButtonRender?: (defaultDom: ReactNode, defaultProps: ButtonProps) => ReactNode;
   inputAreaRender?: (
@@ -25,14 +25,15 @@ export type ChatInputAreaProps = {
   ) => ReactNode;
   placeholder?: string;
   loading?: boolean;
-  inputAreaProps: TextAreaProps;
+  inputAreaProps: MentionsTextAreaProps;
+  actionStyle?: React.CSSProperties;
+  areaStyle?: React.CSSProperties;
+  locale?: ProChatLocale;
+
   clearMessage: () => void;
   stopGenerateMessage: () => void;
   onMessageSend: (message: string) => void | Promise<any>;
   actionsRender?: (defaultDoms: React.ReactNode[]) => ReactNode;
-  actionStyle?: React.CSSProperties;
-  areaStyle?: React.CSSProperties;
-  locale?: ProChatLocale;
 };
 
 export const ChatInputArea = (props: ChatInputAreaProps) => {
@@ -59,6 +60,10 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
   const [message, setMessage] = useState('');
   const isChineseInput = useRef(false);
 
+  const prefixClass = getPrefixCls('pro-chat-input-area');
+
+  const { wrapSSR, hashId } = useStyle(prefixClass);
+
   const send = async () => {
     if (onSend) {
       const success = await onSend(message);
@@ -71,8 +76,6 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
       setMessage('');
     }
   };
-
-  const prefixClass = getPrefixCls('pro-chat-input-area');
 
   /**
    * 默认的自动完成文本区域属性
@@ -92,10 +95,11 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
   const defaultAutoCompleteTextAreaProps = {
     placeholder: placeholder,
     ...inputAreaProps,
-    className: cx(inputAreaProps?.className, `${prefixClass}-component`),
+
+    className: cx(inputAreaProps?.className, `${prefixClass}-input`, hashId),
     value: message,
-    onChange: (e) => {
-      setMessage(e.target.value);
+    onChange: (value) => {
+      setMessage(value);
     },
     autoSize: { maxRows: 8 },
     onCompositionStart: () => {
@@ -110,7 +114,7 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
         send();
       }
     },
-  };
+  } as MentionsTextAreaProps;
 
   const defaultInput = <MentionsTextArea {...defaultAutoCompleteTextAreaProps} />;
 
@@ -155,13 +159,17 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
         } as const);
   }, [loading, message]);
 
-  const defaultButtonDom = <Button {...defaultButtonProps}>发送</Button>;
+  const defaultButtonDom = (
+    <Button {...defaultButtonProps} className={cx(`${prefixClass}-button`, hashId)}>
+      发送
+    </Button>
+  );
 
   const buttonDom = sendButtonRender
     ? sendButtonRender(defaultButtonDom, defaultButtonProps)
     : defaultButtonDom;
 
-  const defaultInputArea = (
+  const defaultInputArea = wrapSSR(
     <ConfigProvider
       theme={{
         token: {
@@ -169,7 +177,14 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
         },
       }}
     >
-      <>
+      <Flex
+        ref={areaRef}
+        gap={2}
+        vertical
+        align={'right'}
+        style={areaStyle}
+        className={cx(`${prefixClass}`, className, hashId)}
+      >
         <Divider
           style={{
             margin: 0,
@@ -178,23 +193,14 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
         <ActionBar
           clearMessage={clearMessage}
           actionsRender={actionsRender}
-          className={`${prefixClass}-action-bar`}
+          className={cx(`${prefixClass}-action-bar`, hashId)}
           locale={locale}
           style={actionStyle}
         />
-        <Flex
-          ref={areaRef}
-          gap={8}
-          vertical
-          align={'right'}
-          style={areaStyle}
-          className={cx(`${prefixClass}`, className)}
-        >
-          {inputDom}
-          {buttonDom}
-        </Flex>
-      </>
-    </ConfigProvider>
+        {inputDom}
+        <div className={cx(`${prefixClass}-send-area`, hashId)}>{buttonDom}</div>
+      </Flex>
+    </ConfigProvider>,
   );
 
   if (inputAreaRender) {

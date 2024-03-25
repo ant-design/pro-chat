@@ -1,4 +1,3 @@
-import { useResponsive } from 'antd-style';
 import { useContext } from 'react';
 
 import { ConfigProvider, Flex } from 'antd';
@@ -27,8 +26,6 @@ export const ChatItem: React.FC<ChatItemProps> = (props) => {
     onDoubleClick,
   } = props;
 
-  const { mobile } = useResponsive();
-
   const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
 
   const prefixClass = getPrefixCls('pro-chat-list-item');
@@ -40,31 +37,33 @@ export const ChatItem: React.FC<ChatItemProps> = (props) => {
   const itemDom = wrapSSR(
     <Flex
       className={cx(prefixClass, hashId, `${prefixClass}-${placement}`, className)}
-      style={{
-        flexDirection: placement === 'left' ? 'row' : 'row-reverse',
-        ...style,
-      }}
-      gap={mobile ? 6 : 12}
+      style={style}
+      vertical
+      gap={12}
     >
-      <ProChatAvatar
-        avatar={avatar?.avatar}
-        background={avatar?.backgroundColor}
-        title={avatar?.title}
-        onClick={onAvatarClick}
-        loading={loading}
-        style={chatListItemAvatarStyle}
+      <Title
+        style={chatListItemTitleStyle}
+        prefixClass={cx(`${prefixClass}-message-title`)}
+        avatar={avatar}
+        placement={placement}
+        time={time}
       />
       <Flex
-        vertical
+        style={{
+          flexDirection: placement === 'left' ? 'row' : 'row-reverse',
+          ...style,
+        }}
+        gap={8}
         align={placement === 'left' ? 'flex-start' : 'flex-end'}
         className={cx(`${prefixClass}-message-container`, hashId)}
       >
-        <Title
-          style={chatListItemTitleStyle}
-          prefixClass={cx(`${prefixClass}-message-title`)}
-          avatar={avatar}
-          placement={placement}
-          time={time}
+        <ProChatAvatar
+          avatar={avatar?.avatar}
+          background={avatar?.backgroundColor}
+          title={avatar?.title}
+          onClick={onAvatarClick}
+          loading={loading}
+          style={chatListItemAvatarStyle}
         />
         <Flex
           align={placement === 'left' ? 'flex-start' : 'flex-end'}

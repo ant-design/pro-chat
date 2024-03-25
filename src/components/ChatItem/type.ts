@@ -1,6 +1,6 @@
+import { ProChatMetaData } from '@/hooks/useChatList';
+import { DivProps } from '@/types';
 import { ReactNode } from 'react';
-
-import { DivProps, MetaData } from '@/types';
 
 export type WithFalse<T> = T | false;
 
@@ -8,7 +8,7 @@ export interface ChatItemProps<T = Record<string, any>> {
   /**
    * @description Metadata for the avatar
    */
-  avatar: MetaData;
+  avatar: ProChatMetaData;
   /**
    * @description Custom CSS class name for the chat item
    */
@@ -57,11 +57,8 @@ export interface ChatItemProps<T = Record<string, any>> {
       ) => ReactNode
     >;
   };
-
   style?: React.CSSProperties;
-
   originData?: T;
-
   chatListItemContentStyle?: React.CSSProperties;
   chatListItemTitleStyle?: React.CSSProperties;
   chatListItemAvatarStyle?: React.CSSProperties;
