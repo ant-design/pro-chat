@@ -39,7 +39,7 @@ export default () => {
 
 ## 初始化数据
 
-`initialChats` 是用于初始化聊天数据的属性。通过设置 `initialChats`，我们可以加载之前保存的聊天记录，并在 ProChat 组件中展示出来。示例代码如下：
+`initialChatsList` 是用于初始化聊天数据的属性。通过设置 `initialChatsList`，我们可以加载之前保存的聊天记录，并在 ProChat 组件中展示出来。示例代码如下：
 
 ```tsx
 import { ProChat } from '@ant-design/pro-chat';
@@ -50,13 +50,13 @@ export default () => {
   const theme = useTheme();
   return (
     <div style={{ background: theme.colorBgLayout }}>
-      <ProChat initialChats={example.initialChats} />
+      <ProChat initialChatsList={example.initialChatsList} />
     </div>
   );
 };
 ```
 
-上述代码中，我们将 `example.chats` 作为初始聊天数据传递给 ProChat 组件。注意，在使用该属性时需要提供正确格式的初始聊天数据。
+上述代码中，我们将 `example.chatList` 作为初始聊天数据传递给 ProChat 组件。注意，在使用该属性时需要提供正确格式的初始聊天数据。
 
 ## 使用骨架屏
 
@@ -74,11 +74,11 @@ export default () => {
   const [loading, setLoading] = useState(true);
   const theme = useTheme();
 
-  const [chats, setChats] = useState(example.initialChats);
+  const [chatList, setChatList] = useState(example.initialChatsList);
 
   return (
-    <Flexbox style={{ background: theme.colorBgLayout }}>
-      <Flexbox padding={16} gap={16} horizontal>
+    <Flex style={{ background: theme.colorBgLayout }}>
+      <Flex padding={16} gap={16} vertical>
         <Button
           type={'primary'}
           onClick={() => {
@@ -94,10 +94,10 @@ export default () => {
         >
           开始加载
         </Button>
-      </Flexbox>
+      </Flex>
       <Divider />
-      <ProChat loading={loading} chats={chats} />
-    </Flexbox>
+      <ProChat loading={loading} chatList={chatList} />
+    </Flex>
   );
 };
 ```

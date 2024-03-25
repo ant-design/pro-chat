@@ -24,7 +24,7 @@ ProChat is very flexible in this situation, and we offer several methods to help
 
 ### Controlled mode
 
-In this case, we waited for 3 seconds before actively pushing a notification, and then controlled it through chats and placed it in the last piece of content
+In this case, we waited for 3 seconds before actively pushing a notification, and then controlled it through chatList and placed it in the last piece of content
 
 > In this case, we also used the render in chatitemRenderConfig to customize a special format of information. For more information about this API, please refer to [Deep Customization Conversation Content](./chatItemRenderConfig.md)
 

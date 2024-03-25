@@ -14,7 +14,10 @@ export default defineConfig({
     footer: 'Made with ❤️ by 蚂蚁集团 - AFX & 数字科技',
     logo: 'https://mdn.alipayobjects.com/huamei_re70wt/afts/img/A*Mo27Sr3kS4kAAAAAAAAAAAAADmuEAQ/original',
   },
-  mfsu: false,
+  title: '@ant-design/pro-chat',
+  resolve: {
+    docDirs: ['components/ProChat', 'docs'],
+  },
   outputPath: 'docs-dist',
   html2sketch: {},
   extraBabelPlugins: ['antd-style'],

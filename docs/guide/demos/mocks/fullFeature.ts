@@ -1,5 +1,5 @@
 export const example = {
-  initialChats: [
+  initialChatsList: [
     {
       content: '你是谁？',
       createAt: 1697862242452,
@@ -22,7 +22,7 @@ export const example = {
       updateAt: 1697862243540,
     },
   ],
-  chats: [
+  chatList: [
     {
       content: '请展示完整的会话高亮效果？',
       createAt: 1697862242452,

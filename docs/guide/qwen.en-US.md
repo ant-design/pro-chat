@@ -28,7 +28,6 @@ Modify the `transpilePackages` in `next.config.(m)js` to add relevant dependenci
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   transpilePackages: [
-    '@ant-design/pro-editor',
     '@ant-design/pro-chat',
     'react-intersection-observer',
   ],

@@ -8,7 +8,9 @@ import { useState } from 'react';
 import { example } from './mocks/fullFeature';
 
 export default () => {
-  const [chats, setChats] = useState<ChatMessage<Record<string, any>>[]>(example.initialChats);
+  const [chatList, setChatList] = useState<ChatMessage<Record<string, any>>[]>(
+    example.initialChatsList,
+  );
 
   return (
     <ThemeProvider
@@ -24,9 +26,9 @@ export default () => {
     >
       <div style={{ background: '#000' }}>
         <ProChat
-          chats={chats}
-          onChatsChange={(chats) => {
-            setChats(chats);
+          chatList={chatList}
+          onChatsChange={(chatList) => {
+            setChatList(chatList);
           }}
           request={async (messages) => {
             const mockedData: string = `这是一段模拟的对话数据。本次会话传入了${messages.length}条消息`;

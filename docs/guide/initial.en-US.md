@@ -39,7 +39,7 @@ In the above example, we passed in a custom message with a Markdown formatted li
 
 ## Initialize data
 
-`initialChats` is a property used to initialize chat data. By setting `initialChats`，We can load the previously saved chat records and display them in the ProChat component. The example code is as follows:
+`initialChatsList` is a property used to initialize chat data. By setting `initialChatsList`，We can load the previously saved chat records and display them in the ProChat component. The example code is as follows:
 
 ```tsx
 import { ProChat } from '@ant-design/pro-chat';
@@ -50,13 +50,13 @@ export default () => {
   const theme = useTheme();
   return (
     <div style={{ background: theme.colorBgLayout }}>
-      <ProChat initialChats={example.initialChats} />
+      <ProChat initialChatsList={example.initialChatsList} />
     </div>
   );
 };
 ```
 
-In the above code, we pass `example.chats` as the initial chat data to the ProChat component. Note that when using this attribute, it is necessary to provide the initial chat data in the correct format.
+In the above code, we pass `example.chatList` as the initial chat data to the ProChat component. Note that when using this attribute, it is necessary to provide the initial chat data in the correct format.
 
 ## Using a skeleton screen
 
@@ -64,21 +64,20 @@ When the data is not ready yet, the `loading` attribute can be used to display t
 
 ```tsx
 import { ProChat } from '@ant-design/pro-chat';
-import { Button, Divider } from 'antd';
+import { Button, Flex, Divider } from 'antd';
 import { useTheme } from 'antd-style';
 import { useState } from 'react';
-import { Flexbox } from 'react-layout-kit';
 import { example } from './demos/mocks/fullFeature';
 
 export default () => {
   const [loading, setLoading] = useState(true);
   const theme = useTheme();
 
-  const [chats, setChats] = useState(example.initialChats);
+  const [chatList, setChatList] = useState(example.initialChatsList);
 
   return (
-    <Flexbox style={{ background: theme.colorBgLayout }}>
-      <Flexbox padding={16} gap={16} horizontal>
+    <Flex style={{ background: theme.colorBgLayout }}>
+      <Flex padding={16} gap={16} vertical>
         <Button
           type={'primary'}
           onClick={() => {
@@ -94,10 +93,10 @@ export default () => {
         >
           Start loading
         </Button>
-      </Flexbox>
+      </Flex>
       <Divider />
-      <ProChat loading={loading} chats={chats} />
-    </Flexbox>
+      <ProChat loading={loading} chatList={chatList} />
+    </Flex>
   );
 };
 ```

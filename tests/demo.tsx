@@ -5,7 +5,7 @@ import { afterEach, beforeEach, describe, it, vi } from 'vitest';
 import { resetMockDate, setMockDate } from './utils';
 
 // 特殊情况略过 snapshot 的文件
-const NotSnapshotFileList = ['renderInputArea.tsx'];
+const NotSnapshotFileList = ['inputAreaRender.tsx'];
 
 function demoTest(component: string) {
   beforeEach(() => {

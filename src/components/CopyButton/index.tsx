@@ -1,13 +1,11 @@
 import copy from 'copy-to-clipboard';
-import { Copy } from 'lucide-react';
 import { memo } from 'react';
 
-import ActionIcon, { type ActionIconSize } from '@/ActionIcon';
 import { useCopied } from '@/hooks/useCopied';
-import { DivProps } from '@/types';
-import { type TooltipProps } from 'antd';
+import { CopyOutlined } from '@ant-design/icons';
+import { Tooltip, type TooltipProps } from 'antd';
 
-export interface CopyButtonProps extends DivProps {
+export type CopyButtonProps = {
   /**
    * @description Additional class name
    */
@@ -16,40 +14,22 @@ export interface CopyButtonProps extends DivProps {
    * @description The text content to be copied
    */
   content: string;
-  /**
-   * @description The placement of the tooltip
-   * @enum ['top', 'left', 'right', 'bottom', 'topLeft', 'topRight', 'bottomLeft', 'bottomRight', 'leftTop', 'leftBottom', 'rightTop', 'rightBottom']
-   * @default 'right'
-   */
-  placement?: TooltipProps['placement'];
-  /**
-   * @description The size of the icon
-   * @enum ['large', 'normal', 'small', 'site']
-   * @default 'site'
-   */
-  size?: ActionIconSize;
-}
+} & TooltipProps;
 
-const CopyButton = memo<CopyButtonProps>(
-  ({ content, className, placement = 'right', size = 'site', ...props }) => {
+export const CopyButton = memo<CopyButtonProps>(
+  ({ content, className, placement = 'right', ...props }) => {
     const { copied, setCopied } = useCopied();
 
     return (
-      <ActionIcon
-        {...props}
-        className={className}
-        glass
-        icon={Copy}
-        onClick={() => {
-          copy(content);
-          setCopied();
-        }}
-        placement={placement}
-        size={size}
-        title={copied ? '✅ Success' : 'Copy'}
-      />
+      <Tooltip {...props} title={copied ? '✅ Success' : 'Copy'} placement={placement}>
+        <CopyOutlined
+          className={className}
+          onClick={() => {
+            copy(content);
+            setCopied();
+          }}
+        />
+      </Tooltip>
     );
   },
 );
-
-export default CopyButton;

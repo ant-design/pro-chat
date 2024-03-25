@@ -12,7 +12,7 @@ nav:
 
 ## Introduction
 
-When using the ProChat component, you can initialize chat data through the `initialChats` property. This article explains how to use common browser caching strategies for initialization and populate that data into the `initialChats` attribute.
+When using the ProChat component, you can initialize chat data through the `initialChatsList` property. This article explains how to use common browser caching strategies for initialization and populate that data into the `initialChatsList` attribute.
 
 > In actual business scenarios, data should typically reside on the backend and be distributed by it; however, this document provides examples of logic that only uses the frontend.
 
@@ -24,12 +24,12 @@ localStorage is a persistent storage solution provided by browsers that allows d
 
 - During component loading, first check whether there exists cached chat data.
 - If cached data exists, retrieve it from localStorage
-- Fill it into the initialChats property.
+- Fill it into the initialChatsList property.
 - Update new content into the browser cache as needed
 
 ### Retrieving Cache Information
 
-Step one involves fetching data from the cache and inserting it into ProChat's `initialChats`
+Step one involves fetching data from the cache and inserting it into ProChat's `initialChatsList`
 
 > I've simulated some cached data here; in reality, these cached data will persist unless manually cleared by the browser, carrying over whatever content was previously stored.
 
@@ -44,10 +44,10 @@ export default () => {
   const [cachedChats, setCachedChats] = useState(null);
   // Simulate adding some data to localStorage initially
   useEffect(() => {
-    const cachedData = localStorage.getItem('chats');
+    const cachedData = localStorage.getItem('chatList');
     if (!cachedData) {
       localStorage.setItem(
-        'chats',
+        'chatList',
         JSON.stringify({
           ZGxiX2p4: {
             content: '昨天的当天是明天的什么？',
@@ -71,7 +71,7 @@ export default () => {
   }, []);
 
   useEffect(() => {
-    const cachedData = localStorage.getItem('chats');
+    const cachedData = localStorage.getItem('chatList');
     if (cachedData) {
       setCachedChats(JSON.parse(cachedData));
     }
@@ -79,7 +79,7 @@ export default () => {
 
   return (
     <div style={{ background: theme.colorBgLayout }}>
-      {cachedChats ? <ProChat initialChats={cachedChats} /> : <></>}
+      {cachedChats ? <ProChat initialChatsList={cachedChats} /> : <></>}
     </div>
   );
 };
@@ -99,7 +99,7 @@ export default () => {
   const [cachedChats, setCachedChats] = useState(null);
 
   useEffect(() => {
-    const cachedData = localStorage.getItem('chats');
+    const cachedData = localStorage.getItem('chatList');
     if (cachedData) {
       setCachedChats(JSON.parse(cachedData));
     }
@@ -109,12 +109,12 @@ export default () => {
     <div style={{ background: theme.colorBgLayout }}>
       {cachedChats ? (
         <ProChat
-          initialChats={cachedChats}
-          onChatsChange={(chats) => {
+          initialChatsList={cachedChats}
+          onChatsChange={(chatList) => {
             localStorage.setItem(
-              'chats',
+              'chatList',
               JSON.stringify({
-                ...chats,
+                ...chatList,
               }),
             );
           }}
@@ -133,10 +133,10 @@ export default () => {
 
 ## Note
 
-### What's the difference between initialChats and chats？
+### What's the difference between initialChatsList and chatList？
 
-From a logical perspective, initialChats is used only during initialization; the ProChat component will not update based on changes to initialChats.
+From a logical perspective, initialChatsList is used only during initialization; the ProChat component will not update based on changes to initialChatsList.
 
-On the other hand, chats is a controlled API, where any subsequent changes to chats will cause ProChat to update. If you can ensure that chats will trigger updates only once, then you could also use chats for initialization.
+On the other hand, chatList is a controlled API, where any subsequent changes to chatList will cause ProChat to update. If you can ensure that chatList will trigger updates only once, then you could also use chatList for initialization.
 
-> That's why if initialChats is empty initially, and later updated through a method like setState, ProChat won't update because initialization has already completed. Therefore, please ensure that the current value of initialChats is non-null when passed to ProChat.
+> That's why if initialChatsList is empty initially, and later updated through a method like setState, ProChat won't update because initialization has already completed. Therefore, please ensure that the current value of initialChatsList is non-null when passed to ProChat.

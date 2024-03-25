@@ -12,7 +12,7 @@ nav:
 
 ## 介绍
 
-在使用 ProChat 组件时，可以通过 `initialChats` 属性来初始化聊天数据。本文将介绍如何使用常用的浏览器缓存方案来进行初始化，并填充到 `initialChats` 中。
+在使用 ProChat 组件时，可以通过 `initialChatsList` 属性来初始化聊天数据。本文将介绍如何使用常用的浏览器缓存方案来进行初始化，并填充到 `initialChatsList` 中。
 
 > 当然在真实的业务场景下，其实数据都应该存在后台，然后统一由后台进行派发，这里还是提供一些只使用前端的逻辑。
 
@@ -24,12 +24,12 @@ localStorage 是一种浏览器提供的持久化存储解决方案，可以将�
 
 - 在组件加载时，首先检查是否存在已经缓存的聊天数据。
 - 如果存在缓存数据，则从 `localStorage` 中获取该数据。
-- 将获取到的数据填充到 `initialChats` 属性中。
+- 将获取到的数据填充到 `initialChatsList` 属性中。
 - 更新新的内容到浏览器缓存中。
 
 ### 拿到缓存信息
 
-第一步，从缓存中拿到数据并塞入到 ProChat 的 initialChats 中去。
+第一步，从缓存中拿到数据并塞入到 ProChat 的 initialChatsList 中去。
 
 > 我在这里 mock 了缓存数据，真实情况下，这些缓存数据如果不手动清理，浏览器会带上上次你存好的内容。
 
@@ -44,10 +44,10 @@ export default () => {
   const [cachedChats, setCachedChats] = useState(null);
   // 模拟先让 localStorage 有一些数据
   useEffect(() => {
-    const cachedData = localStorage.getItem('chats');
+    const cachedData = localStorage.getItem('chatList');
     if (!cachedData) {
       localStorage.setItem(
-        'chats',
+        'chatList',
         JSON.stringify({
           ZGxiX2p4: {
             content: '昨天的当天是明天的什么？',
@@ -71,7 +71,7 @@ export default () => {
   }, []);
 
   useEffect(() => {
-    const cachedData = localStorage.getItem('chats');
+    const cachedData = localStorage.getItem('chatList');
     if (cachedData) {
       setCachedChats(JSON.parse(cachedData));
     }
@@ -79,7 +79,7 @@ export default () => {
 
   return (
     <div style={{ background: theme.colorBgLayout }}>
-      {cachedChats ? <ProChat initialChats={cachedChats} /> : <></>}
+      {cachedChats ? <ProChat initialChatsList={cachedChats} /> : <></>}
     </div>
   );
 };
@@ -99,7 +99,7 @@ export default () => {
   const [cachedChats, setCachedChats] = useState(null);
 
   useEffect(() => {
-    const cachedData = localStorage.getItem('chats');
+    const cachedData = localStorage.getItem('chatList');
     if (cachedData) {
       setCachedChats(JSON.parse(cachedData));
     }
@@ -109,12 +109,12 @@ export default () => {
     <div style={{ background: theme.colorBgLayout }}>
       {cachedChats ? (
         <ProChat
-          initialChats={cachedChats}
-          onChatsChange={(chats) => {
+          initialChatsList={cachedChats}
+          onChatsChange={(chatList) => {
             localStorage.setItem(
-              'chats',
+              'chatList',
               JSON.stringify({
-                ...chats,
+                ...chatList,
               }),
             );
           }}
@@ -133,10 +133,10 @@ export default () => {
 
 ## 注意点
 
-### initialChats 和 chats 有什么不同？
+### initialChatsList 和 chatList 有什么不同？
 
-从语言逻辑上说 initialChats 只会作用于初始化的时候，ProChat 并不会随着 initialChats 的变化从而导致更新。
+从语言逻辑上说 initialChatsList 只会作用于初始化的时候，ProChat 并不会随着 initialChatsList 的变化从而导致更新。
 
-而 chats 是一个受控的 api，所有后续 chats 的变化都会导致 ProChat 进行更新，如果你可以保证 chats 只会触发一次，那么当然你也可以使用 chats 进行初始化。
+而 chatList 是一个受控的 api，所有后续 chatList 的变化都会导致 ProChat 进行更新，如果你可以保证 chatList 只会触发一次，那么当然你也可以使用 chatList 进行初始化。
 
-> 这也是为什么如果一开始 initialChats 为空，下次通过 SetState 等数据方法进行变化后，ProChat 不会更新的原因，因为初始化已经结束了，所以请保证给到当前的 initialChats 是有值的。
+> 这也是为什么如果一开始 initialChatsList 为空，下次通过 SetState 等数据方法进行变化后，ProChat 不会更新的原因，因为初始化已经结束了，所以请保证给到当前的 initialChatsList 是有值的。
