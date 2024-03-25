@@ -80,6 +80,12 @@ export interface ProChatProps<
   chatList: ChatMessage<T>[];
   onChatsChange?: (chatList: ChatMessage<T>[]) => void;
   request?: ChatListRequest<Params>;
+  sendMessageRequest?: (
+    message: ChatMessage<T>,
+    params: Params & ModelConfig,
+  ) => Response | ChatMessage<T>;
+
+  transformToChatMessage?: (oldChatMessage: ChatMessage) => ChatMessage<T>;
 
   userProfile: ProChatUserProfile;
   /**
@@ -166,6 +172,17 @@ export interface ProChatProps<
    * 样式对象
    */
   style?: CSSProperties;
+
+  classNames?: {
+    chatList?: string;
+    chatInputAction?: string;
+    chatInputArea?: string;
+    chatListItem?: string;
+    chatListItemContent?: string;
+    chatListItemTitle?: string;
+    chatListItemExtra?: string;
+    chatListItemAvatar?: string;
+  };
 
   styles: {
     chatList?: CSSProperties;
