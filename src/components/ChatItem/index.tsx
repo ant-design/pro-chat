@@ -5,6 +5,7 @@ import { ConfigProvider, Flex } from 'antd';
 import cx from 'classnames';
 import ProChatAvatar from '../ProChatAvatar';
 import Title from '../Title';
+import { useStyle } from './style';
 import type { ChatItemProps } from './type';
 
 export const ChatItem: React.FC<ChatItemProps> = (props) => {
@@ -30,13 +31,15 @@ export const ChatItem: React.FC<ChatItemProps> = (props) => {
 
   const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
 
-  const prefixClass = getPrefixCls('pro-chat');
+  const prefixClass = getPrefixCls('pro-chat-list-item');
+
+  const { wrapSSR, hashId } = useStyle(prefixClass);
 
   if (chatItemRenderConfig?.render === false) return null;
 
-  const itemDom = (
+  const itemDom = wrapSSR(
     <Flex
-      className={cx(`${prefixClass}-list-item`, `${prefixClass}-list-item-${placement}`, className)}
+      className={cx(prefixClass, hashId, `${prefixClass}-${placement}`, className)}
       style={{
         flexDirection: placement === 'left' ? 'row' : 'row-reverse',
         ...style,
@@ -54,35 +57,43 @@ export const ChatItem: React.FC<ChatItemProps> = (props) => {
       <Flex
         vertical
         align={placement === 'left' ? 'flex-start' : 'flex-end'}
-        className={cx(`${prefixClass}-list-item-message-container`)}
+        className={cx(`${prefixClass}-message-container`, hashId)}
       >
         <Title
           style={chatListItemTitleStyle}
-          className={`${cx(`${prefixClass}-list-item-title`)}`}
+          prefixClass={cx(`${prefixClass}-message-title`)}
           avatar={avatar}
           placement={placement}
           time={time}
         />
         <Flex
           align={placement === 'left' ? 'flex-start' : 'flex-end'}
-          className={cx(`${prefixClass}-message-content`)}
+          className={cx(
+            `${prefixClass}-message-content`,
+            `${prefixClass}-message-content-${placement}`,
+            hashId,
+          )}
           vertical
           onDoubleClick={onDoubleClick}
           gap={8}
           style={chatListItemContentStyle}
         >
           {children}
-          {messageExtra ? (
-            <div
-              className={`${cx(`${prefixClass}-message-extra ${prefixClass}-message-extra-${placement}`)}`}
-              style={chatListItemExtraStyle}
-            >
-              {messageExtra}
-            </div>
-          ) : null}
         </Flex>
+        {messageExtra ? (
+          <div
+            className={cx(
+              `${prefixClass}-message-extra`,
+              `${prefixClass}-message-extra-${placement}`,
+              hashId,
+            )}
+            style={chatListItemExtraStyle}
+          >
+            {messageExtra}
+          </div>
+        ) : null}
       </Flex>
-    </Flex>
+    </Flex>,
   );
   return itemDom;
 };
