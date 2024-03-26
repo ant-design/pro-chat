@@ -4,7 +4,7 @@ import { ChatMessage } from '@/types';
 import { ModelConfig } from '@/types/config';
 import { processSSE } from '@/utils/fetch';
 import { useMergedState } from 'rc-util';
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useRefFunction } from './useRefFunction';
 
 export const initialModelConfig: ModelConfig = {
@@ -73,7 +73,7 @@ export const useChatList = (props: {
     currentContent: { preContent: React.ReactNode; currentContent: string },
   ) => Promise<ChatMessage<any>>;
 }) => {
-  let controller: AbortController | null = null;
+  let controller = useRef<AbortController | null>(null);
 
   const [loadingMessage, setLoadingMessage] = useMergedState<ChatMessage<any> | undefined>(
     undefined,
@@ -122,7 +122,7 @@ export const useChatList = (props: {
       setLoading(false);
       return;
     }
-    controller = new AbortController();
+    controller.current = new AbortController();
 
     setLoading(true);
     try {
@@ -135,17 +135,12 @@ export const useChatList = (props: {
     }
   });
 
-  const stopGenerateMessage = useRefFunction(() => {
-    if (controller) {
-      controller.abort();
-    }
-  });
-
   const clearMessage = useRefFunction(() => {
     setChatList([]);
   });
 
   const sendMessage = useRefFunction(async (message: string) => {
+    controller.current = new AbortController();
     setChatList((prev) => [
       ...prev,
       {
@@ -157,6 +152,7 @@ export const useChatList = (props: {
         updateAt: Date.now(),
       },
     ]);
+
     if (!props.sendMessageRequest) return;
 
     setLoadingMessage({
@@ -168,19 +164,29 @@ export const useChatList = (props: {
       content: LOADING_FLAT,
     } as ChatMessage<any>);
 
-    const res = await props.sendMessageRequest?.();
+    const res = (await Promise.race([
+      props.sendMessageRequest?.(),
+      new Promise((_, reject) => {
+        controller.current.signal.addEventListener('abort', () => {
+          reject(new Error('Aborted'));
+        });
+      }),
+    ])) as Response | ChatMessage<any>;
 
     if (res instanceof Response) {
       processSSE(res, {
+        signal: controller.current.signal,
         onFinish: async () => {
           setLoadingMessage(undefined);
         },
         onMessageHandle: async (text, res, type) => {
-          if (type === 'done') {
+          if (type === 'done' || controller.current.signal.aborted) {
             const message = getLoadingMessage();
+            if (!message) return;
             setChatList((prev) => {
               return [...prev, message];
             });
+            setLoadingMessage(undefined);
             return;
           }
           const content =
@@ -225,13 +231,19 @@ export const useChatList = (props: {
         updateAt: Date.now(),
         ...res,
       };
+
       const transformChatMessage = await props.transformToChatMessage?.(message, {
         preContent: getLoadingMessage()?.content,
         currentContent: message.originContent,
       });
+
       setLoadingMessage(undefined);
       setChatList((prev) => [...prev, transformChatMessage || message]);
     }
+  });
+
+  const stopGenerateMessage = useRefFunction(() => {
+    controller.current.abort?.();
   });
 
   useEffect(() => {

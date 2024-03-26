@@ -63,4 +63,8 @@ export interface ChatItemProps<T = Record<string, any>> {
   chatListItemTitleStyle?: React.CSSProperties;
   chatListItemAvatarStyle?: React.CSSProperties;
   chatListItemExtraStyle?: React.CSSProperties;
+  chatListItemContentClassName?: string;
+  chatListItemTitleClassName?: string;
+  chatListItemExtraClassName?: string;
+  chatListItemAvatarClassName?: string;
 }

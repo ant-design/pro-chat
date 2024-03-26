@@ -18,6 +18,7 @@ export interface FetchSSEOptions {
   onMessageHandle?: (text: string, response: Response, type: SSEFinishType) => void;
   onAbort?: (text: string) => Promise<void>;
   onFinish?: (text: string, type: SSEFinishType) => Promise<void>;
+  signal?: AbortSignal;
 }
 
 /**
@@ -25,7 +26,7 @@ export interface FetchSSEOptions {
  * @param fetchFn
  * @param options
  */
-export const processSSE = async (response, options: FetchSSEOptions = {}) => {
+export const processSSE = async (response: Response, options: FetchSSEOptions = {}) => {
   // 如果不 ok 说明有请求错误
   if (!response.ok) {
     // TODO: need a message error custom parser
@@ -45,6 +46,10 @@ export const processSSE = async (response, options: FetchSSEOptions = {}) => {
   const decoder = new TextDecoder();
   let finishText = '';
   let done = false;
+
+  options?.signal?.addEventListener('abort', async () => {
+    reader.cancel();
+  });
 
   while (!done) {
     const { value, done: doneReading } = await reader.read();

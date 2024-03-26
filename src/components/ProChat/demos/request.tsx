@@ -22,7 +22,7 @@ export default () => {
                 updateAt: Date.now(),
                 id: crypto.randomUUID(),
               });
-            }, 1000);
+            }, 4000);
           }) as Promise<ChatMessage>;
         }}
       />

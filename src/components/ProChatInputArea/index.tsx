@@ -1,3 +1,4 @@
+import { useRefFunction } from '@/hooks/useRefFunction';
 import { ProChatLocale } from '@/locale';
 import { SendOutlined } from '@ant-design/icons';
 import { Button, ButtonProps, ConfigProvider, Divider, Flex } from 'antd';
@@ -64,8 +65,8 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
 
   const { wrapSSR, hashId } = useStyle(prefixClass);
 
-  const send = async () => {
-    if (onSend) {
+  const send = useRefFunction(async () => {
+    if (onSend && message) {
       const success = await onSend(message);
       if (success) {
         onMessageSend(message);
@@ -75,7 +76,7 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
       onMessageSend(message);
       setMessage('');
     }
-  };
+  });
 
   /**
    * 默认的自动完成文本区域属性
@@ -150,6 +151,7 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
           },
         } as const)
       : ({
+          disabled: !message,
           onClick: () => send(),
           icon: <SendOutlined />,
           style: {

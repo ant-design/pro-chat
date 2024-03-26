@@ -244,6 +244,7 @@ export function ProChat<
     placeholder,
     styles,
     request,
+    classNames,
   } = props;
   const chatListContainerRef = useRef<HTMLDivElement>(null);
   const areaHtml = useRef<HTMLDivElement>(null);
@@ -356,14 +357,20 @@ export function ProChat<
       >
         <ChatList
           chatListRef={chatListContainerRef}
-          chatList={chatList.concat(loadingMessage ? [loadingMessage] : [])}
+          chatList={chatList}
           loading={loading}
-          loadingId={loadingMessage?.id}
+          loadingMessage={loadingMessage}
           chatItemRenderConfig={chatItemRenderConfig}
           style={{
             ...styles?.chatList,
             height: (height as number) - (areaHtml.current?.clientHeight || 0) || '100%',
           }}
+          className={classNames?.chatList}
+          chatListItemClassName={classNames?.chatListItem}
+          chatListItemContentClassName={classNames?.chatListItem}
+          chatListItemTitleClassName={classNames?.chatListItemTitle}
+          chatListItemExtraClassName={classNames?.chatListItemExtra}
+          chatListItemAvatarClassName={classNames?.chatListItemAvatar}
           chatListItemStyle={styles?.chatListItem}
           chatListItemContentStyle={styles?.chatListItemContent}
           chatListItemTitleStyle={styles?.chatListItemTitle}
@@ -372,6 +379,7 @@ export function ProChat<
         />
         {backBottomDom}
         <ChatInputArea
+          className={classNames?.chatInputArea}
           typing={!!loadingMessage?.id}
           placeholder={placeholder || '请输入消息...'}
           onMessageSend={sendMessage}

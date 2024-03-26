@@ -14,7 +14,7 @@ import { useStyle } from './style';
 export type ChatListProps = {
   chatList: ChatMessage[];
   chatListRef: MutableRefObject<HTMLDivElement>;
-  loadingId?: string;
+  loadingMessage?: ChatMessage<any>;
   loading: boolean;
   className?: string;
   chatItemRenderConfig: ChatItemProps['chatItemRenderConfig'];
@@ -24,6 +24,11 @@ export type ChatListProps = {
   chatListItemTitleStyle?: React.CSSProperties;
   chatListItemAvatarStyle?: React.CSSProperties;
   chatListItemExtraStyle?: React.CSSProperties;
+  chatListItemClassName?: string;
+  chatListItemContentClassName?: string;
+  chatListItemTitleClassName?: string;
+  chatListItemExtraClassName?: string;
+  chatListItemAvatarClassName?: string;
 };
 
 const ChatList: React.FC<ChatListProps> = (props) => {
@@ -35,7 +40,11 @@ const ChatList: React.FC<ChatListProps> = (props) => {
     chatListItemContentStyle,
     chatListItemTitleStyle,
     chatListItemAvatarStyle,
-    loadingId,
+    chatListItemAvatarClassName,
+    chatListItemContentClassName,
+    chatListItemTitleClassName,
+    chatListItemExtraClassName,
+    loadingMessage,
     chatList,
     style,
   } = props;
@@ -66,18 +75,47 @@ const ChatList: React.FC<ChatListProps> = (props) => {
             }
             style={props.chatListItemStyle}
             originData={item}
-            loading={loadingId === item.id}
             placement={item.role === 'user' ? 'right' : 'left'}
             time={item.updateAt || item.createAt}
             chatListItemContentStyle={chatListItemContentStyle}
             chatListItemTitleStyle={chatListItemTitleStyle}
             chatItemRenderConfig={chatItemRenderConfig}
             chatListItemAvatarStyle={chatListItemAvatarStyle}
+            chatListItemAvatarClassName={chatListItemAvatarClassName}
+            chatListItemContentClassName={chatListItemContentClassName}
+            chatListItemTitleClassName={chatListItemTitleClassName}
+            chatListItemExtraClassName={chatListItemExtraClassName}
           >
             <MessageComponent {...item} />
           </ChatItem>
         );
       })}
+      {loadingMessage && (
+        <ChatItem
+          key={loadingMessage.id}
+          data-id={loadingMessage.id}
+          avatar={
+            (loadingMessage as any).meta || {
+              avatar: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
+              title: 'Ant Design',
+            }
+          }
+          style={props.chatListItemStyle}
+          originData={loadingMessage}
+          placement={loadingMessage.role === 'user' ? 'right' : 'left'}
+          time={loadingMessage.updateAt || loadingMessage.createAt}
+          chatListItemContentStyle={chatListItemContentStyle}
+          chatListItemTitleStyle={chatListItemTitleStyle}
+          chatItemRenderConfig={chatItemRenderConfig}
+          chatListItemAvatarStyle={chatListItemAvatarStyle}
+          chatListItemAvatarClassName={chatListItemAvatarClassName}
+          chatListItemContentClassName={chatListItemContentClassName}
+          chatListItemTitleClassName={chatListItemTitleClassName}
+          chatListItemExtraClassName={chatListItemExtraClassName}
+        >
+          <MessageComponent {...loadingMessage} />
+        </ChatItem>
+      )}
     </div>,
   );
 };
