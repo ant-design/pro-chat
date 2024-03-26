@@ -1,6 +1,6 @@
 import SkeletonList from './SkeletonList';
 
-import { useContext } from 'react';
+import { MutableRefObject, useContext } from 'react';
 
 import type { ChatMessage } from '@/types';
 
@@ -13,6 +13,7 @@ import { useStyle } from './style';
 
 export type ChatListProps = {
   chatList: ChatMessage[];
+  chatListRef: MutableRefObject<HTMLDivElement>;
   loadingId?: string;
   loading: boolean;
   className?: string;
@@ -27,6 +28,7 @@ export type ChatListProps = {
 
 const ChatList: React.FC<ChatListProps> = (props) => {
   const {
+    chatListRef,
     chatItemRenderConfig,
     className,
     loading,
@@ -44,13 +46,13 @@ const ChatList: React.FC<ChatListProps> = (props) => {
 
   if (loading)
     return wrapSSR(
-      <div className={cx(`${prefixClass}`, className, hashId)}>
+      <div className={cx(`${prefixClass}`, className, hashId)} ref={chatListRef}>
         <SkeletonList />
       </div>,
     );
 
   return wrapSSR(
-    <div className={cx(`${prefixClass}`, className, hashId)} style={style}>
+    <div className={cx(`${prefixClass}`, className, hashId)} style={style} ref={chatListRef}>
       {chatList.map((item) => {
         return (
           <ChatItem

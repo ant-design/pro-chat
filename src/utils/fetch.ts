@@ -11,11 +11,11 @@ export const getMessageError = async (response: Response) => {
   return chatMessageError;
 };
 
-type SSEFinishType = 'done' | 'error' | 'abort';
+type SSEFinishType = 'done' | 'error' | 'abort' | 'progress';
 
 export interface FetchSSEOptions {
   onErrorHandle?: (error: ChatMessageError) => void;
-  onMessageHandle?: (text: string, response: Response) => void;
+  onMessageHandle?: (text: string, response: Response, type: SSEFinishType) => void;
   onAbort?: (text: string) => Promise<void>;
   onFinish?: (text: string, type: SSEFinishType) => Promise<void>;
 }
@@ -25,9 +25,7 @@ export interface FetchSSEOptions {
  * @param fetchFn
  * @param options
  */
-export const fetchSSE = async (fetchFn: () => Promise<Response>, options: FetchSSEOptions = {}) => {
-  const response = await fetchFn();
-
+export const processSSE = async (response, options: FetchSSEOptions = {}) => {
   // 如果不 ok 说明有请求错误
   if (!response.ok) {
     // TODO: need a message error custom parser
@@ -45,15 +43,19 @@ export const fetchSSE = async (fetchFn: () => Promise<Response>, options: FetchS
 
   const reader = data.getReader();
   const decoder = new TextDecoder();
-
+  let finishText = '';
   let done = false;
 
   while (!done) {
     const { value, done: doneReading } = await reader.read();
     done = doneReading;
     const chunkValue = decoder.decode(value, { stream: !doneReading });
+    finishText += chunkValue;
+    options.onMessageHandle?.(chunkValue, returnRes, done ? 'done' : 'progress');
+  }
 
-    options.onMessageHandle?.(chunkValue, returnRes);
+  if (done) {
+    options.onFinish?.(finishText, 'done');
   }
 
   return returnRes;

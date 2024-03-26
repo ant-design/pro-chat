@@ -12,6 +12,8 @@ description: a Chat Solution
 
 <code src="./demos/request.tsx"></code>
 
+<code src="./demos/sse.tsx"></code>
+
 ## APIs
 
 | 参数 | 说明 | 类型 | 默认值 |

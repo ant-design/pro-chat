@@ -2,7 +2,7 @@
  * compact: true
  * title: 流式请求
  */
-import { ProChat } from '@ant-design/pro-chat';
+import { ChatMessage, ProChat } from '@ant-design/pro-chat';
 import { useTheme } from 'antd-style';
 
 export default () => {
@@ -10,7 +10,22 @@ export default () => {
 
   return (
     <div style={{ background: theme.colorBgLayout }}>
-      <ProChat locale="en-US" />
+      <ProChat
+        locale="en-US"
+        sendMessageRequest={() => {
+          return new Promise((resolve) => {
+            setTimeout(() => {
+              resolve({
+                content: 'Hello, I am a robot',
+                role: 'assistant',
+                createAt: Date.now(),
+                updateAt: Date.now(),
+                id: crypto.randomUUID(),
+              });
+            }, 1000);
+          }) as Promise<ChatMessage>;
+        }}
+      />
     </div>
   );
 };

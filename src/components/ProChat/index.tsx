@@ -65,29 +65,30 @@ export interface ProChatProps<
   T extends Record<string, any> = Record<string, any>,
   Params extends Record<string, any> = Record<string, any>,
 > {
-  params: Params;
-  init?: boolean;
+  params?: Params;
   initialChatsList?: ChatMessage<T>[];
-  chatLoadingId?: string;
 
   /**
    * 语言模型角色设定
    */
-  config: ModelConfig;
+  config?: ModelConfig;
   /**
    * 聊天记录
    */
-  chatList: ChatMessage<T>[];
+  chatList?: ChatMessage<T>[];
   onChatsChange?: (chatList: ChatMessage<T>[]) => void;
   request?: ChatListRequest<Params>;
   sendMessageRequest?: (
-    message: ChatMessage<T>,
+    message: ChatMessage<T>[],
     params: Params & ModelConfig,
   ) => Promise<Response | ChatMessage<T>>;
 
-  transformToChatMessage?: (oldChatMessage: ChatMessage) => Promise<ChatMessage<T>>;
+  transformToChatMessage?: (
+    preChatMessage: ChatMessage,
+    currentContent: { preContent: React.ReactNode; currentContent: string },
+  ) => Promise<ChatMessage<T>>;
 
-  userProfile: ProChatUserProfile;
+  userProfile?: ProChatUserProfile;
   /**
    * 帮助消息
    */
@@ -184,7 +185,7 @@ export interface ProChatProps<
     chatListItemAvatar?: string;
   };
 
-  styles: {
+  styles?: {
     chatList?: CSSProperties;
     chatInputAction?: CSSProperties;
     chatInputArea?: CSSProperties;
@@ -244,7 +245,7 @@ export function ProChat<
     styles,
     request,
   } = props;
-  const chatContainerRef = useRef<HTMLDivElement>(null);
+  const chatListContainerRef = useRef<HTMLDivElement>(null);
   const areaHtml = useRef<HTMLDivElement>(null);
   const [isInitRender, setIsRender] = useState(false);
   const [height, setHeight] = useState('100%' as string | number);
@@ -255,7 +256,7 @@ export function ProChat<
 
   const {
     chatList,
-    getChatLoadingMessage,
+    loadingMessage,
     loading,
     setMessageItem,
     stopGenerateMessage,
@@ -275,7 +276,15 @@ export function ProChat<
           });
         }
       : undefined,
+    transformToChatMessage: props.transformToChatMessage,
+    sendMessageRequest: () =>
+      props.sendMessageRequest(chatList, {
+        ...props.config,
+        ...props.params,
+      }),
   });
+
+  const getChatLoadingMessage = useRefFunction(() => loadingMessage);
 
   const getChatList = useRefFunction(() => {
     return chatList;
@@ -292,16 +301,26 @@ export function ProChat<
         getChatLoadingMessage,
         setMessageItem,
         scrollToBottom: () => {
-          (chatContainerRef as any)?.current?.scrollTo({
+          (chatListContainerRef as any)?.current?.scrollTo({
             behavior: 'smooth',
             left: 0,
-            top: chatContainerRef.current?.scrollHeight || 99999,
+            top: chatListContainerRef.current?.scrollHeight || 99999,
           });
         },
       } as ProChatInstance<T>;
     },
     [chatRef],
   );
+
+  useEffect(() => {
+    if (chatListContainerRef.current) {
+      chatListContainerRef.current.scrollTo({
+        behavior: 'smooth',
+        left: 0,
+        top: chatListContainerRef.current.scrollHeight,
+      });
+    }
+  }, [loadingMessage]);
 
   const backBottomDom = useMemo(() => {
     if (!isInitRender) return null;
@@ -310,7 +329,7 @@ export function ProChat<
         style={{
           bottom: 138,
         }}
-        target={() => chatContainerRef.current as HTMLElement}
+        target={() => chatListContainerRef.current as HTMLElement}
         {...backToBottomConfig}
       >
         {gLocaleObject('zh-CN').backToBottom}
@@ -334,10 +353,10 @@ export function ProChat<
           ...style,
         }}
         vertical
-        ref={chatContainerRef}
       >
         <ChatList
-          chatList={chatList}
+          chatListRef={chatListContainerRef}
+          chatList={chatList.concat(loadingMessage ? [loadingMessage] : [])}
           loading={loading}
           chatItemRenderConfig={chatItemRenderConfig}
           style={{

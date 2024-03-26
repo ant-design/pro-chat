@@ -1,6 +1,6 @@
+import { ProChatMetaData } from '@/hooks/useChatList';
 import { ModelRoleType } from '@/types/config';
-import { ReactNode } from 'react';
-import { MetaData } from './meta';
+import React from 'react';
 
 /**
  * 聊天消息错误对象
@@ -16,7 +16,8 @@ export interface ChatMessage<T extends Record<string, any> = Record<string, any>
    * @title 内容
    * @description 消息内容
    */
-  content: ReactNode;
+  content: React.ReactNode;
+  originContent?: string;
   error?: any;
   model?: string;
   name?: string;
@@ -31,7 +32,7 @@ export interface ChatMessage<T extends Record<string, any> = Record<string, any>
   updateAt: number;
   extra?: T;
   messageItemExtraRender?: (props: ChatMessage) => React.ReactNode;
-  meta?: MetaData;
+  meta?: ProChatMetaData;
 }
 
 export interface OpenAIFunctionCall {

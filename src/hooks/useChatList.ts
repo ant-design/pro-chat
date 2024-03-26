@@ -1,6 +1,8 @@
-﻿import { DEFAULT_AVATAR, DEFAULT_USER_AVATAR } from '@/const/meta';
+﻿import { LOADING_FLAT } from '@/const/message';
+import { DEFAULT_AVATAR, DEFAULT_USER_AVATAR } from '@/const/meta';
 import { ChatMessage } from '@/types';
 import { ModelConfig } from '@/types/config';
+import { processSSE } from '@/utils/fetch';
 import { useMergedState } from 'rc-util';
 import React, { useEffect } from 'react';
 import { useRefFunction } from './useRefFunction';
@@ -65,8 +67,21 @@ export const useChatList = (props: {
   helloMessage?: React.ReactNode;
   userProfile: ProChatUserProfile;
   request?: () => Promise<ChatMessage<any>[]>;
+  sendMessageRequest?: () => Promise<Response | ChatMessage<any>>;
+  transformToChatMessage?: (
+    preChatMessage: ChatMessage,
+    currentContent: { preContent: React.ReactNode; currentContent: string },
+  ) => Promise<ChatMessage<any>>;
 }) => {
   let controller: AbortController | null = null;
+
+  const [loadingMessage, setLoadingMessage] = useMergedState<ChatMessage<any> | undefined>(
+    undefined,
+  );
+
+  const getLoadingMessage = useRefFunction(() => {
+    return loadingMessage;
+  });
 
   const [chatList, setChatList] = useMergedState<ChatMessage<any>[]>(
     [
@@ -98,15 +113,15 @@ export const useChatList = (props: {
     setChatList(newChatList);
   });
 
-  const getChatLoadingMessage = useRefFunction(() => {
-    return chatList.find((item) => item.role === 'bot' && item.content === props.helloMessage);
-  });
-
   const [loading, setLoading] = useMergedState<boolean>(true, {
     value: props.loading,
   });
 
   const fetchChatList = useRefFunction(async () => {
+    if (!props.request) {
+      setLoading(false);
+      return;
+    }
     controller = new AbortController();
 
     setLoading(true);
@@ -130,17 +145,93 @@ export const useChatList = (props: {
     setChatList([]);
   });
 
-  const sendMessage = useRefFunction((message: string) => {
+  const sendMessage = useRefFunction(async (message: string) => {
     setChatList((prev) => [
       ...prev,
       {
         id: crypto.randomUUID(),
         content: message,
         role: 'user',
+        meta: props.userProfile?.user || initialState.userProfile.user,
         createAt: Date.now(),
         updateAt: Date.now(),
       },
     ]);
+    if (!props.sendMessageRequest) return;
+
+    setLoadingMessage({
+      id: crypto.randomUUID(),
+      role: 'bot',
+      meta: props.userProfile?.assistant || initialState.userProfile.assistant,
+      createAt: Date.now(),
+      updateAt: Date.now(),
+      content: LOADING_FLAT,
+    } as ChatMessage<any>);
+
+    const res = await props.sendMessageRequest?.();
+
+    if (res instanceof Response) {
+      processSSE(res, {
+        onFinish: async () => {
+          setLoadingMessage(undefined);
+        },
+        onMessageHandle: async (text, res, type) => {
+          if (type === 'done') {
+            const message = getLoadingMessage();
+            setChatList((prev) => {
+              return [...prev, message];
+            });
+            return;
+          }
+          const content =
+            getLoadingMessage()?.content === LOADING_FLAT
+              ? ''
+              : getLoadingMessage()?.content + text;
+          const message = {
+            ...getLoadingMessage(),
+            updateAt: Date.now(),
+            originContent: text,
+            content: content,
+          };
+          const transformMessage = await props.transformToChatMessage?.(message, {
+            preContent:
+              getLoadingMessage()?.content === LOADING_FLAT ? '' : getLoadingMessage()?.content,
+            currentContent: text,
+          });
+
+          setLoadingMessage(transformMessage || message);
+        },
+        onErrorHandle: async (error) => {
+          const content = error.message;
+          const message = await props.transformToChatMessage?.(
+            {
+              ...getLoadingMessage(),
+              updateAt: Date.now(),
+              content: content,
+              originContent: content,
+            },
+            {
+              preContent: getLoadingMessage()?.content,
+              currentContent: content,
+            },
+          );
+          setLoadingMessage(undefined);
+          setChatList((prev) => [...prev, message]);
+        },
+      });
+    } else {
+      const message = {
+        ...getLoadingMessage(),
+        updateAt: Date.now(),
+        ...res,
+      };
+      const transformChatMessage = await props.transformToChatMessage?.(message, {
+        preContent: getLoadingMessage()?.content,
+        currentContent: message.originContent,
+      });
+      setLoadingMessage(undefined);
+      setChatList((prev) => [...prev, transformChatMessage || message]);
+    }
   });
 
   useEffect(() => {
@@ -150,8 +241,8 @@ export const useChatList = (props: {
   return {
     chatList,
     loading,
+    loadingMessage,
     stopGenerateMessage,
-    getChatLoadingMessage,
     setMessageItem,
     clearMessage,
     sendMessage,
