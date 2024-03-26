@@ -7,6 +7,13 @@ import { ProChatTitle } from '../ProChatTitle';
 import { useStyle } from './style';
 import type { ChatItemProps } from './type';
 
+const runRender = (render: any, props: ChatItemProps, defaultDom, ...rest) => {
+  if (render) {
+    return render(props, defaultDom, ...rest);
+  }
+  return defaultDom;
+};
+
 export const ChatItem: React.FC<ChatItemProps> = (props) => {
   const {
     onAvatarClick,
@@ -33,6 +40,35 @@ export const ChatItem: React.FC<ChatItemProps> = (props) => {
 
   if (chatItemRenderConfig?.render === false) return null;
 
+  const titleDom = runRender(
+    chatItemRenderConfig?.titleRender,
+    props,
+    <ProChatTitle
+      style={chatListItemTitleStyle}
+      prefixClass={cx(`${prefixClass}-message-title`)}
+      title={avatar?.title}
+      placement={placement}
+      time={time}
+    />,
+  );
+
+  const avatarDom = runRender(
+    chatItemRenderConfig?.avatarRender,
+    props,
+    <ProChatAvatar
+      avatar={avatar?.avatar}
+      background={avatar?.backgroundColor}
+      title={avatar?.title}
+      onClick={onAvatarClick}
+      prefixCls={`${prefixClass}-message-avatar`}
+      style={chatListItemAvatarStyle}
+    />,
+  );
+
+  const childrenDom = runRender(chatItemRenderConfig?.contentRender, props, children);
+
+  const messageExtraDom = runRender(chatItemRenderConfig.actionsRender, props, messageExtra);
+
   const itemDom = wrapSSR(
     <Flex
       className={cx(prefixClass, hashId, `${prefixClass}-${placement}`, className)}
@@ -40,13 +76,7 @@ export const ChatItem: React.FC<ChatItemProps> = (props) => {
       vertical
       gap={12}
     >
-      <ProChatTitle
-        style={chatListItemTitleStyle}
-        prefixClass={cx(`${prefixClass}-message-title`)}
-        title={avatar?.title}
-        placement={placement}
-        time={time}
-      />
+      {titleDom}
       <Flex
         style={{
           flexDirection: placement === 'left' ? 'row' : 'row-reverse',
@@ -56,14 +86,7 @@ export const ChatItem: React.FC<ChatItemProps> = (props) => {
         align={placement === 'left' ? 'flex-start' : 'flex-end'}
         className={cx(`${prefixClass}-message-container`, hashId)}
       >
-        <ProChatAvatar
-          avatar={avatar?.avatar}
-          background={avatar?.backgroundColor}
-          title={avatar?.title}
-          onClick={onAvatarClick}
-          prefixCls={`${prefixClass}-message-avatar`}
-          style={chatListItemAvatarStyle}
-        />
+        {avatarDom}
         <Flex
           align={placement === 'left' ? 'flex-start' : 'flex-end'}
           className={cx(
@@ -76,9 +99,9 @@ export const ChatItem: React.FC<ChatItemProps> = (props) => {
           gap={8}
           style={chatListItemContentStyle}
         >
-          {children}
+          {childrenDom}
         </Flex>
-        {messageExtra ? (
+        {messageExtraDom ? (
           <div
             className={cx(
               `${prefixClass}-message-extra`,
@@ -93,5 +116,16 @@ export const ChatItem: React.FC<ChatItemProps> = (props) => {
       </Flex>
     </Flex>,
   );
-  return itemDom;
+  return (
+    chatItemRenderConfig?.render?.(
+      props,
+      {
+        avatar: <ProChatAvatar avatar={avatar?.avatar} title={avatar?.title} />,
+        title: <ProChatTitle title={avatar?.title} time={time} />,
+        messageContent: children,
+        itemDom,
+      },
+      itemDom,
+    ) || itemDom
+  );
 };
