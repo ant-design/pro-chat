@@ -96,7 +96,6 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
   const defaultAutoCompleteTextAreaProps = {
     placeholder: placeholder,
     ...inputAreaProps,
-
     className: cx(inputAreaProps?.className, `${prefixClass}-input`, hashId),
     value: message,
     onChange: (value) => {
@@ -200,7 +199,9 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
           style={actionStyle}
         />
         {inputDom}
-        <div className={cx(`${prefixClass}-send-area`, hashId)}>{buttonDom}</div>
+        {buttonDom ? (
+          <div className={cx(`${prefixClass}-send-area`, hashId)}>{buttonDom}</div>
+        ) : null}
       </Flex>
     </ConfigProvider>,
   );

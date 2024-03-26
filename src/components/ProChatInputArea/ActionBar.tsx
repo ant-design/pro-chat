@@ -35,6 +35,9 @@ export const ActionBar = ({
     </Popconfirm>,
   ];
 
+  const renderDoms = actionsRender?.(defaultDoms) ?? defaultDoms;
+
+  if (!renderDoms) return null;
   return (
     <Flex
       align={'center'}
@@ -45,7 +48,7 @@ export const ActionBar = ({
       className={cx(className)}
       gap={8}
     >
-      {actionsRender?.(defaultDoms) ?? defaultDoms}
+      {renderDoms}
     </Flex>
   );
 };

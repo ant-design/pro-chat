@@ -13,7 +13,7 @@ import { useRef, useState } from 'react';
 import { useRefFunction } from '@/hooks/useRefFunction';
 import { ProChatLocale, gLocaleObject } from '@/locale';
 import { ChatMessage } from '@/types';
-import { BackTopProps, Flex, FlexProps, FloatButton } from 'antd';
+import { BackTopProps, Flex, FloatButton } from 'antd';
 import cx from 'classnames';
 import { ProChatUserProfile, useChatList } from '../../hooks/useChatList';
 import { ModelConfig } from '../../types/config';
@@ -142,18 +142,8 @@ export interface ProChatProps<
   /**
    * 信息框顶部的操作列表
    */
-  actions?: {
-    /**
-     * 控制 input 顶部的操作区域的 flex 布局
-     */
-    flexConfig?: FlexProps;
-    /**
-     * 控制 input 顶部的操作区域的操作按钮
-     * @param defaultDoms
-     * @returns
-     */
-    render?: (defaultDoms: JSX.Element[]) => JSX.Element[];
-  };
+  actionsRender?: (defaultDoms: React.ReactNode[]) => ReactNode;
+
   // init
   loading?: boolean;
   /**
@@ -386,6 +376,7 @@ export function ProChat<
           stopGenerateMessage={stopGenerateMessage}
           clearMessage={clearMessage}
           areaRef={areaHtml}
+          actionsRender={props.actionsRender}
           sendButtonRender={sendButtonRender}
           inputAreaRender={inputAreaRender}
           inputRender={inputRender}
