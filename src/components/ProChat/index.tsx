@@ -358,6 +358,7 @@ export function ProChat<
           chatListRef={chatListContainerRef}
           chatList={chatList.concat(loadingMessage ? [loadingMessage] : [])}
           loading={loading}
+          loadingId={loadingMessage?.id}
           chatItemRenderConfig={chatItemRenderConfig}
           style={{
             ...styles?.chatList,
@@ -371,6 +372,7 @@ export function ProChat<
         />
         {backBottomDom}
         <ChatInputArea
+          typing={!!loadingMessage?.id}
           placeholder={placeholder || '请输入消息...'}
           onMessageSend={sendMessage}
           stopGenerateMessage={stopGenerateMessage}

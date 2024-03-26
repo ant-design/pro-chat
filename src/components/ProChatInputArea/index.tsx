@@ -24,7 +24,6 @@ export type ChatInputAreaProps = {
     onClearAllHistory: () => void,
   ) => ReactNode;
   placeholder?: string;
-  loading?: boolean;
   inputAreaProps: MentionsTextAreaProps;
   actionStyle?: React.CSSProperties;
   areaStyle?: React.CSSProperties;
@@ -34,6 +33,7 @@ export type ChatInputAreaProps = {
   stopGenerateMessage: () => void;
   onMessageSend: (message: string) => void | Promise<any>;
   actionsRender?: (defaultDoms: React.ReactNode[]) => ReactNode;
+  typing: boolean;
 };
 
 export const ChatInputArea = (props: ChatInputAreaProps) => {
@@ -43,7 +43,7 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
     onSend,
     inputAreaRender,
     areaRef,
-    loading,
+    typing,
     areaStyle,
     inputRender,
     sendButtonRender,
@@ -109,7 +109,7 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
       isChineseInput.current = false;
     },
     onPressEnter: (e) => {
-      if (!loading && !e.shiftKey && !isChineseInput.current) {
+      if (!typing && !e.shiftKey && !isChineseInput.current) {
         e.preventDefault();
         send();
       }
@@ -140,7 +140,7 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
    * @returns The default button props.
    */
   const defaultButtonProps = useMemo(() => {
-    return loading
+    return typing
       ? ({
           onClick: () => stopGenerateMessage(),
           icon: <StopLoadingIcon />,
@@ -157,11 +157,11 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
             marginBottom: 8,
           },
         } as const);
-  }, [loading, message]);
+  }, [typing, message]);
 
   const defaultButtonDom = (
     <Button {...defaultButtonProps} className={cx(`${prefixClass}-button`, hashId)}>
-      发送
+      {typing ? '停止生成' : '发送'}
     </Button>
   );
 
