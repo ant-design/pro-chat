@@ -168,7 +168,7 @@ export const useChatList = (props: {
       props.sendMessageRequest?.(),
       new Promise((_, reject) => {
         controller.current.signal.addEventListener('abort', () => {
-          reject(new Error('Aborted'));
+          reject();
         });
       }),
     ])) as Response | ChatMessage<any>;

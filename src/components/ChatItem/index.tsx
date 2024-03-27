@@ -67,7 +67,7 @@ export const ChatItem: React.FC<ChatItemProps> = (props) => {
 
   const childrenDom = runRender(chatItemRenderConfig?.contentRender, props, children);
 
-  const messageExtraDom = runRender(chatItemRenderConfig.actionsRender, props, messageExtra);
+  const messageExtraDom = runRender(chatItemRenderConfig?.actionsRender, props, messageExtra);
 
   const itemDom = wrapSSR(
     <Flex
