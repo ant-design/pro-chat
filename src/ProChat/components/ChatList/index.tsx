@@ -6,8 +6,8 @@ import { useStore } from '@/ProChat/store';
 import { chatSelectors } from '@/ProChat/store/selectors';
 
 import { ChatListItemProps } from '@/ChatList/ChatListItem';
+import useProChatLocale from '@/ProChat/hooks/useProChatLocale';
 import { useRefFunction } from '@/ProChat/hooks/useRefFunction';
-import { gLocaleObject } from '@/locale';
 import { renderActions } from './Actions';
 import { renderMessagesExtra } from './Extras';
 import { renderMessages } from './Messages';
@@ -21,7 +21,7 @@ interface ListProps extends Partial<ChatListProps> {
 const List = memo<ListProps>(
   ({ showTitle, itemShouldUpdate, chatItemRenderConfig, markdownProps }) => {
     const data = useStore(chatSelectors.currentChatsWithGuideMessage, isEqual);
-    const locale = useStore((s) => s.locale);
+    const { localeObject: localeObj } = useProChatLocale();
 
     const [
       init,
@@ -70,7 +70,6 @@ const List = memo<ListProps>(
     );
 
     const textObj = useMemo(() => {
-      const localeObj = gLocaleObject(locale);
       return {
         cancel: localeObj.cancel,
         confirm: localeObj.confirm,

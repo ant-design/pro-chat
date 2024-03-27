@@ -118,6 +118,10 @@ useProChat hooks 必须在包裹 `ProChatProvider` 后方可使用。
 
 :::
 
+## 国际化
+
+<code src="./demos/i18n.tsx"></code>
+
 ## APIs
 
 | 参数 | 说明 | 类型 | 默认值 |

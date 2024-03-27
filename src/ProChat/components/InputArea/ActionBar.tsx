@@ -5,7 +5,7 @@ import ActionIcon from '@/ActionIcon';
 import { ConfigProvider, Popconfirm } from 'antd';
 import { Trash2 } from 'lucide-react';
 
-import { gLocaleObject } from '@/locale';
+import useProChatLocale from '@/ProChat/hooks/useProChatLocale';
 import { useStore } from '../../store';
 
 const useStyles = createStyles(({ css, token }) => ({
@@ -15,25 +15,26 @@ const useStyles = createStyles(({ css, token }) => ({
 }));
 
 export const ActionBar = ({ className }: { className?: string }) => {
-  const [clearMessage, actionsRender, flexConfig, locale] = useStore((s) => [
+  const [clearMessage, actionsRender, flexConfig] = useStore((s) => [
     s.clearMessage,
     s.actions?.render,
     s.actions?.flexConfig,
-    s.locale,
   ]);
+
+  const { localeObject } = useProChatLocale();
 
   const { styles, theme } = useStyles();
   const defaultDoms = [
     <Popconfirm
-      title={gLocaleObject(locale).clearModalTitle}
+      title={localeObject.clearModalTitle}
       okButtonProps={{ danger: true }}
-      okText={gLocaleObject(locale).clearDialogue}
+      okText={localeObject.clearDialogue}
       key={'clear'}
       onConfirm={() => {
         clearMessage();
       }}
     >
-      <ActionIcon title={gLocaleObject(locale).clearCurrentDialogue} icon={Trash2} />
+      <ActionIcon title={localeObject.clearCurrentDialogue} icon={Trash2} />
     </Popconfirm>,
   ];
 

@@ -21,6 +21,7 @@ export const ProChatProvider = memo<ProChatProviderProps<any>>(
     userMeta,
     assistantMeta,
     request,
+    locale,
     ...props
   }) => {
     let isWrapped = true;
@@ -37,6 +38,7 @@ export const ProChatProvider = memo<ProChatProviderProps<any>>(
           request={request}
           assistantMeta={assistantMeta}
           onChatsChange={onChatsChange}
+          locale={locale}
         />
       </>
     );
