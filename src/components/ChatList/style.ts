@@ -10,6 +10,10 @@ const genStyle: GenerateStyle<ChatTokenType> = (token) => {
     [token.componentCls]: {
       overflow: 'auto',
       minHeight: 300,
+      [`${token.componentCls}-content-list`]: {
+        paddingTop: `${token.padding}px`,
+        paddingBottom: `${token.padding}px`,
+      },
     },
   };
 };

@@ -23,7 +23,6 @@ export default () => {
           const text = await delay(
             `这是一条模拟非流式输出的消息的消息。本次会话传入了${messages.length}条消息`,
           );
-
           return new Response(text);
         }}
         style={{ height: '100vh' }}

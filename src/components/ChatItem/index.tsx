@@ -83,7 +83,7 @@ export const ChatItem: React.FC<ChatItemProps> = (props) => {
           ...style,
         }}
         gap={8}
-        align={placement === 'left' ? 'flex-start' : 'flex-end'}
+        align={'flex-start'}
         className={cx(`${prefixClass}-message-container`, hashId)}
       >
         {avatarDom}

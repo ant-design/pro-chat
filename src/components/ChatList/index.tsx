@@ -60,8 +60,6 @@ const ChatList: React.FC<ChatListProps> = (props) => {
       </div>,
     );
 
-  console.log('chatList', chatList);
-
   return wrapSSR(
     <div className={cx(`${prefixClass}`, className, hashId)} style={style} ref={chatListRef}>
       {chatList.map((item) => {

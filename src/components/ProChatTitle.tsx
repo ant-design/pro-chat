@@ -77,7 +77,7 @@ export const ProChatTitle: React.FC<TitleProps> = ({
         flexDirection: placement === 'left' ? 'row' : 'row-reverse',
         ...style,
       }}
-      gap={4}
+      gap={8}
     >
       {title}
       {time && <time className={cx(`${prefixClass}-time`, hashId)}>{formatTime(time)}</time>}

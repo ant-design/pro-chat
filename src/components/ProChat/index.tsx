@@ -235,6 +235,7 @@ export function ProChat<
     styles,
     request,
     classNames,
+    sendMessageRequest,
   } = props;
   const chatListContainerRef = useRef<HTMLDivElement>(null);
   const areaHtml = useRef<HTMLDivElement>(null);
@@ -269,10 +270,12 @@ export function ProChat<
       : undefined,
     transformToChatMessage: props.transformToChatMessage,
     sendMessageRequest: () =>
-      props.sendMessageRequest(chatList, {
-        ...props.config,
-        ...props.params,
-      }),
+      sendMessageRequest
+        ? sendMessageRequest(chatList, {
+            ...props.config,
+            ...props.params,
+          })
+        : undefined,
   });
 
   const getChatLoadingMessage = useRefFunction(() => loadingMessage);
