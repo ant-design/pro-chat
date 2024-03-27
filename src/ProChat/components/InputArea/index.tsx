@@ -6,7 +6,7 @@ import { Flexbox } from 'react-layout-kit';
 
 import { useStore } from '../../store';
 
-import { gLocaleObject } from '@/locale';
+import useProChatLocale from '@/ProChat/hooks/useProChatLocale';
 import { TextAreaProps } from 'antd/es/input';
 import ActionBar from './ActionBar';
 import { AutoCompleteTextArea } from './AutoCompleteTextArea';
@@ -72,27 +72,20 @@ export type ChatInputAreaProps = {
 
 export const ChatInputArea = (props: ChatInputAreaProps) => {
   const { className, onSend, inputAreaRender, inputRender, sendButtonRender } = props || {};
-  const [
-    sendMessage,
-    isLoading,
-    placeholder,
-    inputAreaProps,
-    locale,
-    clearMessage,
-    stopGenerateMessage,
-  ] = useStore((s) => [
-    s.sendMessage,
-    !!s.chatLoadingId,
-    s.placeholder,
-    s.inputAreaProps,
-    s.locale,
-    s.clearMessage,
-    s.stopGenerateMessage,
-  ]);
+  const [sendMessage, isLoading, placeholder, inputAreaProps, clearMessage, stopGenerateMessage] =
+    useStore((s) => [
+      s.sendMessage,
+      !!s.chatLoadingId,
+      s.placeholder,
+      s.inputAreaProps,
+      s.clearMessage,
+      s.stopGenerateMessage,
+    ]);
   const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
   const [message, setMessage] = useState('');
   const isChineseInput = useRef(false);
   const { styles, theme } = useStyles();
+  const { localeObject } = useProChatLocale();
 
   const send = async () => {
     if (onSend) {
@@ -126,7 +119,7 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
    */
 
   const defaultAutoCompleteTextAreaProps = {
-    placeholder: placeholder || gLocaleObject(locale).placeholder,
+    placeholder: placeholder || localeObject.placeholder,
     ...inputAreaProps,
     className: cx(styles.input, inputAreaProps?.className, `${prefixClass}-component`),
     value: message,

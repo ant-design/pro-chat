@@ -6,6 +6,7 @@ export type Locale = 'zh-CN' | 'en-US';
 const locales = {
   'en-US': enUSLocal,
   'zh-CN': zhCNLocal,
+  en: enUSLocal,
 };
 
 export const gLocaleObject = (glocale: Locale): LocaleProps => {

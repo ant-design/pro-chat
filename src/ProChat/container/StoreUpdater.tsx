@@ -8,7 +8,10 @@ export type ProChatChatReference = MutableRefObject<ProChatInstance | undefined>
 
 export interface StoreUpdaterProps
   extends Partial<
-      Pick<ChatState, 'chats' | 'config' | 'init' | 'onChatsChange' | 'helloMessage' | 'request'>
+      Pick<
+        ChatState,
+        'chats' | 'config' | 'init' | 'onChatsChange' | 'helloMessage' | 'request' | 'locale'
+      >
     >,
     Pick<ChatProps, 'userMeta' | 'assistantMeta'> {
   chatRef?: ProChatChatReference;
@@ -25,6 +28,7 @@ const StoreUpdater = memo<StoreUpdaterProps>(
     helloMessage,
     chats,
     config,
+    locale,
   }) => {
     const storeApi = useStoreApi();
     const useStoreUpdater = createStoreUpdater(storeApi);
@@ -42,6 +46,7 @@ const StoreUpdater = memo<StoreUpdaterProps>(
 
     useStoreUpdater('request', request);
 
+    useStoreUpdater('locale', locale);
     const instance = useProChat();
     useImperativeHandle(chatRef, () => instance);
 

@@ -118,6 +118,10 @@ All initialization props such as `initialChats` need to be moved from `ProChat` 
 
 :::
 
+## International
+
+<code src="./demos/i18n.tsx"></code>
+
 ## APIs
 
 | Parameter | description | type | default |

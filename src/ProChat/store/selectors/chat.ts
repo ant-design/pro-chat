@@ -75,9 +75,7 @@ export const currentChats = (s: ChatStore): ChatMessage[] => {
 export const currentChatsWithGuideMessage = (s: ChatStore): ChatMessage[] => {
   const data = currentChats(s);
   // TODO: need topic inject
-
   const isBrandNewChat = data.length === 0;
-
   if (!isBrandNewChat) return data;
 
   const emptyInboxGuideMessage = {
