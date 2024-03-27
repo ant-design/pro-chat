@@ -153,7 +153,7 @@ export const useChatList = (props: {
       },
     ]);
 
-    if (!props.sendMessageRequest) return;
+    if (!props?.sendMessageRequest) return;
 
     setLoadingMessage({
       id: crypto.randomUUID(),

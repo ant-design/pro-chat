@@ -19,7 +19,7 @@ export default () => {
   return (
     <div style={{ background: theme.colorBgLayout, height: '100vh' }}>
       <ProChat
-        request={async (messages) => {
+        sendMessageRequest={async (messages) => {
           const text = await delay(
             `这是一条模拟非流式输出的消息的消息。本次会话传入了${messages.length}条消息`,
           );

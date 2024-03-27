@@ -5,7 +5,7 @@ import { ProChat } from '@ant-design/pro-chat';
 import { useTheme } from 'antd-style';
 
 import { Button } from 'antd';
-import { example } from '../mocks/fullFeature';
+import { example } from './mocks/fullFeature';
 
 export default () => {
   const theme = useTheme();

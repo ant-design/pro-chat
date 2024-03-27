@@ -1,13 +1,13 @@
 export const chatList = {
-  chatList: {
-    ZGxiX2p4: {
+  chatList: [
+    {
       content: '我对三体世界说话。',
       createAt: 1697862242452,
       id: 'ZGxiX2p4',
       role: 'user',
       updateAt: 1697862243540,
     },
-    Sb5pAzLL: {
+    {
       content: '保持静默，不要回答，不要回答。',
       createAt: 1697862247302,
       id: 'Sb5pAzLL',
@@ -16,7 +16,7 @@ export const chatList = {
       updateAt: 1697862249387,
       model: 'gpt-3.5-turbo',
     },
-  },
+  ],
   config: {
     model: 'gpt-3.5-turbo',
     params: {

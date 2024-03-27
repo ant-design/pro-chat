@@ -45,7 +45,7 @@ const ChatList: React.FC<ChatListProps> = (props) => {
     chatListItemTitleClassName,
     chatListItemExtraClassName,
     loadingMessage,
-    chatList,
+    chatList = [],
     style,
   } = props;
   const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
@@ -59,6 +59,8 @@ const ChatList: React.FC<ChatListProps> = (props) => {
         <SkeletonList />
       </div>,
     );
+
+  console.log('chatList', chatList);
 
   return wrapSSR(
     <div className={cx(`${prefixClass}`, className, hashId)} style={style} ref={chatListRef}>

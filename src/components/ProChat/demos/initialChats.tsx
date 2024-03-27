@@ -4,7 +4,7 @@
 import { ProChat } from '@ant-design/pro-chat';
 
 import { useTheme } from 'antd-style';
-import { example } from '../mocks/basic';
+import { example } from './mocks/basic';
 
 export default () => {
   const theme = useTheme();
