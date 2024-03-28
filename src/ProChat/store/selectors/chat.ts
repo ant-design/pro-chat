@@ -21,11 +21,9 @@ export const currentChats = (s: ChatStore): ChatMessage[] => {
           ...rest,
         };
       }
-
       case 'system': {
         return assistant;
       }
-
       case 'assistant': {
         return {
           avatar: assistant?.avatar,
@@ -34,8 +32,9 @@ export const currentChats = (s: ChatStore): ChatMessage[] => {
         };
       }
     }
-
-    return {};
+    return {
+      ...message,
+    };
   };
 
   const basic = s.chats
