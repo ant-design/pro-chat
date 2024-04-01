@@ -234,6 +234,7 @@ export function ProChat<
     placeholder,
     styles,
     request,
+    onChatsChange,
     classNames,
     sendMessageRequest,
   } = props;
@@ -258,6 +259,7 @@ export function ProChat<
     chatList: props.chatList,
     loading: props.loading,
     initialChatList: props.initialChatsList,
+    onChatsChange: onChatsChange ? onChatsChange : undefined,
     helloMessage: props.helloMessage || '让我们开始对话吧',
     userProfile,
     request: request

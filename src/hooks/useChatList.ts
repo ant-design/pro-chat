@@ -66,6 +66,7 @@ export const useChatList = (props: {
   loading: boolean;
   helloMessage?: React.ReactNode;
   userProfile: ProChatUserProfile;
+  onChatsChange?: (chatList: ChatMessage<any>[]) => void;
   request?: () => Promise<ChatMessage<any>[]>;
   sendMessageRequest?: () => Promise<Response | ChatMessage<any>>;
   transformToChatMessage?: (
@@ -97,6 +98,11 @@ export const useChatList = (props: {
     {
       value: props.chatList,
       defaultValue: props.initialChatList,
+      onChange: async (value) => {
+        if (props?.onChatsChange) {
+          await props?.onChatsChange(value);
+        }
+      },
     },
   );
 
