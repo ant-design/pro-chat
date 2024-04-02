@@ -12,8 +12,8 @@ export default () => {
   const theme = useTheme();
 
   return (
-    <Flex style={{ background: theme.colorBgLayout }}>
-      <Flex gap={16} vertical>
+    <Flex style={{ background: theme.colorBgLayout }} vertical>
+      <Flex gap={16}>
         <Button
           type={'primary'}
           onClick={() => {

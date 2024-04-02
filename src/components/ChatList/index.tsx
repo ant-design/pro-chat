@@ -4,6 +4,8 @@ import { MutableRefObject, useContext } from 'react';
 
 import type { ChatMessage } from '@/types';
 
+import { DEFAULT_AVATAR, DEFAULT_USER_AVATAR } from '@/const/meta';
+import { ProChatMetaData } from '@/hooks/useChatList';
 import { ConfigProvider } from 'antd';
 import { cx } from 'antd-style';
 import { ChatItem } from '../ChatItem';
@@ -19,6 +21,8 @@ export type ChatListProps = {
   className?: string;
   chatItemRenderConfig: ChatItemProps['chatItemRenderConfig'];
   style?: React.CSSProperties;
+  userMeta?: ProChatMetaData;
+  assistantMeta?: ProChatMetaData;
   chatListItemStyle?: React.CSSProperties;
   chatListItemContentStyle?: React.CSSProperties;
   chatListItemTitleStyle?: React.CSSProperties;
@@ -45,6 +49,12 @@ const ChatList: React.FC<ChatListProps> = (props) => {
     chatListItemTitleClassName,
     chatListItemExtraClassName,
     loadingMessage,
+    userMeta = {
+      avatar: DEFAULT_USER_AVATAR,
+    },
+    assistantMeta = {
+      avatar: DEFAULT_AVATAR,
+    },
     chatList = [],
     style,
   } = props;
@@ -67,12 +77,7 @@ const ChatList: React.FC<ChatListProps> = (props) => {
           <ChatItem
             key={item.id}
             data-id={item.id}
-            avatar={
-              (item as any).meta || {
-                avatar: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
-                title: 'Ant Design',
-              }
-            }
+            avatar={(item as any).meta || (item.role === 'user' ? userMeta : assistantMeta)}
             style={props.chatListItemStyle}
             originData={item}
             placement={item.role === 'user' ? 'right' : 'left'}

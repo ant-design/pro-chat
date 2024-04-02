@@ -15,7 +15,7 @@ import { ProChatLocale, gLocaleObject } from '@/locale';
 import { ChatMessage } from '@/types';
 import { BackTopProps, Flex, FloatButton } from 'antd';
 import cx from 'classnames';
-import { ProChatUserProfile, useChatList } from '../../hooks/useChatList';
+import { ProChatMetaData, ProChatUserProfile, useChatList } from '../../hooks/useChatList';
 import { ModelConfig } from '../../types/config';
 import ChatList, { ChatListProps } from '../ChatList';
 import ChatInputArea, { ChatInputAreaProps } from '../ProChatInputArea';
@@ -164,6 +164,15 @@ export interface ProChatProps<
    */
   style?: CSSProperties;
 
+  /**
+   * 用户的元信息
+   */
+  userMeta?: ProChatMetaData;
+  /**
+   * 助手的元信息
+   */
+  assistantMeta?: ProChatMetaData;
+
   classNames?: {
     chatList?: string;
     chatInputAction?: string;
@@ -235,6 +244,8 @@ export function ProChat<
     styles,
     request,
     onChatsChange,
+    userMeta,
+    assistantMeta,
     classNames,
     sendMessageRequest,
   } = props;
@@ -353,6 +364,8 @@ export function ProChat<
         <ChatList
           chatListRef={chatListContainerRef}
           chatList={chatList}
+          userMeta={userMeta}
+          assistantMeta={assistantMeta}
           loading={loading}
           loadingMessage={loadingMessage}
           chatItemRenderConfig={chatItemRenderConfig}
