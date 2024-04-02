@@ -14,17 +14,11 @@ By returning a streaming response request, achieve the typewriter output effect 
 
 UseProChat hooks must be used in the `ProChatProvider` before they can be used.
 
-:::
-
 :::warning
 
 All initialization props such as `initialChatsList` need to be moved from `ProChat` to `ProChatProvider`
 
 :::
-
-## International
-
-<code src="./demos/i18n.tsx"></code>
 
 ## APIs
 
