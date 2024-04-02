@@ -5,9 +5,9 @@ import { MetaData } from '@/ProChat/types/meta';
 import { MarkdownProps } from '@ant-design/pro-editor';
 import isEqual from 'fast-deep-equal';
 import { merge } from 'lodash-es';
-import createWithEqualityFn from 'zustand';
 import { optionalDevtools } from 'zustand-utils';
 import { DevtoolsOptions } from 'zustand/middleware';
+import { createWithEqualityFn } from 'zustand/traditional';
 import { ChatAction, chatAction } from './action';
 import { ChatPropsState, ChatState, initialState } from './initialState';
 
