@@ -22,6 +22,10 @@ All initialization props such as `initialChatsList` need to be moved from `ProCh
 
 :::
 
+## International
+
+<code src="./demos/i18n.tsx"></code>
+
 ## APIs
 
 | Parameter | description | type | default |

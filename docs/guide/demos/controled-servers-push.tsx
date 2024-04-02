@@ -46,14 +46,14 @@ export default () => {
                     justifyContent: 'center',
                   }}
                 >
-                  <Alert message={item.message} type="info" showIcon />
+                  <Alert message={item?.originData.content} type="info" showIcon />
                 </div>
               );
             }
             return defaultDom;
           },
         }}
-        request={async (messages) => {
+        sendMessageRequest={async (messages) => {
           const mockedData: string = `这是一段模拟的流式字符串数据。本次会话传入了${messages.length}条消息`;
 
           const mockResponse = new MockResponse(mockedData, 100);

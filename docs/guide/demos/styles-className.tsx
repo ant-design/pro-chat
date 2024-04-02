@@ -41,7 +41,7 @@ export default () => {
             );
           },
         }}
-        request={async (messages) => {
+        sendMessageRequest={async (messages) => {
           const mockedData: string = `这是一段模拟的对话数据。本次会话传入了${messages.length}条消息`;
           return new Response(mockedData);
         }}

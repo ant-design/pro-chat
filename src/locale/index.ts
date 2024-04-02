@@ -7,6 +7,7 @@ export type ProChatLocale = 'zh-CN' | 'en-US';
 const locales = {
   'en-US': enUSLocal,
   'zh-CN': zhCNLocal,
+  en: enUSLocal,
 };
 
 export const gLocaleObject = (locale: ProChatLocale): LocaleProps => {
