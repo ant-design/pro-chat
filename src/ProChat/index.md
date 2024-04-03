@@ -86,11 +86,11 @@ ProChat 使用 `meta` 来表意会话双方的头像、名称等信息。设定�
 
 <code src="./demos/renderInputArea.tsx"></code>
 
-## 悬浮窗使用
+## 侧边栏使用
 
-将 `ProChat` 组件作为会话解决方案
+将 `ProChat` 组件作为会话解决方案，使用 antd 的 FloatButton 和 Modal 可以完成优雅的侧边栏模式。
 
-<code src="./demos/draggable.tsx"></code>
+<code src="./demos/float-drawer.tsx"></code>
 
 ## 编程式操作控制
 

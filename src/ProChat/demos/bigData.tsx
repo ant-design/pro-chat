@@ -1,6 +1,5 @@
 /**
  * compact: true
- * title: 流式请求
  */
 import { ProChat } from '@ant-design/pro-chat';
 import { useTheme } from 'antd-style';
