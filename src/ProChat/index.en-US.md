@@ -86,11 +86,11 @@ Here is a demonstration case that supports image uploading. Try uploading files 
 
 <code src="./demos/renderInputArea.tsx"></code>
 
-## Suspended window usage
+## Sidebar Usage
 
-Using the `ProChat` component as a session solution
+Use the ProChat component as a conversation solution, utilizing antd's FloatButton and Modal to achieve an elegant sidebar mode.
 
-<code src="./demos/draggable.tsx"></code>
+<code src="./demos/float-drawer.tsx"></code>
 
 ## Programming operation control
 
