@@ -1,7 +1,5 @@
 /**
  * iframe: 500
- * title: 非流式的请求
- * description: 消息将在等待 5s 后返回
  */
 import { ProChat } from '@ant-design/pro-chat';
 import { useTheme } from 'antd-style';

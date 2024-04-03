@@ -1,5 +1,4 @@
 /**
- * title: 设置 loading 添加数据获取态
  * compact: true
  */
 import { ProChat } from '@ant-design/pro-chat';

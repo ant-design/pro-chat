@@ -1,6 +1,5 @@
 /**
  * compact: true
- * title: SSE
  */
 import { ProChat } from '@ant-design/pro-chat';
 import { MockSSEResponse } from '../mocks/sseResponse';
