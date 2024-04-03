@@ -12,13 +12,13 @@ import { MockResponse } from './mocks/streamResponse';
 
 export default () => {
   const theme = useTheme();
-  const [chats, setChats] = useState<ChatMessage<Record<string, any>>[]>(
-    Object.values(example.initialChats),
+  const [chatList, setChatList] = useState<ChatMessage<Record<string, any>>[]>(
+    Object.values(example.initialChatsList),
   );
   useEffect(() => {
     setTimeout(() => {
-      setChats([
-        ...chats,
+      setChatList([
+        ...chatList,
         {
           id: 'VbtDpzsi',
           content: `当前对话剩余的 token 数量为 100`,
@@ -31,9 +31,9 @@ export default () => {
   return (
     <div style={{ background: theme.colorBgLayout, height: '500px' }}>
       <ProChat
-        chats={chats}
-        onChatsChange={(chats) => {
-          setChats(chats);
+        chatList={chatList}
+        onChatsChange={(chatList) => {
+          setChatList(chatList);
         }}
         chatItemRenderConfig={{
           render: (item, dom, defaultDom) => {
@@ -46,14 +46,14 @@ export default () => {
                     justifyContent: 'center',
                   }}
                 >
-                  <Alert message={item.message} type="info" showIcon />
+                  <Alert message={item?.originData.content} type="info" showIcon />
                 </div>
               );
             }
             return defaultDom;
           },
         }}
-        request={async (messages) => {
+        sendMessageRequest={async (messages) => {
           const mockedData: string = `这是一段模拟的流式字符串数据。本次会话传入了${messages.length}条消息`;
 
           const mockResponse = new MockResponse(mockedData, 100);

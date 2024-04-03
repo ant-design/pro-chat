@@ -22,17 +22,17 @@ These design details are not very numerous, and for some models, they may not ne
 
 ## Custom input section
 
-We provide an API for renderInputArea to help you support multi-modal situations, as well as integrate and interact with ProChat's data streams
+We provide an API for inputAreaRender to help you support multi-modal situations, as well as integrate and interact with ProChat's data streams
 
 ```ts
-  renderInputArea?: (
+  inputAreaRender?: (
     defaultDom: ReactNode,
     onMessageSend: (message: string) => void | Promise<any>,
     onClearAllHistory: () => void,
   ) => ReactNode;
 ```
 
-renderInputArea have three parameters：
+inputAreaRender have three parameters：
 
 - defaultDom ：The default rendering dom, if you want to wrap or add some small content, you can directly combine it on this basis
 - onMessageSend ：The method of sending data, which is essentially the same as ProChat.sendMessage (Hooks), is used to send a data stream to ProChat
@@ -42,7 +42,7 @@ Now you can freely combine the current content and various requirements you plan
 
 ## A demonstration case of uploading an image
 
-<code src="./demos/renderInputArea.tsx" ></code>
+<code src="./demos/inputAreaRender.tsx" ></code>
 
 Let's break down this case in detail
 

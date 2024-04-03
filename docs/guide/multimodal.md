@@ -42,7 +42,7 @@ inputAreaRender 共有三个参数：
 
 ## 一个图片上传的演示案例
 
-<code src="./demos/renderInputArea.tsx" ></code>
+<code src="./demos/inputAreaRender.tsx" ></code>
 
 我们来详细拆解下这个案例
 
