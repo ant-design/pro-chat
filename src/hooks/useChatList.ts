@@ -68,7 +68,7 @@ export const useChatList = (props: {
   userProfile: ProChatUserProfile;
   onChatsChange?: (chatList: ChatMessage<any>[]) => void;
   request?: () => Promise<ChatMessage<any>[]>;
-  sendMessageRequest?: () => Promise<Response | ChatMessage<any>>;
+  sendMessageRequest?: (message: ChatMessage<any>[]) => Promise<Response | ChatMessage<any>>;
   transformToChatMessage?: (
     preChatMessage: ChatMessage,
     currentContent: { preContent: React.ReactNode; currentContent: string },
@@ -171,7 +171,7 @@ export const useChatList = (props: {
     } as ChatMessage<any>);
 
     const res = (await Promise.race([
-      props.sendMessageRequest?.(),
+      props.sendMessageRequest?.(chatList),
       new Promise((_, reject) => {
         controller.current.signal.addEventListener('abort', () => {
           reject();

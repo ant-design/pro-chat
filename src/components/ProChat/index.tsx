@@ -282,9 +282,9 @@ export function ProChat<
         }
       : undefined,
     transformToChatMessage: props.transformToChatMessage,
-    sendMessageRequest: () =>
+    sendMessageRequest: (message: ChatMessage<T>[]) =>
       sendMessageRequest
-        ? sendMessageRequest(chatList, {
+        ? sendMessageRequest(message, {
             ...props.config,
             ...props.params,
           })
