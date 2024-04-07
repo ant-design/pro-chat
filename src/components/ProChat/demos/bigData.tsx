@@ -74,7 +74,7 @@ export default () => {
                     justifyContent: 'center',
                   }}
                 >
-                  <Alert message={item.message} type="info" showIcon />
+                  <Alert message={item.originData.message} type="info" showIcon />
                 </div>
               );
             }
