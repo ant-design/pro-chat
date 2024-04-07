@@ -4,32 +4,17 @@
 import { ProChat } from '@ant-design/pro-chat';
 
 import { useTheme } from 'antd-style';
-import { example } from '../mocks/basic';
 
 export default () => {
   const theme = useTheme();
   return (
     <div style={{ background: theme.colorBgLayout }}>
       <ProChat
-        request={'/api/chat'}
-        config={{
-          ...example.config,
-          params: {
-            ...example.config.params,
-            userId: '123',
-            extra: 'extra',
-          },
-        }}
         autocompleteRequest={async (value) => {
           if (value === '/') {
             return [{ value: '你可以帮助我列出问题吗？', label: '你可以帮助我列出问题吗？' }];
           }
           return [];
-        }}
-        inputAreaProps={{
-          autoCompleteProps: {
-            placement: 'topRight',
-          },
         }}
         userMeta={{
           extra: 'extra',

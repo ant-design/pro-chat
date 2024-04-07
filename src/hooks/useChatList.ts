@@ -60,7 +60,10 @@ export const initialState = {
   config: initialModelConfig,
 };
 
-export const useChatList = (props: {
+/**
+ * Props for the ProChatUIUseListChat component.
+ */
+type ProChatUIUseListChatProps = {
   initialChatList: ChatMessage<any>[];
   chatList: ChatMessage<any>[];
   loading: boolean;
@@ -73,7 +76,14 @@ export const useChatList = (props: {
     preChatMessage: ChatMessage,
     currentContent: { preContent: React.ReactNode; currentContent: string },
   ) => Promise<ChatMessage<any>>;
-}) => {
+};
+
+/**
+ * Custom hook for managing a chat list.
+ * @param props - The hook's configuration options.
+ * @returns An object containing the chat list, loading state, and various functions to interact with the chat list.
+ */
+export const useChatList = (props: ProChatUIUseListChatProps) => {
   let controller = useRef<AbortController | null>(null);
 
   const [loadingMessage, setLoadingMessage] = useMergedState<ChatMessage<any> | undefined>(
@@ -84,6 +94,18 @@ export const useChatList = (props: {
     return loadingMessage;
   });
 
+  /**
+   * Custom hook for managing the chat list.
+   *
+   * @template T - The type of the chat message content.
+   * @param {Object} props - The hook props.
+   * @param {string} props.helloMessage - The initial hello message.
+   * @param {ChatMessage<T>[]} props.chatList - The initial chat list.
+   * @param {ChatMessage<T>[]} props.initialChatList - The default chat list.
+   * @param {UserProfile} props.userProfile - The user profile.
+   * @param {Function} props.onChatsChange - The callback function to handle chat list changes.
+   * @returns {ChatMessage<T>[]} The chat list and the function to update it.
+   */
   const [chatList, setChatList] = useMergedState<ChatMessage<any>[]>(
     [
       {
@@ -123,6 +145,12 @@ export const useChatList = (props: {
     value: props.loading,
   });
 
+  /**
+   * Fetches the chat list using the provided request function.
+   * If the request function is not provided, it sets the loading state to false and returns.
+   * Sets the loading state to true before making the request and sets it to false after the request is completed.
+   * If an error occurs during the request, logs the error to the console.
+   */
   const fetchChatList = useRefFunction(async () => {
     if (!props.request) {
       setLoading(false);
@@ -145,6 +173,11 @@ export const useChatList = (props: {
     setChatList([]);
   });
 
+  /**
+   * Sends a message and updates the chat list accordingly.
+   * @param {string} message - The message to send.
+   * @returns {Promise<void>} - A promise that resolves when the message is sent.
+   */
   const sendMessage = useRefFunction(async (message: string) => {
     controller.current = new AbortController();
     setChatList((prev) => [
@@ -248,6 +281,9 @@ export const useChatList = (props: {
     }
   });
 
+  /**
+   * Stops the generation of messages.
+   */
   const stopGenerateMessage = useRefFunction(() => {
     controller.current.abort?.();
   });

@@ -14,6 +14,34 @@ const runRender = (render: any, props: ChatItemProps, defaultDom, ...rest) => {
   return defaultDom;
 };
 
+/**
+ * Represents a chat item component.
+ *
+ * @component
+ * @example
+ * ```tsx
+ * <ChatItem
+ *   onAvatarClick={handleAvatarClick}
+ *   className="chat-item"
+ *   placement="left"
+ *   avatar={avatarData}
+ *   style={itemStyle}
+ *   time={messageTime}
+ *   messageExtra={extraContent}
+ *   chatListItemContentStyle={contentStyle}
+ *   chatListItemTitleStyle={titleStyle}
+ *   chatItemRenderConfig={renderConfig}
+ *   chatListItemAvatarStyle={avatarStyle}
+ *   chatListItemExtraStyle={extraStyle}
+ *   onDoubleClick={handleDoubleClick}
+ * >
+ *   {messageContent}
+ * </ChatItem>
+ * ```
+ *
+ * @param {ChatItemProps} props - The props for the ChatItem component.
+ * @returns {React.ReactElement} The rendered ChatItem component.
+ */
 export const ChatItem: React.FC<ChatItemProps> = (props) => {
   const {
     onAvatarClick,

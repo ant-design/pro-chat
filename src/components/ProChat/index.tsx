@@ -61,56 +61,101 @@ export type ProChatChatReference<T = Record<string, any>> = MutableRefObject<
  * ProChatProps 是 ProChat 组件的属性类型定义。
  * @template T - 聊天记录的数据类型
  */
+/**
+ * Represents the props for the ProChat component.
+ *
+ * @template T - The type of the chat message.
+ * @template Params - The type of the chat parameters.
+ */
 export interface ProChatProps<
   T extends Record<string, any> = Record<string, any>,
   Params extends Record<string, any> = Record<string, any>,
 > {
+  /**
+   * 聊天的参数,没次发起请求都会带入
+   */
   params?: Params;
+
+  /**
+   * The initial list of chat messages.
+   */
   initialChatsList?: ChatMessage<T>[];
 
   /**
-   * 语言模型角色设定
+   * The configuration for the language model.
    */
   config?: ModelConfig;
+
   /**
-   * 聊天记录
+   * The list of chat messages.
    */
   chatList?: ChatMessage<T>[];
+
+  /**
+   * The callback function that is called when the chat list changes.
+   *
+   * @param chatList - The updated chat list.
+   */
   onChatsChange?: (chatList: ChatMessage<T>[]) => void;
+
+  /**
+   * The request for fetching the chat list.
+   */
   request?: ChatListRequest<Params>;
+
+  /**
+   * The request for sending a chat message.
+   *
+   * @param message - The chat message to send.
+   * @param params - The parameters for the chat.
+   * @returns A promise that resolves to the response or the sent chat message.
+   */
   sendMessageRequest?: (
     message: ChatMessage<T>[],
     params: Params & ModelConfig,
   ) => Promise<Response | ChatMessage<T>>;
 
+  /**
+   * The function to transform a pre-chat message to a chat message.
+   *
+   * @param preChatMessage - The pre-chat message.
+   * @param currentContent - The current content of the chat message.
+   * @returns A promise that resolves to the transformed chat message.
+   */
   transformToChatMessage?: (
     preChatMessage: ChatMessage,
     currentContent: { preContent: React.ReactNode; currentContent: string },
   ) => Promise<ChatMessage<T>>;
 
-  userProfile?: ProChatUserProfile;
   /**
-   * 帮助消息
+   * The user profile for the chat.
+   */
+  userProfile?: ProChatUserProfile;
+
+  /**
+   * The hello message to display.
    */
   helloMessage?: ReactNode;
 
   /**
-   * 生成消息 id
-   * @param message
-   * @returns message id
+   * The function to generate a message ID.
+   *
+   * @param message - The chat message.
+   * @param parentId - The ID of the parent message.
+   * @returns The generated message ID.
    */
   genMessageId?: (message: ChatMessage<T>[], parentId: string) => Promise<string>;
 
   /**
-   * 重置消息
-   * @returns
+   * The function to reset the chat messages.
    */
   onResetMessage?: () => Promise<void>;
 
   /**
-   * 获取自动完成列表的  request
-   * @param value
-   * @returns
+   * The request for fetching the autocomplete list.
+   *
+   * @param value - The value to autocomplete.
+   * @returns A promise that resolves to the autocomplete list.
    */
   autocompleteRequest?: (value: string) => Promise<
     {
@@ -120,59 +165,75 @@ export interface ProChatProps<
   >;
 
   /**
-   * 输入框的 placeholder
+   * The placeholder text for the input area.
    */
   placeholder?: string;
 
   /**
-   * 国际化
+   * The localization settings for the chat.
    */
   locale?: ProChatLocale;
 
   /**
-   * 输入框的 props,优先级最高
+   * The props for the input area.
    */
   inputAreaProps?: MentionsTextAreaProps;
 
   /**
-   * 信息框额外渲染
+   * The function to render extra content for each chat message.
+   *
+   * @param message - The chat message.
+   * @param type - The type of the message ('assistant' or 'user').
+   * @returns The rendered React node.
    */
   messageItemExtraRender?: (message: ChatMessage<T>, type: 'assistant' | 'user') => React.ReactNode;
 
   /**
-   * 信息框顶部的操作列表
+   * The function to render actions for the chat messages.
+   *
+   * @param defaultDoms - The default DOM elements.
+   * @returns The rendered React node.
    */
   actionsRender?: (defaultDoms: React.ReactNode[]) => ReactNode;
 
-  // init
-  loading?: boolean;
   /**
-   * @description 聊天项的渲染函数
+   * The loading state of the chat.
+   */
+  loading?: boolean;
+
+  /**
+   * The configuration for rendering chat items.
    */
   chatItemRenderConfig?: ChatListProps['chatItemRenderConfig'];
+
   /**
-   * chatRef 是一个可选的 ProChatChatReference 对象，用于获取 ProChat 组件的引用。
+   * The reference to the ProChat component.
    */
   chatRef?: ProChatChatReference;
 
   /**
-   * backToBottomConfig 是一个 Omit<BackBottomProps, 'target'> 对象，用于配置返回底部按钮的行为。
+   * The configuration for the back to bottom button.
    */
   backToBottomConfig?: Omit<BackTopProps, 'target'>;
+
   /**
-   * 样式对象
+   * The styles for the component.
    */
   style?: CSSProperties;
 
   /**
-   * 用户的元信息
+   * The user's metadata.
    */
   userMeta?: ProChatMetaData;
+
   /**
-   * 助手的元信息
+   * The assistant's metadata.
    */
   assistantMeta?: ProChatMetaData;
 
+  /**
+   * The CSS class names for the component.
+   */
   classNames?: {
     chatList?: string;
     chatInputAction?: string;
@@ -184,6 +245,9 @@ export interface ProChatProps<
     chatListItemAvatar?: string;
   };
 
+  /**
+   * The CSS styles for the component.
+   */
   styles?: {
     chatList?: CSSProperties;
     chatInputAction?: CSSProperties;
@@ -194,29 +258,36 @@ export interface ProChatProps<
     chatListItemExtra?: CSSProperties;
     chatListItemAvatar?: CSSProperties;
   };
+
   /**
-   * CSS类名
+   * The CSS class name for the component.
    */
   className?: string;
+
   /**
-   * 输入区域的渲染函数
-   * @param defaultDom 默认的 DOM 元素
-   * @param onMessageSend 发送消息的回调函数
-   * @param onClearAllHistory 清除所有历史记录的回调函数
-   * @returns 渲染的 React 元素
+   * The function to render the input area.
+   *
+   * @param defaultDom - The default DOM element.
+   * @param onMessageSend - The callback function for sending a message.
+   * @param onClearAllHistory - The callback function for clearing all history.
+   * @returns The rendered React element.
    */
   inputAreaRender?: ChatInputAreaProps['inputAreaRender'];
+
   /**
-   * 输入框的渲染函数
-   * @param defaultDom 默认的 DOM 元素
-   * @param onMessageSend 发送消息的回调函数
-   * @param props 输入框的属性
+   * The function to render the input box.
+   *
+   * @param defaultDom - The default DOM element.
+   * @param onMessageSend - The callback function for sending a message.
+   * @param props - The props for the input box.
    */
   inputRender?: ChatInputAreaProps['inputRender'];
+
   /**
-   * 聊天发送按钮的渲染配置
-   * @param defaultDom 默认的 DOM 元素
-   * @param defaultProps 默认的属性
+   * The function to render the send button.
+   *
+   * @param defaultDom - The default DOM element.
+   * @param defaultProps - The default props.
    */
   sendButtonRender?: ChatInputAreaProps['sendButtonRender'];
 }

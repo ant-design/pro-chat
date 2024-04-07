@@ -1,21 +1,17 @@
 import { ProChatLocale, gLocaleObject } from '@/locale';
 import { DeleteFilled } from '@ant-design/icons';
-import { Flex, Popconfirm } from 'antd';
+import { Flex, Popconfirm, theme } from 'antd';
 import cx from 'classnames';
 
-export const ActionBar = ({
-  className,
-  clearMessage,
-  actionsRender,
-  locale,
-  style,
-}: {
+export const ProChatActionBar: React.FC<{
   className?: string;
+  prefixClass?: string;
   clearMessage: () => void;
-  locale: ProChatLocale;
-  style?: React.CSSProperties;
   actionsRender: (defaultDoms: React.ReactNode[]) => React.ReactNode;
-}) => {
+  locale?: ProChatLocale;
+  style?: React.CSSProperties;
+}> = ({ className, prefixClass, clearMessage, actionsRender, locale, style }) => {
+  const { hashId } = theme.useToken();
   const defaultDoms = [
     <Popconfirm
       title={gLocaleObject(locale).clearModalTitle}
@@ -27,6 +23,7 @@ export const ActionBar = ({
       }}
     >
       <DeleteFilled
+        className={cx(`${prefixClass}-item`, `${prefixClass}-clear-icon`, hashId)}
         title={gLocaleObject(locale).clearCurrentDialogue}
         style={{
           cursor: 'pointer',
@@ -45,12 +42,10 @@ export const ActionBar = ({
         flexDirection: 'row-reverse',
         ...style,
       }}
-      className={cx(className)}
+      className={cx(className, prefixClass, hashId)}
       gap={8}
     >
       {renderDoms}
     </Flex>
   );
 };
-
-export default ActionBar;

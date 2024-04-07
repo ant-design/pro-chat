@@ -9,12 +9,38 @@ import { Flex } from 'antd';
 import cx from 'classnames';
 import { ChatItemProps } from './ChatItem/type';
 
+/**
+ * Props for the ProChatTitle component.
+ */
 export interface TitleProps {
+  /**
+   * The title of the chat item's avatar.
+   */
   title: ChatItemProps['avatar']['title'];
+
+  /**
+   * The placement of the chat item.
+   */
   placement?: ChatItemProps['placement'];
+
+  /**
+   * The time of the chat item.
+   */
   time?: ChatItemProps['time'];
+
+  /**
+   * Additional class name for the component.
+   */
   className?: string;
+
+  /**
+   * Prefix class name for the component.
+   */
   prefixClass?: string;
+
+  /**
+   * Inline style for the component.
+   */
   style?: React.CSSProperties;
 }
 

@@ -27,11 +27,27 @@ export interface ChatMessage<T extends Record<string, any> = Record<string, any>
    * @description 消息发送者的角色
    */
   role: ModelRoleType | string;
+  /**
+   * 创建时间
+   */
   createAt: number;
+  /**
+   * 唯一id
+   */
   id: string;
+  /**
+   * 修改时间
+   */
   updateAt: number;
+  /**
+   * 附加数据
+   * @description 如果不传则为空
+   */
   extra?: T;
-  messageItemExtraRender?: (props: ChatMessage) => React.ReactNode;
+
+  /**
+   * 模型元数据
+   */
   meta?: ProChatMetaData;
 }
 

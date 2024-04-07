@@ -18,7 +18,7 @@ const genStyle: GenerateStyle<ChatTokenType> = (token) => {
       position: 'relative',
       display: 'flex',
       padding: `0 ${token.paddingSM}px`,
-      '& > *': {
+      [`& > ${token.componentCls}-action-bar-item`]: {
         padding: token.paddingXS,
         borderRadius: token.borderRadius,
         '&:hover': {

@@ -3,40 +3,106 @@ import { ProChatLocale } from '@/locale';
 import { SendOutlined } from '@ant-design/icons';
 import { Button, ButtonProps, ConfigProvider, Divider, Flex } from 'antd';
 import cx from 'classnames';
-import { ReactNode, useContext, useMemo, useRef, useState } from 'react';
-import ActionBar from './ActionBar';
+import { useContext, useMemo, useRef, useState } from 'react';
+import { ProChatActionBar } from './ActionBar';
 import { MentionsTextArea, MentionsTextAreaProps } from './AutoCompleteTextArea';
 import StopLoadingIcon from './StopLoading';
 import { useStyle } from './style';
 
+/**
+ * Props for the ChatInputArea component.
+ */
 export type ChatInputAreaProps = {
+  /**
+   * Ref to the input area container.
+   */
   areaRef?: React.RefObject<HTMLDivElement>;
+  /**
+   * Additional class name for the input area container.
+   */
   className?: string;
+  /**
+   * Callback function triggered when the send button is clicked or the enter key is pressed.
+   * Return `true` or a `Promise` that resolves to `true` to allow sending the message,
+   * or `false` or a `Promise` that resolves to `false` to prevent sending the message.
+   */
   onSend?: (message: string) => boolean | Promise<boolean>;
+  /**
+   * Custom render function for the input area.
+   * Receives the default input DOM, the `onMessageSend` function, and the default props for the MentionsTextArea component.
+   * Should return the custom input DOM.
+   */
   inputRender?: (
-    defaultDom: ReactNode,
+    defaultDom: React.ReactNode,
     onMessageSend: (message: string) => void | Promise<any>,
     defaultProps: MentionsTextAreaProps,
-  ) => ReactNode;
-  sendButtonRender?: (defaultDom: ReactNode, defaultProps: ButtonProps) => ReactNode;
+  ) => React.ReactNode;
+  /**
+   * Custom render function for the send button.
+   * Receives the default send button DOM and the default props for the Button component.
+   * Should return the custom send button DOM.
+   */
+  sendButtonRender?: (defaultDom: React.ReactNode, defaultProps: ButtonProps) => React.ReactNode;
+  /**
+   * Custom render function for the input area container.
+   * Receives the default input area DOM, the `onMessageSend` function, and the `onClearAllHistory` function.
+   * Should return the custom input area DOM.
+   */
   inputAreaRender?: (
-    defaultDom: ReactNode,
+    defaultDom: React.ReactNode,
     onMessageSend: (message: string) => void | Promise<any>,
     onClearAllHistory: () => void,
-  ) => ReactNode;
+  ) => React.ReactNode;
+  /**
+   * Placeholder text for the input area.
+   */
   placeholder?: string;
+  /**
+   * Props for the MentionsTextArea component.
+   */
   inputAreaProps: MentionsTextAreaProps;
+  /**
+   * Custom CSS styles for the action buttons container.
+   */
   actionStyle?: React.CSSProperties;
+  /**
+   * Custom CSS styles for the input area container.
+   */
   areaStyle?: React.CSSProperties;
+  /**
+   * Locale configuration for the ProChat component.
+   */
   locale?: ProChatLocale;
-
+  /**
+   * Callback function to clear the message input.
+   */
   clearMessage: () => void;
+  /**
+   * Callback function to stop generating messages.
+   */
   stopGenerateMessage: () => void;
+  /**
+   * Callback function triggered when a message is sent.
+   * Receives the sent message as a parameter.
+   */
   onMessageSend: (message: string) => void | Promise<any>;
-  actionsRender?: (defaultDoms: React.ReactNode[]) => ReactNode;
+  /**
+   * Custom render function for the action buttons.
+   * Receives an array of default action button DOMs.
+   * Should return the custom action buttons DOM.
+   */
+  actionsRender?: (defaultDoms: React.ReactNode[]) => React.ReactNode;
+  /**
+   * Flag indicating whether the user is currently typing.
+   */
   typing: boolean;
 };
 
+/**
+ * Represents the ChatInputArea component.
+ * @param props - The props for the ChatInputArea component.
+ * @returns The rendered ChatInputArea component.
+ */
 export const ChatInputArea = (props: ChatInputAreaProps) => {
   const {
     className,
@@ -79,26 +145,14 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
   });
 
   /**
-   * 默认的自动完成文本区域属性
-   *
-   * @property {string} placeholder - 输入框的占位符
-   * @property {Object} inputAreaProps - 输入框的其他属性
-   * @property {string} inputAreaProps.className - 输入框的类名
-   * @property {string} prefixClass - 输入框的前缀类名
-   * @property {string} value - 输入框的值
-   * @property {function} onChange - 输入框值改变时的回调函数
-   * @property {Object} autoSize - 输入框的自动调整大小配置
-   * @property {number} autoSize.maxRows - 输入框的最大行数
-   * @property {function} onCompositionStart - 输入法开始输入时的回调函数
-   * @property {function} onCompositionEnd - 输入法结束输入时的回调函数
-   * @property {function} onPressEnter - 按下回车键时的回调函数
+   * Default props for the auto-complete text area.
    */
   const defaultAutoCompleteTextAreaProps = {
     placeholder: placeholder,
     ...inputAreaProps,
     className: cx(inputAreaProps?.className, `${prefixClass}-input`, hashId),
     value: message,
-    onChange: (value) => {
+    onChange: (value: string) => {
       setMessage(value);
     },
     autoSize: { maxRows: 8 },
@@ -108,7 +162,7 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
     onCompositionEnd: () => {
       isChineseInput.current = false;
     },
-    onPressEnter: (e) => {
+    onPressEnter: (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
       if (!typing && !e.shiftKey && !isChineseInput.current) {
         e.preventDefault();
         send();
@@ -119,7 +173,7 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
   const defaultInput = <MentionsTextArea {...defaultAutoCompleteTextAreaProps} />;
 
   /**
-   * 支持下自定义输入框
+   * Supports custom input rendering.
    */
   const inputDom = inputRender
     ? inputRender?.(
@@ -132,11 +186,11 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
     : defaultInput;
 
   /**
-   * 根据 loading 状态返回默认的按钮道具。
-   * 如果 loading 为 true，则按钮将具有文本类型，即 stopGenerateMessage 点击处理程序，
-   * 和 StopLoadingIcon 作为图标。
-   * 如果 loading 为 false，则按钮将具有文本类型、发送点击处理程序、
-   * 和 SendOutlined 图标作为图标。
+   * Returns the default button props based on the loading state.
+   * If loading is true, the button will have a text type, with the stopGenerateMessage click handler,
+   * and the StopLoadingIcon as the icon.
+   * If loading is false, the button will have a text type, the send click handler,
+   * and the SendOutlined icon as the icon.
    * @returns The default button props.
    */
   const defaultButtonProps = useMemo(() => {
@@ -191,11 +245,12 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
             margin: 0,
           }}
         />
-        <ActionBar
+        <ProChatActionBar
           clearMessage={clearMessage}
           actionsRender={actionsRender}
-          className={cx(`${prefixClass}-action-bar`, hashId)}
+          className={cx(hashId)}
           locale={locale}
+          prefixClass={`${prefixClass}-action-bar`}
           style={actionStyle}
         />
         {inputDom}
