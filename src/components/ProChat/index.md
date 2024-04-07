@@ -42,8 +42,6 @@ description: a Chat Solution
 
 类 OpenAI 的文档模式，使用 `doc` 字段控制文档模式。适用于需要展示文档的场景。
 
-<code src="./demos/doc-mode.tsx"></code>
-
 ## 指定会话双方的头像、名称
 
 ProChat 使用 `meta` 来表意会话双方的头像、名称等信息。设定助手的头像、名称使用 `assistantMeta`，设定用户的头像、名称使用 `userMeta`。 使用 `showTitle` 显示名称。

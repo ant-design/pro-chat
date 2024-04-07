@@ -71,8 +71,6 @@ export default () => {
 
 像是下面这种，如果你自己写，你需要对 String 部分的内容解析，然后决定哪些用什么渲染，我们已经帮你内置好了一些渲染器：Markdown 渲染、终端命令拼接、跳转链接等等常用的渲染器
 
-<code src="./demos/doc-mode.tsx" ></code>
-
 而针对多行代码块，我们则强化了代码块组件的交互能力，使之具有折叠展开、更换高亮语言等进阶功能，进而帮助你在日常使用 AI 大模型中更好地查看AI生成的代码。
 
 <img src=" https://mdn.alipayobjects.com/huamei_re70wt/afts/img/A*e4JbQKfupVQAAAAAAAAAAAAADmuEAQ/original" style="width:100%;">

@@ -15,7 +15,6 @@ ProEditor is positioned as a component library for the front-end to quickly buil
 ## Install
 
 ```bash
-# @ant-design/pro-editor based on antd and antd-style，which need to be installed in the project
 $ npm install antd antd-style -S
 $ npm install @ant-design/pro-chat -S
 ```

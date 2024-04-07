@@ -15,7 +15,6 @@ ProEditor 定位为 Chat 对话模式下，给前端提供快速搭建对话内�
 ## 安装
 
 ```bash
-# @ant-design/pro-editor 基于 antd 和 antd-style，需要在项目中安装
 $ npm install antd antd-style -S
 $ npm install @ant-design/pro-chat -S
 ```

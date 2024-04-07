@@ -2,21 +2,12 @@
  * iframe: 500
  */
 import { ProChat } from '@ant-design/pro-chat';
-import { DraggablePanel } from '@ant-design/pro-editor';
 import { Flex } from 'antd';
-import { useTheme } from 'antd-style';
 import { MockResponse } from './mocks/streamResponse';
 
 export default () => {
-  const theme = useTheme();
-
   return (
-    <DraggablePanel
-      mode={'float'}
-      defaultPosition={{ x: 400, y: 30 }}
-      minHeight={400}
-      style={{ background: theme.colorBgLayout, display: 'flex', flexDirection: 'column' }}
-    >
+    <div>
       <Flex align={'center'} style={{ fontSize: 18 }}>
         客服助理
       </Flex>
@@ -31,6 +22,6 @@ export default () => {
           }}
         />
       </div>
-    </DraggablePanel>
+    </div>
   );
 };
