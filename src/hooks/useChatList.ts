@@ -185,15 +185,8 @@ export const useChatList = (props: ProChatUIUseListChatProps) => {
    */
   const sendMessage = useRefFunction(async (message: string) => {
     controller.current = new AbortController();
-    setChatList((prev) => [
-      ...prev,
-      genMessageRecord(
-        {
-          content: message,
-        },
-        'user',
-      ),
-    ]);
+    const nextList = [...chatList, genMessageRecord({ content: message }, 'user')];
+    setChatList(nextList);
 
     if (!props?.sendMessageRequest) return;
 
@@ -207,7 +200,7 @@ export const useChatList = (props: ProChatUIUseListChatProps) => {
     );
 
     const res = (await Promise.race([
-      props.sendMessageRequest?.(chatList),
+      props.sendMessageRequest?.(nextList),
       new Promise((_, reject) => {
         controller.current.signal.addEventListener('abort', () => {
           reject();
