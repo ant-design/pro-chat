@@ -4,7 +4,7 @@ import { ChatMessage } from '@/types';
 import { ModelConfig } from '@/types/config';
 import { processSSE } from '@/utils/fetch';
 import { useMergedState } from 'rc-util';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useMemo, useRef } from 'react';
 import { useRefFunction } from './useRefFunction';
 
 export const initialModelConfig: ModelConfig = {
@@ -99,34 +99,21 @@ export const useChatList = (props: ProChatUIUseListChatProps) => {
    *
    * @template T - The type of the chat message content.
    * @param {Object} props - The hook props.
-   * @param {string} props.helloMessage - The initial hello message.
    * @param {ChatMessage<T>[]} props.chatList - The initial chat list.
    * @param {ChatMessage<T>[]} props.initialChatList - The default chat list.
    * @param {UserProfile} props.userProfile - The user profile.
    * @param {Function} props.onChatsChange - The callback function to handle chat list changes.
    * @returns {ChatMessage<T>[]} The chat list and the function to update it.
    */
-  const [chatList, setChatList] = useMergedState<ChatMessage<any>[]>(
-    [
-      {
-        id: crypto.randomUUID(),
-        content: props.helloMessage,
-        role: 'bot',
-        createAt: Date.now(),
-        updateAt: Date.now(),
-        meta: props.userProfile?.assistant || initialState.userProfile.assistant,
-      },
-    ],
-    {
-      value: props.chatList,
-      defaultValue: props.initialChatList,
-      onChange: async (value) => {
-        if (props?.onChatsChange) {
-          await props?.onChatsChange(value);
-        }
-      },
+  const [chatList, setChatList] = useMergedState<ChatMessage<any>[]>([], {
+    value: props.chatList,
+    defaultValue: props.initialChatList,
+    onChange: async (value) => {
+      if (props?.onChatsChange) {
+        await props?.onChatsChange(value);
+      }
     },
-  );
+  });
 
   const setMessageItem = useRefFunction((id: string, content: ChatMessage<any>) => {
     const newChatList = chatList.map((item) => {
@@ -292,8 +279,22 @@ export const useChatList = (props: ProChatUIUseListChatProps) => {
     fetchChatList();
   }, []);
 
+  const helloMessageList = useMemo(
+    () => [
+      {
+        id: crypto.randomUUID(),
+        content: props.helloMessage,
+        role: 'bot',
+        createAt: Date.now(),
+        updateAt: Date.now(),
+        meta: props.userProfile?.assistant || initialState.userProfile.assistant,
+      },
+    ],
+    [],
+  );
+
   return {
-    chatList,
+    chatList: chatList.length > 0 ? chatList : helloMessageList,
     loading,
     loadingMessage,
     stopGenerateMessage,
