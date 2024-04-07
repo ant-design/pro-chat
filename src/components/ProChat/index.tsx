@@ -82,7 +82,7 @@ export interface ProChatInstance<T = Record<string, any>> {
   genMessageRecord: (
     message: Partial<ChatMessage<T>>,
     userType: 'assistant' | 'user',
-  ) => Promise<ChatMessage<T>>;
+  ) => ChatMessage<T>;
 }
 
 export type ProChatChatReference<T = Record<string, any>> = MutableRefObject<
@@ -411,6 +411,7 @@ export function ProChat<
         getChatList,
         getChatLoadingMessage,
         setMessageItem,
+        genMessageRecord,
         scrollToBottom: () => {
           (chatListContainerRef as any)?.current?.scrollTo({
             behavior: 'smooth',
