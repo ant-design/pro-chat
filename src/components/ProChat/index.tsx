@@ -19,6 +19,7 @@ import { ProChatMetaData, ProChatUserProfile, useChatList } from '../../hooks/us
 import { ModelConfig } from '../../types/config';
 import ChatList, { ChatListProps } from '../ChatList';
 import ChatInputArea, { ChatInputAreaProps } from '../ProChatInputArea';
+import { ProChatActionBarProps } from '../ProChatInputArea/ActionBar';
 import { MentionsTextAreaProps } from '../ProChatInputArea/AutoCompleteTextArea';
 
 export type ChatListRequest<Params> = (params: Params & ModelConfig) => Promise<ChatMessage[]>;
@@ -194,7 +195,7 @@ export interface ProChatProps<
    * @param defaultDoms - The default DOM elements.
    * @returns The rendered React node.
    */
-  actionsRender?: (defaultDoms: React.ReactNode[]) => ReactNode;
+  actionsRender?: ProChatActionBarProps['actionsRender'];
 
   /**
    * The loading state of the chat.

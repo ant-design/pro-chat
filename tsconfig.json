@@ -1,17 +1,25 @@
 {
-  "include": ["src", "tests", ".dumirc.ts", "*.ts"],
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"],
   "compilerOptions": {
     "strict": false,
     "declaration": true,
     "skipLibCheck": true,
-    "esModuleInterop": true,
     "jsx": "react-jsx",
-    "types": ["vitest/globals", "@testing-library/jest-dom"],
     "baseUrl": "./",
+    "allowJs": true,
+    "noEmit": true,
+    "incremental": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+
     "paths": {
       "@@/*": [".dumi/tmp/*"],
       "@/*": ["src/*"],
-      "@ant-design/pro-chat": ["src"],
+      "@ant-design/pro-chat": ["./src"],
       "@ant-design/pro-chat/*": ["src/*"]
     }
   }

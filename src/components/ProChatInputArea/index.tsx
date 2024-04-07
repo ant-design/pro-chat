@@ -4,7 +4,7 @@ import { SendOutlined } from '@ant-design/icons';
 import { Button, ButtonProps, ConfigProvider, Divider, Flex } from 'antd';
 import cx from 'classnames';
 import { useContext, useMemo, useRef, useState } from 'react';
-import { ProChatActionBar } from './ActionBar';
+import { ProChatActionBar, ProChatActionBarProps } from './ActionBar';
 import { MentionsTextArea, MentionsTextAreaProps } from './AutoCompleteTextArea';
 import StopLoadingIcon from './StopLoading';
 import { useStyle } from './style';
@@ -91,7 +91,7 @@ export type ChatInputAreaProps = {
    * Receives an array of default action button DOMs.
    * Should return the custom action buttons DOM.
    */
-  actionsRender?: (defaultDoms: React.ReactNode[]) => React.ReactNode;
+  actionsRender?: ProChatActionBarProps['actionsRender'];
   /**
    * Flag indicating whether the user is currently typing.
    */

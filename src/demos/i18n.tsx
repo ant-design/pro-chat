@@ -15,12 +15,7 @@ export default () => {
           setLanguage(v);
         }}
       />
-      <ProChat
-        locale={language}
-        request={async () => {
-          return new Response('this is mock data');
-        }}
-      />
+      <ProChat locale={language} />
     </div>
   );
 };

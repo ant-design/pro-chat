@@ -3,14 +3,17 @@ import { DeleteFilled } from '@ant-design/icons';
 import { Flex, Popconfirm, theme } from 'antd';
 import cx from 'classnames';
 
-export const ProChatActionBar: React.FC<{
+export type ProChatActionBarProps = {
   className?: string;
   prefixClass?: string;
   clearMessage: () => void;
-  actionsRender: (defaultDoms: React.ReactNode[]) => React.ReactNode;
+  actionsRender: (defaultDoms: React.ReactNode[], props: ProChatActionBarProps) => React.ReactNode;
   locale?: ProChatLocale;
   style?: React.CSSProperties;
-}> = ({ className, prefixClass, clearMessage, actionsRender, locale, style }) => {
+};
+
+export const ProChatActionBar: React.FC<ProChatActionBarProps> = (props) => {
+  const { className, prefixClass, clearMessage, actionsRender, locale, style } = props;
   const { hashId } = theme.useToken();
   const defaultDoms = [
     <Popconfirm
@@ -32,7 +35,7 @@ export const ProChatActionBar: React.FC<{
     </Popconfirm>,
   ];
 
-  const renderDoms = actionsRender?.(defaultDoms) ?? defaultDoms;
+  const renderDoms = actionsRender?.(defaultDoms, props) ?? defaultDoms;
 
   if (!renderDoms) return null;
   return (
