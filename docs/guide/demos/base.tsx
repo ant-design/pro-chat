@@ -1,9 +1,16 @@
 /**
  * compact: true
  */
-import { ClockCircleOutlined, SyncOutlined } from '@ant-design/icons';
+import {
+  ClockCircleOutlined,
+  CopyOutlined,
+  DeleteOutlined,
+  EditOutlined,
+  ReloadOutlined,
+  SyncOutlined,
+} from '@ant-design/icons';
 import { ProChat } from '@ant-design/pro-chat';
-import { Popover, Tag, Timeline } from 'antd';
+import { Popover, Space, Tag, Timeline } from 'antd';
 
 import { useTheme } from 'antd-style';
 
@@ -20,15 +27,13 @@ export default () => {
           return new Response(mockedData);
         }}
         chatItemRenderConfig={{
-          contentRender: (_, content) => {
+          contentBeforeRender: (_, content) => {
             return (
               <>
                 <Popover
                   placement="topLeft"
                   content={
                     <Timeline
-                      pending="Recording..."
-                      reverse={true}
                       items={[
                         {
                           children: 'Create a services site 2015-09-01',
@@ -54,6 +59,20 @@ export default () => {
                 </Popover>
                 <div>{content}</div>
               </>
+            );
+          },
+          contentAfterRender: (item, dom) => {
+            return (
+              <Space
+                style={{
+                  fontSize: 12,
+                }}
+              >
+                <CopyOutlined />
+                <ReloadOutlined />
+                <DeleteOutlined />
+                <EditOutlined />
+              </Space>
             );
           },
         }}

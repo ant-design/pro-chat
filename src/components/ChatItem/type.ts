@@ -31,7 +31,12 @@ export interface ChatItemProps<T = Record<string, any>> {
   /**
    * @description Additional content to be displayed alongside the message.
    */
-  messageExtra?: ReactNode;
+  contentAfter?: ReactNode;
+
+  /**
+   * @description Additional content to be displayed alongside the message.
+   */
+  contentBefore?: ReactNode;
 
   /**
    * @description Callback function for avatar click event.
@@ -70,7 +75,11 @@ export interface ChatItemProps<T = Record<string, any>> {
     /**
      * @description Custom rendering function for the actions component.
      */
-    actionsRender?: WithFalse<(props: ChatItemProps, defaultDom: ReactNode) => ReactNode>;
+    contentAfterRender?: WithFalse<(props: ChatItemProps, defaultDom: ReactNode) => ReactNode>;
+    /**
+     * @description Custom rendering function for the before component.
+     */
+    contentBeforeRender?: WithFalse<(props: ChatItemProps, defaultDom: ReactNode) => ReactNode>;
 
     /**
      * @description Custom rendering function for the avatar component.

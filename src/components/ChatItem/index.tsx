@@ -51,7 +51,8 @@ export const ChatItem: React.FC<ChatItemProps> = (props) => {
     avatar,
     style,
     time,
-    messageExtra,
+    contentAfter,
+    contentBefore,
     chatListItemContentStyle,
     chatListItemTitleStyle,
     chatItemRenderConfig,
@@ -95,7 +96,17 @@ export const ChatItem: React.FC<ChatItemProps> = (props) => {
 
   const childrenDom = runRender(chatItemRenderConfig?.contentRender, props, children);
 
-  const messageExtraDom = runRender(chatItemRenderConfig?.actionsRender, props, messageExtra);
+  const contentBeforeRender = runRender(
+    chatItemRenderConfig?.contentBeforeRender,
+    props,
+    contentBefore,
+  );
+
+  const contentAfterRender = runRender(
+    chatItemRenderConfig?.contentAfterRender,
+    props,
+    contentAfter,
+  );
 
   const itemDom = wrapSSR(
     <Flex
@@ -115,32 +126,46 @@ export const ChatItem: React.FC<ChatItemProps> = (props) => {
         className={cx(`${prefixClass}-message-container`, hashId)}
       >
         {avatarDom}
-        <Flex
-          align={placement === 'left' ? 'flex-start' : 'flex-end'}
-          className={cx(
-            `${prefixClass}-message-content`,
-            `${prefixClass}-message-content-${placement}`,
-            hashId,
-          )}
-          vertical
-          onDoubleClick={onDoubleClick}
-          gap={8}
-          style={chatListItemContentStyle}
-        >
-          {childrenDom}
-        </Flex>
-        {messageExtraDom ? (
-          <div
+        <Flex vertical gap={4}>
+          {contentBeforeRender ? (
+            <div
+              className={cx(
+                `${prefixClass}-message-before`,
+                `${prefixClass}-message-before-${placement}`,
+                hashId,
+              )}
+              style={chatListItemExtraStyle}
+            >
+              {contentBeforeRender}
+            </div>
+          ) : null}
+          <Flex
+            align={placement === 'left' ? 'flex-start' : 'flex-end'}
             className={cx(
-              `${prefixClass}-message-extra`,
-              `${prefixClass}-message-extra-${placement}`,
+              `${prefixClass}-message-content`,
+              `${prefixClass}-message-content-${placement}`,
               hashId,
             )}
-            style={chatListItemExtraStyle}
+            vertical
+            onDoubleClick={onDoubleClick}
+            gap={8}
+            style={chatListItemContentStyle}
           >
-            {messageExtra}
-          </div>
-        ) : null}
+            {childrenDom}
+          </Flex>
+          {contentAfterRender ? (
+            <div
+              className={cx(
+                `${prefixClass}-message-after`,
+                `${prefixClass}-message-after-${placement}`,
+                hashId,
+              )}
+              style={chatListItemExtraStyle}
+            >
+              {contentAfterRender}
+            </div>
+          ) : null}
+        </Flex>
       </Flex>
     </Flex>,
   );

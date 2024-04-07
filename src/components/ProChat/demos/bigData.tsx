@@ -63,7 +63,7 @@ export default () => {
               </div>
             );
           },
-          actionsRender: false,
+          contentAfterRender: false,
           render: (item, dom, defaultDom) => {
             if (item?.originData?.role === 'notification') {
               return (

@@ -23,7 +23,7 @@ export default () => {
           const { id, content } = messages[0] || {};
           proChatRef.current.scrollToBottom?.();
           if (!id) return;
-          proChatRef.current.setMessageContent(id, content + '👋');
+          proChatRef.current.sendMessage(content + '👋');
         }}
       >
         修改首条消息，添加表情：👋

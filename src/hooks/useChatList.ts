@@ -161,6 +161,24 @@ export const useChatList = (props: ProChatUIUseListChatProps) => {
   });
 
   /**
+   * Generates a message record.
+   * @param {Partial<ChatMessage<T>>} message - The message to generate.
+   */
+  const genMessageRecord = useRefFunction(
+    (message: Partial<ChatMessage<any>>, type: 'user' | 'assistant' = 'assistant') => {
+      return {
+        id: crypto.randomUUID(),
+        content: message,
+        role: type,
+        meta: props.userProfile?.[type] || initialState.userProfile?.[type],
+        createAt: Date.now(),
+        updateAt: Date.now(),
+        ...message,
+      } as ChatMessage<any>;
+    },
+  );
+
+  /**
    * Sends a message and updates the chat list accordingly.
    * @param {string} message - The message to send.
    * @returns {Promise<void>} - A promise that resolves when the message is sent.
@@ -169,26 +187,24 @@ export const useChatList = (props: ProChatUIUseListChatProps) => {
     controller.current = new AbortController();
     setChatList((prev) => [
       ...prev,
-      {
-        id: crypto.randomUUID(),
-        content: message,
-        role: 'user',
-        meta: props.userProfile?.user || initialState.userProfile.user,
-        createAt: Date.now(),
-        updateAt: Date.now(),
-      },
+      genMessageRecord(
+        {
+          content: message,
+        },
+        'user',
+      ),
     ]);
 
     if (!props?.sendMessageRequest) return;
 
-    setLoadingMessage({
-      id: crypto.randomUUID(),
-      role: 'bot',
-      meta: props.userProfile?.assistant || initialState.userProfile.assistant,
-      createAt: Date.now(),
-      updateAt: Date.now(),
-      content: LOADING_FLAT,
-    } as ChatMessage<any>);
+    setLoadingMessage(
+      genMessageRecord(
+        {
+          content: LOADING_FLAT,
+        },
+        'assistant',
+      ),
+    );
 
     const res = (await Promise.race([
       props.sendMessageRequest?.(chatList),
@@ -301,5 +317,6 @@ export const useChatList = (props: ProChatUIUseListChatProps) => {
     setMessageItem,
     clearMessage,
     sendMessage,
+    genMessageRecord,
   };
 };
