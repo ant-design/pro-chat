@@ -35,8 +35,8 @@ const ChatItem = memo<ChatItemProps>((props) => {
     messageExtra,
     renderMessage,
     text,
-    errorMessage,
     chatItemRenderConfig,
+    renderErrorMessages,
     markdownProps,
     onDoubleClick,
     originData,
@@ -54,6 +54,8 @@ const ChatItem = memo<ChatItemProps>((props) => {
 
   const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
   const prefixClass = getPrefixCls('pro-chat');
+
+  const errorMessage = error?.message;
 
   const avatarDom = useMemo(() => {
     if (chatItemRenderConfig?.avatarRender === false) return null;
@@ -73,7 +75,11 @@ const ChatItem = memo<ChatItemProps>((props) => {
   const messageContentDom = useMemo(() => {
     if (chatItemRenderConfig?.contentRender === false) return null;
     const dom = error ? (
-      <ErrorContent error={error} message={errorMessage} placement={placement} />
+      renderErrorMessages ? (
+        renderErrorMessages(error)
+      ) : (
+        <ErrorContent message={errorMessage} placement={placement} />
+      )
     ) : (
       <MessageContent
         editing={editing}
@@ -108,6 +114,7 @@ const ChatItem = memo<ChatItemProps>((props) => {
 
   const actionsDom = useMemo(() => {
     if (chatItemRenderConfig?.actionsRender === false) return null;
+    if (error) return null;
     const dom = (
       <Actions
         actions={actions}

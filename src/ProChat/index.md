@@ -22,6 +22,10 @@ description: a Chat Solution
 
 <code src="./demos/sse.tsx"></code>
 
+## 错误处理
+
+<code src="./demos/error.tsx"></code>
+
 ## 大数据渲染
 
 <code src="./demos/bigData.tsx"></code>

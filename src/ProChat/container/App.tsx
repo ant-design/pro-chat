@@ -4,6 +4,7 @@ import RcResizeObserver from 'rc-resize-observer';
 import { CSSProperties, memo, useContext, useEffect, useRef, useState } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
+import { ChatListItemProps } from '@/ChatList/ChatListItem';
 import { ConfigProvider } from 'antd';
 import ChatList from '../components/ChatList';
 import ChatInputArea, { ChatInputAreaProps } from '../components/InputArea';
@@ -66,6 +67,8 @@ export interface ConversationProps extends ProChatProps<any> {
    * @param defaultProps 默认的属性
    */
   sendButtonRender?: ChatInputAreaProps['sendButtonRender'];
+
+  renderErrorMessages?: ChatListItemProps['renderErrorMessages'];
 }
 
 const App = memo<ConversationProps>(
@@ -80,6 +83,7 @@ const App = memo<ConversationProps>(
     inputRender,
     chatItemRenderConfig,
     backToBottomConfig,
+    renderErrorMessages,
     sendButtonRender,
     markdownProps,
   }) => {
@@ -136,6 +140,7 @@ const App = memo<ConversationProps>(
                 itemShouldUpdate={itemShouldUpdate}
                 chatItemRenderConfig={chatItemRenderConfig}
                 markdownProps={markdownProps}
+                renderErrorMessages={renderErrorMessages}
               />
               <ChatScrollAnchor target={ref} />
             </div>

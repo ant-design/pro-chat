@@ -1,8 +1,7 @@
-import { AlertProps } from 'antd';
 import { ReactNode } from 'react';
 
 import { EditableMessageProps } from '@/EditableMessage';
-import { DivProps, MetaData } from '@/types';
+import { ChatMessageError, DivProps, MetaData } from '@/types';
 import { MarkdownProps } from '@ant-design/pro-editor';
 
 export type WithFalse<T> = T | false;
@@ -28,8 +27,7 @@ export interface ChatItemProps<T = Record<string, any>> {
   /**
    * @description Props for Error render
    */
-  error?: AlertProps;
-  errorMessage?: ReactNode;
+  error?: ChatMessageError;
   /**
    * @description Whether the chat item is in loading state
    */
@@ -105,6 +103,8 @@ export interface ChatItemProps<T = Record<string, any>> {
       ) => ReactNode
     >;
   };
+
+  renderErrorMessages?: (data: ChatMessageError) => ReactNode;
 
   originData?: T;
 }

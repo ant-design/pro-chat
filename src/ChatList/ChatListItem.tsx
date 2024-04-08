@@ -5,7 +5,7 @@ import { FC, ReactNode, useMemo, useState } from 'react';
 import { ActionEvent } from '@/ActionIconGroup';
 import ChatItem, { type ChatItemProps } from '@/ChatItem';
 import { LLMRoleType } from '@/types/llm';
-import { ChatMessage } from '@/types/message';
+import { ChatMessage, ChatMessageError } from '@/types/message';
 
 import { useRefFunction } from '@/ProChat/hooks/useRefFunction';
 import { MarkdownProps } from '@ant-design/pro-editor';
@@ -50,9 +50,7 @@ export interface ListItemProps<T = Record<string, any>> {
   /**
    * 渲染错误消息的函数。
    */
-  renderErrorMessages?: {
-    [errorType: 'default' | string]: RenderErrorMessage;
-  };
+  renderErrorMessages?: (data: ChatMessageError) => ReactNode;
   /**
    * 渲染列表项的函数。
    */
@@ -141,7 +139,6 @@ const ChatListItem = (props: ChatListItemProps) => {
     markdownProps,
     ...item
   } = props;
-
   const [editing, setEditing] = useState(false);
 
   const { message } = App.useApp();
@@ -193,22 +190,6 @@ const ChatListItem = (props: ChatListItemProps) => {
   });
 
   /**
-   * 渲染错误消息的函数。
-   * @param data 聊天消息的数据。
-   * @returns 渲染错误消息的组件。
-   */
-  const ErrorMessage = useRefFunction(({ data }: { data: ChatMessage }) => {
-    if (!renderErrorMessages || !item?.error?.type) return;
-    let RenderFunction;
-    if (renderErrorMessages?.[item.error.type])
-      RenderFunction = renderErrorMessages[item.error.type];
-    if (!RenderFunction && renderErrorMessages?.['default'])
-      RenderFunction = renderErrorMessages['default'];
-    if (!RenderFunction) return;
-    return <RenderFunction {...data} />;
-  });
-
-  /**
    * 渲染操作按钮的函数。
    * @param data 聊天消息的数据。
    * @returns 渲染操作按钮的组件。
@@ -250,9 +231,7 @@ const ChatListItem = (props: ChatListItemProps) => {
    */
   const error = useMemo(() => {
     if (!item.error) return;
-    return {
-      message: item.error?.message,
-    };
+    return item.error;
   }, [item.error]);
 
   /**
@@ -269,7 +248,7 @@ const ChatListItem = (props: ChatListItemProps) => {
         editing={editing}
         originData={originData}
         error={error}
-        errorMessage={<ErrorMessage data={item} />}
+        renderErrorMessages={renderErrorMessages}
         loading={loading}
         message={item.content}
         messageExtra={<MessageExtra data={item} />}
@@ -300,6 +279,7 @@ const ChatListItem = (props: ChatListItemProps) => {
     props.loading,
     props.id,
     (item as any).meta,
+    item.error,
     item.updateAt || item.createAt,
     editing,
   ]);
