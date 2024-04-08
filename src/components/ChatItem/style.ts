@@ -28,8 +28,11 @@ const genStyle: GenerateStyle<ChatTokenType> = (token) => {
         textAlign: 'center',
         lineHeight: '40px',
       },
-      '&-message-container': {},
+      '&-message-container': {
+        width: '100%',
+      },
       '&-message-content': {
+        width: 'max-content',
         padding: token.paddingXS,
         border: `1px solid ${token.colorBorderSecondary}`,
         borderRadius: token.borderRadius,

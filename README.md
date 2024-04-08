@@ -62,10 +62,7 @@ $ pnpm install antd // peerDependencies
 
 ```js
 const nextConfig = {
-  transpilePackages: [
-    '@ant-design/pro-chat',
-    'react-intersection-observer',
-  ],
+  transpilePackages: ['@ant-design/pro-chat', 'react-intersection-observer'],
 };
 ```
 

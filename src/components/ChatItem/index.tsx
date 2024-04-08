@@ -126,7 +126,15 @@ export const ChatItem: React.FC<ChatItemProps> = (props) => {
         className={cx(`${prefixClass}-message-container`, hashId)}
       >
         {avatarDom}
-        <Flex vertical gap={4}>
+        <Flex
+          vertical
+          gap={4}
+          className={cx(
+            `${prefixClass}-message-container`,
+            `${prefixClass}-message-container-${placement}`,
+            hashId,
+          )}
+        >
           {contentBeforeRender ? (
             <div
               className={cx(

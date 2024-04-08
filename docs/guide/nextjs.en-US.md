@@ -32,10 +32,7 @@ Due to Next.js being a CSR, SSR isomorphic React framework, and ProChat only pro
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Convert pure ESM modules to node compatible modules
-  transpilePackages: [
-    '@ant-design/pro-chat',
-    'react-intersection-observer',
-  ],
+  transpilePackages: ['@ant-design/pro-chat', 'react-intersection-observer'],
 };
 ```
 
