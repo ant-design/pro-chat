@@ -11,9 +11,10 @@ import RcResizeObserver from 'rc-resize-observer';
 import { useRef, useState } from 'react';
 
 import { useRefFunction } from '@/hooks/useRefFunction';
-import { ProChatLocale, gLocaleObject } from '@/locale';
+import { BackToBottmButton, BackToBottmButtonProps } from '@/index';
+import { ProChatLocale } from '@/locale';
 import { ChatMessage } from '@/types';
-import { BackTopProps, Flex, FloatButton } from 'antd';
+import { Flex } from 'antd';
 import cx from 'classnames';
 import { ProChatMetaData, ProChatUserProfile, useChatList } from '../../hooks/useChatList';
 import { ModelConfig } from '../../types/config';
@@ -246,7 +247,7 @@ export interface ProChatProps<
   /**
    * The configuration for the back to bottom button.
    */
-  backToBottomConfig?: Omit<BackTopProps, 'target'>;
+  backToBottomConfig?: BackToBottmButtonProps;
 
   /**
    * The styles for the component.
@@ -424,6 +425,19 @@ export function ProChat<
     [chatRef],
   );
 
+  const scrollToBottom = useMemo(() => {
+    if (chatListContainerRef.current) {
+      return () => {
+        chatListContainerRef.current.scrollTo({
+          behavior: 'smooth',
+          left: 0,
+          top: chatListContainerRef.current.scrollHeight,
+        });
+      };
+    }
+    return () => {};
+  }, [chatListContainerRef]);
+
   useEffect(() => {
     if (chatListContainerRef.current) {
       chatListContainerRef.current.scrollTo({
@@ -437,15 +451,11 @@ export function ProChat<
   const backBottomDom = useMemo(() => {
     if (!isInitRender) return null;
     return (
-      <FloatButton.BackTop
-        style={{
-          bottom: 138,
-        }}
+      <BackToBottmButton
         target={() => chatListContainerRef.current as HTMLElement}
         {...backToBottomConfig}
-      >
-        {gLocaleObject('zh-CN').backToBottom}
-      </FloatButton.BackTop>
+        onClick={scrollToBottom}
+      />
     );
   }, [isInitRender]);
 
@@ -462,6 +472,7 @@ export function ProChat<
         style={{
           maxHeight: '100vh',
           height: '100%',
+          position: 'relative',
           ...style,
         }}
         vertical
