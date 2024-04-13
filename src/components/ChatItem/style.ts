@@ -31,10 +31,10 @@ const genStyle: GenerateStyle<ChatTokenType> = (token) => {
       '&-message-container': {
         width: '100%',
         '&-right': {
-          justifyContent: 'flex-end',
+          alignItems: 'flex-end',
         },
         '&-left': {
-          justifyContent: 'flex-start',
+          alignItems: 'flex-start',
         },
       },
       '&-message-content': {

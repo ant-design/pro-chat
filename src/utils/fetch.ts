@@ -21,6 +21,8 @@ export interface FetchSSEOptions {
   signal?: AbortSignal;
 }
 
+const waitTime = (time: number) => new Promise((resolve) => setTimeout(resolve, time));
+
 /**
  * 使用流式方法获取数据
  * @param fetchFn
@@ -56,6 +58,7 @@ export const processSSE = async (response: Response, options: FetchSSEOptions = 
     done = doneReading;
     const chunkValue = decoder.decode(value, { stream: !doneReading });
     finishText += chunkValue;
+    await waitTime(0);
     options.onMessageHandle?.(chunkValue, returnRes, done ? 'done' : 'progress');
   }
 

@@ -86,14 +86,23 @@ type ProChatUIUseListChatProps = {
 export const useChatList = (props: ProChatUIUseListChatProps) => {
   let controller = useRef<AbortController | null>(null);
 
+  const loadingMessageRef = useRef<ChatMessage<any> | undefined>(undefined);
+
   const [loadingMessage, setLoadingMessage] = useMergedState<ChatMessage<any> | undefined>(
     undefined,
+    {
+      postState: (value) => {
+        loadingMessageRef.current = value;
+        return value;
+      },
+    },
   );
 
   const getLoadingMessage = useRefFunction(() => {
-    return loadingMessage;
+    return loadingMessageRef.current;
   });
 
+  const chatListRef = useRef<ChatMessage<any>[]>([]);
   /**
    * Custom hook for managing the chat list.
    *
@@ -101,7 +110,6 @@ export const useChatList = (props: ProChatUIUseListChatProps) => {
    * @param {Object} props - The hook props.
    * @param {ChatMessage<T>[]} props.chatList - The initial chat list.
    * @param {ChatMessage<T>[]} props.initialChatList - The default chat list.
-   * @param {UserProfile} props.userProfile - The user profile.
    * @param {Function} props.onChatsChange - The callback function to handle chat list changes.
    * @returns {ChatMessage<T>[]} The chat list and the function to update it.
    */
@@ -112,6 +120,10 @@ export const useChatList = (props: ProChatUIUseListChatProps) => {
       if (props?.onChatsChange) {
         await props?.onChatsChange(value);
       }
+    },
+    postState: (value) => {
+      chatListRef.current = value;
+      return value;
     },
   });
 
@@ -185,11 +197,9 @@ export const useChatList = (props: ProChatUIUseListChatProps) => {
    */
   const sendMessage = useRefFunction(async (message: string) => {
     controller.current = new AbortController();
-    const nextList = [...chatList, genMessageRecord({ content: message }, 'user')];
-    setChatList(nextList);
-
+    chatList.push(genMessageRecord({ content: message }, 'user'));
+    setChatList(chatList);
     if (!props?.sendMessageRequest) return;
-
     setLoadingMessage(
       genMessageRecord(
         {
@@ -200,7 +210,7 @@ export const useChatList = (props: ProChatUIUseListChatProps) => {
     );
 
     const res = (await Promise.race([
-      props.sendMessageRequest?.(nextList),
+      props.sendMessageRequest?.(chatListRef.current),
       new Promise((_, reject) => {
         controller.current.signal.addEventListener('abort', () => {
           reject();
@@ -226,8 +236,9 @@ export const useChatList = (props: ProChatUIUseListChatProps) => {
           }
           const content =
             getLoadingMessage()?.content === LOADING_FLAT
-              ? ''
+              ? text
               : getLoadingMessage()?.content + text;
+
           const message = {
             ...getLoadingMessage(),
             updateAt: Date.now(),
