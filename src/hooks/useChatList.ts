@@ -252,6 +252,7 @@ export const useChatList = (props: ProChatUIUseListChatProps) => {
             currentContent: text,
           });
 
+          loadingMessageRef.current = transformMessage || message;
           setLoadingMessage(transformMessage || message);
         },
         onErrorHandle: async (error) => {
