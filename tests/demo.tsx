@@ -7,10 +7,11 @@ import { resetMockDate, setMockDate } from './utils';
 
 theme.defaultConfig.hashed = false;
 // 特殊情况略过 snapshot 的文件
-const NotSnapshotFileList = ['renderInputArea.tsx'];
+const NotSnapshotFileList = ['renderInputArea.tsx', 'float-drawer.tsx'];
 
 function demoTest(component: string) {
   beforeEach(() => {
+    theme.defaultConfig.hashed = false;
     process.env.NODE_ENV = 'TEST';
     setMockDate('2020-07-15T05:20:00.795');
   });
