@@ -1,9 +1,11 @@
 import { cleanup, render } from '@testing-library/react';
+import { theme } from 'antd';
 import { glob } from 'glob';
 import path from 'path';
 import { afterEach, beforeEach, describe, it, vi } from 'vitest';
 import { resetMockDate, setMockDate } from './utils';
 
+theme.defaultConfig.hashed = false;
 // 特殊情况略过 snapshot 的文件
 const NotSnapshotFileList = ['renderInputArea.tsx'];
 
