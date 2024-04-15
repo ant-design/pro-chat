@@ -376,7 +376,7 @@ export function ProChat<
     loading: props.loading,
     initialChatList: props.initialChatsList,
     onChatsChange: onChatsChange ? onChatsChange : undefined,
-    helloMessage: props.helloMessage || '让我们开始对话吧',
+    helloMessage: <>{props.helloMessage || '让我们开始对话吧'}</>,
     userProfile,
     request: request
       ? () => {

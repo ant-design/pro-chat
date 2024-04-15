@@ -34,7 +34,7 @@ export default () => {
                   } else {
                     controller.close();
                   }
-                }, 160);
+                }, 300);
               };
               push();
             },

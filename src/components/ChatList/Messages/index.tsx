@@ -1,7 +1,7 @@
-import { memo } from 'react';
-
+import AnimText from '@/components/Animation/AnimText';
 import { LOADING_FLAT } from '@/const/message';
 import { Collapse, Divider, Typography } from 'antd';
+import { memo } from 'react';
 import ReactMarkdown from 'react-markdown';
 import BubblesLoading from '../Loading';
 import { useStyles } from './style';
@@ -21,17 +21,27 @@ const components: any = {
   // pre: Code,
 };
 
+const Render = ({ children }: { children: string }) => {
+  const { styles } = useStyles();
+  return (
+    <ReactMarkdown className={styles.markdown} components={components}>
+      {children}
+    </ReactMarkdown>
+  );
+};
+
 export const MessageComponent: React.FC<{
   content: string | React.ReactNode;
-}> = memo(({ content }) => {
-  const { styles } = useStyles();
+  animation?: boolean;
+}> = memo(({ content, animation }) => {
   if (content === LOADING_FLAT) return <BubblesLoading />;
   if (typeof content !== 'string') return content;
+  if (!animation) {
+    return <Render>{content}</Render>;
+  }
   return (
     <Typography>
-      <ReactMarkdown className={styles.markdown} components={components}>
-        {content}
-      </ReactMarkdown>
+      <AnimText Render={Render}>{content}</AnimText>
     </Typography>
   );
 });
