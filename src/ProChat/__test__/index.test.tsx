@@ -6,17 +6,17 @@ describe('ProChat', () => {
   it('input area render worked', () => {
     const wrapper = render(
       <ProChat
-        renderInputArea={() => {
+        inputAreaRender={() => {
           return <div>RenderInputArea</div>;
         }}
       />,
     );
-    expect(wrapper.getByText('RenderInputArea')).toBeInTheDocument();
+    expect(wrapper.getByText('RenderInputArea')).toBeTruthy();
   });
 
   it('i18n worked', () => {
     const app = render(<ProChat locale="en-US" />);
     const text = gLocaleObject('en-US');
-    expect(app.queryByPlaceholderText(text.placeholder)).toBeInTheDocument();
+    expect(app.queryByPlaceholderText(text.placeholder)).toBeTruthy();
   });
 });

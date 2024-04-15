@@ -6,12 +6,13 @@ import { ChatMessage, ProChat } from '@ant-design/pro-chat';
 import { useTheme } from 'antd-style';
 import { useState } from 'react';
 
+import { example } from '../mocks/basic';
 import { MockResponse } from '../mocks/streamResponse';
 
 export default () => {
   const theme = useTheme();
 
-  const [chats, setChats] = useState<ChatMessage<Record<string, any>>[]>();
+  const [chats, setChats] = useState<ChatMessage<Record<string, any>>[]>(example.chats);
 
   return (
     <div style={{ background: theme.colorBgLayout }}>
