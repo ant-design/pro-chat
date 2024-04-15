@@ -1,6 +1,10 @@
 {
   "name": "@ant-design/pro-chat",
+<<<<<<< HEAD
   "version": "2.1.0",
+=======
+  "version": "2.0.11",
+>>>>>>> 0185541 (2.0.11)
   "description": "a solution for ai chat",
   "keywords": [
     "ai",
