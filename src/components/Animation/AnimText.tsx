@@ -6,7 +6,7 @@ export interface IAnimTextProps {
   Render: any;
 }
 
-export default function AnimText({ children, Render }: IAnimTextProps) {
+export function AnimText({ children, Render }: IAnimTextProps) {
   const [done, setDone] = useState(false);
   const baseText = children;
   const count = useMotionValue(1);
