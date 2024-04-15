@@ -4,6 +4,7 @@ import { SendOutlined } from '@ant-design/icons';
 import { Button, ButtonProps, ConfigProvider, Divider, Flex } from 'antd';
 import cx from 'classnames';
 import { useContext, useMemo, useRef, useState } from 'react';
+import AnimationItem from '../Animation';
 import { ProChatActionBar, ProChatActionBarProps } from './ActionBar';
 import { MentionsTextArea, MentionsTextAreaProps } from './AutoCompleteTextArea';
 import StopLoadingIcon from './StopLoading';
@@ -254,9 +255,11 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
           style={actionStyle}
         />
         {inputDom}
-        {buttonDom ? (
-          <div className={cx(`${prefixClass}-send-area`, hashId)}>{buttonDom}</div>
-        ) : null}
+        <AnimationItem animation>
+          {buttonDom ? (
+            <div className={cx(`${prefixClass}-send-area`, hashId)}>{buttonDom}</div>
+          ) : null}
+        </AnimationItem>
       </Flex>
     </ConfigProvider>,
   );

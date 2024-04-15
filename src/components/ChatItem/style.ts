@@ -30,6 +30,7 @@ const genStyle: GenerateStyle<ChatTokenType> = (token) => {
       },
       '&-message-container': {
         width: '100%',
+        display: 'flex',
         '&-right': {
           alignItems: 'flex-end',
         },

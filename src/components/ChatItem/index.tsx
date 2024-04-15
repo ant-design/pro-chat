@@ -2,6 +2,7 @@ import { useContext } from 'react';
 
 import { ConfigProvider, Flex } from 'antd';
 import cx from 'classnames';
+import AnimationItem from '../Animation';
 import { ProChatAvatar } from '../ProChatAvatar';
 import { ProChatTitle } from '../ProChatTitle';
 import { useStyle } from './style';
@@ -51,6 +52,7 @@ export const ChatItem: React.FC<ChatItemProps> = (props) => {
     avatar,
     style,
     time,
+    animation,
     contentAfter,
     contentBefore,
     chatListItemContentStyle,
@@ -58,7 +60,6 @@ export const ChatItem: React.FC<ChatItemProps> = (props) => {
     chatItemRenderConfig,
     chatListItemAvatarStyle,
     chatListItemExtraStyle,
-    onDoubleClick,
   } = props;
 
   const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
@@ -147,20 +148,19 @@ export const ChatItem: React.FC<ChatItemProps> = (props) => {
               {contentBeforeRender}
             </div>
           ) : null}
-          <Flex
-            align={placement === 'left' ? 'flex-start' : 'flex-end'}
+          <AnimationItem
+            animation={animation}
             className={cx(
               `${prefixClass}-message-content`,
               `${prefixClass}-message-content-${placement}`,
+
               hashId,
             )}
-            vertical
-            onDoubleClick={onDoubleClick}
-            gap={8}
             style={chatListItemContentStyle}
           >
             {childrenDom}
-          </Flex>
+          </AnimationItem>
+
           {contentAfterRender ? (
             <div
               className={cx(
@@ -177,16 +177,19 @@ export const ChatItem: React.FC<ChatItemProps> = (props) => {
       </Flex>
     </Flex>,
   );
+
   return (
-    chatItemRenderConfig?.render?.(
-      props,
-      {
-        avatar: <ProChatAvatar avatar={avatar?.avatar} title={avatar?.title} />,
-        title: <ProChatTitle title={avatar?.title} time={time} />,
-        messageContent: children,
+    <>
+      {chatItemRenderConfig?.render?.(
+        props,
+        {
+          avatar: <ProChatAvatar avatar={avatar?.avatar} title={avatar?.title} />,
+          title: <ProChatTitle title={avatar?.title} time={time} />,
+          messageContent: children,
+          itemDom,
+        },
         itemDom,
-      },
-      itemDom,
-    ) || itemDom
+      ) || itemDom}
+    </>
   );
 };
