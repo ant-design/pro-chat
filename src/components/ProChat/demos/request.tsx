@@ -2,6 +2,7 @@
  * compact: true
  * title: 流式请求
  */
+import { genUUID } from '@/utils/uuid';
 import { ChatMessage, ProChat } from '@ant-design/pro-chat';
 import { useTheme } from 'antd-style';
 
@@ -20,7 +21,7 @@ export default () => {
                 role: 'assistant',
                 createAt: Date.now(),
                 updateAt: Date.now(),
-                id: crypto.randomUUID(),
+                id: genUUID(),
               });
             }, 4000);
           }) as Promise<ChatMessage>;

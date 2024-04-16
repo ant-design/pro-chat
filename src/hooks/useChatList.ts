@@ -3,6 +3,7 @@ import { DEFAULT_AVATAR, DEFAULT_USER_AVATAR } from '@/const/meta';
 import { ChatMessage } from '@/types';
 import { ModelConfig } from '@/types/config';
 import { processSSE } from '@/utils/fetch';
+import { genUUID } from '@/utils/uuid';
 import { useMergedState } from 'rc-util';
 import React, { useEffect, useMemo, useRef } from 'react';
 import { useRefFunction } from './useRefFunction';
@@ -179,7 +180,7 @@ export const useChatList = (props: ProChatUIUseListChatProps) => {
   const genMessageRecord = useRefFunction(
     (message: Partial<ChatMessage<any>>, type: 'user' | 'assistant' = 'assistant') => {
       return {
-        id: crypto.randomUUID(),
+        id: genUUID(),
         content: message,
         role: type,
         meta: props.userProfile?.[type] || initialState.userProfile?.[type],
@@ -302,7 +303,7 @@ export const useChatList = (props: ProChatUIUseListChatProps) => {
   const helloMessageList = useMemo(
     () => [
       {
-        id: crypto.randomUUID(),
+        id: genUUID(),
         content: props.helloMessage,
         role: 'bot',
         createAt: Date.now(),
