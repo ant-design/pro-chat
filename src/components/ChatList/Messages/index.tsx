@@ -1,4 +1,4 @@
-import AnimText from '@/components/Animation/AnimText';
+import { AnimText } from '@/components/Animation/AnimText';
 import { LOADING_FLAT } from '@/const/message';
 import { Collapse, Divider, Typography } from 'antd';
 import { memo } from 'react';

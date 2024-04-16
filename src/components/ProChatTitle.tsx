@@ -55,7 +55,9 @@ const genStyle: GenerateStyle<ChatTokenType> = (token) => {
       '&-time': {
         visibility: 'hidden',
         color: token.colorTextSecondary,
+        opacity: 0,
         lineHeight: 1,
+        transition: 'all 0.3s ' + token.motionEaseInOut,
       },
       '&:hover': {
         [`${token.componentCls}-time`]: {

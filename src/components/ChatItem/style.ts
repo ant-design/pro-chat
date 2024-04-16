@@ -17,6 +17,7 @@ const genStyle: GenerateStyle<ChatTokenType> = (token) => {
       '&:hover': {
         [`${token.componentCls}-message-title-time`]: {
           visibility: 'visible',
+          opacity: 1,
         },
       },
       '&-message-avatar': {
@@ -26,7 +27,7 @@ const genStyle: GenerateStyle<ChatTokenType> = (token) => {
       '&-message-avatar-emoji': {
         fontSize: 24,
         textAlign: 'center',
-        lineHeight: '40px',
+        lineHeight: '36px',
       },
       '&-message-container': {
         width: '100%',
@@ -40,6 +41,7 @@ const genStyle: GenerateStyle<ChatTokenType> = (token) => {
       },
       '&-message-content': {
         width: 'max-content',
+        fontSize: token.fontSize,
         padding: token.paddingXS,
         border: `1px solid ${token.colorBorderSecondary}`,
         borderRadius: token.borderRadius,
