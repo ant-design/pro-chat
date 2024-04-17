@@ -153,8 +153,8 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
     ...inputAreaProps,
     className: cx(inputAreaProps?.className, `${prefixClass}-input`, hashId),
     value: message,
-    onChange: (value: string) => {
-      setMessage(value);
+    onChange: (value) => {
+      setMessage(value.target.value);
     },
     autoSize: { maxRows: 8 },
     onCompositionStart: () => {
@@ -200,8 +200,9 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
           onClick: () => stopGenerateMessage(),
           icon: <StopLoadingIcon />,
           style: {
-            margin: '0 12px',
-            marginBottom: 8,
+            padding: '4px 8px',
+            lineHeight: 1,
+            height: 28,
           },
         } as const)
       : ({
@@ -209,8 +210,9 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
           onClick: () => send(),
           icon: <SendOutlined />,
           style: {
-            margin: '0 12px',
-            marginBottom: 8,
+            padding: '4px 8px',
+            lineHeight: 1,
+            height: 28,
           },
         } as const);
   }, [typing, message]);
@@ -255,11 +257,11 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
           style={actionStyle}
         />
         {inputDom}
-        <AnimationItem animation>
-          {buttonDom ? (
-            <div className={cx(`${prefixClass}-send-area`, hashId)}>{buttonDom}</div>
-          ) : null}
-        </AnimationItem>
+        {buttonDom ? (
+          <AnimationItem animation className={cx(`${prefixClass}-send-area`, hashId)}>
+            {buttonDom}
+          </AnimationItem>
+        ) : null}
       </Flex>
     </ConfigProvider>,
   );

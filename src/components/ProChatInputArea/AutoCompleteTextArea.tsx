@@ -1,10 +1,10 @@
-﻿import { MentionProps, Mentions } from 'antd';
-import { useState } from 'react';
+﻿import { Input } from 'antd';
+import { TextAreaProps } from 'antd/es/input';
 
 /**
  * Props for the MentionsTextArea component.
  */
-export type MentionsTextAreaProps = MentionProps & {
+export type MentionsTextAreaProps = TextAreaProps & {
   /**
    * A function that is called when a mention is requested.
    * @param value - The value of the mention.
@@ -33,18 +33,15 @@ export type MentionsTextAreaProps = MentionProps & {
 export const MentionsTextArea: React.FC<MentionsTextAreaProps> = (props) => {
   const { disabled, mentionRequest, ...rest } = props;
 
-  const [options, setOptions] = useState<{ value: string; label: string }[]>([]);
-
+  // const [options, setOptions] = useState<{ value: string; label: string }[]>([]);
   return (
-    <Mentions
+    <Input.TextArea
       className={props.className}
-      options={options}
       disabled={disabled}
-      onSelect={(value) => {
-        props.onChange?.({ target: { value } } as any);
-        setOptions([]);
+      autoSize={{
+        minRows: rest.rows || 5,
       }}
-      prefix="/"
+      rows={rest.rows || 5}
       {...rest}
       style={{
         backgroundColor: 'transparent',
@@ -54,18 +51,22 @@ export const MentionsTextArea: React.FC<MentionsTextAreaProps> = (props) => {
         padding: '0 8px',
         margin: 0,
         border: 'none',
+        height: 'auto',
         ...rest.style,
       }}
-      autoSize={{
-        minRows: rest.rows || 3,
-      }}
-      onSearch={async (value, prefix) => {
-        const result = await mentionRequest?.(value);
-        setOptions((result as any[]) || []);
-        rest?.onSearch?.(value, prefix);
-      }}
+      // options={options}
+      // onSelect={(value) => {
+      //   props.onChange?.({ target: { value } } as any);
+      //   setOptions([]);
+      // }}
+      // prefix="/"
+      // onSearch={async (value, prefix) => {
+      //   const result = await mentionRequest?.(value);
+      //   setOptions((result as any[]) || []);
+      //   rest?.onSearch?.(value, prefix);
+      // }}
       onPressEnter={(e) => {
-        if (open && options.length > 0) return;
+        // if (open && options.length > 0) return;
         props.onPressEnter?.(e);
       }}
     />

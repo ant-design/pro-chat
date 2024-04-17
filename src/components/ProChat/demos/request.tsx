@@ -13,6 +13,10 @@ export default () => {
     <div style={{ background: theme.colorBgLayout }}>
       <ProChat
         locale="en-US"
+        actionsRender={() => null}
+        inputAreaProps={{
+          rows: 1,
+        }}
         sendMessageRequest={() => {
           return new Promise((resolve) => {
             setTimeout(() => {

@@ -35,7 +35,7 @@ export const ProChatActionBar: React.FC<ProChatActionBarProps> = (props) => {
     </Popconfirm>,
   ];
 
-  const renderDoms = actionsRender?.(defaultDoms, props) ?? defaultDoms;
+  const renderDoms = actionsRender ? actionsRender?.(defaultDoms, props) : defaultDoms;
 
   if (!renderDoms) return null;
   return (

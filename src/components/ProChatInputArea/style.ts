@@ -8,10 +8,19 @@
 const genStyle: GenerateStyle<ChatTokenType> = (token) => {
   return {
     [token.componentCls]: {
-      minHeight: 120,
+      minHeight: 44,
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-end',
+      position: 'relative',
       '&-send-area': {
         display: 'flex',
         justifyContent: 'flex-end',
+        width: 'max-content',
+        padding: '8px',
+        position: 'absolute',
+        right: 0,
+        bottom: 0,
       },
     },
     [`${token.componentCls}-action-bar`]: {
