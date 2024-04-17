@@ -57,7 +57,7 @@ export const MentionsTextArea: React.FC<MentionsTextAreaProps> = (props) => {
         ...rest.style,
       }}
       autoSize={{
-        minRows: 3,
+        minRows: rest.rows || 3,
       }}
       onSearch={async (value, prefix) => {
         const result = await mentionRequest?.(value);
