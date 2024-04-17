@@ -45,6 +45,7 @@ export const MentionsTextArea: React.FC<MentionsTextAreaProps> = (props) => {
         setOptions([]);
       }}
       prefix="/"
+      {...rest}
       style={{
         backgroundColor: 'transparent',
         flex: 1,
@@ -55,7 +56,6 @@ export const MentionsTextArea: React.FC<MentionsTextAreaProps> = (props) => {
         border: 'none',
         ...rest.style,
       }}
-      {...rest}
       autoSize={{
         minRows: 3,
       }}
