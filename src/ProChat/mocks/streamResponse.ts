@@ -44,7 +44,7 @@ export class MockResponse {
     }
   }
 
-  getResponse() {
+  getResponse(): Promise<Response> {
     return new Promise((resolve) => {
       // 使用setTimeout来模拟网络延迟
       setTimeout(() => {
@@ -53,9 +53,6 @@ export class MockResponse {
 
           // 返回模拟的网络错误响应，这里我们使用500状态码作为示例
           resolve(new Response(null, errorResponseOptions));
-
-          // 或者直接抛出Error对象也可以：
-          // reject(new Error('Network Error'));
         } else {
           resolve(new Response(this.stream));
         }
