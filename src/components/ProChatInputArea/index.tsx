@@ -1,7 +1,7 @@
 import { useRefFunction } from '@/hooks/useRefFunction';
 import { ProChatLocale } from '@/locale';
 import { SendOutlined } from '@ant-design/icons';
-import { Button, ButtonProps, ConfigProvider, Divider, Flex } from 'antd';
+import { Button, ButtonProps, ConfigProvider, Flex } from 'antd';
 import cx from 'classnames';
 import { useContext, useMemo, useRef, useState } from 'react';
 import AnimationItem from '../Animation';
@@ -243,11 +243,6 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
         style={areaStyle}
         className={cx(`${prefixClass}`, className, hashId)}
       >
-        <Divider
-          style={{
-            margin: 0,
-          }}
-        />
         <ProChatActionBar
           clearMessage={clearMessage}
           actionsRender={actionsRender}

@@ -13,6 +13,7 @@ const genStyle: GenerateStyle<ChatTokenType> = (token) => {
       flexDirection: 'column',
       alignItems: 'flex-end',
       position: 'relative',
+      borderTop: `1px solid ${token.colorBorder}`,
       '&-send-area': {
         display: 'flex',
         justifyContent: 'flex-end',
