@@ -6,6 +6,9 @@ export const example = {
       id: 'ZGxiX2p4',
       role: 'user',
       updateAt: 1697862243540,
+      extra: {
+        test: 'Test Extra',
+      },
     },
     {
       content: '昨天的当天是明天的昨天。',

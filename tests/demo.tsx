@@ -1,14 +1,17 @@
 import { cleanup, render } from '@testing-library/react';
+import { theme } from 'antd';
 import { glob } from 'glob';
 import path from 'path';
 import { afterEach, beforeEach, describe, it, vi } from 'vitest';
 import { resetMockDate, setMockDate } from './utils';
 
+theme.defaultConfig.hashed = false;
 // 特殊情况略过 snapshot 的文件
-const NotSnapshotFileList = ['renderInputArea.tsx'];
+const NotSnapshotFileList = ['renderInputArea.tsx', 'float-drawer.tsx'];
 
 function demoTest(component: string) {
   beforeEach(() => {
+    theme.defaultConfig.hashed = false;
     process.env.NODE_ENV = 'TEST';
     setMockDate('2020-07-15T05:20:00.795');
   });

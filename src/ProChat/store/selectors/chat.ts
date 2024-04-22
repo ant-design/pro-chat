@@ -73,6 +73,7 @@ export const currentChats = (s: ChatStore): ChatMessage[] => {
 // 针对新助手添加初始化时的自定义消息
 export const currentChatsWithGuideMessage = (s: ChatStore): ChatMessage[] => {
   const data = currentChats(s);
+
   // TODO: need topic inject
   const isBrandNewChat = data.length === 0;
   if (!isBrandNewChat) return data;
@@ -85,6 +86,7 @@ export const currentChatsWithGuideMessage = (s: ChatStore): ChatMessage[] => {
     meta: s.assistantMeta,
     role: 'hello',
     updateAt: Date.now(),
+    ...data,
   } as ChatMessage;
 
   return [emptyInboxGuideMessage];

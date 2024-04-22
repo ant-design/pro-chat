@@ -103,7 +103,14 @@ export interface ChatAction {
    * @returns  消息 id
    */
   getMessageId: (messages: ChatMessage[], parentId: string) => Promise<string>;
-
+  /**
+   * SSE 时候每一条特殊处理转换的方法，处理完后才进行拼接
+   * @returns  string
+   */
+  transformToChatMessage?: (
+    preChatMessage: string,
+    currentContent: string,
+  ) => Promise<string> | string;
   /**
    * 用于更新一条消息的内容（目前仅用于平滑输出时候，其余情况请直接使用 dispatchMessage ）
    */
@@ -167,6 +174,7 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
       config,
       defaultModelFetcher,
       createSmoothMessage,
+      transformToChatMessage,
       updateMessageContent,
     } = get();
     const abortController = toggleChatLoading(
@@ -235,7 +243,7 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
         }
         await updateMessageContent(assistantId, content);
       },
-      onMessageHandle: (text) => {
+      onMessageHandle: async (text) => {
         output += text;
 
         if (!isAnimationActive && !isFunctionCall) startAnimation();
@@ -244,7 +252,9 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
           // aborted 后停止当前输出
           return;
         } else {
-          outputQueue.push(text);
+          outputQueue.push(
+            transformToChatMessage ? await transformToChatMessage(text, output) : text,
+          );
         }
 
         // TODO: need a function call judge callback
