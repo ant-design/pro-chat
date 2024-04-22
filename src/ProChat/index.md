@@ -22,6 +22,10 @@ description: a Chat Solution
 
 <code src="./demos/sse.tsx"></code>
 
+## 错误处理
+
+<code src="./demos/error.tsx"></code>
+
 ## SSE 的特殊处理
 
 如果你觉得在 Request 里面封装 Reader 不是很方便，要对每次的 Stream 流做处理，我们提供了一个 transformToChatMessage api 来帮你做这个事情

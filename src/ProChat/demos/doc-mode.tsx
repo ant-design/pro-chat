@@ -1,5 +1,5 @@
 /**
- * iframe: 800
+ * iframe: 1000
  * compact: true
  */
 import { ProChat } from '@ant-design/pro-chat';

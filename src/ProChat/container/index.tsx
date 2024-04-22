@@ -40,7 +40,12 @@ export interface ProChatProps<T extends Record<string, any>> extends ChatProps<T
    * @param defaultProps 默认的属性
    */
   sendButtonRender?: ConversationProps['sendButtonRender'];
-
+  /**
+   * 聊天出现 Error 错误时候的自定义渲染
+   * @param defaultDom 默认的 DOM 元素
+   * @param defaultProps 默认的属性
+   */
+  renderErrorMessages?: ConversationProps['renderErrorMessages'];
   /**
    * __PRO_CHAT_STORE_DEVTOOLS__ 是一个可选的布尔值或 DevtoolsOptions 对象，用于开启 ProChat 的开发者工具。
    */
@@ -88,6 +93,7 @@ export function ProChat<T extends Record<string, any> = Record<string, any>>({
   appStyle,
   inputRender,
   markdownProps,
+  renderErrorMessages,
   inputAreaRender,
   sendButtonRender,
   ...props
@@ -111,6 +117,7 @@ export function ProChat<T extends Record<string, any> = Record<string, any>>({
           chatRef={props.chatRef}
           showTitle={showTitle}
           style={style}
+          renderErrorMessages={renderErrorMessages}
           backToBottomConfig={backToBottomConfig}
           className={className}
           markdownProps={markdownProps}

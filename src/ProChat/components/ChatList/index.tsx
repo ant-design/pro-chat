@@ -19,7 +19,7 @@ interface ListProps extends Partial<ChatListProps> {
 }
 
 const List = memo<ListProps>(
-  ({ showTitle, itemShouldUpdate, chatItemRenderConfig, markdownProps }) => {
+  ({ showTitle, itemShouldUpdate, chatItemRenderConfig, renderErrorMessages, markdownProps }) => {
     const data = useStore(chatSelectors.currentChatsWithGuideMessage, isEqual);
     const { localeObject: localeObj } = useProChatLocale();
 
@@ -96,6 +96,7 @@ const List = memo<ListProps>(
         renderActions={renderActions}
         // need support custom Render
         renderMessages={renderMessages}
+        renderErrorMessages={renderErrorMessages}
         renderMessagesExtra={renderMessagesExtra}
         style={{ marginTop: 24 }}
         chatItemRenderConfig={chatItemRenderConfig}
