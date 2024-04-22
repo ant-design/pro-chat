@@ -30,6 +30,14 @@ export interface ChatPropsState<T extends Record<string, any> = Record<string, a
   userMeta: MetaData;
   assistantMeta: MetaData;
   /**
+   * SSE 时候每一条特殊处理转换的方法，处理完后才进行拼接
+   * @returns  string
+   */
+  transformToChatMessage?: (
+    preChatMessage: string,
+    currentContent: string,
+  ) => Promise<string> | string;
+  /**
    * 帮助消息
    */
   helloMessage?: ReactNode;

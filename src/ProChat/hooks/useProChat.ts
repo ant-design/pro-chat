@@ -15,6 +15,11 @@ export interface ProChatInstance
    */
   getChats: () => ChatStore['chats'];
   /**
+   * 往数据流中推送消息
+   * @returns void
+   */
+  pushChat: (chats: { id?: string; content: string; role: string }) => void;
+  /**
    * 获取当前聊天消息列表
    * @returns ChatMessage[]
    */
@@ -60,6 +65,13 @@ export const useProChat = () => {
   } = storeApi.getState();
 
   const getChats = useRefFunction(() => storeApi.getState().chats);
+  const pushChat = useRefFunction((chat) => {
+    return dispatchMessage({
+      ...chat,
+      type: 'addMessage',
+      message: chat?.content,
+    });
+  });
   const getChatMessages = useRefFunction(() => chatSelectors.currentChats(storeApi.getState()));
 
   const setMessageContent = useRefFunction((id: string, content: string) => {
@@ -75,6 +87,7 @@ export const useProChat = () => {
   return useMemo<ProChatInstance>(() => {
     return {
       getChats,
+      pushChat,
       getChatMessages,
       resendMessage,
       sendMessage,
