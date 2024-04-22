@@ -142,7 +142,7 @@ const App = memo<ConversationProps>(
                 markdownProps={markdownProps}
                 renderErrorMessages={renderErrorMessages}
               />
-              <ChatScrollAnchor target={ref} />
+              {ref?.current && <ChatScrollAnchor target={ref} />}
             </div>
             {isRender ? (
               <BackBottom
