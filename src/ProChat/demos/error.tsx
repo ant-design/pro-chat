@@ -15,10 +15,12 @@ export default () => {
   const chatRef2 = useRef<ProChatInstance>();
 
   useEffect(() => {
-    setTimeout(() => {
-      chatRef1.current.sendMessage('Hello!');
-      chatRef2.current.sendMessage('Hello!');
-    }, 500);
+    if (chatRef1?.current && chatRef2?.current) {
+      setTimeout(async () => {
+        await chatRef1.current?.sendMessage('Hello!');
+        await chatRef2.current?.sendMessage('Hello!');
+      }, 500);
+    }
   }, []);
 
   return (
