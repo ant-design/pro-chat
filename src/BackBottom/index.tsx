@@ -60,7 +60,7 @@ const BackBottom = (props: BackBottomProps) => {
   }, []);
 
   const current = useMemo(() => {
-    if (target.current && target.current.scrollHeight > target.current.clientHeight) {
+    if (target.current) {
       return target.current;
     }
     return document.body;
@@ -98,7 +98,7 @@ const BackBottom = (props: BackBottomProps) => {
   }, [current]);
 
   useEffect(() => {
-    if (scroll?.top && !alwaysShow) {
+    if (!alwaysShow) {
       setVisible(scroll?.top + clientHeight + visibilityHeight < scrollHeight);
     }
   }, [scrollHeight, scroll, visibilityHeight, current]);

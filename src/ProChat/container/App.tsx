@@ -144,7 +144,7 @@ const App = memo<ConversationProps>(
               />
               {ref?.current && <ChatScrollAnchor target={ref} />}
             </div>
-            {isRender ? (
+            {isRender && ref?.current ? (
               <BackBottom
                 style={{
                   bottom: 138,
