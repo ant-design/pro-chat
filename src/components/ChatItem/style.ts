@@ -49,9 +49,6 @@ const genStyle: GenerateStyle<ChatTokenType> = (token) => {
         backgroundColor: token.colorBgContainer,
         p: resetComponent(token),
         pre: resetComponent(token),
-        '&-right': {
-          textAlign: 'right',
-        },
       },
     },
   };

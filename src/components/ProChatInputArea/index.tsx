@@ -97,6 +97,11 @@ export type ChatInputAreaProps = {
    * Flag indicating whether the user is currently typing.
    */
   typing: boolean;
+
+  /**
+   * Custom CSS styles for the send button.
+   */
+  chatListSendButtonStyle?: React.CSSProperties;
 };
 
 /**
@@ -116,6 +121,7 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
     inputRender,
     sendButtonRender,
     inputAreaProps,
+    chatListSendButtonStyle,
     clearMessage,
     stopGenerateMessage,
     onMessageSend,
@@ -218,7 +224,11 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
   }, [typing, message]);
 
   const defaultButtonDom = (
-    <Button {...defaultButtonProps} className={cx(`${prefixClass}-button`, hashId)}>
+    <Button
+      {...defaultButtonProps}
+      style={chatListSendButtonStyle}
+      className={cx(`${prefixClass}-button`, hashId)}
+    >
       {typing ? '停止生成' : '发送'}
     </Button>
   );

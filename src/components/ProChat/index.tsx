@@ -290,6 +290,7 @@ export interface ProChatProps<
     chatListItemTitle?: CSSProperties;
     chatListItemExtra?: CSSProperties;
     chatListItemAvatar?: CSSProperties;
+    chatListSendButton?: CSSProperties;
   };
 
   /**
@@ -463,7 +464,7 @@ export function ProChat<
     <RcResizeObserver
       onResize={(e) => {
         if (e.height !== height) {
-          setHeight(e.height);
+          setHeight(e.height - 1);
         }
       }}
     >
@@ -510,6 +511,7 @@ export function ProChat<
           stopGenerateMessage={stopGenerateMessage}
           clearMessage={clearMessage}
           areaRef={areaHtml}
+          chatListSendButtonStyle={styles?.chatListSendButton}
           actionsRender={props.actionsRender}
           sendButtonRender={sendButtonRender}
           inputAreaRender={inputAreaRender}
