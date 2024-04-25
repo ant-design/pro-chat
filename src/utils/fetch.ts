@@ -21,7 +21,10 @@ export interface FetchSSEOptions {
   signal?: AbortSignal;
 }
 
-const waitTime = (time: number) => new Promise((resolve) => setTimeout(resolve, time));
+const waitTime = (time: number) =>
+  new Promise((resolve) => {
+    setTimeout(resolve, time);
+  });
 
 /**
  * 使用流式方法获取数据
