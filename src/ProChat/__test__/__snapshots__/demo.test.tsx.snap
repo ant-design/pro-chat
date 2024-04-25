@@ -10,7 +10,7 @@ exports[`<ProChat /> > renders actions.tsx correctly 1`] = `
       style="height: 100%; width: 100%; position: relative;"
     >
       <div
-        class="layoutkit-flexbox css-1euyney ant-pro-chat acss-zi4bjt ant-pro-chat-container"
+        class="layoutkit-flexbox css-1euyney ant-pro-chat acss-oefsti ant-pro-chat-container"
         style="max-height: 100vh; height: 100%;"
       >
         <div
@@ -290,7 +290,7 @@ exports[`<ProChat /> > renders bigData.tsx correctly 1`] = `
       style="height: 100%; width: 100%; position: relative;"
     >
       <div
-        class="layoutkit-flexbox css-1euyney ant-pro-chat acss-zi4bjt ant-pro-chat-container"
+        class="layoutkit-flexbox css-1euyney ant-pro-chat acss-oefsti ant-pro-chat-container"
         style="max-height: 100vh; height: 100%;"
       >
         <div
@@ -7167,7 +7167,7 @@ exports[`<ProChat /> > renders control.tsx correctly 1`] = `
       style="height: 100%; width: 100%; position: relative;"
     >
       <div
-        class="layoutkit-flexbox css-1euyney ant-pro-chat acss-zi4bjt ant-pro-chat-container"
+        class="layoutkit-flexbox css-1euyney ant-pro-chat acss-oefsti ant-pro-chat-container"
         style="max-height: 100vh; height: 100%;"
       >
         <div
@@ -7741,7 +7741,7 @@ exports[`<ProChat /> > renders default.tsx correctly 1`] = `
       style="height: 100%; width: 100%; position: relative;"
     >
       <div
-        class="layoutkit-flexbox css-1euyney ant-pro-chat acss-zi4bjt ant-pro-chat-container"
+        class="layoutkit-flexbox css-1euyney ant-pro-chat acss-oefsti ant-pro-chat-container"
         style="max-height: 100vh; height: 100%;"
       >
         <div
@@ -8018,7 +8018,7 @@ exports[`<ProChat /> > renders doc-mode.tsx correctly 1`] = `
       style="height: 100%; width: 100%; position: relative;"
     >
       <div
-        class="layoutkit-flexbox css-1euyney ant-pro-chat acss-zi4bjt ant-pro-chat-container"
+        class="layoutkit-flexbox css-1euyney ant-pro-chat acss-oefsti ant-pro-chat-container"
         style="max-height: 100vh; height: 100%;"
       >
         <div
@@ -10716,7 +10716,7 @@ exports[`<ProChat /> > renders error.tsx correctly 1`] = `
       style="height: 100%; width: 100%; position: relative;"
     >
       <div
-        class="layoutkit-flexbox css-1euyney ant-pro-chat acss-zi4bjt ant-pro-chat-container"
+        class="layoutkit-flexbox css-1euyney ant-pro-chat acss-oefsti ant-pro-chat-container"
         style="max-height: 100vh; height: 500px;"
       >
         <div
@@ -10988,7 +10988,7 @@ exports[`<ProChat /> > renders error.tsx correctly 1`] = `
       style="height: 100%; width: 100%; position: relative;"
     >
       <div
-        class="layoutkit-flexbox css-1euyney ant-pro-chat acss-zi4bjt ant-pro-chat-container"
+        class="layoutkit-flexbox css-1euyney ant-pro-chat acss-oefsti ant-pro-chat-container"
         style="max-height: 100vh; height: 500px;"
       >
         <div
@@ -11265,7 +11265,7 @@ exports[`<ProChat /> > renders helloMessage.tsx correctly 1`] = `
       style="height: 100%; width: 100%; position: relative;"
     >
       <div
-        class="layoutkit-flexbox css-1euyney ant-pro-chat acss-zi4bjt ant-pro-chat-container"
+        class="layoutkit-flexbox css-1euyney ant-pro-chat acss-oefsti ant-pro-chat-container"
         style="max-height: 100vh; height: 100%;"
       >
         <div
@@ -11520,7 +11520,7 @@ exports[`<ProChat /> > renders helloMessage.tsx correctly 1`] = `
       style="height: 100%; width: 100%; position: relative;"
     >
       <div
-        class="layoutkit-flexbox css-1euyney ant-pro-chat acss-zi4bjt ant-pro-chat-container"
+        class="layoutkit-flexbox css-1euyney ant-pro-chat acss-oefsti ant-pro-chat-container"
         style="max-height: 100vh; height: 100%;"
       >
         <div
@@ -11841,7 +11841,7 @@ exports[`<ProChat /> > renders i18n.tsx correctly 1`] = `
       style="height: 100%; width: 100%; position: relative;"
     >
       <div
-        class="layoutkit-flexbox css-1euyney ant-pro-chat acss-zi4bjt ant-pro-chat-container"
+        class="layoutkit-flexbox css-1euyney ant-pro-chat acss-oefsti ant-pro-chat-container"
         style="max-height: 100vh; height: 100%;"
       >
         <div
@@ -12118,7 +12118,7 @@ exports[`<ProChat /> > renders initialChats.tsx correctly 1`] = `
       style="height: 100%; width: 100%; position: relative;"
     >
       <div
-        class="layoutkit-flexbox css-1euyney ant-pro-chat acss-zi4bjt ant-pro-chat-container"
+        class="layoutkit-flexbox css-1euyney ant-pro-chat acss-oefsti ant-pro-chat-container"
         style="max-height: 100vh; height: 100%;"
       >
         <div
@@ -12717,7 +12717,7 @@ exports[`<ProChat /> > renders loading.tsx correctly 1`] = `
       style="height: 100%; width: 100%; position: relative;"
     >
       <div
-        class="layoutkit-flexbox css-1euyney ant-pro-chat acss-zi4bjt ant-pro-chat-container"
+        class="layoutkit-flexbox css-1euyney ant-pro-chat acss-oefsti ant-pro-chat-container"
         style="max-height: 100vh; height: 100%;"
       >
         <div
@@ -12976,7 +12976,7 @@ exports[`<ProChat /> > renders meta.tsx correctly 1`] = `
       style="height: 100%; width: 100%; position: relative;"
     >
       <div
-        class="layoutkit-flexbox css-1euyney ant-pro-chat acss-zi4bjt ant-pro-chat-container"
+        class="layoutkit-flexbox css-1euyney ant-pro-chat acss-oefsti ant-pro-chat-container"
         style="max-height: 100vh; height: 100%;"
       >
         <div
@@ -13542,7 +13542,7 @@ exports[`<ProChat /> > renders modal.tsx correctly 1`] = `
     style="height: 100%; width: 100%; position: relative;"
   >
     <div
-      class="layoutkit-flexbox css-1euyney ant-pro-chat acss-zi4bjt ant-pro-chat-container"
+      class="layoutkit-flexbox css-1euyney ant-pro-chat acss-oefsti ant-pro-chat-container"
       style="max-height: 100vh; height: 100%;"
     >
       <div
@@ -13818,7 +13818,7 @@ exports[`<ProChat /> > renders no-stream.tsx correctly 1`] = `
       style="height: 100%; width: 100%; position: relative;"
     >
       <div
-        class="layoutkit-flexbox css-1euyney ant-pro-chat acss-zi4bjt ant-pro-chat-container"
+        class="layoutkit-flexbox css-1euyney ant-pro-chat acss-oefsti ant-pro-chat-container"
         style="max-height: 100vh; height: 100vh;"
       >
         <div
@@ -14095,7 +14095,7 @@ exports[`<ProChat /> > renders request.tsx correctly 1`] = `
       style="height: 100%; width: 100%; position: relative;"
     >
       <div
-        class="layoutkit-flexbox css-1euyney ant-pro-chat acss-zi4bjt ant-pro-chat-container"
+        class="layoutkit-flexbox css-1euyney ant-pro-chat acss-oefsti ant-pro-chat-container"
         style="max-height: 100vh; height: 100%;"
       >
         <div
@@ -14372,7 +14372,7 @@ exports[`<ProChat /> > renders sse.tsx correctly 1`] = `
       style="height: 100%; width: 100%; position: relative;"
     >
       <div
-        class="layoutkit-flexbox css-1euyney ant-pro-chat acss-zi4bjt ant-pro-chat-container"
+        class="layoutkit-flexbox css-1euyney ant-pro-chat acss-oefsti ant-pro-chat-container"
         style="max-height: 100vh; height: 100%;"
       >
         <div
@@ -14649,7 +14649,7 @@ exports[`<ProChat /> > renders sse-trans.tsx correctly 1`] = `
       style="height: 100%; width: 100%; position: relative;"
     >
       <div
-        class="layoutkit-flexbox css-1euyney ant-pro-chat acss-zi4bjt ant-pro-chat-container"
+        class="layoutkit-flexbox css-1euyney ant-pro-chat acss-oefsti ant-pro-chat-container"
         style="max-height: 100vh; height: 800px;"
       >
         <div
@@ -14926,7 +14926,7 @@ exports[`<ProChat /> > renders toBottomConfig.tsx correctly 1`] = `
       style="height: 100%; width: 100%; position: relative;"
     >
       <div
-        class="layoutkit-flexbox css-1euyney ant-pro-chat acss-zi4bjt ant-pro-chat-container"
+        class="layoutkit-flexbox css-1euyney ant-pro-chat acss-oefsti ant-pro-chat-container"
         style="max-height: 100vh; height: 100%;"
       >
         <div
@@ -17651,7 +17651,7 @@ exports[`<ProChat /> > renders use-pro-chat.tsx correctly 1`] = `
       style="height: 100%; width: 100%; position: relative;"
     >
       <div
-        class="layoutkit-flexbox css-1euyney ant-pro-chat acss-zi4bjt ant-pro-chat-container"
+        class="layoutkit-flexbox css-1euyney ant-pro-chat acss-oefsti ant-pro-chat-container"
         style="max-height: 100vh; height: 100%;"
       >
         <div
@@ -18233,7 +18233,7 @@ exports[`<ProChat /> > renders use-ref.tsx correctly 1`] = `
       style="height: 100%; width: 100%; position: relative;"
     >
       <div
-        class="layoutkit-flexbox css-1euyney ant-pro-chat acss-zi4bjt ant-pro-chat-container"
+        class="layoutkit-flexbox css-1euyney ant-pro-chat acss-oefsti ant-pro-chat-container"
         style="max-height: 100vh; height: 100%;"
       >
         <div
