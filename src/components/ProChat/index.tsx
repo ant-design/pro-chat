@@ -125,6 +125,16 @@ export interface ProChatProps<
   chatList?: ChatMessage<T>[];
 
   /**
+   * @todo
+   */
+  beforeSendMessage?: (message: ChatMessage<T>) => Promise<ChatMessage<T>>;
+
+  /**
+   * The DOM element to render before the chat list.
+   */
+  beforeChatListDom?: React.ReactNode;
+
+  /**
    * The callback function that is called when the chat list changes.
    *
    * @param chatList - The updated chat list.
@@ -478,6 +488,7 @@ export function ProChat<
         }}
         vertical
       >
+        {props.beforeChatListDom}
         <ChatList
           chatListRef={chatListContainerRef}
           chatList={chatList}
