@@ -95,6 +95,7 @@ export function ProChat<T extends Record<string, any> = Record<string, any>>({
   markdownProps,
   renderErrorMessages,
   inputAreaRender,
+  itemShouldUpdate,
   sendButtonRender,
   ...props
 }: ProChatProps<T>) {
@@ -117,6 +118,7 @@ export function ProChat<T extends Record<string, any> = Record<string, any>>({
           chatRef={props.chatRef}
           showTitle={showTitle}
           style={style}
+          itemShouldUpdate={itemShouldUpdate}
           renderErrorMessages={renderErrorMessages}
           backToBottomConfig={backToBottomConfig}
           className={className}
