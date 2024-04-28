@@ -10,7 +10,14 @@ export interface StoreUpdaterProps
   extends Partial<
       Pick<
         ChatState,
-        'chats' | 'config' | 'init' | 'onChatsChange' | 'helloMessage' | 'request' | 'locale'
+        | 'chats'
+        | 'config'
+        | 'init'
+        | 'onChatsChange'
+        | 'helloMessage'
+        | 'request'
+        | 'locale'
+        | 'inputAreaProps'
       >
     >,
     Pick<ChatProps, 'userMeta' | 'assistantMeta'> {
@@ -26,6 +33,7 @@ const StoreUpdater = memo<StoreUpdaterProps>(
     userMeta,
     assistantMeta,
     helloMessage,
+    inputAreaProps,
     chats,
     config,
     locale,
@@ -38,6 +46,7 @@ const StoreUpdater = memo<StoreUpdaterProps>(
     useStoreUpdater('userMeta', userMeta);
     useStoreUpdater('assistantMeta', assistantMeta);
 
+    useStoreUpdater('inputAreaProps', inputAreaProps);
     useStoreUpdater('helloMessage', helloMessage);
     useStoreUpdater('config', config);
 
