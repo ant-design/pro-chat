@@ -19,6 +19,7 @@ export const ProChatProvider = memo<ProChatProviderProps<any>>(
     loading,
     helloMessage,
     userMeta,
+    inputAreaProps,
     assistantMeta,
     request,
     locale,
@@ -36,6 +37,7 @@ export const ProChatProvider = memo<ProChatProviderProps<any>>(
           chats={chats}
           userMeta={userMeta}
           request={request}
+          inputAreaProps={inputAreaProps}
           assistantMeta={assistantMeta}
           onChatsChange={onChatsChange}
           locale={locale}
