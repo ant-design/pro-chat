@@ -22,7 +22,7 @@ const List = memo<ListProps>(
   ({ showTitle, itemShouldUpdate, chatItemRenderConfig, renderErrorMessages, markdownProps }) => {
     const data = useStore(chatSelectors.currentChatsWithGuideMessage, isEqual);
     const { localeObject: localeObj } = useProChatLocale();
-
+    const locale = useStore((s) => s.locale);
     const [
       init,
       displayMode,
@@ -80,7 +80,7 @@ const List = memo<ListProps>(
         history: localeObj.history,
         regenerate: localeObj.regenerate,
       };
-    }, []);
+    }, [locale]);
     if (!init) return <SkeletonList />;
 
     return (
