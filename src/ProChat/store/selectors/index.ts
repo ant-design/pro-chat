@@ -3,6 +3,7 @@ import {
   currentChats,
   currentChatsWithGuideMessage,
   currentChatsWithHistoryConfig,
+  chatMessageWithPreviewChatItem
 } from './chat';
 
 export const chatSelectors = {
@@ -10,4 +11,5 @@ export const chatSelectors = {
   currentChats,
   currentChatsWithGuideMessage,
   currentChatsWithHistoryConfig,
+  chatMessageWithPreviewChatItem
 };
