@@ -1,13 +1,14 @@
 import { SendOutlined } from '@ant-design/icons';
 import { Button, ButtonProps, ConfigProvider } from 'antd';
 import { createStyles, cx } from 'antd-style';
-import { ReactNode, useContext, useMemo, useRef, useState } from 'react';
+import { ReactNode, useContext, useMemo, useRef } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
 import { useStore } from '../../store';
 
 import useProChatLocale from '@/ProChat/hooks/useProChatLocale';
 import { TextAreaProps } from 'antd/es/input';
+import { useMergedState } from 'rc-util';
 import ActionBar from './ActionBar';
 import { AutoCompleteTextArea } from './AutoCompleteTextArea';
 import StopLoadingIcon from './StopLoading';
@@ -82,10 +83,15 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
       s.stopGenerateMessage,
     ]);
   const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
-  const [message, setMessage] = useState('');
   const isChineseInput = useRef(false);
   const { styles, theme } = useStyles();
   const { localeObject } = useProChatLocale();
+
+  const { value, onChange } = inputAreaProps || {};
+  const [message, setMessage] = useMergedState('', {
+    onChange: onChange,
+    value: value,
+  });
 
   const send = async () => {
     if (onSend) {
