@@ -9,7 +9,7 @@ export default () => {
   return (
     <div style={{ background: theme.colorBgLayout }}>
       <Segmented<Locale>
-        options={['en-US', 'zh-CN']}
+        options={['en-US', 'zh-CN', 'zh-HK']}
         defaultValue="en-US"
         onChange={(v) => {
           setLanguage(v);
