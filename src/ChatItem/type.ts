@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 
+import { RenderAction } from '@/ChatList';
 import { EditableMessageProps } from '@/EditableMessage';
 import { ChatMessageError, DivProps, MetaData } from '@/types';
 import { MarkdownProps } from '@ant-design/pro-editor';
@@ -59,6 +60,9 @@ export interface ChatItemProps<T = Record<string, any>> {
    */
   primary?: boolean;
   renderMessage?: (content: ReactNode) => ReactNode;
+  renderActions?: {
+    [actionKey: string]: RenderAction;
+  };
   /**
    * @description Whether to show the title of the chat item
    */

@@ -37,6 +37,7 @@ const ChatItem = memo<ChatItemProps>((props) => {
     text,
     chatItemRenderConfig,
     renderErrorMessages,
+    renderActions,
     markdownProps,
     onDoubleClick,
     originData,
@@ -113,6 +114,8 @@ const ChatItem = memo<ChatItemProps>((props) => {
   ]);
 
   const actionsDom = useMemo(() => {
+    console.log('renderActions', renderActions);
+
     if (chatItemRenderConfig?.actionsRender === false) return null;
     if (error) return null;
     const dom = (

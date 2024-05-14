@@ -195,11 +195,15 @@ const ChatListItem = (props: ChatListItemProps) => {
    * @returns 渲染操作按钮的组件。
    */
   const Actions = useRefFunction(({ data }: { data: ChatMessage }) => {
+    console.log('renderActions', renderActions);
+
     if (!renderActions || !item?.role) return;
     let RenderFunction;
     if (renderActions?.[item.role]) RenderFunction = renderActions[item.role];
     if (renderActions?.['default']) RenderFunction = renderActions['default'];
     if (!RenderFunction) RenderFunction = ActionsBar;
+
+    console.log('data', data);
 
     const handleActionClick: ListItemProps['onActionsClick'] = (action, data) => {
       switch (action.key) {
@@ -243,6 +247,7 @@ const ChatListItem = (props: ChatListItemProps) => {
         className={chatItemClassName}
         data-id={item.id}
         actions={<Actions data={item} />}
+        renderActions={renderActions}
         avatar={(item as any).meta}
         avatarAddon={groupNav}
         editing={editing}
