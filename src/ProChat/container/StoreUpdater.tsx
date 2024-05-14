@@ -18,6 +18,8 @@ export interface StoreUpdaterProps
         | 'request'
         | 'locale'
         | 'inputAreaProps'
+        | 'actions'
+        | 'transformToChatMessage'
       >
     >,
     Pick<ChatProps, 'userMeta' | 'assistantMeta'> {
@@ -33,6 +35,8 @@ const StoreUpdater = memo<StoreUpdaterProps>(
     userMeta,
     assistantMeta,
     helloMessage,
+    transformToChatMessage,
+    actions,
     inputAreaProps,
     chats,
     config,
@@ -49,6 +53,9 @@ const StoreUpdater = memo<StoreUpdaterProps>(
     useStoreUpdater('inputAreaProps', inputAreaProps);
     useStoreUpdater('helloMessage', helloMessage);
     useStoreUpdater('config', config);
+
+    useStoreUpdater('transformToChatMessage', transformToChatMessage);
+    useStoreUpdater('actions', actions);
 
     useStoreUpdater('chats', chats);
     useStoreUpdater('onChatsChange', onChatsChange);
