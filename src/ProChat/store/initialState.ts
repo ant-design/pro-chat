@@ -88,6 +88,16 @@ export interface ChatPropsState<T extends Record<string, any> = Record<string, a
   };
 
   /**
+   * 输入框内的文本
+   */
+  editingMessage?: string;
+
+  /**
+   * 关闭消息预览
+   */
+  disablePreview?: boolean;
+
+  /**
    * 信息框额外渲染
    */
   messageItemExtraRender?: (message: ChatMessage<T>, type: 'assistant' | 'user') => React.ReactNode;

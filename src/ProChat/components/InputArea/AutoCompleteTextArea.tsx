@@ -50,6 +50,10 @@ export const AutoCompleteTextArea: React.FC<AutoCompleteTextAreaProps> = (props)
           if (open && options.length > 0) return;
           props.onPressEnter?.(e);
         }}
+        onChange={(e) => {
+          console.log('onChange', e.target.value);
+          props.onChange?.(e);
+        }}
       />
     </AutoComplete>
   );

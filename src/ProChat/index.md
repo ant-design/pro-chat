@@ -22,6 +22,12 @@ description: a Chat Solution
 
 <code src="./demos/sse.tsx"></code>
 
+## 关闭编辑预览
+
+可以通过`disablePreview`关闭编辑预览功能
+
+<code src="./demos/disablePreview.tsx"></code>
+
 ## 错误处理
 
 <code src="./demos/error.tsx"></code>

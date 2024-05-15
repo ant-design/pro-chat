@@ -102,3 +102,25 @@ export const chatsMessageString = (s: ChatStore): string => {
   const chats = currentChatsWithHistoryConfig(s);
   return chats.map((m) => m.content).join('');
 };
+
+export const chatMessageWithPreviewChatItem = (s: ChatStore): ChatMessage[] => {
+  const beforeChats = currentChats(s).length === 0 ? currentChatsWithGuideMessage(s) :  currentChatsWithHistoryConfig(s);
+  
+  if(!!s.disablePreview || // 禁用预览
+      !!s.chatLoadingId || // 正在加载
+      !s.editingMessage || s.editingMessage.trim() === '' // 没有编辑消息
+    ) {
+    return beforeChats;
+  }
+  return [...beforeChats, 
+    {
+      content: s.editingMessage ?? '',
+      createAt: Date.now(),
+      extra: {},
+      id: 'preview',
+      meta: s.userMeta,
+      role: 'user',
+      updateAt: Date.now(),
+    } as ChatMessage
+  ];
+};

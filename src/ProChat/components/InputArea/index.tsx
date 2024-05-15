@@ -1,7 +1,7 @@
 import { SendOutlined } from '@ant-design/icons';
 import { Button, ButtonProps, ConfigProvider } from 'antd';
 import { createStyles, cx } from 'antd-style';
-import { ReactNode, useContext, useMemo, useRef } from 'react';
+import { ReactNode, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
 import { useStore } from '../../store';
@@ -12,6 +12,7 @@ import { useMergedState } from 'rc-util';
 import ActionBar from './ActionBar';
 import { AutoCompleteTextArea } from './AutoCompleteTextArea';
 import StopLoadingIcon from './StopLoading';
+import { ProChatChatReference } from '@/ProChat/container/StoreUpdater';
 
 const useStyles = createStyles(({ css, responsive, token }) => ({
   container: css`
@@ -69,18 +70,22 @@ export type ChatInputAreaProps = {
     onMessageSend: (message: string) => void | Promise<any>,
     onClearAllHistory: () => void,
   ) => ReactNode;
+  scrollToBottom?: () => void;
 };
 
 export const ChatInputArea = (props: ChatInputAreaProps) => {
   const { className, onSend, inputAreaRender, inputRender, sendButtonRender } = props || {};
-  const [sendMessage, isLoading, placeholder, inputAreaProps, clearMessage, stopGenerateMessage] =
+  const [sendMessage, isLoading, placeholder, inputAreaProps, editingMessage, disablePreview, clearMessage, stopGenerateMessage, updateEditingMessage] =
     useStore((s) => [
       s.sendMessage,
       !!s.chatLoadingId,
       s.placeholder,
       s.inputAreaProps,
+      s.editingMessage,
+      s.disablePreview,
       s.clearMessage,
       s.stopGenerateMessage,
+      s.updateEditingMessage,
     ]);
   const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
   const isChineseInput = useRef(false);
@@ -95,14 +100,14 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
 
   const send = async () => {
     if (onSend) {
-      const success = await onSend(message);
+      const success = await onSend(editingMessage);
       if (success) {
-        sendMessage(message);
-        setMessage('');
+        sendMessage(editingMessage);
+        updateEditingMessage('');
       }
     } else {
-      sendMessage(message);
-      setMessage('');
+      sendMessage(editingMessage);
+      updateEditingMessage('');
     }
   };
 
@@ -124,13 +129,19 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
    * @property {function} onPressEnter - 按下回车键时的回调函数
    */
 
+  useEffect(() => {
+    if (editingMessage && !disablePreview) {
+      props.scrollToBottom?.();
+    }
+  }, [editingMessage, disablePreview, props.scrollToBottom]);
+  
   const defaultAutoCompleteTextAreaProps = {
     placeholder: placeholder || localeObject.placeholder,
     ...inputAreaProps,
     className: cx(styles.input, inputAreaProps?.className, `${prefixClass}-component`),
-    value: message,
+    value: editingMessage,
     onChange: (e) => {
-      setMessage(e.target.value);
+      updateEditingMessage(e.target.value);
     },
     autoSize: { maxRows: 8 },
     onCompositionStart: () => {
@@ -184,7 +195,7 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
           onClick: () => send(),
           icon: <SendOutlined />,
         } as const);
-  }, [isLoading, message]);
+  }, [isLoading, editingMessage]);
 
   const defaultButtonDom = <Button {...defaultButtonProps} />;
 

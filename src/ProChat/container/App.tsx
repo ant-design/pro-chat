@@ -96,17 +96,19 @@ const App = memo<ConversationProps>(
     const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
     const { localeObject } = useProChatLocale();
 
+    const scollToBottom = () => {
+      (ref as any)?.current?.scrollTo({
+        behavior: 'smooth',
+        left: 0,
+        top: ref.current?.scrollHeight || 99999,
+      });
+    };
+
     useEffect(() => {
       // 保证 ref 永远存在
       setIsRender(true);
       if (chatRef?.current) {
-        chatRef.current.scrollToBottom = () => {
-          (ref as any)?.current?.scrollTo({
-            behavior: 'smooth',
-            left: 0,
-            top: ref.current?.scrollHeight || 99999,
-          });
-        };
+        chatRef.current.scrollToBottom = scollToBottom;
       }
     }, []);
 
@@ -162,6 +164,7 @@ const App = memo<ConversationProps>(
                   sendButtonRender={sendButtonRender}
                   inputAreaRender={inputAreaRender || renderInputArea}
                   inputRender={inputRender}
+                  scrollToBottom={scollToBottom}
                 />
               }
             </div>

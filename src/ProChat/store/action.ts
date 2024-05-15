@@ -131,6 +131,11 @@ export interface ChatAction {
    * @returns  消息 id ｜ undefined
    */
   getChatLoadingId: () => string | undefined;
+
+  /**
+   * 更新当前正在编辑的消息
+   */
+  updateEditingMessage: (message: string) => void;
 }
 
 export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], [], ChatAction> = (
@@ -495,5 +500,9 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
   getChatLoadingId: () => {
     const { chatLoadingId } = get();
     return chatLoadingId;
+  },
+
+  updateEditingMessage: (message) => {
+    set({ editingMessage: message }, false);
   },
 });

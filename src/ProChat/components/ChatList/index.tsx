@@ -20,7 +20,7 @@ interface ListProps extends Partial<ChatListProps> {
 
 const List = memo<ListProps>(
   ({ showTitle, itemShouldUpdate, chatItemRenderConfig, renderErrorMessages, markdownProps }) => {
-    const data = useStore(chatSelectors.currentChatsWithGuideMessage, isEqual);
+    const data = useStore(chatSelectors.chatMessageWithPreviewChatItem, isEqual);
     const { localeObject: localeObj } = useProChatLocale();
     const locale = useStore((s) => s.locale);
     const [
