@@ -8,6 +8,7 @@ import { useStore } from '../../store';
 
 import useProChatLocale from '@/ProChat/hooks/useProChatLocale';
 import { TextAreaProps } from 'antd/es/input';
+import { useMergedState } from 'rc-util';
 import ActionBar from './ActionBar';
 import { AutoCompleteTextArea } from './AutoCompleteTextArea';
 import StopLoadingIcon from './StopLoading';
@@ -87,10 +88,15 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
       s.updateEditingMessage,
     ]);
   const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
-  // const [message, setMessage] = useState('');
   const isChineseInput = useRef(false);
   const { styles, theme } = useStyles();
   const { localeObject } = useProChatLocale();
+
+  const { value, onChange } = inputAreaProps || {};
+  const [message, setMessage] = useMergedState('', {
+    onChange: onChange,
+    value: value,
+  });
 
   const send = async () => {
     if (onSend) {

@@ -29,6 +29,7 @@ export const ActionBar = ({ className }: { className?: string }) => {
       title={localeObject.clearModalTitle}
       okButtonProps={{ danger: true }}
       okText={localeObject.clearDialogue}
+      cancelText={localeObject.cancel}
       key={'clear'}
       onConfirm={() => {
         clearMessage();

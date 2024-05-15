@@ -21,6 +21,8 @@ export const ProChatProvider = memo<ProChatProviderProps<any>>(
     userMeta,
     inputAreaProps,
     assistantMeta,
+    actions,
+    transformToChatMessage,
     request,
     locale,
     ...props
@@ -35,8 +37,10 @@ export const ProChatProvider = memo<ProChatProviderProps<any>>(
           init={!loading}
           helloMessage={helloMessage}
           chats={chats}
+          actions={actions}
           userMeta={userMeta}
           request={request}
+          transformToChatMessage={transformToChatMessage}
           inputAreaProps={inputAreaProps}
           assistantMeta={assistantMeta}
           onChatsChange={onChatsChange}

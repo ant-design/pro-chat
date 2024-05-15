@@ -81,7 +81,11 @@ export interface ChatPropsState<T extends Record<string, any> = Record<string, a
   /**
    * 输入框的 props,优先级最高
    */
-  inputAreaProps?: TextAreaProps & { autoCompleteProps?: AutoCompleteProps };
+  inputAreaProps?: TextAreaProps & {
+    autoCompleteProps?: AutoCompleteProps;
+    value?: string;
+    onChange?: (value: string) => void;
+  };
 
   /**
    * 输入框内的文本
