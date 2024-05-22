@@ -71,6 +71,8 @@ export interface ProChatProps<T extends Record<string, any>> extends ChatProps<T
    */
   chatRef?: ProChatChatReference;
 
+  onScroll?: ConversationProps['onScroll'];
+
   /**
    * appStyle 是一个可选的 CSSProperties 对象，用于自定义整个应用的样式。
    */
@@ -96,6 +98,7 @@ export function ProChat<T extends Record<string, any> = Record<string, any>>({
   renderErrorMessages,
   inputAreaRender,
   itemShouldUpdate,
+  onScroll,
   sendButtonRender,
   ...props
 }: ProChatProps<T>) {
@@ -118,6 +121,7 @@ export function ProChat<T extends Record<string, any> = Record<string, any>>({
           chatRef={props.chatRef}
           showTitle={showTitle}
           style={style}
+          onScroll={onScroll}
           itemShouldUpdate={itemShouldUpdate}
           renderErrorMessages={renderErrorMessages}
           backToBottomConfig={backToBottomConfig}
