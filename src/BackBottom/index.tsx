@@ -33,6 +33,8 @@ export interface BackBottomProps {
    * 是否一直显示
    */
   alwaysShow?: boolean;
+
+  onScroll?: (event: Event) => void;
 }
 
 const BackBottom = (props: BackBottomProps) => {
@@ -44,6 +46,7 @@ const BackBottom = (props: BackBottomProps) => {
     className,
     text,
     render,
+    onScroll,
     alwaysShow = false,
   } = props || {};
   const [visible, setVisible] = useState<boolean>(alwaysShow);
@@ -75,7 +78,8 @@ const BackBottom = (props: BackBottomProps) => {
   useEffect(() => {
     if (typeof window === 'undefined') return;
     if (typeof current === 'undefined') return;
-    const scroll = () => {
+    const scroll = (event) => {
+      onScroll?.(event);
       timeRef.current = window.setTimeout(() => {
         if (!alwaysShow) {
           setVisible(current?.scrollTop + clientHeight + visibilityHeight < scrollHeight);

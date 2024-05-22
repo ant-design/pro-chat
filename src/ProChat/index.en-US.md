@@ -135,6 +135,7 @@ All initialization props such as `initialChats` need to be moved from `ProChat` 
 | userMeta | User Metadata | MetaData | - |
 | assistantMeta | Assistant metadata | MetaData | - |
 | config | Language Model Role Setting | ModelConfig | - |
+| onScroll | monitoring of scroll events | onScroll: (e: Event) => void | - |
 | chats | Chat history | ChatMessage[] | - |
 | onChatsChange | Chat record change callback function, | (chats: ChatMessage[]) => void | chat |
 | displayMode | Display mode, default to chat | 'chat' \| 'docs' | - |
