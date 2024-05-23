@@ -7,9 +7,7 @@ import { useState } from 'react';
 
 export default () => {
   const theme = useTheme();
-
   const [value, setValue] = useState();
-
   return (
     <div style={{ background: theme.colorBgLayout }}>
       <ProChat
