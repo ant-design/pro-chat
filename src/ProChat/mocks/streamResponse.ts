@@ -31,8 +31,14 @@ export class MockResponse {
       return;
     }
 
-    const chunk = this.data.slice(0, 1);
-    this.data = this.data.slice(1);
+    const characters = Array.from(this.data);
+    if (characters.length === 0) {
+      this.controller.close();
+      return;
+    }
+
+    const chunk = characters.shift();
+    this.data = characters.join('');
 
     this.controller.enqueue(this.encoder.encode(chunk));
 
