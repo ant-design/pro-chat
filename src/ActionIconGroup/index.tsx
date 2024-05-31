@@ -61,7 +61,7 @@ const ActionIconGroup = memo<ActionIconGroupProps>(
     placement,
     spotlight = false,
     direction = 'row',
-    dropdownMenu = [],
+    dropdownMenu = null,
     onActionClick,
     className,
     style,
