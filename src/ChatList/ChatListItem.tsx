@@ -221,6 +221,7 @@ const ChatListItem = (props: ChatListItemProps) => {
         {...data}
         onActionClick={(actionKey) => handleActionClick?.(actionKey, data)}
         text={text}
+        actionsProps={chatItemRenderConfig?.actionsProps?.[item.role]}
       />
     );
   });

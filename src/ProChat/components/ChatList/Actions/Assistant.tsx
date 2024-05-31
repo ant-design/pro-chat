@@ -3,18 +3,15 @@ import { RenderAction } from '@/ChatList';
 import { useChatListActionsBar } from '@/hooks/useChatListActionsBar';
 import { memo } from 'react';
 
+import useCustomChatListAction from '@/hooks/useCustomChatListAction';
 import { ErrorActionsBar } from '../Actions/Error';
 
-export const AssistantActionsBar: RenderAction = memo(({ text, id, onActionClick, error }) => {
-  const { regenerate, edit, copy, divider, del } = useChatListActionsBar(text);
+export const AssistantActionsBar: RenderAction = memo(
+  ({ text, id, onActionClick, error, actionsProps }) => {
+    const { regenerate, edit, copy, divider, del } = useChatListActionsBar(text);
 
-  if (id === 'default') return;
-
-  if (error) return <ErrorActionsBar onActionClick={onActionClick} text={text} />;
-
-  return (
-    <ActionIconGroup
-      dropdownMenu={[
+    const { dropdownMenu, items } = useCustomChatListAction({
+      dropdownMenu: [
         edit,
         copy,
         regenerate,
@@ -22,10 +19,22 @@ export const AssistantActionsBar: RenderAction = memo(({ text, id, onActionClick
         // TODO: need a translate
         divider,
         del,
-      ]}
-      items={[regenerate, copy]}
-      onActionClick={onActionClick}
-      type="ghost"
-    />
-  );
-});
+      ],
+      items: [regenerate, copy],
+      actionsProps,
+    });
+
+    if (id === 'default') return;
+
+    if (error) return <ErrorActionsBar onActionClick={onActionClick} text={text} />;
+
+    return (
+      <ActionIconGroup
+        dropdownMenu={dropdownMenu}
+        items={items}
+        onActionClick={onActionClick}
+        type="ghost"
+      />
+    );
+  },
+);
