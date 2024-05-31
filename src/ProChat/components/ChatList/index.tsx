@@ -50,6 +50,8 @@ const List = memo<ListProps>(
     const onActionsClick = useRefFunction((action, { id, error }) => {
       switch (action.key) {
         case 'del': {
+          // 执行删除消息回调
+          chatItemRenderConfig?.actionsCallbacks?.beforeDelFinished?.(id);
           deleteMessage(id);
           break;
         }
@@ -58,6 +60,9 @@ const List = memo<ListProps>(
 
           // if this message is an error message, we need to delete it
           if (error) deleteMessage(id);
+
+          // 执行重新生成
+          chatItemRenderConfig?.actionsCallbacks?.onRegenerateFinished?.(id, error);
           break;
         }
       }

@@ -16,6 +16,16 @@ const Callbacks: React.FC = () => {
             chatRef.current.resendMessage(id);
             message.info('Message updated, new message: ' + value);
           },
+          beforeDelFinished(id) {
+            const data = chatRef.current.getChatById(id);
+            message.error('Delete message: ' + data.content.toString());
+          },
+          onRegenerateFinished(id, error) {
+            const data = chatRef.current.getChatById(id);
+            if (!error) {
+              message.success('Message regenerated: ' + data.content.toString());
+            }
+          },
         },
       }}
       request={async (message) => {

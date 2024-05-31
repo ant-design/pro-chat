@@ -22,6 +22,9 @@ describe('ProChat', () => {
 
   it('onEditFinished callback', async () => {
     const fn = vi.fn();
+    const fn1 = vi.fn();
+    const fn2 = vi.fn();
+
     const APP = () => {
       return (
         <ProChat
@@ -30,20 +33,41 @@ describe('ProChat', () => {
           ]}
           chatItemRenderConfig={{
             actionsCallbacks: {
-              onEditFinished: fn,
+              onEditFinished: fn1,
+              onRegenerateFinished: fn,
+              beforeDelFinished: fn2,
             },
           }}
         />
       );
     };
     const app = render(<APP />);
-    const editButton = app.baseElement.querySelectorAll('.anticon').item(1);
+    const btns = app.baseElement.querySelectorAll('.anticon');
+    expect(btns.length).greaterThan(3);
+
+    const regenerateButton = btns.item(0);
+    const editButton = btns.item(1);
+    const moreButton = btns.item(2);
+
+    await fireEvent.click(regenerateButton);
+    waitFor(() => {
+      expect(fn).toBeCalled();
+    });
+
     await fireEvent.click(editButton);
     waitFor(() => {
       const confirmButton = app.queryByText('确 认');
       expect(confirmButton).toBeTruthy();
       fireEvent.click(confirmButton);
-      expect(fn).toBeCalled();
+      expect(fn1).toBeCalled();
+    });
+
+    await fireEvent.click(moreButton);
+    waitFor(() => {
+      const delBtn = app.queryByText('删除');
+      expect(delBtn).toBeTruthy();
+      fireEvent.click(delBtn);
+      expect(fn2).toBeCalled();
     });
   });
 });

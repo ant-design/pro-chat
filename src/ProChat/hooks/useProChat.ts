@@ -15,6 +15,11 @@ export interface ProChatInstance
    */
   getChats: () => ChatStore['chats'];
   /**
+   * 按照Id获取聊天列表对象
+   * @returns ChatStore['chats']
+   */
+  getChatById: (id: string) => ChatMessage<Record<string, any>>;
+  /**
    * 往数据流中推送消息
    * @returns void
    */
@@ -84,8 +89,13 @@ export const useProChat = () => {
     },
   );
 
+  const getChatById = useRefFunction((id: string) =>
+    storeApi.getState().chats.find((chat) => chat.id === id),
+  );
+
   return useMemo<ProChatInstance>(() => {
     return {
+      getChatById,
       getChats,
       pushChat,
       getChatMessages,

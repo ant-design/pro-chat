@@ -104,6 +104,8 @@ export interface ChatItemProps<T = Record<string, any>> {
     >;
     actionsCallbacks?: {
       onEditFinished?: (id?: string, value?: string) => void;
+      beforeDelFinished?: (id?: string) => void;
+      onRegenerateFinished?: (id?: string, error?: boolean) => void;
     };
   };
 
