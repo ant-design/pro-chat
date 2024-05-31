@@ -11,12 +11,6 @@ const Callbacks: React.FC = () => {
         { id: '1', content: 'test', role: 'user', createAt: Date.now(), updateAt: Date.now() },
       ]}
       chatItemRenderConfig={{
-        actionsProps: {
-          user: {
-            actions: ['regenerate'],
-            moreActions: ['del'],
-          },
-        },
         actionsCallbacks: {
           onEditFinished(id, value) {
             chatRef.current.resendMessage(id);

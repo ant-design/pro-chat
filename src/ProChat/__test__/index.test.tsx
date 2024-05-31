@@ -20,6 +20,29 @@ describe('ProChat', () => {
     expect(app.queryByPlaceholderText(text.placeholder)).toBeTruthy();
   });
 
+  it('actions custom configure', async () => {
+    const app = render(
+      <ProChat
+        chatItemRenderConfig={{
+          actionsProps: {
+            user: {
+              actions: ['regenerate', 'edit'],
+              moreActions: ['del', 'copy'],
+            },
+          },
+        }}
+      />,
+    );
+
+    const btns = app.baseElement.querySelectorAll('.anticon');
+
+    await fireEvent.click(btns.item(2));
+    waitFor(() => {
+      const regenerate = app.queryByText('重新生成');
+      expect(regenerate).not.toBeTruthy();
+    });
+  });
+
   it('onEditFinished callback', async () => {
     const fn = vi.fn();
     const fn1 = vi.fn();
