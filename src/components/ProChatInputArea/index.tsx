@@ -101,7 +101,9 @@ export type ChatInputAreaProps = {
   /**
    * Custom CSS styles for the send button.
    */
-  chatListSendButtonStyle?: React.CSSProperties;
+  sendButtonStyle?: React.CSSProperties;
+
+  sendAreaStyle?: React.CSSProperties;
 };
 
 /**
@@ -121,7 +123,7 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
     inputRender,
     sendButtonRender,
     inputAreaProps,
-    chatListSendButtonStyle,
+    sendButtonStyle,
     clearMessage,
     stopGenerateMessage,
     onMessageSend,
@@ -226,7 +228,7 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
   const defaultButtonDom = (
     <Button
       {...defaultButtonProps}
-      style={chatListSendButtonStyle}
+      style={sendButtonStyle}
       className={cx(`${prefixClass}-button`, hashId)}
     >
       {typing ? '停止生成' : '发送'}

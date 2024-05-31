@@ -295,12 +295,13 @@ export interface ProChatProps<
     chatList?: CSSProperties;
     chatInputAction?: CSSProperties;
     chatInputArea?: CSSProperties;
+    chatSendButton?: CSSProperties;
+    chatSendAreaStyle?: CSSProperties;
     chatListItem?: CSSProperties;
     chatListItemContent?: CSSProperties;
     chatListItemTitle?: CSSProperties;
     chatListItemExtra?: CSSProperties;
     chatListItemAvatar?: CSSProperties;
-    chatListSendButton?: CSSProperties;
   };
 
   /**
@@ -522,13 +523,14 @@ export function ProChat<
           stopGenerateMessage={stopGenerateMessage}
           clearMessage={clearMessage}
           areaRef={areaHtml}
-          chatListSendButtonStyle={styles?.chatListSendButton}
+          sendButtonStyle={styles?.chatSendButton}
           actionsRender={props.actionsRender}
           sendButtonRender={sendButtonRender}
           inputAreaRender={inputAreaRender}
           inputRender={inputRender}
           inputAreaProps={inputAreaProps}
           actionStyle={styles?.chatInputAction}
+          sendAreaStyle={styles?.chatSendAreaStyle}
           areaStyle={styles?.chatInputArea}
         />
       </Flex>
