@@ -102,6 +102,9 @@ export interface ChatItemProps<T = Record<string, any>> {
         defaultDom: ReactNode,
       ) => ReactNode
     >;
+    actionsCallbacks?: {
+      onEditFinished?: (id?: string, value?: string) => void;
+    };
   };
 
   renderErrorMessages?: (data: ChatMessageError) => ReactNode;

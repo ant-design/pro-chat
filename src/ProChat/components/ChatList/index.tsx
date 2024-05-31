@@ -65,9 +65,11 @@ const List = memo<ListProps>(
       // TODO: need a custom callback
     });
 
-    const onMessageChange = useRefFunction((id, content) =>
-      dispatchMessage({ id, key: 'content', type: 'updateMessage', value: content }),
-    );
+    const onMessageChange = useRefFunction((id, content) => {
+      dispatchMessage({ id, key: 'content', type: 'updateMessage', value: content });
+      // 执行 Message Update Callback
+      chatItemRenderConfig?.actionsCallbacks?.onEditFinished?.(id, content);
+    });
 
     const textObj = useMemo(() => {
       return {

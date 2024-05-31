@@ -122,6 +122,10 @@ All initialization props such as `initialChats` need to be moved from `ProChat` 
 
 <code src="./demos/i18n.tsx"></code>
 
+## Custom Callback
+
+<code src="./demos/callbacks.tsx"></code>
+
 ## APIs
 
 | Parameter | description | type | default |
