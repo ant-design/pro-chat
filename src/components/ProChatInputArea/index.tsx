@@ -120,6 +120,7 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
     areaRef,
     typing,
     areaStyle,
+    sendAreaStyle,
     inputRender,
     sendButtonRender,
     inputAreaProps,
@@ -265,7 +266,11 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
         />
         {inputDom}
         {buttonDom ? (
-          <AnimationItem animation className={cx(`${prefixClass}-send-area`, hashId)}>
+          <AnimationItem
+            animation
+            style={sendAreaStyle}
+            className={cx(`${prefixClass}-send-area`, hashId)}
+          >
             {buttonDom}
           </AnimationItem>
         ) : null}
