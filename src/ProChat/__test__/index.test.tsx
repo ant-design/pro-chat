@@ -20,7 +20,7 @@ describe('ProChat', () => {
     expect(app.queryByPlaceholderText(text.placeholder)).toBeTruthy();
   });
 
-  it('onEditFished callback', async () => {
+  it('onEditFinished callback', async () => {
     const fn = vi.fn();
     const APP = () => {
       return (
