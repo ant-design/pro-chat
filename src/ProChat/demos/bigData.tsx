@@ -32,6 +32,9 @@ export default () => {
     <div style={{ background: theme.colorBgLayout }}>
       <ProChat
         initialChats={initialChats}
+        onScroll={(event) => {
+          console.log('event', (event.target as HTMLElement)?.scrollTop);
+        }}
         chatItemRenderConfig={{
           titleRender: (item, dom) => {
             if (item.placement === 'right') return dom;

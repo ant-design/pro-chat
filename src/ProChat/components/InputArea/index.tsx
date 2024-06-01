@@ -8,7 +8,6 @@ import { useStore } from '../../store';
 
 import useProChatLocale from '@/ProChat/hooks/useProChatLocale';
 import { TextAreaProps } from 'antd/es/input';
-import { useMergedState } from 'rc-util';
 import ActionBar from './ActionBar';
 import { AutoCompleteTextArea } from './AutoCompleteTextArea';
 import StopLoadingIcon from './StopLoading';
@@ -93,10 +92,20 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
   const { localeObject } = useProChatLocale();
 
   const { value, onChange } = inputAreaProps || {};
-  const [message, setMessage] = useMergedState('', {
-    onChange: onChange,
-    value: value,
-  });
+  const [message, setMessage] = useState('');
+
+  // 兼容中文的受控输入逻辑
+  useEffect(() => {
+    if (!isChineseInput.current && onChange) {
+      onChange(message);
+    }
+  }, [message]);
+
+  useEffect(() => {
+    if (value) {
+      setMessage(value);
+    }
+  }, [value]);
 
   const send = async () => {
     if (onSend) {
@@ -147,8 +156,9 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
     onCompositionStart: () => {
       isChineseInput.current = true;
     },
-    onCompositionEnd: () => {
+    onCompositionEnd: (e) => {
       isChineseInput.current = false;
+      setMessage(e.target.value);
     },
     onPressEnter: (e) => {
       if (!isLoading && !e.shiftKey && !isChineseInput.current) {

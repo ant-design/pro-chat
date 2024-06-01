@@ -68,6 +68,11 @@ export interface ConversationProps extends ProChatProps<any> {
    */
   sendButtonRender?: ChatInputAreaProps['sendButtonRender'];
 
+  /**
+   * 滚动时候的监听方法
+   */
+  onScroll?: (e: Event) => void;
+
   renderErrorMessages?: ChatListItemProps['renderErrorMessages'];
 }
 
@@ -85,6 +90,7 @@ const App = memo<ConversationProps>(
     backToBottomConfig,
     renderErrorMessages,
     sendButtonRender,
+    onScroll,
     markdownProps,
   }) => {
     const ref = useRef<HTMLDivElement>(null);
@@ -151,6 +157,7 @@ const App = memo<ConversationProps>(
                 style={{
                   bottom: 138,
                 }}
+                onScroll={onScroll}
                 target={ref}
                 text={localeObject.backToBottom}
                 {...backToBottomConfig}

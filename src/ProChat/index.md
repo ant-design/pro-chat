@@ -151,6 +151,7 @@ useProChat hooks 必须在包裹 `ProChatProvider` 后方可使用。
 | userMeta | 用户元数据 | MetaData | - |
 | assistantMeta | 助手元数据 | MetaData | - |
 | config | 语言模型角色设定 | ModelConfig | - |
+| onScroll | 滚动事件的监听 | onScroll: (e: Event) => void | - |
 | chats | 聊天记录 | ChatMessage[] | - |
 | onChatsChange | 聊天记录变化回调函数， | (chats: ChatMessage[]) => void | chat |
 | displayMode | 显示模式，默认是 chat | 'chat' \| 'docs' | - |
