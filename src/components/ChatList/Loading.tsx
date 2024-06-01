@@ -41,7 +41,7 @@ const Svg = () => (
   </svg>
 );
 
-const BubblesLoading = () => {
+export const BubblesLoading = () => {
   const { colorTextTertiary } = useTheme();
   return (
     <div style={{ fill: colorTextTertiary, height: 24, width: 32 }}>
