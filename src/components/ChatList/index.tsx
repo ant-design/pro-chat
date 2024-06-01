@@ -1,6 +1,6 @@
 import SkeletonList from './SkeletonList';
 
-import { MutableRefObject, useContext, useMemo } from 'react';
+import { MutableRefObject, useContext } from 'react';
 
 import type { ChatMessage } from '@/types';
 
@@ -63,32 +63,6 @@ const ChatList: React.FC<ChatListProps> = (props) => {
   const prefixClass = getPrefixCls('pro-chat-list');
   const { wrapSSR, hashId } = useStyle(prefixClass);
 
-  const listDom = useMemo(() => {
-    return chatList.map((item) => {
-      return (
-        <ChatItem
-          key={item.id}
-          data-id={item.id}
-          avatar={(item as any).meta || (item.role === 'user' ? userMeta : assistantMeta)}
-          style={props.chatListItemStyle}
-          originData={item}
-          placement={item.role === 'user' ? 'right' : 'left'}
-          time={item.updateAt || item.createAt}
-          chatListItemContentStyle={chatListItemContentStyle}
-          chatListItemTitleStyle={chatListItemTitleStyle}
-          chatItemRenderConfig={chatItemRenderConfig}
-          chatListItemAvatarStyle={chatListItemAvatarStyle}
-          chatListItemAvatarClassName={chatListItemAvatarClassName}
-          chatListItemContentClassName={chatListItemContentClassName}
-          chatListItemTitleClassName={chatListItemTitleClassName}
-          chatListItemExtraClassName={chatListItemExtraClassName}
-        >
-          <MessageComponent {...item} />
-        </ChatItem>
-      );
-    });
-  }, [chatList]);
-
   if (loading)
     return wrapSSR(
       <div className={cx(`${prefixClass}`, className, hashId)} ref={chatListRef}>
@@ -98,7 +72,29 @@ const ChatList: React.FC<ChatListProps> = (props) => {
 
   return wrapSSR(
     <div className={cx(`${prefixClass}`, className, hashId)} style={style} ref={chatListRef}>
-      {listDom}
+      {chatList.map((item) => {
+        return (
+          <ChatItem
+            key={item.id}
+            data-id={item.id}
+            avatar={(item as any).meta || (item.role === 'user' ? userMeta : assistantMeta)}
+            style={props.chatListItemStyle}
+            originData={item}
+            placement={item.role === 'user' ? 'right' : 'left'}
+            time={item.updateAt || item.createAt}
+            chatListItemContentStyle={chatListItemContentStyle}
+            chatListItemTitleStyle={chatListItemTitleStyle}
+            chatItemRenderConfig={chatItemRenderConfig}
+            chatListItemAvatarStyle={chatListItemAvatarStyle}
+            chatListItemAvatarClassName={chatListItemAvatarClassName}
+            chatListItemContentClassName={chatListItemContentClassName}
+            chatListItemTitleClassName={chatListItemTitleClassName}
+            chatListItemExtraClassName={chatListItemExtraClassName}
+          >
+            <MessageComponent {...item} />
+          </ChatItem>
+        );
+      })}
       {loadingMessage && (
         <ChatItem
           key={loadingMessage.id}
