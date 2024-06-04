@@ -35,7 +35,7 @@ ProChat 作为 AI 会话的前端解决方案，自然默认集成了这项流�
 
 而同样的，ProChat 的 request api 也兼容传统的非流式请求：
 
-```jsx
+```js
 import { ProChat } from '@ant-design/pro-chat';
 import { useTheme } from 'antd-style';
 
