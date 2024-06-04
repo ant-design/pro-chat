@@ -35,7 +35,7 @@ The effect is as follows
 
 Similarly, ProChat's request API is also compatible with traditional non streaming requests:
 
-```jsx
+```js
 import { ProChat } from '@ant-design/pro-chat';
 import { useTheme } from 'antd-style';
 

@@ -1,18 +1,20 @@
 ﻿import { AutoComplete, AutoCompleteProps, Input } from 'antd';
 import { TextAreaProps } from 'antd/es/input';
-import { type TextAreaRef } from 'antd/es/input/TextArea';
-import { useState } from 'react';
+import { TextAreaRef } from 'antd/es/input/TextArea';
+import React, { useState } from 'react';
 import { useStore } from '../../store';
 
 type AutoCompleteTextAreaProps = TextAreaProps & {
   autoCompleteProps?: AutoCompleteProps;
-  reference?: React.Ref<TextAreaRef>;
 };
 
-export const AutoCompleteTextArea: React.FC<AutoCompleteTextAreaProps> = (props) => {
+export const AutoCompleteTextArea: React.FC<AutoCompleteTextAreaProps> = React.forwardRef<
+  TextAreaRef,
+  AutoCompleteTextAreaProps
+>((props, ref) => {
   const [autocompleteRequest] = useStore((s) => [s.autocompleteRequest]);
 
-  const { disabled, reference, autoCompleteProps = {}, ...rest } = props;
+  const { disabled, autoCompleteProps = {}, ...rest } = props;
 
   const [options, setOptions] = useState<{ value: string; label: string }[]>([]);
   const [open, setOpen] = useState(false);
@@ -42,7 +44,7 @@ export const AutoCompleteTextArea: React.FC<AutoCompleteTextAreaProps> = (props)
       <Input.TextArea
         size="large"
         {...rest}
-        ref={reference}
+        ref={ref}
         disabled={disabled}
         className={`${props.className}-textarea`}
         onFocus={(e) => {
@@ -56,4 +58,4 @@ export const AutoCompleteTextArea: React.FC<AutoCompleteTextAreaProps> = (props)
       />
     </AutoComplete>
   );
-};
+});
