@@ -1,6 +1,6 @@
 import { FullToken, css } from 'antd-style';
 
-export default (token: FullToken) => css`
+export default (token: FullToken, rootClassName: string) => css`
     line-height: 1;
     text-size-adjust: none;
     text-rendering: optimizelegibility;
@@ -11,27 +11,30 @@ export default (token: FullToken) => css`
     -webkit-overflow-scrolling: touch;
     -webkit-tap-highlight-color: transparent;
   }
-  code {
-    font-family: ${token.fontFamilyCode} !important;
 
-    span {
+  .${rootClassName} {
+    code {
       font-family: ${token.fontFamilyCode} !important;
+
+      span {
+        font-family: ${token.fontFamilyCode} !important;
+      }
     }
-  }
 
-  p {
-    word-wrap: break-word;
-  }
+    p {
+      word-wrap: break-word;
+    }
 
-  ::selection {
-    color: #000;
-    background: ${token.blue3};
+    *::selection {
+      color: #000;
+      background: ${token.blue3};
 
-    -webkit-text-fill-color: unset !important;
-  }
+      -webkit-text-fill-color: unset !important;
+    }
 
-  * {
-    box-sizing: border-box;
-    vertical-align: baseline;
+    * {
+      box-sizing: border-box;
+      vertical-align: baseline;
+    }
   }
 `;
