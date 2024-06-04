@@ -4,6 +4,7 @@ import { MetaData } from '@/ProChat/types/meta';
 import { ChatMessage } from '@/types/message';
 import { AutoCompleteProps } from 'antd';
 import { TextAreaProps } from 'antd/es/input';
+import { type TextAreaRef } from 'antd/es/input/TextArea';
 import { ReactNode } from 'react';
 import { FlexBasicProps } from 'react-layout-kit/lib/FlexBasic';
 import { Locale } from '../../locale';
@@ -85,6 +86,7 @@ export interface ChatPropsState<T extends Record<string, any> = Record<string, a
     autoCompleteProps?: AutoCompleteProps;
     value?: string;
     onChange?: (value: string) => void;
+    reference?: React.Ref<TextAreaRef>;
   };
 
   /**
