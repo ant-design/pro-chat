@@ -53,14 +53,16 @@ export const messagesReducer = (
     case 'addMessage': {
       return produce(state, (draftState) => {
         const mid = payload.id || nanoid();
+        // drop type from payload, otherwise the content display in a wrong way
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const { type: _, ...rest } = payload;
 
         draftState.push({
           content: payload.message,
           createAt: Date.now(),
           id: mid,
-          parentId: payload.parentId,
-          role: payload.role,
           updateAt: Date.now(),
+          ...rest,
         });
       });
     }
