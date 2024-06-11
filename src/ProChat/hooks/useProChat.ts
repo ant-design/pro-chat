@@ -23,7 +23,7 @@ export interface ProChatInstance
    * 往数据流中推送消息
    * @returns void
    */
-  pushChat: (chats: { id?: string; content: string; role: string }) => void;
+  pushChat: (chats: { id?: string; content: string; role: string; [key: string]: any }) => void;
   /**
    * 获取当前聊天消息列表
    * @returns ChatMessage[]
