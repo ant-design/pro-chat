@@ -1,4 +1,5 @@
 import { useRefFunction } from '@/hooks/useRefFunction';
+import { ChatMessage } from '@/index';
 import { ProChatLocale } from '@/locale';
 import { SendOutlined } from '@ant-design/icons';
 import { Button, ButtonProps, ConfigProvider, Flex } from 'antd';
@@ -86,7 +87,7 @@ export type ChatInputAreaProps = {
    * Callback function triggered when a message is sent.
    * Receives the sent message as a parameter.
    */
-  onMessageSend: (message: string) => void | Promise<any>;
+  onMessageSend: (message: string | ChatMessage<any>) => void | Promise<any>;
   /**
    * Custom render function for the action buttons.
    * Receives an array of default action button DOMs.
