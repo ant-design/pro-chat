@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 
+import { ActionsProps } from '@/ChatList/ActionsBar';
 import { EditableMessageProps } from '@/EditableMessage';
 import { ChatMessageError, DivProps, MetaData } from '@/types';
 import { MarkdownProps } from '@ant-design/pro-editor';
@@ -102,6 +103,12 @@ export interface ChatItemProps<T = Record<string, any>> {
         defaultDom: ReactNode,
       ) => ReactNode
     >;
+    actionsCallbacks?: {
+      onEditFinished?: (id?: string, value?: string) => void;
+      beforeDelFinished?: (id?: string) => void;
+      onRegenerateFinished?: (id?: string, error?: boolean) => void;
+    };
+    actionsProps?: Record<string, ActionsProps>;
   };
 
   renderErrorMessages?: (data: ChatMessageError) => ReactNode;

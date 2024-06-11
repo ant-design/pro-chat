@@ -50,6 +50,8 @@ const List = memo<ListProps>(
     const onActionsClick = useRefFunction((action, { id, error }) => {
       switch (action.key) {
         case 'del': {
+          // 执行删除消息回调
+          chatItemRenderConfig?.actionsCallbacks?.beforeDelFinished?.(id);
           deleteMessage(id);
           break;
         }
@@ -58,6 +60,9 @@ const List = memo<ListProps>(
 
           // if this message is an error message, we need to delete it
           if (error) deleteMessage(id);
+
+          // 执行重新生成
+          chatItemRenderConfig?.actionsCallbacks?.onRegenerateFinished?.(id, error);
           break;
         }
       }
@@ -65,9 +70,11 @@ const List = memo<ListProps>(
       // TODO: need a custom callback
     });
 
-    const onMessageChange = useRefFunction((id, content) =>
-      dispatchMessage({ id, key: 'content', type: 'updateMessage', value: content }),
-    );
+    const onMessageChange = useRefFunction((id, content) => {
+      dispatchMessage({ id, key: 'content', type: 'updateMessage', value: content });
+      // 执行 Message Update Callback
+      chatItemRenderConfig?.actionsCallbacks?.onEditFinished?.(id, content);
+    });
 
     const textObj = useMemo(() => {
       return {

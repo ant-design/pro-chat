@@ -132,6 +132,10 @@ useProChat hooks 必须在包裹 `ProChatProvider` 后方可使用。
 
 <code src="./demos/i18n.tsx"></code>
 
+## 自定义回调
+
+<code src="./demos/callbacks.tsx"></code>
+
 ## APIs
 
 | 参数 | 说明 | 类型 | 默认值 |

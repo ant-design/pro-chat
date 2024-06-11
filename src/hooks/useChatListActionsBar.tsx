@@ -5,7 +5,7 @@ import { ActionIconGroupItems } from '@/ActionIconGroup';
 interface ChatListActionsBar {
   copy: ActionIconGroupItems;
   del: ActionIconGroupItems;
-  divider: { type: 'divider' };
+  divider: { key: 'divider'; type: 'divider' };
   edit: ActionIconGroupItems;
   regenerate: ActionIconGroupItems;
 }
@@ -29,6 +29,7 @@ export const useChatListActionsBar = (text?: {
     },
     divider: {
       type: 'divider',
+      key: 'divider',
     },
     edit: {
       icon: Edit,

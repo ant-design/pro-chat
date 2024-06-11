@@ -1,11 +1,19 @@
 import { memo } from 'react';
 
-import ActionIconGroup, { type ActionIconGroupProps } from '@/ActionIconGroup';
+import ActionIconGroup, {
+  ActionIconGroupItems,
+  type ActionIconGroupProps,
+} from '@/ActionIconGroup';
 import { useChatListActionsBar } from '@/hooks/useChatListActionsBar';
 
 /**
  * ActionsBar组件的属性类型定义
  */
+
+export interface ActionsProps {
+  actions?: Array<ActionIconGroupItems['key']>;
+  moreActions?: Array<ActionIconGroupItems['key']>;
+}
 export interface ActionsBarProps extends ActionIconGroupProps {
   /**
    * 文本内容
@@ -32,6 +40,10 @@ export interface ActionsBarProps extends ActionIconGroupProps {
    * 内容
    */
   content?: React.ReactNode | undefined;
+  /**
+   * 操作栏属性
+   */
+  actionsProps?: ActionsProps;
 }
 
 /**
