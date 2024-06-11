@@ -69,7 +69,6 @@ const ActionIconGroup = memo<ActionIconGroupProps>(
     const tooltipsPlacement = placement || (direction === 'column' ? 'right' : 'top');
 
     const mergeDropDownList = dropdownMenu?.map((item: any) => {
-      console.log('##cloes', item);
       return {
         ...item,
         icon: <Icon icon={item.icon} size="small" />,
