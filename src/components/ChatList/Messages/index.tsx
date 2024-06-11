@@ -3,6 +3,7 @@ import { LOADING_FLAT } from '@/const/message';
 import { Collapse, Divider, Typography } from 'antd';
 import { memo } from 'react';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import BubblesLoading from '../Loading';
 import { useStyles } from './style';
 
@@ -24,7 +25,11 @@ const components: any = {
 const Render = ({ children }: { children: string }) => {
   const { styles } = useStyles();
   return (
-    <ReactMarkdown className={styles.markdown} components={components}>
+    <ReactMarkdown
+      remarkPlugins={[remarkGfm] as any[]}
+      className={styles.markdown}
+      components={components}
+    >
       {children}
     </ReactMarkdown>
   );
