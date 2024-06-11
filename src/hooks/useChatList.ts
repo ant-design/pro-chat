@@ -196,9 +196,19 @@ export const useChatList = (props: ProChatUIUseListChatProps) => {
    * @param {string} message - The message to send.
    * @returns {Promise<void>} - A promise that resolves when the message is sent.
    */
-  const sendMessage = useRefFunction(async (message: string) => {
+  const sendMessage = useRefFunction(async (message: string | Partial<ChatMessage>) => {
     controller.current = new AbortController();
-    chatList.push(genMessageRecord({ content: message }, 'user'));
+    chatList.push(
+      genMessageRecord(
+        typeof message === 'string'
+          ? { content: message }
+          : {
+              ...message,
+              content: message.content,
+            },
+        'user',
+      ),
+    );
     setChatList([...chatList]);
     if (!props?.sendMessageRequest) return;
     setLoadingMessage(
