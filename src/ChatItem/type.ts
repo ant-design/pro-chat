@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 
 import { ActionsProps } from '@/ChatList/ActionsBar';
 import { EditableMessageProps } from '@/EditableMessage';
+import { OpenAIChatMessage } from '@/ProChat/types/chat';
 import { ChatMessageError, DivProps, MetaData } from '@/types';
 import { MarkdownProps } from '@ant-design/pro-editor';
 
@@ -104,11 +105,11 @@ export interface ChatItemProps<T = Record<string, any>> {
       ) => ReactNode
     >;
     actionsCallbacks?: {
-      onEditFinished?: (id?: string, value?: string) => void;
-      beforeDelFinished?: (id?: string) => void;
-      onRegenerateFinished?: (id?: string, error?: boolean) => void;
+      onEdit?: (id?: string, value?: string) => Promise<void> | void;
+      onDelete?: (id?: string) => Promise<void> | void;
+      onRegenerate?: (id?: string, error?: boolean) => Promise<void> | void;
     };
-    actionsProps?: Record<string, ActionsProps>;
+    actionsProps?: Record<OpenAIChatMessage['role'], ActionsProps>;
   };
 
   renderErrorMessages?: (data: ChatMessageError) => ReactNode;

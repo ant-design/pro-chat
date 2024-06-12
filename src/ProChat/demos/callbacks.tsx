@@ -12,19 +12,25 @@ const Callbacks: React.FC = () => {
       ]}
       chatItemRenderConfig={{
         actionsCallbacks: {
-          onEditFinished(id, value) {
+          onEdit(id, value) {
             chatRef.current.resendMessage(id);
             message.info('Message updated, new message: ' + value);
           },
-          beforeDelFinished(id) {
+          onDelete(id) {
             const data = chatRef.current.getChatById(id);
             message.error('Delete message: ' + data.content.toString());
           },
-          onRegenerateFinished(id, error) {
+          onRegenerate(id, error) {
             const data = chatRef.current.getChatById(id);
             if (!error) {
               message.success('Message regenerated: ' + data.content.toString());
             }
+          },
+        },
+        actionsProps: {
+          user: {
+            actions: ['edit', 'delete', 'regenerate'],
+            moreActions: ['copy'],
           },
         },
       }}
