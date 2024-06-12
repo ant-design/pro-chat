@@ -47,7 +47,7 @@ describe('messagesReducer', () => {
         content: 'New Message',
         createAt: expect.any(Number),
         updateAt: expect.any(Number),
-        parentId: undefined,
+        message: 'New Message',
         role: 'user',
       });
     });
@@ -74,7 +74,7 @@ describe('messagesReducer', () => {
         content: 'New Message',
         createAt: expect.any(Number),
         updateAt: expect.any(Number),
-        parentId: undefined,
+        message: 'New Message',
         role: 'user',
       });
     });
@@ -93,6 +93,7 @@ describe('messagesReducer', () => {
       expect(newState.find((m) => m.id === 'message3')).toEqual({
         id: 'message3',
         content: 'New Message',
+        message: 'New Message',
         createAt: expect.any(Number),
         updateAt: expect.any(Number),
         role: 'user',
@@ -114,6 +115,7 @@ describe('messagesReducer', () => {
       expect(newState.find((m) => m.id === 'message3')).toEqual({
         id: 'message3',
         content: 'New Message',
+        message: 'New Message',
         createAt: expect.any(Number),
         updateAt: expect.any(Number),
         role: 'user',

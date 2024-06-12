@@ -19,10 +19,10 @@ export default () => {
         }}
         chatItemRenderConfig={{
           actionsCallbacks: {
-            onEditFinished: (value, chatId) => {
+            onEdit: (value, chatId) => {
               message.info(`编辑完成，内容为：${value}，消息ID为：${chatId}`);
             },
-            onRegenerateFinished: (id, error) => {
+            onRegenerate: (id, error) => {
               if (error) {
                 message.error(`消息ID为：${id}的消息重新生成失败`);
               } else {

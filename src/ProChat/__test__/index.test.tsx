@@ -36,7 +36,7 @@ describe('ProChat', () => {
 
     const btns = app.baseElement.querySelectorAll('.anticon');
 
-    await fireEvent.click(btns.item(2));
+    fireEvent.click(btns.item(2));
     waitFor(() => {
       const regenerate = app.queryByText('重新生成');
       expect(regenerate).not.toBeTruthy();
@@ -56,28 +56,27 @@ describe('ProChat', () => {
           ]}
           chatItemRenderConfig={{
             actionsCallbacks: {
-              onEditFinished: fn1,
-              onRegenerateFinished: fn,
-              beforeDelFinished: fn2,
+              onEdit: fn1,
+              onRegenerate: fn,
+              onDelete: fn2,
             },
           }}
         />
       );
     };
     const app = render(<APP />);
-    const btns = app.baseElement.querySelectorAll('.anticon');
-    expect(btns.length).greaterThan(3);
+    const btns = app.baseElement.querySelector('.ant-editor-action-group-content');
+    expect(btns.children.length).greaterThan(2);
+    const regenerateButton = btns.children.item(0);
+    const editButton = btns.children.item(1);
+    const moreButton = btns.children.item(2);
 
-    const regenerateButton = btns.item(0);
-    const editButton = btns.item(1);
-    const moreButton = btns.item(2);
-
-    await fireEvent.click(regenerateButton);
+    fireEvent.click(regenerateButton);
     waitFor(() => {
       expect(fn).toBeCalled();
     });
 
-    await fireEvent.click(editButton);
+    fireEvent.click(editButton);
     waitFor(() => {
       const confirmButton = app.queryByText('确 认');
       expect(confirmButton).toBeTruthy();
@@ -85,7 +84,7 @@ describe('ProChat', () => {
       expect(fn1).toBeCalled();
     });
 
-    await fireEvent.click(moreButton);
+    fireEvent.click(moreButton);
     waitFor(() => {
       const delBtn = app.queryByText('删除');
       expect(delBtn).toBeTruthy();
