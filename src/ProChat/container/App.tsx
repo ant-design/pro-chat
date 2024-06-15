@@ -122,8 +122,11 @@ const App = memo<ConversationProps>(
     return (
       <RcResizeObserver
         onResize={(e) => {
-          if (e.height !== height) {
-            setHeight(e.height);
+          if ((typeof height !== typeof e.height) ||
+              (typeof height === 'string' && typeof e.height === 'string' && e.height !== height) || 
+              (typeof height === 'number' && Math.abs(e.height - height) > 1)) { 
+              // 加一个 Math.abs(e.height - height) > 1 的判断以避免height和e.height相差过小导致的页面一直缩小
+              setHeight(e.height);
           }
         }}
       >
