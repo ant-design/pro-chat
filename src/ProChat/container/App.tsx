@@ -7,7 +7,7 @@ import { Flexbox } from 'react-layout-kit';
 import { ChatListItemProps } from '@/ChatList/ChatListItem';
 import { ConfigProvider } from 'antd';
 import ChatList from '../components/ChatList';
-import ChatInputArea, { ChatInputAreaProps } from '../components/InputArea';
+import ProInputArea, { ProInputAreaProps } from '../components/ProInputArea';
 import ChatScrollAnchor from '../components/ScrollAnchor';
 import useProChatLocale from '../hooks/useProChatLocale';
 import { useOverrideStyles } from './OverrideStyle';
@@ -52,21 +52,21 @@ export interface ConversationProps extends ProChatProps<any> {
    * @param onClearAllHistory 清除所有历史记录的回调函数
    * @returns 渲染的 React 元素
    */
-  inputAreaRender?: ChatInputAreaProps['inputAreaRender'];
+  inputAreaRender?: ProInputAreaProps['inputAreaRender'];
   /**
    * 输入框的渲染函数
    * @param defaultDom 默认的 DOM 元素
    * @param onMessageSend 发送消息的回调函数
    * @param props 输入框的属性
    */
-  inputRender: ChatInputAreaProps['inputRender'];
+  inputRender: ProInputAreaProps['inputRender'];
 
   /**
    * 聊天发送按钮的渲染配置
    * @param defaultDom 默认的 DOM 元素
    * @param defaultProps 默认的属性
    */
-  sendButtonRender?: ChatInputAreaProps['sendButtonRender'];
+  sendButtonRender?: ProInputAreaProps['sendButtonRender'];
 
   /**
    * 滚动时候的监听方法
@@ -165,10 +165,11 @@ const App = memo<ConversationProps>(
           {renderInputArea !== null && inputAreaRender !== null && (
             <div ref={areaHtml}>
               {
-                <ChatInputArea
+                <ProInputArea
                   sendButtonRender={sendButtonRender}
                   inputAreaRender={inputAreaRender || renderInputArea}
                   inputRender={inputRender}
+                  sendShortcutKey="enter"
                 />
               }
             </div>
