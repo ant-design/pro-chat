@@ -5,6 +5,7 @@ export default {
   clearDialogue: 'Clear dialogue',
   clearModalTitle:
     'You are about to clear the session, and you will not be able to retrieve it after clearing. Do you want to clear the current session?',
+  connectNetwork: 'Connect to network',
   defaultHelloMessage: 'Let us start chatting',
   cancel: 'Cancel',
   confirm: 'Confirm',
@@ -14,4 +15,5 @@ export default {
   edit: 'Edit',
   history: 'History',
   regenerate: 'Regenerate',
+  refresh: 'Refresh',
 };

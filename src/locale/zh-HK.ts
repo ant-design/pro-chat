@@ -4,6 +4,7 @@ export default {
   clearCurrentDialogue: '清除當前對話',
   clearDialogue: '清除對話',
   clearModalTitle: '您即將清除會話，清除後將無法恢復。您確定要清除當前會話嗎？',
+  connectNetwork: '是否連接網絡',
   defaultHelloMessage: '讓我們開始聊天吧',
   cancel: '取消',
   confirm: '確認',
@@ -13,4 +14,5 @@ export default {
   edit: '編輯',
   history: '歷史',
   regenerate: '重新生成',
+  refresh: '刷新',
 };
