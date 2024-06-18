@@ -64,7 +64,6 @@
     "@ant-design/pro-editor": "latest",
     "@babel/runtime": "^7.23.9",
     "@emotion/react": "^11.11.4",
-    "@testing-library/jest-dom": "^6.4.2",
     "copy-to-clipboard": "^3.3.3",
     "dayjs": "^1.11.10",
     "emoji-regex": "^10.3.0",
@@ -84,6 +83,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^17.8.1",
+    "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^13.0.0",
     "@types/chroma-js": "^2.4.4",
     "@types/glob": "^8.1.0",

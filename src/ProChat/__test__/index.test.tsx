@@ -1,5 +1,6 @@
 import { gLocaleObject } from '@/locale';
 import { fireEvent, render, waitFor } from '@testing-library/react';
+import { describe, it, vi } from 'vitest';
 import { ProChat } from '..';
 
 describe('ProChat', () => {
