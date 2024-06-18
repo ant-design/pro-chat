@@ -120,7 +120,12 @@ const App = memo<ConversationProps>(
     return (
       <RcResizeObserver
         onResize={(e) => {
-          if (e.height !== height) {
+          if (
+            typeof height !== typeof e.height ||
+            (typeof height === 'string' && typeof e.height === 'string' && e.height !== height) ||
+            (typeof height === 'number' && Math.abs(e.height - height) > 1)
+          ) {
+            // stop shaking
             setHeight(e.height);
           }
         }}
