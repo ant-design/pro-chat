@@ -72,16 +72,22 @@ export default () => {
             },
             contentAfterRender: (item, dom) => {
               return (
-                <Space
+                <div
                   style={{
                     fontSize: 12,
+                    display: 'flex',
+                    justifyContent: 'space-between',
                   }}
                 >
-                  <CopyOutlined />
-                  <ReloadOutlined />
-                  <DeleteOutlined />
-                  <EditOutlined />
-                </Space>
+                  <Space>
+                    <CopyOutlined />
+                    <ReloadOutlined />
+                  </Space>
+                  <Space>
+                    <DeleteOutlined />
+                    <EditOutlined />
+                  </Space>
+                </div>
               );
             },
           }}

@@ -136,43 +136,45 @@ export const ChatItem: React.FC<ChatItemProps> = (props) => {
             hashId,
           )}
         >
-          {contentBeforeRender ? (
-            <div
+          <div>
+            {contentBeforeRender ? (
+              <div
+                className={cx(
+                  `${prefixClass}-message-before`,
+                  `${prefixClass}-message-before-${placement}`,
+                  hashId,
+                )}
+                style={chatListItemExtraStyle}
+              >
+                {contentBeforeRender}
+              </div>
+            ) : null}
+            <AnimationItem
+              animation={animation}
               className={cx(
-                `${prefixClass}-message-before`,
-                `${prefixClass}-message-before-${placement}`,
+                `${prefixClass}-message-content`,
+                `${prefixClass}-message-content-${placement}`,
+
                 hashId,
               )}
-              style={chatListItemExtraStyle}
+              style={chatListItemContentStyle}
             >
-              {contentBeforeRender}
-            </div>
-          ) : null}
-          <AnimationItem
-            animation={animation}
-            className={cx(
-              `${prefixClass}-message-content`,
-              `${prefixClass}-message-content-${placement}`,
+              {childrenDom}
+            </AnimationItem>
 
-              hashId,
-            )}
-            style={chatListItemContentStyle}
-          >
-            {childrenDom}
-          </AnimationItem>
-
-          {contentAfterRender ? (
-            <div
-              className={cx(
-                `${prefixClass}-message-after`,
-                `${prefixClass}-message-after-${placement}`,
-                hashId,
-              )}
-              style={chatListItemExtraStyle}
-            >
-              {contentAfterRender}
-            </div>
-          ) : null}
+            {contentAfterRender ? (
+              <div
+                className={cx(
+                  `${prefixClass}-message-after`,
+                  `${prefixClass}-message-after-${placement}`,
+                  hashId,
+                )}
+                style={chatListItemExtraStyle}
+              >
+                {contentAfterRender}
+              </div>
+            ) : null}
+          </div>
         </Flex>
       </Flex>
     </Flex>,
