@@ -2,7 +2,7 @@ export default {
   placeholder: '请输入消息...',
   backToBottom: '返回底部',
   clearCurrentDialogue: '清空当前对话',
-  connectNetwork: '是否连接网络',
+  clearDialogue: '清空对话',
   clearModalTitle: '你即将要清空会话，清空后将无法找回。是否清空当前会话？',
   defaultHelloMessage: '让我们开始对话吧',
   cancel: '取消',
@@ -13,5 +13,8 @@ export default {
   edit: '编辑',
   history: '历史范围',
   regenerate: '重新生成',
-  refresh: '刷新',
+  connectNetwork: '是否连接网络',
+  video: '视频上传',
+  audio: '音频上传',
+  image: '图片上传',
 };

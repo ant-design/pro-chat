@@ -4,7 +4,6 @@ export interface LocaleProps {
   clearCurrentDialogue: string;
   clearDialogue: string;
   clearModalTitle: string;
-  connectNetwork: string;
   defaultHelloMessage: string;
   cancel: string;
   confirm: string;
@@ -14,5 +13,8 @@ export interface LocaleProps {
   edit: string;
   history: string;
   regenerate: string;
-  refresh: string;
+  connectNetwork: string;
+  video: string;
+  audio: string;
+  image: string;
 }
