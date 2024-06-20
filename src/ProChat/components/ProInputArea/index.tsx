@@ -7,6 +7,7 @@ import { ReactNode, useContext, useEffect, useMemo, useRef, useState } from 'rea
 import { Flexbox } from 'react-layout-kit';
 import { useStore } from '../../store';
 import ControlPanel from './ControlPanel';
+import ExtraModel, { ExtraItem, ExtraType } from './ExtraModel';
 import { ProTextArea } from './ProTextArea';
 import StopLoadingIcon from './StopLoading';
 const ENTER = 'enter';
@@ -52,17 +53,7 @@ const useStyles = createStyles(({ css, responsive, token }) => ({
     color: ${token.colorTextTertiary};
   `,
 }));
-export enum ExtraType {
-  Image = 'image',
-  Voice = 'voice',
-  Video = 'video',
-}
-export interface ExtraItem {
-  type: ExtraType;
-  onChange?: () => void;
-  onFinish?: () => void;
-  render: () => JSX.Element;
-}
+
 export type ProInputAreaProps = {
   className?: string;
   extra?: Array<ExtraItem | ExtraType>;
@@ -83,8 +74,15 @@ export type ProInputAreaProps = {
 
 export const ProInputArea = (props: ProInputAreaProps) => {
   // 拿到 Props 中的 需求
-  const { className, onSend, inputAreaRender, inputRender, sendButtonRender, sendShortcutKey } =
-    props || {};
+  const {
+    className,
+    onSend,
+    inputAreaRender,
+    inputRender,
+    sendButtonRender,
+    sendShortcutKey,
+    extra,
+  } = props || {};
   // 拿到 本地仓库 透出的 方法
   const [sendMessage, isLoading, placeholder, inputAreaProps, clearMessage, stopGenerateMessage] =
     useStore((s) => [
@@ -243,7 +241,10 @@ export const ProInputArea = (props: ProInputAreaProps) => {
       }}
     >
       <Flexbox gap={8} padding={16} className={cx(styles.container, `${prefixClass}`, className)}>
-        <ControlPanel className={`${prefixClass}-action-bar`} />
+        <Flexbox horizontal justify="space-between">
+          <ExtraModel className={`${prefixClass}-extra`} extra={extra} />
+          <ControlPanel className={`${prefixClass}-action-bar`} />
+        </Flexbox>
         <Flexbox
           horizontal
           gap={8}

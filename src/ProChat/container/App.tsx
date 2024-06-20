@@ -6,6 +6,7 @@ import { Flexbox } from 'react-layout-kit';
 
 import { ChatListItemProps } from '@/ChatList/ChatListItem';
 import { ConfigProvider } from 'antd';
+import { ALargeSmall } from 'lucide-react';
 import ChatList from '../components/ChatList';
 import ProInputArea, { ProInputAreaProps } from '../components/ProInputArea';
 import ChatScrollAnchor from '../components/ScrollAnchor';
@@ -170,6 +171,16 @@ const App = memo<ConversationProps>(
                   inputAreaRender={inputAreaRender || renderInputArea}
                   inputRender={inputRender}
                   sendShortcutKey="enter"
+                  extra={[
+                    'image',
+                    'audio',
+                    {
+                      type: 'video',
+                      render: () => {
+                        return <ALargeSmall></ALargeSmall>;
+                      },
+                    },
+                  ]}
                 />
               }
             </div>

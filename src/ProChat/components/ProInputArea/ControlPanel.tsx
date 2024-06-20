@@ -37,7 +37,7 @@ export const ActionBar = ({ className }: { className?: string }) => {
     >
       <ActionIcon title={localeObject.clearCurrentDialogue} icon={Trash2} />
     </Popconfirm>,
-    <ActionIcon key={'refresh'} title={localeObject.refresh} icon={RotateCw} />,
+    <ActionIcon key={'regenerate'} title={localeObject.regenerate} icon={RotateCw} />,
     <ActionIcon key={'connectNetwork'} title={localeObject.connectNetwork} icon={Globe} />,
   ];
 
