@@ -14,6 +14,10 @@ const genStyle: GenerateStyle<ChatTokenType> = (token) => {
         paddingTop: `${token.padding}px`,
         paddingBottom: `${token.padding}px`,
       },
+
+      '&-loading': {
+        padding: '0 24px',
+      },
     },
   };
 };

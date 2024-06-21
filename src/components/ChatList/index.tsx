@@ -65,7 +65,10 @@ const ChatList: React.FC<ChatListProps> = (props) => {
 
   if (loading)
     return wrapSSR(
-      <div className={cx(`${prefixClass}`, className, hashId)} ref={chatListRef}>
+      <div
+        className={cx(`${prefixClass} ${prefixClass}-loading`, className, hashId)}
+        ref={chatListRef}
+      >
         <SkeletonList />
       </div>,
     );
