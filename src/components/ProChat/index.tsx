@@ -299,6 +299,8 @@ export interface ProChatProps<
     chatSendAreaStyle?: CSSProperties;
     chatListItem?: CSSProperties;
     chatListItemContent?: CSSProperties;
+    chatListLeftItemContent?: CSSProperties;
+    chatListRightItemContent?: CSSProperties;
     chatListItemTitle?: CSSProperties;
     chatListItemExtra?: CSSProperties;
     chatListItemAvatar?: CSSProperties;
@@ -509,6 +511,8 @@ export function ProChat<
           chatListItemExtraClassName={classNames?.chatListItemExtra}
           chatListItemAvatarClassName={classNames?.chatListItemAvatar}
           chatListItemStyle={styles?.chatListItem}
+          chatListLeftItemContentStyle={styles?.chatListLeftItemContent}
+          chatListRightItemContentStyle={styles?.chatListRightItemContent}
           chatListItemContentStyle={styles?.chatListItemContent}
           chatListItemTitleStyle={styles?.chatListItemTitle}
           chatListItemExtraStyle={styles?.chatListItemExtra}

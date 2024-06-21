@@ -25,6 +25,8 @@ export type ChatListProps = {
   assistantMeta?: ProChatMetaData;
   chatListItemStyle?: React.CSSProperties;
   chatListItemContentStyle?: React.CSSProperties;
+  chatListLeftItemContentStyle?: React.CSSProperties;
+  chatListRightItemContentStyle?: React.CSSProperties;
   chatListItemTitleStyle?: React.CSSProperties;
   chatListItemAvatarStyle?: React.CSSProperties;
   chatListItemExtraStyle?: React.CSSProperties;
@@ -43,6 +45,8 @@ const ChatList: React.FC<ChatListProps> = (props) => {
     loading,
     chatListItemContentStyle,
     chatListItemTitleStyle,
+    chatListLeftItemContentStyle,
+    chatListRightItemContentStyle,
     chatListItemAvatarStyle,
     chatListItemAvatarClassName,
     chatListItemContentClassName,
@@ -85,7 +89,12 @@ const ChatList: React.FC<ChatListProps> = (props) => {
             originData={item}
             placement={item.role === 'user' ? 'right' : 'left'}
             time={item.updateAt || item.createAt}
-            chatListItemContentStyle={chatListItemContentStyle}
+            chatListItemContentStyle={{
+              ...chatListItemContentStyle,
+              ...(item.role === 'user'
+                ? chatListRightItemContentStyle
+                : chatListLeftItemContentStyle),
+            }}
             chatListItemTitleStyle={chatListItemTitleStyle}
             chatItemRenderConfig={chatItemRenderConfig}
             chatListItemAvatarStyle={chatListItemAvatarStyle}
@@ -111,7 +120,12 @@ const ChatList: React.FC<ChatListProps> = (props) => {
           originData={loadingMessage}
           placement={loadingMessage.role === 'user' ? 'right' : 'left'}
           time={loadingMessage.updateAt || loadingMessage.createAt}
-          chatListItemContentStyle={chatListItemContentStyle}
+          chatListItemContentStyle={{
+            ...chatListItemContentStyle,
+            ...(loadingMessage.role === 'user'
+              ? chatListRightItemContentStyle
+              : chatListLeftItemContentStyle),
+          }}
           chatListItemTitleStyle={chatListItemTitleStyle}
           chatItemRenderConfig={chatItemRenderConfig}
           chatListItemAvatarStyle={chatListItemAvatarStyle}
