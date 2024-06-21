@@ -32,7 +32,6 @@ const genStyle: GenerateStyle<ChatTokenType> = (token) => {
       '&-message-container': {
         width: '100%',
         display: 'flex',
-        maxWidth: 'calc(100% - 114px)',
         '&-right': {
           alignItems: 'flex-end',
         },
