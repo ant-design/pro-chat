@@ -1,11 +1,9 @@
-import { createStyles, cx } from 'antd-style';
-import { Flexbox } from 'react-layout-kit';
-
 import ActionIcon from '@/ActionIcon';
-import { ConfigProvider, Popconfirm } from 'antd';
-import { Globe, RotateCw, Trash2 } from 'lucide-react';
-
 import useProChatLocale from '@/ProChat/hooks/useProChatLocale';
+import { ConfigProvider, Popconfirm } from 'antd';
+import { createStyles, cx } from 'antd-style';
+import { Globe, RotateCw, Trash2 } from 'lucide-react';
+import { Flexbox } from 'react-layout-kit';
 import { useStore } from '../../store';
 
 const useStyles = createStyles(({ css, token }) => ({

@@ -67,6 +67,7 @@ export const ExtraModel = (props: ExtraModelProps) => {
       }
     });
   };
+  renderContent();
   return (
     <ConfigProvider theme={{ token: { colorText: theme.colorTextSecondary } }}>
       <Flexbox
