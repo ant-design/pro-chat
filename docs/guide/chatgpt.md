@@ -36,16 +36,11 @@ bun add openai
 > 这里我们需要将 role 和 content 组合一下，因为 messages 包含的内容会更多一些，但是对于 ChatGPT 来说只需要这两个内容
 
 ```ts
-import OpenAI from 'openai';
-import { OpenAIStream, StreamingTextResponse } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { StreamingTextResponse, streamText } from 'ai';
 
-export const POST = async (request: Request) => {
+export async function POST(request: Request) {
   const { messages = [] }: Partial<{ messages: Array<any> }> = await request.json();
-
-  const openai = new OpenAI({
-    apiKey: 'OpenAI Key',
-    baseURL: 'base url',
-  });
 
   const PickMessages = messages.map((message) => {
     return {
@@ -54,15 +49,18 @@ export const POST = async (request: Request) => {
     };
   });
 
-  const response = await openai.chat.completions.create({
-    model: 'gpt-3.5-turbo',
-    messages: [...messages],
-    stream: true,
+  const openai = createOpenAI({
+    // custom settings, e.g.
+    apiKey: 'OpenAI Key', // your openai key
+    baseURL: 'base url', // if u dont need change baseUrl，you can delete this line
+    compatibility: 'compatible',
   });
-
-  const stream = OpenAIStream(response);
-  return new StreamingTextResponse(stream);
-};
+  const stream = await streamText({
+    model: openai('gpt-3.5-turbo'),
+    messages: [...PickMessages],
+  });
+  return new StreamingTextResponse(stream.textStream);
+}
 ```
 
 ## 界面

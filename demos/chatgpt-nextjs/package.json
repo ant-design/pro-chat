@@ -9,9 +9,10 @@
     "start": "next start"
   },
   "dependencies": {
+    "@ai-sdk/openai": "^0.0.33",
     "@ant-design/pro-chat": "^1.2.0",
-    "@ant-design/pro-editor": "^0.38.0",
-    "ai": "^2.2.31",
+    "@ant-design/pro-editor": "^1.2.1",
+    "ai": "^3.2.0",
     "antd": "^5.12.8",
     "antd-style": "^3.6.1",
     "next": "14.0.4",

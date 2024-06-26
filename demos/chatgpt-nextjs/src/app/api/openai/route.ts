@@ -1,13 +1,8 @@
-import { OpenAIStream, StreamingTextResponse } from 'ai';
-import OpenAI from 'openai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { StreamingTextResponse, streamText } from 'ai';
 
 export async function POST(request: Request) {
   const { messages = [] }: Partial<{ messages: Array<any> }> = await request.json();
-
-  const openai = new OpenAI({
-    apiKey: 'OpenAI Key', // your openai key
-    baseURL: 'base url', // if u dont need change baseUrl，you can delete this line
-  });
 
   const PickMessages = messages.map((message) => {
     return {
@@ -16,12 +11,15 @@ export async function POST(request: Request) {
     };
   });
 
-  const response = await openai.chat.completions.create({
-    model: 'gpt-3.5-turbo',
-    messages: [...PickMessages],
-    stream: true,
+  const openai = createOpenAI({
+    // custom settings, e.g.
+    apiKey: 'OpenAI Key', // your openai key
+    baseURL: 'base url', // if u dont need change baseUrl，you can delete this line
+    compatibility: 'compatible',
   });
-
-  const stream = OpenAIStream(response);
-  return new StreamingTextResponse(stream);
+  const stream = await streamText({
+    model: openai('gpt-3.5-turbo'),
+    messages: [...PickMessages],
+  });
+  return new StreamingTextResponse(stream.textStream);
 }
