@@ -5,6 +5,22 @@ theme.defaultConfig.hashed = false;
 
 process.env.TZ = 'UTC';
 
+beforeEach(() => {
+  // Mocking global.fetch before each test run
+  vi.spyOn(global, 'fetch').mockImplementation(async (url) => {
+    if (url === '/api/openai/chat') {
+      return await new Response('expected respons');
+    }
+
+    // For unhandled requests in tests:
+    return await new Response(`expected respons in ${url}`);
+  });
+});
+
+afterEach(() => {
+  vi.restoreAllMocks();
+});
+
 if (typeof window !== 'undefined') {
   global.window.resizeTo = (width, height) => {
     // @ts-ignore-next-line
