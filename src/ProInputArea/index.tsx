@@ -105,12 +105,12 @@ export type ProInputAreaProps = {
    * @param message - 需要发送的消息内容
    * @returns {void | Promise<void>}
    */
-  sendMessage: (message: string) => void | Promise<void>;
+  sendMessage?: (message: string) => void | Promise<void>;
 
   /**
    * @description 停止生成消息的函数
    */
-  stopGenerateMessage: () => void;
+  stopGenerateMessage?: () => void;
 
   /**
    * @description 清除所有消息的回调函数

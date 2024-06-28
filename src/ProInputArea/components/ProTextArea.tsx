@@ -10,7 +10,6 @@ export const ProTextArea: React.FC<TextAreaProps> = React.forwardRef<TextAreaRef
     return (
       <Input.TextArea
         size="large"
-        {...rest}
         ref={ref}
         disabled={disabled}
         className={`${props.className}-textarea`}
@@ -20,6 +19,7 @@ export const ProTextArea: React.FC<TextAreaProps> = React.forwardRef<TextAreaRef
         onPressEnter={(e) => {
           props.onPressEnter?.(e);
         }}
+        {...rest}
       />
     );
   },
