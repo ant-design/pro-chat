@@ -9,8 +9,8 @@ import { ProInputArea, ProInputAreaProps } from '@ant-design/pro-chat';
 import { ConfigProvider } from 'antd';
 import ChatList from '../components/ChatList';
 import ChatScrollAnchor from '../components/ScrollAnchor';
-import { useStore } from '../store';
 import useProChatLocale from '../hooks/useProChatLocale';
+import { useStore } from '../store';
 import { useOverrideStyles } from './OverrideStyle';
 import { ProChatChatReference } from './StoreUpdater';
 import { ProChatProps } from './index';
@@ -102,15 +102,7 @@ const App = memo<ConversationProps>(
     const [height, setHeight] = useState('100%' as string | number);
     const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
     const { localeObject } = useProChatLocale();
-    const [sendMessage, isLoading, placeholder, inputAreaProps, clearMessage, stopGenerateMessage] =
-    useStore((s) => [
-      s.sendMessage,
-      !!s.chatLoadingId,
-      s.placeholder,
-      s.inputAreaProps,
-      s.clearMessage,
-      s.stopGenerateMessage,
-    ]);
+    const [sendMessage, clearMessage] = useStore((s) => [s.sendMessage, s.clearMessage]);
 
     useEffect(() => {
       // 保证 ref 永远存在
@@ -186,10 +178,12 @@ const App = memo<ConversationProps>(
                   inputRender={inputRender}
                   sendMessage={sendMessage}
                   sendShortcutKey="enter"
-                  extra={['image', 'audio']} 
+                  clearMessage={clearMessage}
                   stopGenerateMessage={function (): void {
                     throw new Error('Function not implemented.');
-                  } } isLoading={false}                />
+                  }}
+                  isLoading={false}
+                />
               }
             </div>
           )}

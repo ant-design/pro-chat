@@ -2,7 +2,7 @@ import ActionIcon from '@/ActionIcon';
 import useProChatLocale from '@/ProChat/hooks/useProChatLocale';
 import { ConfigProvider, Popconfirm } from 'antd';
 import { createStyles, cx } from 'antd-style';
-import { Globe, RotateCw, Trash2 } from 'lucide-react';
+import { Trash2 } from 'lucide-react';
 import { Flexbox } from 'react-layout-kit';
 // import { useStore } from '../ProChat/store';
 
@@ -41,8 +41,6 @@ export const ActionBar = ({
     >
       <ActionIcon title={localeObject.clearCurrentDialogue} icon={Trash2} />
     </Popconfirm>,
-    <ActionIcon key={'regenerate'} title={localeObject.regenerate} icon={RotateCw} />,
-    <ActionIcon key={'connectNetwork'} title={localeObject.connectNetwork} icon={Globe} />,
   ];
 
   return (

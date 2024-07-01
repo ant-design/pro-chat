@@ -307,7 +307,7 @@ export const ProInputArea = ({
       <Flexbox gap={8} padding={16} className={cx(styles.container, `${prefixClass}`, className)}>
         <Flexbox horizontal justify="space-between">
           <ExtraModel className={`${prefixClass}-extra`} extra={extra} />
-          <ControlPanel className={`${prefixClass}-action-bar`} />
+          <ControlPanel className={`${prefixClass}-action-bar`} clearMessage={clearMessage} />
         </Flexbox>
         <Flexbox
           horizontal
