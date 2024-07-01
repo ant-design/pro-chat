@@ -14,4 +14,8 @@ export default {
   edit: 'Edit',
   history: 'History',
   regenerate: 'Regenerate',
+  connectNetwork: 'Connect to network',
+  video: 'Video upload',
+  audio: 'Audio upload',
+  image: 'Image upload',
 };

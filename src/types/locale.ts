@@ -13,4 +13,8 @@ export interface LocaleProps {
   edit: string;
   history: string;
   regenerate: string;
+  connectNetwork: string;
+  video: string;
+  audio: string;
+  image: string;
 }

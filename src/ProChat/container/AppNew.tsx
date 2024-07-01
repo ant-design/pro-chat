@@ -5,12 +5,11 @@ import { CSSProperties, memo, useContext, useEffect, useRef, useState } from 're
 import { Flexbox } from 'react-layout-kit';
 
 import { ChatListItemProps } from '@/ChatList/ChatListItem';
-import { ProInputArea, ProInputAreaProps } from '@ant-design/pro-chat';
 import { ConfigProvider } from 'antd';
+import ProInputArea, { ProInputAreaProps } from '../../ProInputArea';
 import ChatList from '../components/ChatList';
 import ChatScrollAnchor from '../components/ScrollAnchor';
 import useProChatLocale from '../hooks/useProChatLocale';
-import { useStore } from '../store';
 import { useOverrideStyles } from './OverrideStyle';
 import { ProChatChatReference } from './StoreUpdater';
 import { ProChatProps } from './index';
@@ -102,7 +101,6 @@ const App = memo<ConversationProps>(
     const [height, setHeight] = useState('100%' as string | number);
     const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
     const { localeObject } = useProChatLocale();
-    const [sendMessage, clearMessage] = useStore((s) => [s.sendMessage, s.clearMessage]);
 
     useEffect(() => {
       // 保证 ref 永远存在
@@ -122,12 +120,7 @@ const App = memo<ConversationProps>(
     return (
       <RcResizeObserver
         onResize={(e) => {
-          if (
-            typeof height !== typeof e.height ||
-            (typeof height === 'string' && typeof e.height === 'string' && e.height !== height) ||
-            (typeof height === 'number' && Math.abs(e.height - height) > 1)
-          ) {
-            // stop shaking
+          if (e.height !== height) {
             setHeight(e.height);
           }
         }}
@@ -176,13 +169,8 @@ const App = memo<ConversationProps>(
                   sendButtonRender={sendButtonRender}
                   inputAreaRender={inputAreaRender || renderInputArea}
                   inputRender={inputRender}
-                  sendMessage={sendMessage}
                   sendShortcutKey="enter"
-                  clearMessage={clearMessage}
-                  stopGenerateMessage={function (): void {
-                    throw new Error('Function not implemented.');
-                  }}
-                  isLoading={false}
+                  extra={['image', 'audio']}
                 />
               }
             </div>

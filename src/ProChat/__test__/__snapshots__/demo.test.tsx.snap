@@ -10999,6 +10999,450 @@ import { useDropNodeOnCanvas } from './useDropNodeOnCanvas';
 </DocumentFragment>
 `;
 
+exports[`<ProChat /> > renders elegy.tsx correctly 1`] = `
+<DocumentFragment>
+  <div
+    style="background: rgb(245, 245, 245);"
+  >
+    <div
+      class="ant-app"
+      style="height: 100%; width: 100%; position: relative;"
+    >
+      <div
+        class="layoutkit-flexbox css-o3n4io ant-pro-chat acss-l5x2r3 ant-pro-chat-container"
+        style="max-height: 100vh; height: 100%;"
+      >
+        <div
+          class="ant-pro-chat-chat-list-container acss-1v5259w"
+          style="height: 100%;"
+        >
+          <div
+            class="acss-pmp369 ant-pro-chat-list"
+            style="margin-top: 24px;"
+          >
+            <div
+              class="layoutkit-flexbox css-vwb4od acss-1orhs6m ant-pro-chat-list-item ant-pro-chat-list-item-left"
+              data-id="default"
+            >
+              <div
+                class="acss-16a4jh6"
+              >
+                <span
+                  class="ant-avatar ant-avatar-circle acss-1fg5txo"
+                  style="width: 32px; height: 32px; font-size: 18px; cursor: default;"
+                >
+                  <span
+                    class="ant-avatar-string"
+                    style="transform: scale(1);"
+                  >
+                    <div
+                      class="acss-1vwqsas"
+                      style="font-size: 23.040000000000003px; height: 25.6px; width: 25.6px;"
+                    >
+                      🤖
+                    </div>
+                  </span>
+                </span>
+              </div>
+              <div
+                class="layoutkit-flexbox css-9pyqzz acss-hc6lm9 ant-pro-chat-list-item-message-container"
+              >
+                <div
+                  class="layoutkit-flexbox css-16o88vh acss-1s7pvt5 ant-pro-chat-list-item-title"
+                >
+                  <time>
+                    2024-02-27 17:20:00
+                  </time>
+                </div>
+                <div
+                  class="layoutkit-flexbox css-roa2v7 acss-j11nrd ant-pro-chat-message-content"
+                >
+                  <div
+                    class="layoutkit-flexbox css-o3n4io acss-1aas3xx ant-pro-chat-list-item-message-content"
+                  >
+                    <div
+                      id="default"
+                    >
+                      <article
+                        class="ant-typography"
+                        style="overflow-x: hidden; overflow-y: auto;"
+                      >
+                        <div
+                          class="zcss-1hxup8p"
+                        >
+                          <p>
+                            让我们开始对话吧
+                          </p>
+                        </div>
+                      </article>
+                    </div>
+                    <div
+                      class="acss-0 ant-pro-chat-message-extra"
+                    />
+                  </div>
+                  <div
+                    class="layoutkit-flexbox css-9pyqzz acss-1eio0fa ant-pro-chat-list-item-actions"
+                    role="menubar"
+                  />
+                </div>
+              </div>
+              <div
+                style="flex: 0 0 auto; width: 32px;"
+              />
+            </div>
+          </div>
+          <div
+            style="height: 1px; width: 100%;"
+          />
+        </div>
+        <button
+          class="ant-btn ant-btn-default ant-btn-sm acss-1nxnbtq"
+          style="bottom: 138px; position: absolute; right: 16px;"
+          type="button"
+        >
+          <span
+            class="ant-btn-icon"
+          >
+            <span
+              class="anticon"
+              role="img"
+            >
+              <svg
+                class="lucide lucide-list-end"
+                fill="transparent"
+                focusable="false"
+                height="1em"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M16 12H3"
+                />
+                <path
+                  d="M16 6H3"
+                />
+                <path
+                  d="M10 18H3"
+                />
+                <path
+                  d="M21 6v10a2 2 0 0 1-2 2h-5"
+                />
+                <path
+                  d="m16 16-2 2 2 2"
+                />
+              </svg>
+            </span>
+          </span>
+          <span>
+            返回底部
+          </span>
+        </button>
+        <div>
+          <div
+            class="layoutkit-flexbox css-19iopuf acss-1ckeg12 ant-pro-chat-input-area"
+          >
+            <div
+              class="layoutkit-flexbox css-1sqt55j"
+            >
+              <div
+                class="layoutkit-flexbox css-e0bvmz acss-1qxitnl ant-pro-chat-input-area-extra"
+              >
+                <button
+                  class="ant-btn ant-btn-text ant-btn-icon-only ant-editor-icon zcss-1lwi3pj"
+                  type="button"
+                >
+                  <span
+                    class="ant-btn-icon"
+                  >
+                    <div
+                      class="acss-1o4i853"
+                      style="border-radius: 5px; height: 36px; width: 36px;"
+                    >
+                      <span
+                        class="anticon"
+                        role="img"
+                      >
+                        <svg
+                          class="lucide lucide-audio-lines"
+                          fill="none"
+                          height="24"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M2 10v3"
+                          />
+                          <path
+                            d="M6 6v11"
+                          />
+                          <path
+                            d="M10 3v18"
+                          />
+                          <path
+                            d="M14 8v7"
+                          />
+                          <path
+                            d="M18 5v13"
+                          />
+                          <path
+                            d="M22 10v3"
+                          />
+                        </svg>
+                      </span>
+                    </div>
+                  </span>
+                </button>
+                <button
+                  class="ant-btn ant-btn-text ant-btn-icon-only ant-editor-icon zcss-1lwi3pj"
+                  type="button"
+                >
+                  <span
+                    class="ant-btn-icon"
+                  >
+                    <div
+                      class="acss-1o4i853"
+                      style="border-radius: 5px; height: 36px; width: 36px;"
+                    >
+                      <span
+                        class="anticon"
+                        role="img"
+                      >
+                        <svg
+                          class="lucide lucide-image"
+                          fill="transparent"
+                          focusable="false"
+                          height="20"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          width="20"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <rect
+                            height="18"
+                            rx="2"
+                            ry="2"
+                            width="18"
+                            x="3"
+                            y="3"
+                          />
+                          <circle
+                            cx="9"
+                            cy="9"
+                            r="2"
+                          />
+                          <path
+                            d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"
+                          />
+                        </svg>
+                      </span>
+                    </div>
+                  </span>
+                </button>
+              </div>
+              <div
+                class="layoutkit-flexbox css-e0bvmz acss-1qxitnl ant-pro-chat-input-area-action-bar"
+              >
+                <button
+                  class="ant-btn ant-btn-text ant-btn-icon-only ant-editor-icon zcss-1lwi3pj"
+                  type="button"
+                >
+                  <span
+                    class="ant-btn-icon"
+                  >
+                    <div
+                      class="acss-1o4i853"
+                      style="border-radius: 5px; height: 36px; width: 36px;"
+                    >
+                      <span
+                        class="anticon"
+                        role="img"
+                      >
+                        <svg
+                          class="lucide lucide-trash2"
+                          fill="transparent"
+                          focusable="false"
+                          height="20"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          width="20"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M3 6h18"
+                          />
+                          <path
+                            d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"
+                          />
+                          <path
+                            d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"
+                          />
+                          <line
+                            x1="10"
+                            x2="10"
+                            y1="11"
+                            y2="17"
+                          />
+                          <line
+                            x1="14"
+                            x2="14"
+                            y1="11"
+                            y2="17"
+                          />
+                        </svg>
+                      </span>
+                    </div>
+                  </span>
+                </button>
+                <button
+                  class="ant-btn ant-btn-text ant-btn-icon-only ant-editor-icon zcss-1lwi3pj"
+                  type="button"
+                >
+                  <span
+                    class="ant-btn-icon"
+                  >
+                    <div
+                      class="acss-1o4i853"
+                      style="border-radius: 5px; height: 36px; width: 36px;"
+                    >
+                      <span
+                        class="anticon"
+                        role="img"
+                      >
+                        <svg
+                          class="lucide lucide-rotate-cw"
+                          fill="transparent"
+                          focusable="false"
+                          height="20"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          width="20"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"
+                          />
+                          <path
+                            d="M21 3v5h-5"
+                          />
+                        </svg>
+                      </span>
+                    </div>
+                  </span>
+                </button>
+                <button
+                  class="ant-btn ant-btn-text ant-btn-icon-only ant-editor-icon zcss-1lwi3pj"
+                  type="button"
+                >
+                  <span
+                    class="ant-btn-icon"
+                  >
+                    <div
+                      class="acss-1o4i853"
+                      style="border-radius: 5px; height: 36px; width: 36px;"
+                    >
+                      <span
+                        class="anticon"
+                        role="img"
+                      >
+                        <svg
+                          class="lucide lucide-globe"
+                          fill="transparent"
+                          focusable="false"
+                          height="20"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          width="20"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <circle
+                            cx="12"
+                            cy="12"
+                            r="10"
+                          />
+                          <path
+                            d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"
+                          />
+                          <path
+                            d="M2 12h20"
+                          />
+                        </svg>
+                      </span>
+                    </div>
+                  </span>
+                </button>
+              </div>
+            </div>
+            <div
+              class="layoutkit-flexbox css-1lumxev acss-p1380z ant-pro-chat-input-area-text-container"
+            >
+              <textarea
+                autocompleteprops="[object Object]"
+                class="ant-input ant-input-lg ant-input-outlined acss-6ckfqf ant-pro-chat-input-area-component-textarea"
+                placeholder="输入 / 查看推荐问题，或者直接输入你的问题"
+                style="resize: none; height: -152px; max-height: -152px;"
+              />
+              <button
+                class="ant-btn ant-btn-text ant-btn-icon-only acss-b9746z"
+                type="button"
+              >
+                <span
+                  class="ant-btn-icon"
+                >
+                  <span
+                    aria-label="send"
+                    class="anticon anticon-send"
+                    role="img"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      data-icon="send"
+                      fill="currentColor"
+                      focusable="false"
+                      height="1em"
+                      viewBox="64 64 896 896"
+                      width="1em"
+                    >
+                      <defs>
+                        <style />
+                      </defs>
+                      <path
+                        d="M931.4 498.9L94.9 79.5c-3.4-1.7-7.3-2.1-11-1.2a15.99 15.99 0 00-11.7 19.3l86.2 352.2c1.3 5.3 5.2 9.6 10.4 11.3l147.7 50.7-147.6 50.7c-5.2 1.8-9.1 6-10.3 11.3L72.2 926.5c-.9 3.7-.5 7.6 1.2 10.9 3.9 7.9 13.5 11.1 21.5 7.2l836.5-417c3.1-1.5 5.6-4.1 7.2-7.1 3.9-8 .7-17.6-7.2-21.6zM170.8 826.3l50.3-205.6 295.2-101.3c2.3-.8 4.2-2.6 5-5 1.4-4.2-.8-8.7-5-10.2L221.1 403 171 198.2l628 314.9-628.2 313.2z"
+                      />
+                    </svg>
+                  </span>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
 exports[`<ProChat /> > renders error.tsx correctly 1`] = `
 <DocumentFragment>
   <div

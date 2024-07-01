@@ -13,4 +13,8 @@ export default {
   edit: '编辑',
   history: '历史范围',
   regenerate: '重新生成',
+  connectNetwork: '是否连接网络',
+  video: '视频上传',
+  audio: '音频上传',
+  image: '图片上传',
 };
