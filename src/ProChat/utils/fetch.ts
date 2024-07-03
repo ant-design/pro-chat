@@ -11,13 +11,14 @@ export const getMessageError = async (response: Response) => {
   return chatMessageError;
 };
 
-type SSEFinishType = 'done' | 'error' | 'abort';
+export type SSEFinishType = 'done' | 'error' | 'abort';
 
 export interface FetchSSEOptions {
   onErrorHandle?: (error: ChatMessageError) => void;
   onMessageHandle?: (text: string, response: Response) => void;
   onAbort?: (text: string) => Promise<void>;
-  onFinish?: (text: string, type: SSEFinishType) => Promise<void>;
+  onFinish?: (type: SSEFinishType) => Promise<void>;
+  signal?: AbortSignal;
 }
 
 /**
@@ -48,12 +49,27 @@ export const fetchSSE = async (fetchFn: () => Promise<Response>, options: FetchS
 
   let done = false;
 
-  while (!done) {
-    const { value, done: doneReading } = await reader.read();
-    done = doneReading;
-    const chunkValue = decoder.decode(value, { stream: !doneReading });
+  try {
+    while (!done) {
+      if (options.signal?.aborted) {
+        options.onFinish?.('abort');
+        break;
+      }
 
-    options.onMessageHandle?.(chunkValue, returnRes);
+      const { value, done: doneReading } = await reader.read();
+      done = doneReading;
+      if (value) {
+        const chunkValue = decoder.decode(value, { stream: !doneReading });
+        options.onMessageHandle?.(chunkValue, returnRes);
+        console.log('reader', chunkValue);
+      }
+
+      if (done) {
+        options.onFinish?.('done'); // Call onFinish when all data is read.
+      }
+    }
+  } catch (error) {
+    options.onErrorHandle?.(error); // Handle errors that occur during the reading process.
   }
 
   return returnRes;

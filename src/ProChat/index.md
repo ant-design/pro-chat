@@ -102,6 +102,14 @@ ProChat 使用 `meta` 来表意会话双方的头像、名称等信息。设定�
 
 <code src="./demos/float-drawer.tsx"></code>
 
+## 监听对话时机
+
+你可以使用 onChatStart、onChatEnd、onChatGenerate 来监听当前生成内容的回掉
+
+> 注意，如果你手动通过 ref 触发了多个请求，可能会导致这些时机混乱出现，所以触发逻辑得注意。
+
+<code src="./demos/listener.tsx"></code>
+
 ## 编程式操作控制
 
 ### chatRef
@@ -166,6 +174,9 @@ useProChat hooks 必须在包裹 `ProChatProvider` 后方可使用。
 | actions.render | 控制 input 顶部的操作区域的操作按钮 | `(defaultDoms: JSX.Element[]) => JSX.Element[]` | - |
 | chatItemRenderConfig | 聊天项渲染配置 | `ChatItemRenderConfig` | - |
 | backToBottomConfig | 透传给「回到底部」组件的 api | `BackBottomProps` | - |
+| onChatEnd | 对话结束时候的回调，提供对话结束的详细信息和类型 | `(id: string, type: SSEFinishType) => void` | - |
+| onChatStart | 对话开始时候的回调，提供开始时所有消息数组 | `(messages: ChatMessage<Record<string, any>>[]) => void` | - |
+| onChatGenerate | 对话生成时候的回调，提供生成的文本块内容 | `(chunkText: string) => void` | - |
 
 ## ProChatChatReference
 
