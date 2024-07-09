@@ -13,11 +13,14 @@ export const getMessageError = async (response: Response) => {
 
 export type SSEFinishType = 'done' | 'error' | 'abort';
 
+export type MixRequestResponse = Response | { content?: Response; [key: string]: any } | string;
+
 export interface FetchSSEOptions {
   onErrorHandle?: (error: ChatMessageError) => void;
-  onMessageHandle?: (text: string, response: Response) => void;
+  onMessageHandle?: (text: string, response: MixRequestResponse) => void;
   onAbort?: (text: string) => Promise<void>;
   onFinish?: (type: SSEFinishType) => Promise<void>;
+  onCancel?: () => void;
   signal?: AbortSignal;
 }
 
@@ -26,21 +29,41 @@ export interface FetchSSEOptions {
  * @param fetchFn
  * @param options
  */
-export const fetchSSE = async (fetchFn: () => Promise<Response>, options: FetchSSEOptions = {}) => {
+export const fetchSSE = async (
+  fetchFn: () => MixRequestResponse,
+  options: FetchSSEOptions = {},
+) => {
   const response = await fetchFn();
 
-  // 如果不 ok 说明有请求错误
-  if (!response.ok) {
-    // TODO: need a message error custom parser
-    const chatMessageError = await getMessageError(response);
+  if (!response) {
+    options.onCancel?.();
+    return;
+  }
 
+  let returnRes = null;
+
+  let realResponse = null;
+
+  if (typeof response === 'object' && 'content' in response) {
+    returnRes = response?.content.clone();
+    realResponse = response?.content;
+  } else if (typeof response === 'string') {
+    returnRes = new Response(response);
+    realResponse = returnRes;
+  } else {
+    returnRes = response?.clone();
+    realResponse = response;
+  }
+
+  // 如果不 ok 说明有请求错误
+  if (!realResponse.ok) {
+    // TODO: need a message error custom parser
+    const chatMessageError = await getMessageError(realResponse);
     options.onErrorHandle?.(chatMessageError);
     return;
   }
 
-  const returnRes = response.clone();
-
-  const data = response.body;
+  const data = realResponse.body;
 
   if (!data) return;
 
@@ -60,8 +83,7 @@ export const fetchSSE = async (fetchFn: () => Promise<Response>, options: FetchS
       done = doneReading;
       if (value) {
         const chunkValue = decoder.decode(value, { stream: !doneReading });
-        options.onMessageHandle?.(chunkValue, returnRes);
-        console.log('reader', chunkValue);
+        options.onMessageHandle?.(chunkValue, response);
       }
 
       if (done) {

@@ -9,13 +9,13 @@ import { ReactNode } from 'react';
 import { FlexBasicProps } from 'react-layout-kit/lib/FlexBasic';
 import { Locale } from '../../locale';
 import { ProChatChatReference } from '../container/StoreUpdater';
-import { SSEFinishType } from '../utils/fetch';
+import { MixRequestResponse, SSEFinishType } from '../utils/fetch';
 
 export type ChatRequest = (
   messages: ChatMessage[],
   config: ModelConfig,
   signal: AbortSignal | undefined,
-) => Promise<Response>;
+) => MixRequestResponse;
 
 export interface ChatPropsState<T extends Record<string, any> = Record<string, any>> {
   /**

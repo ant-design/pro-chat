@@ -3,7 +3,7 @@ import { StateCreator } from 'zustand/vanilla';
 
 import { LOADING_FLAT } from '@/ProChat/const/message';
 import { ChatStore } from '@/ProChat/store/index';
-import { fetchSSE, SSEFinishType } from '@/ProChat/utils/fetch';
+import { fetchSSE, MixRequestResponse, SSEFinishType } from '@/ProChat/utils/fetch';
 import { isFunctionMessage } from '@/ProChat/utils/message';
 import { setNamespace } from '@/ProChat/utils/storeDebug';
 import { nanoid } from '@/ProChat/utils/uuid';
@@ -96,7 +96,7 @@ export interface ChatAction {
   defaultModelFetcher: (
     params: Partial<ChatStreamPayload>,
     options?: FetchChatModelOptions,
-  ) => Promise<Response>;
+  ) => MixRequestResponse;
 
   /**
    * 生成消息 ID
@@ -124,6 +124,7 @@ export interface ChatAction {
     stopAnimation: () => void;
     outputQueue: string[];
     isAnimationActive: boolean;
+    mixRequestResponse: MixRequestResponse;
   };
 
   /**
@@ -187,6 +188,7 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
       config,
       defaultModelFetcher,
       createSmoothMessage,
+      deleteMessage,
       transformToChatMessage,
       onChatEnd,
       onChatStart,
@@ -245,12 +247,18 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
     let output = '';
     let isFunctionCall = false;
 
-    const { startAnimation, stopAnimation, outputQueue, isAnimationActive } =
+    const { startAnimation, stopAnimation, outputQueue, isAnimationActive, mixRequestResponse } =
       createSmoothMessage(assistantId);
 
     await fetchSSE(fetcher, {
       signal: abortController?.signal,
+      onCancel: () => {
+        // cancel 时候删除 Loading 态的消息
+        deleteMessage(assistantId);
+      },
       onErrorHandle: (error) => {
+        console.log('error!');
+
         dispatchMessage({ id: assistantId, key: 'error', type: 'updateMessage', value: error });
       },
       onAbort: async () => {
@@ -268,8 +276,14 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
           await startAnimation(15);
         }
       },
-      onMessageHandle: async (text) => {
+      onMessageHandle: async (text, response) => {
         output += text;
+
+        if (response && typeof response === 'object' && 'content' in response) {
+          for (const [key, value] of Object.entries(response)) {
+            mixRequestResponse[key] = value;
+          }
+        }
 
         if (!isAnimationActive && !isFunctionCall) startAnimation();
 
@@ -318,6 +332,8 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
     // 添加一个空的信息用于放置 ai 响应，注意顺序不能反
     // 因为如果顺序反了，messages 中将包含新增的 ai message
     const mid = await getMessageId(messages, userMessageId);
+
+    console.log('fetch Real');
 
     dispatchMessage({
       id: mid,
@@ -462,6 +478,8 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
     // why use queue: https://shareg.pt/GLBrjpK
     let outputQueue: string[] = [];
 
+    let mixRequestResponse = {};
+
     // eslint-disable-next-line no-undef
     let animationTimeoutId: NodeJS.Timeout | null = null;
     let isAnimationActive = false;
@@ -484,6 +502,10 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
           return;
         }
 
+        console.log('mixRequestResponse', mixRequestResponse);
+
+        console.log('outputQueue', outputQueue);
+
         isAnimationActive = true;
 
         const updateText = () => {
@@ -501,8 +523,18 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
             const charsToAdd = outputQueue.splice(0, speed).join('');
             buffer += charsToAdd;
 
-            // 更新消息内容，这里可能需要结合实际情况调整
-            dispatchMessage({ id, key: 'content', type: 'updateMessage', value: buffer });
+            if (typeof mixRequestResponse === 'object' && 'content' in mixRequestResponse) {
+              dispatchMessage({
+                ...mixRequestResponse,
+                id,
+                key: 'content',
+                type: 'updateMessage',
+                value: buffer,
+              });
+            } else {
+              // 更新消息内容，这里可能需要结合实际情况调整
+              dispatchMessage({ id, key: 'content', type: 'updateMessage', value: buffer });
+            }
 
             // 设置下一个字符的延迟
             animationTimeoutId = setTimeout(updateText, 16); // 16 毫秒的延迟模拟打字机效果
@@ -517,7 +549,7 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
         updateText();
       });
 
-    return { startAnimation, stopAnimation, outputQueue, isAnimationActive };
+    return { startAnimation, stopAnimation, outputQueue, isAnimationActive, mixRequestResponse };
   },
 
   getChatLoadingId: () => {

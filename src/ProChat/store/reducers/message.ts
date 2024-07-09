@@ -78,9 +78,17 @@ export const messagesReducer = (
 
     case 'updateMessage': {
       return produce(state, (draftState) => {
-        const { id, key, value } = payload;
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const { id, key, value, type: _, ...rest } = payload;
         const message = draftState.find((m) => m.id === id);
         if (!message) return;
+
+        // 遍历 rest 对象并更新 message 对象
+        for (const [restKey, restValue] of Object.entries(rest)) {
+          console.log('restKey', restKey, restValue);
+
+          message[restKey] = restValue;
+        }
 
         // @ts-ignore
         message[key] = value;
