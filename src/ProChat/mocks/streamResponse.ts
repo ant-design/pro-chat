@@ -6,7 +6,7 @@ export class MockResponse {
 
   constructor(
     private data: string,
-    private delay: number = 300,
+    private delay: number = 100,
     error: boolean = false, // 新增参数，默认为false
   ) {
     this.error = error;

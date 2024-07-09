@@ -13,7 +13,7 @@ export const getMessageError = async (response: Response) => {
 
 export type SSEFinishType = 'done' | 'error' | 'abort';
 
-export type MixRequestResponse = Response | { content?: Response; [key: string]: any };
+export type MixRequestResponse = Response | { content?: Response; [key: string]: any } | string;
 
 export interface FetchSSEOptions {
   onErrorHandle?: (error: ChatMessageError) => void;
@@ -30,7 +30,7 @@ export interface FetchSSEOptions {
  * @param options
  */
 export const fetchSSE = async (
-  fetchFn: () => Promise<MixRequestResponse>,
+  fetchFn: () => MixRequestResponse,
   options: FetchSSEOptions = {},
 ) => {
   const response = await fetchFn();
@@ -47,6 +47,9 @@ export const fetchSSE = async (
   if (typeof response === 'object' && 'content' in response) {
     returnRes = response?.content.clone();
     realResponse = response?.content;
+  } else if (typeof response === 'string') {
+    returnRes = new Response(response);
+    realResponse = returnRes;
   } else {
     returnRes = response?.clone();
     realResponse = response;

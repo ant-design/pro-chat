@@ -96,7 +96,7 @@ export interface ChatAction {
   defaultModelFetcher: (
     params: Partial<ChatStreamPayload>,
     options?: FetchChatModelOptions,
-  ) => Promise<Response>;
+  ) => MixRequestResponse;
 
   /**
    * 生成消息 ID
