@@ -92,6 +92,14 @@ Use the ProChat component as a conversation solution, utilizing antd's FloatButt
 
 <code src="./demos/float-drawer.tsx"></code>
 
+## Listening to Chat Events
+
+You can use onChatStart, onChatEnd, and onChatGenerate to listen to callbacks of current content generation.
+
+> Note that if you manually trigger multiple requests via ref, these events might get mixed up, so be careful with the triggering logic.
+
+<code src="./demos/listener.tsx"></code>
+
 ## Programming operation control
 
 ### chatRef
@@ -156,6 +164,9 @@ All initialization props such as `initialChats` need to be moved from `ProChat` 
 | actions.render | Control the operation buttons in the operation area at the top of the input | `(defaultDoms: JSX.Element[]) => JSX.Element[]` | - |
 | chatItemRenderConfig | Chat item rendering configuration | `ChatItemRenderConfig` | - |
 | backToBottomConfig | API passed through to the "return to bottom" component | `BackBottomProps` | - |
+| onChatEnd | Callback at the end of a chat, providing details and type of the chat's conclusion. | `(id: string, type: SSEFinishType) => void` | - |
+| onChatStart | Callback at the start of a chat, providing an array of all messages at the beginning. | `(messages: ChatMessage<Record<string, any>>[]) => void` | - |
+| onChatGenerate | Callback during chat generation, providing content of generated text chunks. | `(chunkText: string) => void` | - |
 
 ## ProChatChatReference
 

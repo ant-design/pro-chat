@@ -72,7 +72,9 @@ export interface ConversationProps extends ProChatProps<any> {
    * 滚动时候的监听方法
    */
   onScroll?: (e: Event) => void;
-
+  /**
+   * 错误的 Error 信息提示渲染
+   */
   renderErrorMessages?: ChatListItemProps['renderErrorMessages'];
 }
 

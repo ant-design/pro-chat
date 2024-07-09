@@ -9,6 +9,7 @@ import { ReactNode } from 'react';
 import { FlexBasicProps } from 'react-layout-kit/lib/FlexBasic';
 import { Locale } from '../../locale';
 import { ProChatChatReference } from '../container/StoreUpdater';
+import { SSEFinishType } from '../utils/fetch';
 
 export type ChatRequest = (
   messages: ChatMessage[],
@@ -109,6 +110,19 @@ export interface ChatPropsState<T extends Record<string, any> = Record<string, a
      */
     render?: (defaultDoms: JSX.Element[]) => JSX.Element[];
   };
+
+  /**
+   * 对话结束时候的回掉
+   */
+  onChatEnd?: (id: string, type: SSEFinishType) => void;
+  /**
+   * 对话开始时候的回掉
+   */
+  onChatStart?: (messages: ChatMessage<Record<string, any>>[]) => void;
+  /**
+   * 对话生成时候的回掉
+   */
+  onChatGenerate?: (chunkText: string) => void;
 }
 
 export interface ChatState extends ChatPropsState {

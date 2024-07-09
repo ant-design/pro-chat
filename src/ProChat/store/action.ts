@@ -3,7 +3,7 @@ import { StateCreator } from 'zustand/vanilla';
 
 import { LOADING_FLAT } from '@/ProChat/const/message';
 import { ChatStore } from '@/ProChat/store/index';
-import { fetchSSE } from '@/ProChat/utils/fetch';
+import { fetchSSE, SSEFinishType } from '@/ProChat/utils/fetch';
 import { isFunctionMessage } from '@/ProChat/utils/message';
 import { setNamespace } from '@/ProChat/utils/storeDebug';
 import { nanoid } from '@/ProChat/utils/uuid';
@@ -131,6 +131,19 @@ export interface ChatAction {
    * @returns  消息 id ｜ undefined
    */
   getChatLoadingId: () => string | undefined;
+
+  /**
+   * 对话结束时候的回掉
+   */
+  onChatEnd?: (id: string, type: SSEFinishType) => void;
+  /**
+   * 对话开始时候的回掉
+   */
+  onChatStart?: (messages: ChatMessage<Record<string, any>>[]) => void;
+  /**
+   * 对话生成时候的回掉
+   */
+  onChatGenerate?: (chunkText: string) => void;
 }
 
 export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], [], ChatAction> = (
@@ -175,7 +188,9 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
       defaultModelFetcher,
       createSmoothMessage,
       transformToChatMessage,
-      updateMessageContent,
+      onChatEnd,
+      onChatStart,
+      onChatGenerate,
     } = get();
     const abortController = toggleChatLoading(
       true,
@@ -213,6 +228,10 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
       postMessages.unshift({ content: config.systemRole, role: 'system' } as ChatMessage);
     }
 
+    if (onChatStart) {
+      onChatStart(postMessages);
+    }
+
     const fetcher = () =>
       defaultModelFetcher(
         {
@@ -230,18 +249,24 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
       createSmoothMessage(assistantId);
 
     await fetchSSE(fetcher, {
+      signal: abortController?.signal,
       onErrorHandle: (error) => {
         dispatchMessage({ id: assistantId, key: 'error', type: 'updateMessage', value: error });
       },
       onAbort: async () => {
+        if (onChatEnd) {
+          onChatEnd(assistantId, 'abort');
+        }
         stopAnimation();
       },
-      onFinish: async (content) => {
+      onFinish: async (type) => {
         stopAnimation();
+        if (onChatEnd) {
+          onChatEnd(assistantId, type);
+        }
         if (outputQueue.length > 0 && !isFunctionCall) {
           await startAnimation(15);
         }
-        await updateMessageContent(assistantId, content);
       },
       onMessageHandle: async (text) => {
         output += text;
@@ -249,12 +274,15 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
         if (!isAnimationActive && !isFunctionCall) startAnimation();
 
         if (abortController?.signal.aborted) {
-          // aborted 后停止当前输出
           return;
         } else {
-          outputQueue.push(
-            transformToChatMessage ? await transformToChatMessage(text, output) : text,
-          );
+          const TransFormChatMessage = transformToChatMessage
+            ? await transformToChatMessage(text, output)
+            : text;
+          if (onChatGenerate) {
+            onChatGenerate(TransFormChatMessage);
+          }
+          outputQueue.push(TransFormChatMessage);
         }
 
         // TODO: need a function call judge callback
