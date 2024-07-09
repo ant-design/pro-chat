@@ -100,7 +100,7 @@
     "commitlint-config-gitmoji": "^2.3.1",
     "conventional-changelog-gitmoji-config": "^1.5.2",
     "cross-env": "^7.0.3",
-    "dumi": "^2.3.8",
+    "dumi": "2.2.16",
     "dumi-theme-antd-style": "latest",
     "eslint": "^8.57.0",
     "father": "4.3.1",
