@@ -85,8 +85,6 @@ export const messagesReducer = (
 
         // 遍历 rest 对象并更新 message 对象
         for (const [restKey, restValue] of Object.entries(rest)) {
-          console.log('restKey', restKey, restValue);
-
           message[restKey] = restValue;
         }
 

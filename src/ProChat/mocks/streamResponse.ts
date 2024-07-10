@@ -56,7 +56,6 @@ export class MockResponse {
       setTimeout(() => {
         if (this.error) {
           const errorResponseOptions = { status: 500, statusText: 'Internal Server Error' };
-
           // 返回模拟的网络错误响应，这里我们使用500状态码作为示例
           resolve(new Response(null, errorResponseOptions));
         } else {
