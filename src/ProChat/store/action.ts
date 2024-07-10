@@ -501,11 +501,6 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
           resolve();
           return;
         }
-
-        console.log('mixRequestResponse', mixRequestResponse);
-
-        console.log('outputQueue', outputQueue);
-
         isAnimationActive = true;
 
         const updateText = () => {
