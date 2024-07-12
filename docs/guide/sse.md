@@ -134,9 +134,9 @@ return new Response(readableStream);
 
 ### 使用三方 Reader 解析器解决方案
 
-其实大模型 SSE 接口参数都是大差不差的，都是和 OpenAI 类似的内容，所以有没有通义的 Reader 解析解决方案呢？
+其实大模型 SSE 接口参数都是大差不差的，都是和 OpenAI 类似的内容，所以有没有通用的 Reader 解析解决方案呢？
 
-当然是有的，下面是一个使用了 Vercel Npm 包 ai 来解析返回 ChatGPT 流式接口的伪码，直接帮我们处理好了。
+当然是有的，下面是一个使用了 Vercel Npm 包 [ai](https://www.npmjs.com/package/ai) 来解析返回 ChatGPT 流式接口的伪码，直接帮我们处理好了。
 
 ```js
 import { ProChat } from "@ant-design/pro-chat";
