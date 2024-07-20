@@ -41,6 +41,7 @@ const genStyle: GenerateStyle<ChatTokenType> = (token) => {
       },
       '&-message-content': {
         width: 'max-content',
+        maxWidth: '100vw',
         fontSize: token.fontSize,
         padding: token.paddingXS,
         border: `1px solid ${token.colorBorderSecondary}`,

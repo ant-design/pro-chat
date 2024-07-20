@@ -11,7 +11,7 @@ import RcResizeObserver from 'rc-resize-observer';
 import { useRef, useState } from 'react';
 
 import { useRefFunction } from '@/hooks/useRefFunction';
-import { BackToBottmButton, BackToBottmButtonProps } from '@/index';
+import { BackToBottomButton, BackToBottomButtonProps } from '@/index';
 import { ProChatLocale } from '@/locale';
 import { ChatMessage } from '@/types';
 import { Flex } from 'antd';
@@ -257,7 +257,7 @@ export interface ProChatProps<
   /**
    * The configuration for the back to bottom button.
    */
-  backToBottomConfig?: BackToBottmButtonProps;
+  backToBottomConfig?: BackToBottomButtonProps;
 
   /**
    * The styles for the component.
@@ -445,7 +445,7 @@ export function ProChat<
         chatListContainerRef.current.scrollTo({
           behavior: 'smooth',
           left: 0,
-          top: chatListContainerRef.current.scrollHeight,
+          top: chatListContainerRef.current.scrollHeight || 99999,
         });
       };
     }
@@ -465,8 +465,11 @@ export function ProChat<
   const backBottomDom = useMemo(() => {
     if (!isInitRender) return null;
     return (
-      <BackToBottmButton
-        target={() => chatListContainerRef.current as HTMLElement}
+      <BackToBottomButton
+        offsetTop={areaHtml.current?.clientHeight || 0}
+        target={() => {
+          return chatListContainerRef.current as HTMLElement;
+        }}
         {...backToBottomConfig}
         onClick={scrollToBottom}
       />
@@ -506,10 +509,11 @@ export function ProChat<
           }}
           className={classNames?.chatList}
           chatListItemClassName={classNames?.chatListItem}
-          chatListItemContentClassName={classNames?.chatListItem}
+          chatListItemContentClassName={classNames?.chatListItemContent}
           chatListItemTitleClassName={classNames?.chatListItemTitle}
           chatListItemExtraClassName={classNames?.chatListItemExtra}
           chatListItemAvatarClassName={classNames?.chatListItemAvatar}
+          // styles
           chatListItemStyle={styles?.chatListItem}
           chatListLeftItemContentStyle={styles?.chatListLeftItemContent}
           chatListRightItemContentStyle={styles?.chatListRightItemContent}

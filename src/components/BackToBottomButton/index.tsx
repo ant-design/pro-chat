@@ -4,12 +4,13 @@ import React, { useEffect, useState } from 'react';
 import getScroll from './utils/getScroll';
 import throttleByAnimationFrame from './utils/throttleByAnimationFrame';
 
-type BackToBottmButtonProps = Omit<FloatButtonProps, 'target'> & {
+export type BackToBottomButtonProps = Omit<FloatButtonProps, 'target'> & {
   target?: () => HTMLElement | Window | Document;
   visibilityHeight?: number;
+  offsetTop?: number;
 };
 
-const BackToBottmButton: React.FC<BackToBottmButtonProps> = (props) => {
+export const BackToBottomButton: React.FC<BackToBottomButtonProps> = (props) => {
   const { target, visibilityHeight = 50, ...rest } = props;
   const [visible, setVisible] = useState<boolean>(visibilityHeight === 0);
 
@@ -44,7 +45,7 @@ const BackToBottmButton: React.FC<BackToBottmButtonProps> = (props) => {
     <FloatButton
       ref={internalRef}
       style={{
-        bottom: 168,
+        bottom: (props.offsetTop || 148) + 20,
         position: 'absolute',
         display: visible ? 'block' : 'none',
       }}
@@ -53,7 +54,3 @@ const BackToBottmButton: React.FC<BackToBottmButtonProps> = (props) => {
     ></FloatButton>
   );
 };
-
-export { BackToBottmButton };
-
-export type { BackToBottmButtonProps };
