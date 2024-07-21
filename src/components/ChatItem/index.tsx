@@ -55,6 +55,10 @@ export const ChatItem: React.FC<ChatItemProps> = (props) => {
     animation,
     contentAfter,
     contentBefore,
+    chatListItemAvatarClassName,
+    chatListItemContentClassName,
+
+    chatListItemTitleClassName,
     chatListItemContentStyle,
     chatListItemTitleStyle,
     chatItemRenderConfig,
@@ -74,6 +78,7 @@ export const ChatItem: React.FC<ChatItemProps> = (props) => {
     chatItemRenderConfig?.titleRender,
     props,
     <ProChatTitle
+      className={chatListItemTitleClassName}
       style={chatListItemTitleStyle}
       prefixClass={cx(`${prefixClass}-message-title`)}
       title={avatar?.title}
@@ -86,6 +91,7 @@ export const ChatItem: React.FC<ChatItemProps> = (props) => {
     chatItemRenderConfig?.avatarRender,
     props,
     <ProChatAvatar
+      className={chatListItemAvatarClassName}
       avatar={avatar?.avatar}
       background={avatar?.backgroundColor}
       title={avatar?.title}
@@ -154,7 +160,7 @@ export const ChatItem: React.FC<ChatItemProps> = (props) => {
               className={cx(
                 `${prefixClass}-message-content`,
                 `${prefixClass}-message-content-${placement}`,
-
+                chatListItemContentClassName,
                 hashId,
               )}
               style={chatListItemContentStyle}

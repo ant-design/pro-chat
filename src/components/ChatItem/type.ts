@@ -144,11 +144,6 @@ export interface ChatItemProps<T = Record<string, any>> {
   chatListItemTitleClassName?: string;
 
   /**
-   * @description Custom CSS class name for the chat item extra content.
-   */
-  chatListItemExtraClassName?: string;
-
-  /**
    * @description Custom CSS class name for the chat item avatar.
    */
   chatListItemAvatarClassName?: string;

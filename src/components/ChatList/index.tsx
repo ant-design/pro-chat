@@ -33,7 +33,6 @@ export type ChatListProps = {
   chatListItemClassName?: string;
   chatListItemContentClassName?: string;
   chatListItemTitleClassName?: string;
-  chatListItemExtraClassName?: string;
   chatListItemAvatarClassName?: string;
 };
 
@@ -51,7 +50,6 @@ const ChatList: React.FC<ChatListProps> = (props) => {
     chatListItemAvatarClassName,
     chatListItemContentClassName,
     chatListItemTitleClassName,
-    chatListItemExtraClassName,
     loadingMessage,
     userMeta = {
       avatar: DEFAULT_USER_AVATAR,
@@ -101,7 +99,6 @@ const ChatList: React.FC<ChatListProps> = (props) => {
             chatListItemAvatarClassName={chatListItemAvatarClassName}
             chatListItemContentClassName={chatListItemContentClassName}
             chatListItemTitleClassName={chatListItemTitleClassName}
-            chatListItemExtraClassName={chatListItemExtraClassName}
           >
             <MessageComponent {...item} />
           </ChatItem>
@@ -132,7 +129,6 @@ const ChatList: React.FC<ChatListProps> = (props) => {
           chatListItemAvatarClassName={chatListItemAvatarClassName}
           chatListItemContentClassName={chatListItemContentClassName}
           chatListItemTitleClassName={chatListItemTitleClassName}
-          chatListItemExtraClassName={chatListItemExtraClassName}
         >
           <MessageComponent {...loadingMessage} />
         </ChatItem>

@@ -511,7 +511,6 @@ export function ProChat<
           chatListItemClassName={classNames?.chatListItem}
           chatListItemContentClassName={classNames?.chatListItemContent}
           chatListItemTitleClassName={classNames?.chatListItemTitle}
-          chatListItemExtraClassName={classNames?.chatListItemExtra}
           chatListItemAvatarClassName={classNames?.chatListItemAvatar}
           // styles
           chatListItemStyle={styles?.chatListItem}
