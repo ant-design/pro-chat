@@ -333,8 +333,6 @@ export const chatAction: StateCreator<ChatStore, [['zustand/devtools', never]], 
     // 因为如果顺序反了，messages 中将包含新增的 ai message
     const mid = await getMessageId(messages, userMessageId);
 
-    console.log('fetch Real');
-
     dispatchMessage({
       id: mid,
       message: LOADING_FLAT,
