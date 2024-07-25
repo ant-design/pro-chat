@@ -83,6 +83,8 @@ export const messagesReducer = (
         const message = draftState.find((m) => m.id === id);
         if (!message) return;
 
+        message.updateAt = Date.now();
+
         // 遍历 rest 对象并更新 message 对象
         for (const [restKey, restValue] of Object.entries(rest)) {
           message[restKey] = restValue;
@@ -90,7 +92,6 @@ export const messagesReducer = (
 
         // @ts-ignore
         message[key] = value;
-        message.updateAt = Date.now();
       });
     }
 
