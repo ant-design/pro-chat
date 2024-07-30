@@ -14,6 +14,9 @@ import { useOverrideStyles } from './OverrideStyle';
 import { ProChatChatReference } from './StoreUpdater';
 import { ProChatProps } from './index';
 
+import { useStore } from '@/ProChat/store';
+import { chatSelectors } from '@/ProChat/store/selectors';
+
 const useStyles = createStyles(
   ({ css, responsive, stylish }) => css`
     overflow: hidden scroll;
@@ -103,6 +106,8 @@ const App = memo<ConversationProps>(
     const [height, setHeight] = useState('100%' as string | number);
     const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
     const { localeObject } = useProChatLocale();
+    const messages = useStore(chatSelectors.currentChats);
+    const [backBottomVisiable, setBackBottomVisiable] = useState<boolean>(messages?.length > 0);
 
     useEffect(() => {
       // 保证 ref 永远存在
@@ -117,6 +122,10 @@ const App = memo<ConversationProps>(
         };
       }
     }, []);
+
+    useEffect(() => {
+      setBackBottomVisiable(messages?.length > 0);
+    }, [messages]);
 
     const prefixClass = getPrefixCls('pro-chat');
     return (
@@ -157,7 +166,7 @@ const App = memo<ConversationProps>(
               />
               {ref?.current && <ChatScrollAnchor target={ref} />}
             </div>
-            {isRender && ref?.current ? (
+            {isRender && backBottomVisiable && ref?.current ? (
               <BackBottom
                 style={{
                   bottom: 138,
