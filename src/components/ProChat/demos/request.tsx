@@ -17,6 +17,12 @@ export default () => {
         inputAreaProps={{
           rows: 1,
         }}
+        autocompleteRequest={async () => {
+          return ['table', 'docs', 'tools ', '参数配置', '你是谁', '联系我'].map((item) => ({
+            value: item,
+            label: item,
+          }));
+        }}
         sendMessageRequest={() => {
           return new Promise((resolve) => {
             setTimeout(() => {

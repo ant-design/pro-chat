@@ -416,28 +416,24 @@ export function ProChat<
     return chatList;
   });
 
-  useImperativeHandle(
-    chatRef,
-    () => {
-      return {
-        stopGenerateMessage,
-        clearMessage,
-        sendMessage,
-        getChatList,
-        getChatLoadingMessage,
-        setMessageItem,
-        genMessageRecord,
-        scrollToBottom: () => {
-          (chatListContainerRef as any)?.current?.scrollTo({
-            behavior: 'smooth',
-            left: 0,
-            top: chatListContainerRef.current?.scrollHeight || 99999,
-          });
-        },
-      } as ProChatInstance<T>;
-    },
-    [chatRef],
-  );
+  useImperativeHandle(chatRef, () => {
+    return {
+      stopGenerateMessage,
+      clearMessage,
+      sendMessage,
+      getChatList,
+      getChatLoadingMessage,
+      setMessageItem,
+      genMessageRecord,
+      scrollToBottom: () => {
+        (chatListContainerRef as any)?.current?.scrollTo({
+          behavior: 'smooth',
+          left: 0,
+          top: chatListContainerRef.current?.scrollHeight || 99999,
+        });
+      },
+    } as ProChatInstance<T>;
+  }, [chatRef]);
 
   const scrollToBottom = useMemo(() => {
     if (chatListContainerRef.current) {
@@ -527,6 +523,7 @@ export function ProChat<
           typing={!!loadingMessage?.id}
           placeholder={placeholder || '请输入消息...'}
           onMessageSend={sendMessage}
+          mentionRequest={props.autocompleteRequest}
           stopGenerateMessage={stopGenerateMessage}
           clearMessage={clearMessage}
           areaRef={areaHtml}

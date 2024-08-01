@@ -105,6 +105,8 @@ export type ChatInputAreaProps = {
   sendButtonStyle?: React.CSSProperties;
 
   sendAreaStyle?: React.CSSProperties;
+
+  mentionRequest?: (value: string) => Promise<{ value: string; label?: string }[]>;
 };
 
 /**
@@ -131,6 +133,7 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
     onMessageSend,
     actionStyle,
     locale,
+    mentionRequest,
     actionsRender,
   } = props || {};
 
@@ -160,13 +163,13 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
    */
   const defaultAutoCompleteTextAreaProps = {
     placeholder: placeholder,
+    mentionRequest,
     ...inputAreaProps,
     className: cx(inputAreaProps?.className, `${prefixClass}-input`, hashId),
     value: message,
     onChange: (value) => {
-      setMessage(value.target.value);
+      setMessage(value);
     },
-    autoSize: { maxRows: 8 },
     onCompositionStart: () => {
       isChineseInput.current = true;
     },

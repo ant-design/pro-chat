@@ -74,7 +74,7 @@ const nextConfig = {
 
 ## 🔨 Usage
 
-```jsx
+```tsx
 import { ProChat } from '@ant-design/pro-chat';
 
 export default () => (

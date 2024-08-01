@@ -1,10 +1,10 @@
-﻿import { Input } from 'antd';
-import { TextAreaProps } from 'antd/es/input';
+﻿import { Mentions, MentionsProps } from 'antd';
+import { useState } from 'react';
 
 /**
  * Props for the MentionsTextArea component.
  */
-export type MentionsTextAreaProps = TextAreaProps & {
+export type MentionsTextAreaProps = MentionsProps & {
   /**
    * A function that is called when a mention is requested.
    * @param value - The value of the mention.
@@ -33,14 +33,12 @@ export type MentionsTextAreaProps = TextAreaProps & {
 export const MentionsTextArea: React.FC<MentionsTextAreaProps> = (props) => {
   const { disabled, mentionRequest, ...rest } = props;
 
-  // const [options, setOptions] = useState<{ value: string; label: string }[]>([]);
+  const [options, setOptions] = useState<{ value: string; label: string }[]>([]);
   return (
-    <Input.TextArea
+    <Mentions
       className={props.className}
       disabled={disabled}
-      autoSize={{
-        minRows: rest.rows || 5,
-      }}
+      autoSize
       rows={rest.rows || 5}
       {...rest}
       style={{
@@ -54,19 +52,20 @@ export const MentionsTextArea: React.FC<MentionsTextAreaProps> = (props) => {
         height: 'auto',
         ...rest.style,
       }}
-      // options={options}
-      // onSelect={(value) => {
-      //   props.onChange?.({ target: { value } } as any);
-      //   setOptions([]);
-      // }}
-      // prefix="/"
-      // onSearch={async (value, prefix) => {
-      //   const result = await mentionRequest?.(value);
-      //   setOptions((result as any[]) || []);
-      //   rest?.onSearch?.(value, prefix);
-      // }}
+      options={options}
+      onSelect={(value) => {
+        props.onChange?.(value?.value);
+        setOptions([]);
+      }}
+      prefix="/"
+      onSearch={async (value, prefix) => {
+        if (!mentionRequest) return [];
+        const result = await mentionRequest?.(value);
+        setOptions((result as any[]) || []);
+        rest?.onSearch?.(value, prefix);
+      }}
       onPressEnter={(e) => {
-        // if (open && options.length > 0) return;
+        if (options.length > 0) return;
         props.onPressEnter?.(e);
       }}
     />
