@@ -1,5 +1,5 @@
 import { SendOutlined } from '@ant-design/icons';
-import { Button, ButtonProps, ConfigProvider } from 'antd';
+import { Button, ButtonProps, ConfigProvider, GetProps } from 'antd';
 import { createStyles, cx } from 'antd-style';
 import { ReactNode, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { Flexbox } from 'react-layout-kit';
@@ -133,7 +133,7 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
    * @property {function} onPressEnter - 按下回车键时的回调函数
    */
 
-  const defaultAutoCompleteTextAreaProps = {
+  const defaultAutoCompleteTextAreaProps: GetProps<typeof AutoCompleteTextArea> = {
     placeholder: placeholder || localeObject.placeholder,
     ...inputAreaProps,
     className: cx(styles.input, inputAreaProps?.className, `${prefixClass}-component`),
@@ -147,12 +147,18 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
     },
     onCompositionEnd: (e) => {
       isChineseInput.current = false;
-      setMessage(e.target.value);
+      setMessage((e.target as HTMLTextAreaElement).value);
     },
     onPressEnter: (e) => {
-      if (!isLoading && !e.shiftKey && !isChineseInput.current) {
-        e.preventDefault();
-        send();
+      if (isLoading) {
+        if (!e.shiftKey) {
+          e.preventDefault();
+        }
+      } else {
+        if (!e.shiftKey && !isChineseInput.current) {
+          e.preventDefault();
+          send();
+        }
       }
     },
   };
