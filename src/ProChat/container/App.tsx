@@ -21,8 +21,8 @@ const useStyles = createStyles(
   ({ css, responsive, stylish }) => css`
     overflow: hidden scroll;
     height: 100%;
-    ${responsive.mobile} {
-      ${stylish.noScrollbar}
+    ${responsive?.mobile} {
+      ${stylish?.noScrollbar}
       width: 100%;
     }
   `,
