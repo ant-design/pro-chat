@@ -2,7 +2,7 @@ import { createStyles } from 'antd-style';
 
 export const useStyles = createStyles(({ token, css, stylish, cx }, visible: boolean) =>
   cx(
-    stylish.blur,
+    stylish?.blur,
     css`
       pointer-events: ${visible ? 'all' : 'none'};
 

@@ -4,7 +4,7 @@ export const useStyles = createStyles(
   ({ css, stylish, cx }, { glass }: { active: boolean; glass: boolean }) => {
     return {
       block: cx(
-        glass && stylish.blur,
+        glass && stylish?.blur,
         css`
           cursor: pointer;
 
