@@ -87,7 +87,7 @@ Besides messages as conversation context, there are two more parameters in reque
     params: {
       userId: '123',
       extra: 'extra',
-    },
+    }
   }}
   request={async (messages, extra, signal) => {
     const text = await delay(
