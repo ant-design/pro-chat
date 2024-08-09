@@ -133,8 +133,7 @@ const App = memo<ConversationProps>(
         onResize={(e) => {
           if (
             typeof height !== typeof e.height ||
-            (typeof height === 'string' && typeof e.height === 'string' && e.height !== height) ||
-            (typeof height === 'number' && Math.abs(e.height - height) > 1)
+            (typeof height === 'string' && typeof e.height === 'string' && e.height !== height)
           ) {
             // stop shaking
             setHeight(e.height);
