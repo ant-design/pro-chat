@@ -24,6 +24,9 @@ describe('ProChat', () => {
   it('actions custom configure', async () => {
     const app = render(
       <ProChat
+        chats={[
+          { id: '1', content: 'test', role: 'user', createAt: Date.now(), updateAt: Date.now() },
+        ]}
         chatItemRenderConfig={{
           actionsProps: {
             user: {
@@ -36,6 +39,8 @@ describe('ProChat', () => {
     );
 
     const btns = app.baseElement.querySelectorAll('.anticon');
+
+    console.log('btn', btns);
 
     await fireEvent.click(btns.item(2));
     waitFor(() => {
