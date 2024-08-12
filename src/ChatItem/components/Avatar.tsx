@@ -26,6 +26,7 @@ const Avatar = memo<AvatarProps>(
           background={avatar.backgroundColor}
           onClick={onClick}
           size={size}
+          className={avatar.className}
           title={avatar.title}
         />
         <Loading loading={loading} placement={placement} />

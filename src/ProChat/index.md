@@ -78,6 +78,12 @@ ProChat 使用 `meta` 来表意会话双方的头像、名称等信息。设定�
 
 <code src="./demos/meta.tsx"></code>
 
+## assistantMeta和userMeta支持自定义className
+
+`assistantMeta` 和 `userMeta` 通过接受 `className` 来支持自定义类名。
+
+<code src="./demos/customeClassName.tsx"></code>
+
 ## 自定义 Actions
 
 <code src="./demos/actions.tsx"></code>

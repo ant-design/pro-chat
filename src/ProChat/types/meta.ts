@@ -16,6 +16,12 @@ export interface MetaData {
   title?: string;
 
   /**
+   * 附加类名
+   * @description 可选参数，如果不传则无
+   */
+  className?: string;
+
+  /**
    * 附加数据
    * @description 可选参数，如果不传则使用默认名称
    */
