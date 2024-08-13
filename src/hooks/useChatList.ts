@@ -240,6 +240,7 @@ export const useChatList = (props: ProChatUIUseListChatProps) => {
             const message = getLoadingMessage();
             if (!message) return;
             setChatList((prev) => {
+              message.isFinished = true;
               return [...prev, message];
             });
             setLoadingMessage(undefined);
@@ -250,10 +251,11 @@ export const useChatList = (props: ProChatUIUseListChatProps) => {
               ? text
               : getLoadingMessage()?.content + text;
 
-          const message = {
+          const message: ChatMessage = {
             ...getLoadingMessage(),
             updateAt: Date.now(),
             originContent: text,
+            isFinished: false,
             content: content,
           };
           const transformMessage = await props.transformToChatMessage?.(message, {

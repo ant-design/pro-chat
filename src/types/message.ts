@@ -49,6 +49,11 @@ export interface ChatMessage<T extends Record<string, any> = Record<string, any>
    * 模型元数据
    */
   meta?: ProChatMetaData;
+
+  /**
+   * 是否完成
+   */
+  isFinished?: boolean;
 }
 
 export interface OpenAIFunctionCall {
