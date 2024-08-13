@@ -30,7 +30,6 @@ export default () => {
         assistantMeta={{
           avatar: '🛸',
           title: '自定义类名',
-          backgroundColor: '#67dedd',
           className: 'my-pro-chat-assistant',
         }}
         initialChats={Object.values(example.chats)}
