@@ -62,6 +62,7 @@
   "dependencies": {
     "@ant-design/icons": "^5.3.7",
     "@ant-design/pro-editor": "latest",
+    "@ant-design/x": "^0.0.0-experimental-2024-08-13",
     "@babel/runtime": "^7.24.7",
     "@emotion/react": "^11.11.4",
     "@testing-library/jest-dom": "^6.4.6",

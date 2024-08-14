@@ -16,19 +16,22 @@ export type {
 export { default as ActionsBar, type ActionsBarProps } from './ChatList/ActionsBar';
 export * from './ProChat';
 
+export { default as CopyButton, type CopyButtonProps } from './components/CopyButton';
 export { default as EditableMessage, type EditableMessageProps } from './EditableMessage';
 export {
   default as EditableMessageList,
   type EditableMessageListProps,
 } from './EditableMessageList';
-export { default as CopyButton, type CopyButtonProps } from './components/CopyButton';
 
 export { default as List } from './List';
 
 export { default as MessageInput, type MessageInputProps } from './MessageInput';
 export { default as MessageModal, type MessageModalProps } from './MessageModal';
 
-export { default as TokenTag, type TokenTagProps } from './TokenTag';
 export { useChatListActionsBar } from './hooks/useChatListActionsBar';
+export { default as TokenTag, type TokenTagProps } from './TokenTag';
+
+export { default as ProSender } from './ProSender';
+
 export * from './styles';
 export type * from './types';
