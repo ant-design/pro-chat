@@ -1,9 +1,19 @@
 import { UploadOutlined } from '@ant-design/icons';
 import { Sender } from '@ant-design/x';
 import { SenderProps } from '@ant-design/x/es/sender/interface';
-import { Button, ConfigProvider, Divider, Space, Upload, UploadFile, UploadProps } from 'antd';
+import {
+  Button,
+  ConfigProvider,
+  Divider,
+  message,
+  Space,
+  Upload,
+  UploadFile,
+  UploadProps,
+} from 'antd';
 import { useContext, useEffect, useState } from 'react';
 import EnterTypeButton from './components/EnterTypeButton.tsx';
+import LocalStorageManager from './storageManager'; // 引入类文件
 import { useStyles } from './style';
 
 const ProSender = (
@@ -11,13 +21,16 @@ const ProSender = (
     className?: string;
     upload?: UploadProps;
     sender?: SenderProps;
+    onSubmit?: (message: string, fileList?: UploadFile[]) => void;
   },
 ) => {
-  const { className, upload, sender } = props || {};
+  const { className, upload, sender, onSubmit } = props || {};
 
   const { cx, styles } = useStyles();
   const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
   const prefixClass = getPrefixCls('pro-chat');
+
+  const localStorageManager = new LocalStorageManager();
 
   const [fileList, setFileList] = useState<Array<UploadFile>>();
 
@@ -31,8 +44,22 @@ const ProSender = (
         <Upload
           {...upload}
           fileList={[]}
-          onChange={(info) => {
-            setFileList(info.fileList);
+          beforeUpload={(file) => {
+            console.log('file', file, localStorageManager);
+
+            localStorageManager
+              .storeFile(file)
+              .then((key) => {
+                console.log('key', key);
+
+                const storedFiles = localStorageManager.getFiles([key]);
+                setFileList((prevList) => [...prevList, ...storedFiles]);
+              })
+              .catch((error) => {
+                message.error(error);
+              });
+
+            return false;
           }}
         >
           <Button icon={<UploadOutlined />} />
@@ -50,7 +77,12 @@ const ProSender = (
             fileList={fileList}
             listType="picture"
             onRemove={(file) => {
-              setFileList(fileList?.filter((item) => item.uid !== file.uid));
+              const result = localStorageManager.removeFiles([file.uid]);
+              if (result[0].success) {
+                setFileList((prevList) => prevList.filter((item) => item.uid !== file.uid));
+              } else {
+                message.error(result[0].error);
+              }
             }}
           />
           <Divider />
@@ -61,11 +93,18 @@ const ProSender = (
   };
 
   const SenderArea = () => {
+    const { onSubmit: defaultSubmit } = sender || {};
     return (
       <Sender
         // @ts-ignore
         className={cx(styles.sender, `${prefixClass}-sender-inner`)}
         enterType={sender?.enterType}
+        onSubmit={(message) => {
+          onSubmit?.(message, fileList);
+          defaultSubmit?.(message);
+          setFileList?.([]);
+          return true;
+        }}
         components={{
           actions: {
             wrapper: (props) => <EnterTypeButton enterType={sender?.enterType} {...props} />,
