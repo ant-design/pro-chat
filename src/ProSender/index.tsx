@@ -1,4 +1,4 @@
-import { UploadOutlined } from '@ant-design/icons';
+import { FileImageOutlined, UploadOutlined } from '@ant-design/icons';
 import { Sender } from '@ant-design/x';
 import { SenderProps } from '@ant-design/x/es/sender/interface';
 import {
@@ -13,18 +13,24 @@ import {
 } from 'antd';
 import { useContext, useEffect, useState } from 'react';
 import EnterTypeButton from './components/EnterTypeButton.tsx';
-import LocalStorageManager from './storageManager'; // 引入类文件
+import LocalStorageManager from './storageManager';
 import { useStyles } from './style';
 
+type ActionsType = {
+  actionsRender?: ([fileUpBtn, imgUpBtn]: Array<React.ReactNode>) => React.ReactNode;
+  actionsInfoRender?: (defaultdom: React.ReactNode, []: Array<UploadFile>) => React.ReactNode;
+};
+
 const ProSender = (
-  props: SenderProps & {
+  props: Omit<SenderProps, 'onSubmit'> & {
     className?: string;
     upload?: UploadProps;
     sender?: SenderProps;
+    actions?: ActionsType;
     onSubmit?: (message: string, fileList?: UploadFile[]) => void;
   },
 ) => {
-  const { className, upload, sender, onSubmit } = props || {};
+  const { className, upload, sender, onSubmit, actions } = props || {};
 
   const { cx, styles } = useStyles();
   const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
@@ -38,61 +44,89 @@ const ProSender = (
     setFileList(upload?.fileList || upload?.defaultFileList || []);
   }, []);
 
-  const ProSenderActions = () => {
+  const senderActionsRender = () => {
+    const UploadCommanProps = {
+      ...upload,
+      fileList: [],
+      beforeUpload: (file) => {
+        localStorageManager
+          .storeFile(file)
+          .then((key) => {
+            const storedFiles = localStorageManager.getFiles([key]);
+            setFileList((prevList) => [...prevList, ...storedFiles]);
+          })
+          .catch((error) => {
+            message.error(error);
+          });
+        return false;
+      },
+    };
+
+    const fileUpBtn = (
+      <Upload {...UploadCommanProps}>
+        <Button icon={<UploadOutlined />} />
+      </Upload>
+    );
+
+    const imgUpBtn = (
+      <Upload
+        {...UploadCommanProps}
+        listType="picture"
+        beforeUpload={(file) => {
+          if (file.type !== 'image/jpeg' && file.type !== 'image/png') {
+            message.error('只能上传jpg/png格式的图片');
+            return Upload.LIST_IGNORE;
+          }
+          UploadCommanProps.beforeUpload(file);
+        }}
+      >
+        <Button icon={<FileImageOutlined />} />
+      </Upload>
+    );
+
+    if (actions?.actionsRender) {
+      return actions.actionsRender([fileUpBtn, imgUpBtn]);
+    }
+
     return (
       <Space className={cx(styles.actions, `${prefixClass}-sender-actions`)}>
-        <Upload
-          {...upload}
-          fileList={[]}
-          beforeUpload={(file) => {
-            console.log('file', file, localStorageManager);
-
-            localStorageManager
-              .storeFile(file)
-              .then((key) => {
-                console.log('key', key);
-
-                const storedFiles = localStorageManager.getFiles([key]);
-                setFileList((prevList) => [...prevList, ...storedFiles]);
-              })
-              .catch((error) => {
-                message.error(error);
-              });
-
-            return false;
-          }}
-        >
-          <Button icon={<UploadOutlined />} />
-        </Upload>
+        {[fileUpBtn, imgUpBtn]}
       </Space>
     );
   };
 
-  const SenderFileInfo = () => {
-    if (fileList && fileList.length > 0) {
-      return (
-        <div className={cx(styles.fileInfo, `${prefixClass}-sender-file-info`)}>
-          <Upload
-            {...upload}
-            fileList={fileList}
-            listType="picture"
-            onRemove={(file) => {
-              const result = localStorageManager.removeFiles([file.uid]);
-              if (result[0].success) {
-                setFileList((prevList) => prevList.filter((item) => item.uid !== file.uid));
-              } else {
-                message.error(result[0].error);
-              }
-            }}
-          />
-          <Divider />
-        </div>
-      );
+  const senderFileInfoRender = () => {
+    const fileInputRender = () => {
+      if (fileList && fileList.length > 0) {
+        return (
+          <div className={cx(styles.fileInfo, `${prefixClass}-sender-file-info`)}>
+            <Upload
+              {...upload}
+              fileList={fileList}
+              listType="picture"
+              onRemove={(file) => {
+                const result = localStorageManager.removeFiles([file.uid]);
+                if (result[0].success) {
+                  setFileList((prevList) => prevList.filter((item) => item.uid !== file.uid));
+                } else {
+                  message.error(result[0].error);
+                }
+              }}
+            />
+            <Divider />
+          </div>
+        );
+      }
+      return <></>;
+    };
+
+    if (actions?.actionsInfoRender) {
+      return actions.actionsInfoRender(fileInputRender(), fileList);
     }
-    return <></>;
+    return fileInputRender();
   };
 
-  const SenderArea = () => {
+  const senderAreaRender = () => {
     const { onSubmit: defaultSubmit } = sender || {};
     return (
       <Sender
@@ -116,18 +150,12 @@ const ProSender = (
     );
   };
 
-  const Wrapper = ({ children }) => {
-    return (
-      <div className={cx(styles.container, `${prefixClass}-sender`, className)}>{children}</div>
-    );
-  };
-
   return (
-    <Wrapper>
-      <ProSenderActions />
-      <SenderFileInfo />
-      <SenderArea />
-    </Wrapper>
+    <div className={cx(styles.container, `${prefixClass}-sender`, className)}>
+      {senderActionsRender()}
+      {senderFileInfoRender()}
+      {senderAreaRender()}
+    </div>
   );
 };
 
