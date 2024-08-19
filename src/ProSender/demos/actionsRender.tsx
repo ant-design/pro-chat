@@ -1,5 +1,6 @@
+import { CheckCircleOutlined } from '@ant-design/icons';
 import { ProChat, ProSender } from '@ant-design/pro-chat';
-import { Card, Empty, Space } from 'antd';
+import { Space, Tag } from 'antd';
 import { useTheme } from 'antd-style';
 
 export default () => {
@@ -11,16 +12,26 @@ export default () => {
           return (
             <ProSender
               actions={{
-                actionsInfoRender: (defaultdom, fileList) => {
+                actionsInfoRender: (defaultdom, fileList, onRemove) => {
                   if (!fileList || fileList.length === 0) {
-                    return <Empty />;
+                    return;
                   }
                   return (
                     <Space>
                       {fileList.map((item) => {
-                        console.log('item', item);
-
-                        return <Card key={item.uid} style={{ width: 300 }} title={item.fileName} />;
+                        return (
+                          <Tag
+                            icon={<CheckCircleOutlined />}
+                            color="success"
+                            key={item.uid}
+                            closable
+                            onClose={() => {
+                              onRemove(item.uid);
+                            }}
+                          >
+                            {item.name}
+                          </Tag>
+                        );
                       })}
                     </Space>
                   );

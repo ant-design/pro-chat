@@ -13,12 +13,18 @@ import {
 } from 'antd';
 import { useContext, useEffect, useState } from 'react';
 import EnterTypeButton from './components/EnterTypeButton.tsx';
-import LocalStorageManager from './storageManager';
+import LocalStorageManager from './storageManager.js';
 import { useStyles } from './style';
 
 type ActionsType = {
+  onFileUpload?: (file: File) => void;
+  onRemoveFile?: (file: UploadFile) => void;
   actionsRender?: ([fileUpBtn, imgUpBtn]: Array<React.ReactNode>) => React.ReactNode;
-  actionsInfoRender?: (defaultdom: React.ReactNode, []: Array<UploadFile>) => React.ReactNode;
+  actionsInfoRender?: (
+    defaultdom?: React.ReactNode,
+    []?: Array<UploadFile>,
+    onRemoveFile?: (uid: string) => Promise<{ key: string; success: boolean; error?: string }>,
+  ) => React.ReactNode;
 };
 
 const ProSender = (
@@ -51,9 +57,10 @@ const ProSender = (
       beforeUpload: (file) => {
         localStorageManager
           .storeFile(file)
-          .then((key) => {
-            const storedFiles = localStorageManager.getFiles([key]);
+          .then(async (key) => {
+            const storedFiles = await localStorageManager.getFiles([key]);
             setFileList((prevList) => [...prevList, ...storedFiles]);
+            actions?.onFileUpload?.(file);
           })
           .catch((error) => {
             message.error(error);
@@ -104,10 +111,11 @@ const ProSender = (
               {...upload}
               fileList={fileList}
               listType="picture"
-              onRemove={(file) => {
-                const result = localStorageManager.removeFiles([file.uid]);
+              onRemove={async (file) => {
+                const result = await localStorageManager.removeFiles([file.uid]);
                 if (result[0].success) {
                   setFileList((prevList) => prevList.filter((item) => item.uid !== file.uid));
+                  actions?.onRemoveFile?.(file);
                 } else {
                   message.error(result[0].error);
                 }
@@ -121,7 +129,10 @@ const ProSender = (
     };
 
     if (actions?.actionsInfoRender) {
-      return actions.actionsInfoRender(fileInputRender(), fileList);
+      return actions.actionsInfoRender(fileInputRender(), fileList, async (uid) => {
+        setFileList((prevList) => prevList.filter((item) => item.uid !== uid));
+        return await localStorageManager.removeFiles([uid]);
+      });
     }
     return fileInputRender();
   };
