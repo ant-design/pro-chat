@@ -8,43 +8,27 @@ nav:
   order: 0
 ---
 
-## Integrate with Next.js
+## Integration with Next.js
 
-[Next.js](https://nextjs.org/) is a very popular research and development framework in the community. The integration of ProChat and Next.js is also very easy.
+[Next.js](https://nextjs.org/) is a very popular development framework in the community. Integrating ProChat with Next.js is also very easy.
 
-```bash
-npx create-next-app@latest
-```
-
-### Dependent installation
+### Create Project with Official Scaffold
 
 ```bash
-npm install @ant-design/pro-chat --save
-or
-pnpm install @ant-design/pro-chat
+pnpm dlx create-next-app@latest
 ```
 
-Due to Next.js being a CSR, SSR isomorphic React framework, and ProChat only providing the ESM module by default, after installation, it is necessary to go to ` next.config. ' (m) Add relevant dependencies to 'transpilePackages' in JavaScript:
+### Install Dependencies
 
-> In the latest version of NextJS 14 AppRoute, configuration is no longer required
-
-```js
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  // Convert pure ESM modules to node compatible modules
-  transpilePackages: [
-    '@ant-design/pro-chat',
-    'react-intersection-observer',
-    '@ant-design/pro-editor',
-  ],
-};
+```bash
+pnpm add @ant-design/pro-chat antd-style antd
 ```
 
 ### Usage
 
-Next, use it the same as other components.
+Next, use it just like any other component.
 
-If you are in a project created by default scaffolding, simply write the following code in 'page. js | tsx' to see ProChat.
+If you are using a project created with the default scaffold, you can see ProChat by writing the following code directly in `page.tsx`.
 
 ```js
 "use client";
@@ -83,3 +67,47 @@ export default function Home() {
 ```
 
 > A more complete demo can view the Case in the model case [Model Case - ChatGPT](./chatgpt.md)
+
+### Frequently Asked Questions
+
+If you encounter issues with module imports or syntax errors during use, the primary reasons are:
+
+- Next.js is an isomorphic React framework for both CSR and SSR. The code execution environment includes both the browser and Node.js.
+
+- Both @ant-design/pro-chat and its underlying dependency @ant-design/pro-editor use the [Bundless](https://github.com/umijs/father/blob/master/docs/guide/build-mode.md) build mode of father, and only provide ESModule outputs.
+
+- Therefore, there may be ESModule syntax incompatibility issues, and additional transpile and bundle processing for related dependencies may be required.
+
+### Solutions
+
+It is recommended to use pnpm instead of npm as the package manager, as some issues can be resolved with the resolution of ghost dependencies.
+
+- Next.js version >= v13.0.0 (Recommended)
+
+Add the dependencies that cause errors to the [transpilePackages](https://nextjs.org/docs/app/api-reference/next-config-js/transpilePackages) configuration item, such as:
+
+```js
+const nextConfig = {
+  transpilePackages: [
+    // Add as needed based on actual situation
+    'shiki',
+    '@ant-design/pro-chat',
+    '@ant-design/pro-editor',
+  ],
+};
+```
+
+- Next.js version < v13.0 (Not Recommended)
+
+Install the [next-transpile-modules](https://github.com/martpie/next-transpile-modules) plugin and configure the dependencies that need to be transpiled, such as:
+
+```js
+const withTM = require('next-transpile-modules')([
+  // Refer to the plugin documentation for specific usage
+  '.pnpm/node_modules/@ant-design/pro-editor',
+  '@ant-design/pro-chat',
+]);
+module.exports = withTM({});
+```
+
+Due to an [issue](https://github.com/vercel/next.js/issues/19936) in older versions of Next.js where global CSS cannot be imported from node_modules, the involved dependencies also need to be configured in the plugin.

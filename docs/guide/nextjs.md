@@ -12,39 +12,23 @@ nav:
 
 [Next.js](https://nextjs.org/) 是社区中非常流行的研发框架。ProChat 与 Next.js 的集成也非常容易。
 
+### 官方脚手架创建项目
+
 ```bash
-npx create-next-app@latest
+pnpm dlx create-next-app@latest
 ```
 
 ### 依赖安装
 
 ```bash
-npm install @ant-design/pro-chat --save
-or
-pnpm install @ant-design/pro-chat
-```
-
-由于 Next.js 是一个 CSR、SSR 同构的 React 框架，而 ProChat 默认只提供 esm 模块，因此在安装后，需要在 `next.config.(m)js` 中 `transpilePackages` 中加入相关依赖：
-
-> 在最新版本 NextJS 14 AppRoute 中可以不需要配置了
-
-```js
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  // 将纯 esm 模块转为 node 兼容模块
-  transpilePackages: [
-    '@ant-design/pro-chat',
-    'react-intersection-observer',
-    '@ant-design/pro-editor',
-  ],
-};
+pnpm add @ant-design/pro-chat antd-style antd
 ```
 
 ### 使用
 
 接下来和其他组件一样使用即可。
 
-如果你是默认脚手架创建出来的项目中，直接在 `page.js|tsx` 中写下如下代码就可以看到 ProChat 了。
+如果你是默认脚手架创建出来的项目中，直接在 `page.tsx` 中写下如下代码就可以看到 ProChat 了。
 
 ```js
 "use client";
@@ -83,3 +67,47 @@ export default function Home() {
 ```
 
 > 更加完整的 Demo 可以查看模型案例中的 Case [模型案例 - ChatGPT](./chatgpt.md)
+
+### 常见问题
+
+如果使用过程中，出现模块的导入问题或语法报错，核心原因是：
+
+- Next.js 是一个 CSR、SSR 同构的 React 框架。代码执行环境不仅有浏览器也有 Node.js。
+
+- 不论是 @ant-design/pro-chat 还是其底层依赖 @ant-design/pro-editor，都采用了 father 的 [Bundless](https://github.com/umijs/father/blob/master/docs/guide/build-mode.md) 构建模式，且仅提供 ESModule 产物。
+
+- 因此可能出现 ESModule 语法不兼容问题，此时需要对相关依赖进行额外的 transpile 和 bundle 处理。
+
+### 解决方案
+
+包管理工具推荐使用 pnpm 而不是 npm，部分问题可以随着幽灵依赖的解决而解决。
+
+#### Next.js 版本 >= v13.0.0（推荐）
+
+将报错的依赖添加到 [transpilePackages 配置项](https://nextjs.org/docs/app/api-reference/next-config-js/transpilePackages)中，如：
+
+```js
+const nextConfig = {
+  transpilePackages: [
+    // 根据实际情况按需添加
+    'shiki',
+    '@ant-design/pro-chat',
+    '@ant-design/pro-editor',
+  ],
+};
+```
+
+#### Next.js 版本 < v13.0（不推荐）
+
+安装 [next-transpile-modules 插件](https://github.com/martpie/next-transpile-modules)，配置需要 transpile 的依赖，如：
+
+```js
+const withTM = require('next-transpile-modules')([
+  // 具体使用参考插件文档
+  '.pnpm/node_modules/@ant-design/pro-editor',
+  '@ant-design/pro-chat',
+]);
+module.exports = withTM({});
+```
+
+由于旧版本的 Next.js 存在无法从 node_modules 中导入全局 CSS 的[问题](https://github.com/vercel/next.js/issues/19936)，因此也需要将涉及的依赖配置到插件中。
