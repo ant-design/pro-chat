@@ -56,25 +56,7 @@ $ pnpm install antd // peerDependencies
 
 ### Compile with Next.js
 
-> \[!NOTE]
->
-> By work correct with Next.js SSR, add `transpilePackages: ['@ant-design/pro-chat']` to `next.config.js`. For example:
-
-```js
-const nextConfig = {
-  transpilePackages: [
-    '@ant-design/pro-chat',
-    '@ant-design/pro-editor',
-    'react-intersection-observer',
-  ],
-};
-```
-
-> \[!NOTE]
->
-> If you are using a new version of NextJs (higher than 14), you no longer need to configure transpilePackages to run in NextJs.
-
-<br/>
+If you have some errors when using Next.js, check [here](https://pro-chat.antdigital.dev/en-US/guide/nextjs#frequently-asked-questions]).
 
 ## 🔨 Usage
 

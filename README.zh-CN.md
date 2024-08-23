@@ -55,23 +55,7 @@ $ pnpm install antd  // peerDependencies
 
 ### 使用 Next.js 进行编译
 
-> \[!NOTE]\
-> 为了正确使用 Next.js SSR，请在 `next.config.js` 中添加 `transpilePackages: ['@ant-design/pro-chat']`。例如：
-
-```js
-const nextConfig = {
-  transpilePackages: [
-    '@ant-design/pro-chat',
-    '@ant-design/pro-editor',
-    'react-intersection-observer',
-  ],
-};
-```
-
-> \[!NOTE]\
-> 如果你使用的是新版本的 NextJs(higher than 14)，现在不需要你配置 transpilePackages 也可以在 NextJs 中运行了
-
-<br/>
+如果在 Next.js 项目中遇到一些报错，请参考这里[解决](https://pro-chat.antdigital.dev/guide/nextjs#常见问题]).
 
 ## 🔨 使用
 
