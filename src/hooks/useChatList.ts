@@ -198,7 +198,8 @@ export const useChatList = (props: ProChatUIUseListChatProps) => {
    */
   const sendMessage = useRefFunction(async (message: string | Partial<ChatMessage>) => {
     controller.current = new AbortController();
-    chatList.push(
+    setChatList((prevState) => [
+      ...prevState,
       genMessageRecord(
         typeof message === 'string'
           ? { content: message }
@@ -208,8 +209,7 @@ export const useChatList = (props: ProChatUIUseListChatProps) => {
             },
         'user',
       ),
-    );
-    setChatList([...chatList]);
+    ]);
     if (!props?.sendMessageRequest) return;
     setLoadingMessage(
       genMessageRecord(

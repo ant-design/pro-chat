@@ -458,6 +458,18 @@ export function ProChat<
     }
   }, [loadingMessage]);
 
+  useEffect(() => {
+    if (chatListContainerRef.current) {
+      setTimeout(() => {
+        chatListContainerRef.current.scrollTo({
+          behavior: 'smooth',
+          left: 0,
+          top: chatListContainerRef.current.scrollHeight,
+        });
+      }, 0);
+    }
+  }, [chatList]);
+
   const backBottomDom = useMemo(() => {
     if (!isInitRender) return null;
     return (
