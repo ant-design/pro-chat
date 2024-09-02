@@ -68,6 +68,12 @@ ProChat uses `meta` to represent the avatars, names, and other information of bo
 
 <code src="./demos/meta.tsx"></code>
 
+## `assistantMeta` and `userMeta` support custom className
+
+`assistantMeta` and `userMeta` support custom class names by accepting `className`.
+
+<code src="./demos/customeClassName.tsx"></code>
+
 ## Custom Actions
 
 <code src="./demos/actions.tsx"></code>

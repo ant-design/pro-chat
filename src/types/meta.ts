@@ -14,6 +14,11 @@ export interface MetaData {
    * @description 可选参数，如果不传则使用默认名称
    */
   title?: string;
+  /**
+   * 自定义类名
+   * @description 可选参数，如果不传则使用默认类名
+   */
+  className?: string;
 }
 
 export interface BaseDataModel {

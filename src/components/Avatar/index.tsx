@@ -29,6 +29,10 @@ export interface AvatarProps extends AntAvatarProps {
    * @description The title text to display if avatar is not provided
    */
   title?: string;
+  /**
+   * @description The custom CSS class name
+   */
+  className?: string;
 }
 
 /**

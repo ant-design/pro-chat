@@ -29,6 +29,7 @@ export const currentChats = (s: ChatStore): ChatMessage[] => {
           avatar: assistant?.avatar,
           backgroundColor: assistant?.backgroundColor,
           title: assistant?.title,
+          className: assistant?.className,
         };
       }
     }
