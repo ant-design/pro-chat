@@ -47,16 +47,11 @@ To install `@ant-design/pro-chat`, run the following command:
 $ pnpm install @ant-design/pro-chat
 ```
 
-This project is based on `antd` `antd-style`, so if you have not installed these two dependencies, please install them.
-
-```bash
-$ pnpm install antd-style // peerDependencies
-$ pnpm install antd // peerDependencies
-```
+The default `auto-install-peers` in pnpm is `true`. If you use other package managers, you may need to install `antd` and `antd-style` separately.
 
 ### Compile with Next.js
 
-If you have some errors when using Next.js, check [here](https://pro-chat.antdigital.dev/en-US/guide/nextjs#frequently-asked-questions]).
+If you have some errors when using Next.js, check [here](https://pro-chat.antdigital.dev/en-US/guide/nextjs#frequently-asked-questions).
 
 ## 🔨 Usage
 

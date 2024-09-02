@@ -46,16 +46,11 @@
 $ pnpm install @ant-design/pro-chat
 ```
 
-这个项目基于 `antd` `antd-style`，所以你还没安装过这两个依赖，也请安装一下。
-
-```bash
-$ pnpm install antd-style  // peerDependencies
-$ pnpm install antd  // peerDependencies
-```
+pnpm 默认 auto-install-peers 为 true，如果使用其他包管理工具，可能需要再安装 `antd` `antd-style`
 
 ### 使用 Next.js 进行编译
 
-如果在 Next.js 项目中遇到一些报错，请参考这里[解决](https://pro-chat.antdigital.dev/guide/nextjs#常见问题]).
+如果在 Next.js 项目中遇到一些报错，请参考这里[解决](https://pro-chat.antdigital.dev/guide/nextjs#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98).
 
 ## 🔨 使用
 
