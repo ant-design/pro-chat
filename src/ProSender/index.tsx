@@ -11,15 +11,20 @@ import {
   UploadFile,
   UploadProps,
 } from 'antd';
-import { useContext, useEffect, useState } from 'react';
+import { RcFile } from 'antd/es/upload/interface.js';
+import { useMergedState } from 'rc-util';
+import { useContext, useEffect } from 'react';
 import EnterTypeButton from './components/EnterTypeButton.tsx';
 import LocalStorageManager from './storageManager.js';
 import { useStyles } from './style';
 
 type ActionsType = {
-  onFileUpload?: (file: File) => void;
+  onFileUpload?: (file: RcFile) => void;
   onRemoveFile?: (file: UploadFile) => void;
-  actionsRender?: ([fileUpBtn, imgUpBtn]: Array<React.ReactNode>) => React.ReactNode;
+  actionsRender?: (
+    [fileUpBtn, imgUpBtn]: Array<React.ReactNode>,
+    onFileUpload?: (file: File) => void,
+  ) => React.ReactNode;
   actionsInfoRender?: (
     defaultdom?: React.ReactNode,
     []?: Array<UploadFile>,
@@ -41,14 +46,22 @@ const ProSender = (
   const { cx, styles } = useStyles();
   const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
   const prefixClass = getPrefixCls('pro-chat');
-
   const localStorageManager = new LocalStorageManager();
 
-  const [fileList, setFileList] = useState<Array<UploadFile>>();
+  const [fileList, setFileList] = useMergedState<Array<RcFile>>([], {
+    // value: upload?.fileList,
+  });
 
   useEffect(() => {
-    setFileList(upload?.fileList || upload?.defaultFileList || []);
-  }, []);
+    upload?.fileList?.map((file) => {
+      localStorageManager.storeFile(file).then(async (key) => {
+        const storedFiles = await localStorageManager.getFiles([key]);
+        setFileList((prevList) => [...prevList, ...storedFiles]);
+        actions?.onFileUpload?.(file as any);
+      });
+      return null;
+    });
+  }, [upload?.fileList]);
 
   const senderActionsRender = () => {
     const UploadCommanProps = {
@@ -92,7 +105,9 @@ const ProSender = (
     );
 
     if (actions?.actionsRender) {
-      return actions.actionsRender([fileUpBtn, imgUpBtn]);
+      return actions.actionsRender([fileUpBtn, imgUpBtn], (file) => {
+        return localStorageManager.storeFile(file);
+      });
     }
 
     return (
@@ -138,7 +153,8 @@ const ProSender = (
   };
 
   const senderAreaRender = () => {
-    const { onSubmit: defaultSubmit } = sender || {};
+    const { onSubmit: defaultSubmit, components, ...rest } = sender || {};
+    const { actions } = components || {};
     return (
       <Sender
         // @ts-ignore
@@ -154,9 +170,10 @@ const ProSender = (
           actions: {
             wrapper: (props) => <EnterTypeButton enterType={sender?.enterType} {...props} />,
             clear: () => null,
+            ...actions,
           },
         }}
-        {...sender}
+        {...rest}
       />
     );
   };

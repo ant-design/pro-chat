@@ -8,4 +8,4 @@ description: a ProSender
 
 ## Default
 
-<code src="./demos/base.tsx"></code> <code src="./demos/actionsRender.tsx"></code>
+<code src="./demos/base.tsx"></code> <code src="./demos/actionsRender.tsx"></code> <code src="./demos/baseFiles.tsx"></code>

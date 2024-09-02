@@ -13,7 +13,7 @@ class IndexedDBManager {
 
   // 存储数据方法，返回生成的唯一 key
   async storeFile(file) {
-    const key = uuidv4();
+    const key = file?.uid || uuidv4();
     const expiry = new Date(new Date().getTime() + this.defaultExpiryTime);
     const reader = new FileReader();
 
