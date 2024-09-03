@@ -87,22 +87,6 @@ type ProChatUIUseListChatProps = {
 export const useChatList = (props: ProChatUIUseListChatProps) => {
   let controller = useRef<AbortController | null>(null);
 
-  const loadingMessageRef = useRef<ChatMessage<any> | undefined>(undefined);
-
-  const [loadingMessage, setLoadingMessage] = useMergedState<ChatMessage<any> | undefined>(
-    undefined,
-    {
-      postState: (value) => {
-        loadingMessageRef.current = value;
-        return value;
-      },
-    },
-  );
-
-  const getLoadingMessage = useRefFunction(() => {
-    return loadingMessageRef.current;
-  });
-
   const chatListRef = useRef<ChatMessage<any>[]>([]);
   /**
    * Custom hook for managing the chat list.
@@ -144,7 +128,7 @@ export const useChatList = (props: ProChatUIUseListChatProps) => {
   const [loading, setLoading] = useMergedState<boolean>(true, {
     value: props.loading,
   });
-
+  const [isLoadingMessage, setIsLoadingMessage] = useMergedState<boolean>(false);
   /**
    * Fetches the chat list using the provided request function.
    * If the request function is not provided, it sets the loading state to false and returns.
@@ -198,7 +182,9 @@ export const useChatList = (props: ProChatUIUseListChatProps) => {
    */
   const sendMessage = useRefFunction(async (message: string | Partial<ChatMessage>) => {
     controller.current = new AbortController();
-    chatList.push(
+
+    setChatList((prevState) => [
+      ...prevState,
       genMessageRecord(
         typeof message === 'string'
           ? { content: message }
@@ -208,22 +194,24 @@ export const useChatList = (props: ProChatUIUseListChatProps) => {
             },
         'user',
       ),
-    );
-    setChatList([...chatList]);
+    ]);
+
     if (!props?.sendMessageRequest) return;
-    setLoadingMessage(
+    setIsLoadingMessage(true);
+    setChatList((prevState) => [
+      ...prevState,
       genMessageRecord(
         {
           content: LOADING_FLAT,
         },
         'assistant',
       ),
-    );
+    ]);
 
     const res = (await Promise.race([
       props.sendMessageRequest?.(chatListRef.current),
       new Promise((_, reject) => {
-        controller.current.signal.addEventListener('abort', () => {
+        controller.current?.signal.addEventListener('abort', () => {
           reject();
         });
       }),
@@ -233,75 +221,61 @@ export const useChatList = (props: ProChatUIUseListChatProps) => {
       processSSE(res, {
         signal: controller.current.signal,
         onFinish: async () => {
-          setLoadingMessage(undefined);
+          setChatList((prevState) => {
+            const updatedList = [...prevState];
+            updatedList[updatedList.length - 1].isFinished = true;
+            return updatedList;
+          });
+          setIsLoadingMessage(false);
         },
         onMessageHandle: async (text, res, type) => {
-          if (type === 'done' || controller.current.signal.aborted) {
-            const message = getLoadingMessage();
-            if (!message) return;
-            setChatList((prev) => {
-              message.isFinished = true;
-              return [...prev, message];
+          if (type === 'done' || controller.current?.signal.aborted) {
+            setIsLoadingMessage(false);
+            setChatList((prevState) => {
+              const updatedList = [...prevState];
+              updatedList[updatedList.length - 1].isFinished = true;
+              return updatedList;
             });
-            setLoadingMessage(undefined);
             return;
           }
-          const content =
-            getLoadingMessage()?.content === LOADING_FLAT
-              ? text
-              : getLoadingMessage()?.content + text;
 
-          const message: ChatMessage = {
-            ...getLoadingMessage(),
-            updateAt: Date.now(),
-            originContent: text,
-            isFinished: false,
-            content: content,
-          };
-          const transformMessage = await props.transformToChatMessage?.(message, {
-            preContent:
-              getLoadingMessage()?.content === LOADING_FLAT ? '' : getLoadingMessage()?.content,
-            currentContent: text,
+          setChatList((prevState) => {
+            const updatedList = [...prevState];
+            const currentMessage = updatedList[updatedList.length - 1];
+            currentMessage.content =
+              currentMessage.content === LOADING_FLAT ? text : currentMessage.content + text;
+            currentMessage.updateAt = Date.now();
+            return updatedList;
           });
-
-          loadingMessageRef.current = transformMessage || message;
-          setLoadingMessage(transformMessage || message);
         },
         onErrorHandle: async (error) => {
           const content = error.message;
-          const message = await props.transformToChatMessage?.(
-            {
-              ...getLoadingMessage(),
-              updateAt: Date.now(),
-              content: content,
-              originContent: content,
-            },
-            {
-              preContent: getLoadingMessage()?.content,
-              currentContent: content,
-            },
-          );
-          setLoadingMessage(undefined);
-          setChatList((prev) => [...prev, message]);
+          setChatList((prevState) => {
+            const updatedList = [...prevState];
+            const currentMessage = updatedList[updatedList.length - 1];
+            currentMessage.content = content;
+            currentMessage.originContent = content;
+            currentMessage.updateAt = Date.now();
+            currentMessage.isFinished = true;
+            return updatedList;
+          });
+          setIsLoadingMessage(false);
         },
       });
     } else {
-      const message = {
-        ...getLoadingMessage(),
-        updateAt: Date.now(),
-        ...res,
-      };
-
-      const transformChatMessage = await props.transformToChatMessage?.(message, {
-        preContent: getLoadingMessage()?.content,
-        currentContent: message.originContent,
+      setChatList((prevState) => {
+        const updatedList = [...prevState];
+        const currentMessage = {
+          ...updatedList[updatedList.length - 1],
+          ...res,
+          updateAt: Date.now(),
+        };
+        updatedList[updatedList.length - 1] = currentMessage;
+        return updatedList;
       });
-
-      setLoadingMessage(undefined);
-      setChatList((prev) => [...prev, transformChatMessage || message]);
+      setIsLoadingMessage(false);
     }
   });
-
   /**
    * Stops the generation of messages.
    */
@@ -330,7 +304,7 @@ export const useChatList = (props: ProChatUIUseListChatProps) => {
   return {
     chatList: chatList.length > 0 ? chatList : helloMessageList,
     loading,
-    loadingMessage,
+    isLoadingMessage,
     stopGenerateMessage,
     setMessageItem,
     clearMessage,

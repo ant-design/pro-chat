@@ -16,7 +16,6 @@ import { useStyle } from './style';
 export type ChatListProps = {
   chatList: ChatMessage[];
   chatListRef: MutableRefObject<HTMLDivElement>;
-  loadingMessage?: ChatMessage<any>;
   loading: boolean;
   className?: string;
   chatItemRenderConfig: ChatItemProps['chatItemRenderConfig'];
@@ -50,7 +49,6 @@ const ChatList: React.FC<ChatListProps> = (props) => {
     chatListItemAvatarClassName,
     chatListItemContentClassName,
     chatListItemTitleClassName,
-    loadingMessage,
     userMeta = {
       avatar: DEFAULT_USER_AVATAR,
     },
@@ -104,35 +102,6 @@ const ChatList: React.FC<ChatListProps> = (props) => {
           </ChatItem>
         );
       })}
-      {loadingMessage && (
-        <ChatItem
-          key={loadingMessage.id}
-          data-id={loadingMessage.id}
-          avatar={
-            (loadingMessage as any).meta ||
-            (loadingMessage.role === 'user' ? userMeta : assistantMeta)
-          }
-          animation
-          style={props.chatListItemStyle}
-          originData={loadingMessage}
-          placement={loadingMessage.role === 'user' ? 'right' : 'left'}
-          time={loadingMessage.updateAt || loadingMessage.createAt}
-          chatListItemContentStyle={{
-            ...chatListItemContentStyle,
-            ...(loadingMessage.role === 'user'
-              ? chatListRightItemContentStyle
-              : chatListLeftItemContentStyle),
-          }}
-          chatListItemTitleStyle={chatListItemTitleStyle}
-          chatItemRenderConfig={chatItemRenderConfig}
-          chatListItemAvatarStyle={chatListItemAvatarStyle}
-          chatListItemAvatarClassName={chatListItemAvatarClassName}
-          chatListItemContentClassName={chatListItemContentClassName}
-          chatListItemTitleClassName={chatListItemTitleClassName}
-        >
-          <MessageComponent {...loadingMessage} />
-        </ChatItem>
-      )}
     </div>,
   );
 };

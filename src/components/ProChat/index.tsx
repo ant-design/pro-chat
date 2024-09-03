@@ -378,8 +378,8 @@ export function ProChat<
 
   const {
     chatList,
-    loadingMessage,
     loading,
+    isLoadingMessage,
     setMessageItem,
     stopGenerateMessage,
     clearMessage,
@@ -410,8 +410,6 @@ export function ProChat<
         : undefined,
   });
 
-  const getChatLoadingMessage = useRefFunction(() => loadingMessage);
-
   const getChatList = useRefFunction(() => {
     return chatList;
   });
@@ -422,7 +420,6 @@ export function ProChat<
       clearMessage,
       sendMessage,
       getChatList,
-      getChatLoadingMessage,
       setMessageItem,
       genMessageRecord,
       scrollToBottom: () => {
@@ -456,7 +453,7 @@ export function ProChat<
         top: chatListContainerRef.current.scrollHeight,
       });
     }
-  }, [loadingMessage]);
+  }, [chatList]);
 
   const backBottomDom = useMemo(() => {
     if (!isInitRender) return null;
@@ -497,7 +494,6 @@ export function ProChat<
           userMeta={userMeta}
           assistantMeta={assistantMeta}
           loading={loading}
-          loadingMessage={loadingMessage}
           chatItemRenderConfig={chatItemRenderConfig}
           style={{
             ...styles?.chatList,
@@ -520,7 +516,7 @@ export function ProChat<
         {backBottomDom}
         <ChatInputArea
           className={classNames?.chatInputArea}
-          typing={!!loadingMessage?.id}
+          typing={isLoadingMessage}
           placeholder={placeholder || '请输入消息...'}
           onMessageSend={sendMessage}
           mentionRequest={props.autocompleteRequest}
