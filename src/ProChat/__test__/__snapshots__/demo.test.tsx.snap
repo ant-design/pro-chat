@@ -8068,6 +8068,946 @@ exports[`<ProChat /> > renders control.tsx correctly 1`] = `
 </DocumentFragment>
 `;
 
+exports[`<ProChat /> > renders customeClassName.tsx correctly 1`] = `
+<DocumentFragment>
+  <div
+    style="background: rgb(245, 245, 245);"
+  >
+    <style>
+      
+            .my-pro-chat-user {
+                background-color: #fff;
+            }
+            .my-pro-chat-assistant {
+                background-color: #000;
+            }
+        
+    </style>
+    <div
+      class="ant-app"
+      style="height: 100%; width: 100%; position: relative;"
+    >
+      <div
+        class="layoutkit-flexbox css-o3n4io ant-pro-chat acss-l5x2r3 ant-pro-chat-container"
+        style="max-height: 100vh; height: 100%;"
+      >
+        <div
+          class="ant-pro-chat-chat-list-container acss-1v5259w"
+          style="height: 100%;"
+        >
+          <div
+            class="acss-pmp369 ant-pro-chat-list"
+            style="margin-top: 24px;"
+          >
+            <div
+              class="layoutkit-flexbox css-1xn0kxa acss-1orhs6m ant-pro-chat-list-item ant-pro-chat-list-item-right"
+              data-id="ZGxiX2p4"
+            >
+              <div
+                class="acss-16a4jh6"
+              >
+                <span
+                  class="ant-avatar ant-avatar-circle ant-avatar-image acss-rgbs50 my-pro-chat-user"
+                  style="width: 32px; height: 32px; font-size: 18px; cursor: default;"
+                >
+                  <img
+                    alt="avatar"
+                    src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
+                  />
+                </span>
+              </div>
+              <div
+                class="layoutkit-flexbox css-ojglte acss-hc6lm9 ant-pro-chat-list-item-message-container"
+              >
+                <div
+                  class="layoutkit-flexbox css-12x47oo acss-1df1rs8 ant-pro-chat-list-item-title"
+                >
+                  Ant Design
+                  <time>
+                    2024-02-27 17:20:00
+                  </time>
+                </div>
+                <div
+                  class="layoutkit-flexbox css-4preuj acss-j11nrd ant-pro-chat-message-content"
+                >
+                  <div
+                    class="layoutkit-flexbox css-o3n4io acss-1aas3xx ant-pro-chat-list-item-message-content"
+                  >
+                    <div
+                      id="ZGxiX2p4"
+                    >
+                      <article
+                        class="ant-typography"
+                        style="overflow-x: hidden; overflow-y: auto;"
+                      >
+                        <div
+                          class="zcss-1hxup8p"
+                        >
+                          <p>
+                            我想添加自定义类名
+                          </p>
+                        </div>
+                      </article>
+                    </div>
+                    <div
+                      class="acss-0 ant-pro-chat-message-extra"
+                    />
+                  </div>
+                  <div
+                    class="layoutkit-flexbox css-9pyqzz acss-1baikiv ant-pro-chat-list-item-actions"
+                    role="menubar"
+                  >
+                    <div
+                      class="ant-editor-action-group-content zcss-t61miv"
+                    >
+                      <button
+                        class="ant-btn ant-btn-text ant-btn-icon-only ant-editor-icon zcss-97l1ue"
+                        type="button"
+                      >
+                        <span
+                          class="ant-btn-icon"
+                        >
+                          <div
+                            class="acss-1o4i853"
+                            style="border-radius: 5px; height: 24px; width: 24px;"
+                          >
+                            <span
+                              class="anticon"
+                              role="img"
+                            >
+                              <svg
+                                class="lucide lucide-rotate-cw"
+                                fill="transparent"
+                                focusable="false"
+                                height="14"
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="1.5"
+                                viewBox="0 0 24 24"
+                                width="14"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"
+                                />
+                                <path
+                                  d="M21 3v5h-5"
+                                />
+                              </svg>
+                            </span>
+                          </div>
+                        </span>
+                      </button>
+                      <button
+                        class="ant-btn ant-btn-text ant-btn-icon-only ant-editor-icon zcss-97l1ue"
+                        type="button"
+                      >
+                        <span
+                          class="ant-btn-icon"
+                        >
+                          <div
+                            class="acss-1o4i853"
+                            style="border-radius: 5px; height: 24px; width: 24px;"
+                          >
+                            <span
+                              class="anticon"
+                              role="img"
+                            >
+                              <svg
+                                class="lucide lucide-pen-square"
+                                fill="transparent"
+                                focusable="false"
+                                height="14"
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="1.5"
+                                viewBox="0 0 24 24"
+                                width="14"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"
+                                />
+                                <path
+                                  d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4Z"
+                                />
+                              </svg>
+                            </span>
+                          </div>
+                        </span>
+                      </button>
+                      <button
+                        class="ant-btn ant-btn-text ant-btn-icon-only ant-editor-icon zcss-1jqu9f1 ant-dropdown-trigger"
+                        type="button"
+                      >
+                        <span
+                          class="ant-btn-icon"
+                        >
+                          <span
+                            aria-label="dash"
+                            class="anticon anticon-dash"
+                            role="img"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              data-icon="dash"
+                              fill="currentColor"
+                              focusable="false"
+                              height="1em"
+                              viewBox="64 64 896 896"
+                              width="1em"
+                            >
+                              <path
+                                d="M112 476h160v72H112zm320 0h160v72H432zm320 0h160v72H752z"
+                              />
+                            </svg>
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                style="flex: 0 0 auto; width: 32px;"
+              />
+            </div>
+            <div
+              class="layoutkit-flexbox css-vwb4od acss-1orhs6m ant-pro-chat-list-item ant-pro-chat-list-item-left"
+              data-id="Sb5pAzLL"
+            >
+              <div
+                class="acss-16a4jh6"
+              >
+                <span
+                  class="ant-avatar ant-avatar-circle acss-1fg5txo my-pro-chat-assistant"
+                  style="width: 32px; height: 32px; font-size: 18px; cursor: default;"
+                >
+                  <span
+                    class="ant-avatar-string"
+                    style="transform: scale(1);"
+                  >
+                    <div
+                      class="acss-1vwqsas"
+                      style="font-size: 23.040000000000003px; height: 25.6px; width: 25.6px;"
+                    >
+                      🛸
+                    </div>
+                  </span>
+                </span>
+              </div>
+              <div
+                class="layoutkit-flexbox css-9pyqzz acss-hc6lm9 ant-pro-chat-list-item-message-container"
+              >
+                <div
+                  class="layoutkit-flexbox css-16o88vh acss-188cr2a ant-pro-chat-list-item-title"
+                >
+                  自定义类名
+                  <time>
+                    2024-02-27 17:20:00
+                  </time>
+                </div>
+                <div
+                  class="layoutkit-flexbox css-roa2v7 acss-j11nrd ant-pro-chat-message-content"
+                >
+                  <div
+                    class="layoutkit-flexbox css-o3n4io acss-1aas3xx ant-pro-chat-list-item-message-content"
+                  >
+                    <div
+                      id="Sb5pAzLL"
+                    >
+                      <article
+                        class="ant-typography"
+                        style="overflow-x: hidden; overflow-y: auto;"
+                      >
+                        <div
+                          class="zcss-1hxup8p"
+                        >
+                          <p>
+                            如下
+                          </p>
+                          
+
+                          <div
+                            class="zcss-vfnw27 acss-tkfyu5"
+                          >
+                            <div
+                              class="layoutkit-flexbox css-1u84j5a ant-editor-markdown-header zcss-j9ax4g"
+                            >
+                              <button
+                                class="ant-btn ant-btn-text ant-btn-icon-only ant-editor-icon zcss-97l1ue"
+                                type="button"
+                              >
+                                <span
+                                  class="ant-btn-icon"
+                                >
+                                  <span
+                                    aria-label="down"
+                                    class="anticon anticon-down"
+                                    role="img"
+                                    size="14"
+                                  >
+                                    <svg
+                                      aria-hidden="true"
+                                      data-icon="down"
+                                      fill="currentColor"
+                                      focusable="false"
+                                      height="1em"
+                                      viewBox="64 64 896 896"
+                                      width="1em"
+                                    >
+                                      <path
+                                        d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                                      />
+                                    </svg>
+                                  </span>
+                                </span>
+                              </button>
+                              <div
+                                class="ant-select ant-select-sm ant-select-borderless acss-rjbo5 zcss-fmnl0r ant-select-multiple ant-select-show-arrow ant-select-show-search"
+                              >
+                                <div
+                                  class="ant-select-selector"
+                                >
+                                  <div
+                                    class="ant-select-selection-overflow"
+                                  >
+                                    <div
+                                      class="ant-select-selection-overflow-item"
+                                      style="opacity: 1;"
+                                    >
+                                      <span>
+                                        <div
+                                          class="zcss-108t5j"
+                                        >
+                                          <button
+                                            class="ant-btn ant-btn-text ant-btn-sm"
+                                            type="button"
+                                          >
+                                            <span>
+                                              javascript
+                                            </span>
+                                          </button>
+                                        </div>
+                                      </span>
+                                    </div>
+                                    <div
+                                      class="ant-select-selection-overflow-item ant-select-selection-overflow-item-suffix"
+                                      style="opacity: 1;"
+                                    >
+                                      <div
+                                        class="ant-select-selection-search"
+                                        style="width: 0px;"
+                                      >
+                                        <input
+                                          aria-autocomplete="list"
+                                          aria-controls="rc_select_TEST_OR_SSR_list"
+                                          aria-expanded="false"
+                                          aria-haspopup="listbox"
+                                          aria-owns="rc_select_TEST_OR_SSR_list"
+                                          autocomplete="off"
+                                          class="ant-select-selection-search-input"
+                                          id="rc_select_TEST_OR_SSR"
+                                          role="combobox"
+                                          type="search"
+                                          value=""
+                                        />
+                                        <span
+                                          aria-hidden="true"
+                                          class="ant-select-selection-search-mirror"
+                                        >
+                                           
+                                        </span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <span
+                                  aria-hidden="true"
+                                  class="ant-select-arrow"
+                                  style="user-select: none;"
+                                  unselectable="on"
+                                />
+                              </div>
+                              <button
+                                class="ant-btn ant-btn-text ant-btn-icon-only ant-editor-icon zcss-pyk6pe"
+                                type="button"
+                              >
+                                <span
+                                  class="ant-btn-icon"
+                                >
+                                  <span
+                                    aria-label="copy"
+                                    class="anticon anticon-copy"
+                                    role="img"
+                                    size="12"
+                                  >
+                                    <svg
+                                      aria-hidden="true"
+                                      data-icon="copy"
+                                      fill="currentColor"
+                                      focusable="false"
+                                      height="1em"
+                                      viewBox="64 64 896 896"
+                                      width="1em"
+                                    >
+                                      <path
+                                        d="M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z"
+                                      />
+                                    </svg>
+                                  </span>
+                                </span>
+                              </button>
+                            </div>
+                            <div
+                              class="zcss-49fjj"
+                            >
+                              <div
+                                class="ant-editor-highlight-container zcss-ym4i93"
+                                tabindex="-1"
+                              >
+                                <div
+                                  class="ant-editor-highlight-shiki zcss-3vgo3v"
+                                >
+                                  <pre>
+                                    <code>
+                                          userMeta={{
+        avatar: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
+        title: 'Ant Design',
+        className: 'my-pro-chat-user',
+    }}
+
+                                    </code>
+                                  </pre>
+                                </div>
+                                <div
+                                  class="layoutkit-center css-lzsi9u zcss-1tyo0s1"
+                                >
+                                  <span
+                                    aria-label="loading-3-quarters"
+                                    class="anticon anticon-loading-3-quarters anticon-spin zcss-6hzl99"
+                                    role="img"
+                                  >
+                                    <svg
+                                      aria-hidden="true"
+                                      data-icon="loading-3-quarters"
+                                      fill="currentColor"
+                                      focusable="false"
+                                      height="1em"
+                                      viewBox="0 0 1024 1024"
+                                      width="1em"
+                                    >
+                                      <path
+                                        d="M512 1024c-69.1 0-136.2-13.5-199.3-40.2C251.7 958 197 921 150 874c-47-47-84-101.7-109.8-162.7C13.5 648.2 0 581.1 0 512c0-19.9 16.1-36 36-36s36 16.1 36 36c0 59.4 11.6 117 34.6 171.3 22.2 52.4 53.9 99.5 94.3 139.9 40.4 40.4 87.5 72.2 139.9 94.3C395 940.4 452.6 952 512 952c59.4 0 117-11.6 171.3-34.6 52.4-22.2 99.5-53.9 139.9-94.3 40.4-40.4 72.2-87.5 94.3-139.9C940.4 629 952 571.4 952 512c0-59.4-11.6-117-34.6-171.3a440.45 440.45 0 00-94.3-139.9 437.71 437.71 0 00-139.9-94.3C629 83.6 571.4 72 512 72c-19.9 0-36-16.1-36-36s16.1-36 36-36c69.1 0 136.2 13.5 199.3 40.2C772.3 66 827 103 874 150c47 47 83.9 101.8 109.7 162.7 26.7 63.1 40.2 130.2 40.2 199.3s-13.5 136.2-40.2 199.3C958 772.3 921 827 874 874c-47 47-101.8 83.9-162.7 109.7-63.1 26.8-130.2 40.3-199.3 40.3z"
+                                      />
+                                    </svg>
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          
+
+                          <div
+                            class="zcss-vfnw27 acss-tkfyu5"
+                          >
+                            <div
+                              class="layoutkit-flexbox css-1u84j5a ant-editor-markdown-header zcss-j9ax4g"
+                            >
+                              <button
+                                class="ant-btn ant-btn-text ant-btn-icon-only ant-editor-icon zcss-97l1ue"
+                                type="button"
+                              >
+                                <span
+                                  class="ant-btn-icon"
+                                >
+                                  <span
+                                    aria-label="down"
+                                    class="anticon anticon-down"
+                                    role="img"
+                                    size="14"
+                                  >
+                                    <svg
+                                      aria-hidden="true"
+                                      data-icon="down"
+                                      fill="currentColor"
+                                      focusable="false"
+                                      height="1em"
+                                      viewBox="64 64 896 896"
+                                      width="1em"
+                                    >
+                                      <path
+                                        d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                                      />
+                                    </svg>
+                                  </span>
+                                </span>
+                              </button>
+                              <div
+                                class="ant-select ant-select-sm ant-select-borderless acss-rjbo5 zcss-fmnl0r ant-select-multiple ant-select-show-arrow ant-select-show-search"
+                              >
+                                <div
+                                  class="ant-select-selector"
+                                >
+                                  <div
+                                    class="ant-select-selection-overflow"
+                                  >
+                                    <div
+                                      class="ant-select-selection-overflow-item"
+                                      style="opacity: 1;"
+                                    >
+                                      <span>
+                                        <div
+                                          class="zcss-108t5j"
+                                        >
+                                          <button
+                                            class="ant-btn ant-btn-text ant-btn-sm"
+                                            type="button"
+                                          >
+                                            <span>
+                                              javascript
+                                            </span>
+                                          </button>
+                                        </div>
+                                      </span>
+                                    </div>
+                                    <div
+                                      class="ant-select-selection-overflow-item ant-select-selection-overflow-item-suffix"
+                                      style="opacity: 1;"
+                                    >
+                                      <div
+                                        class="ant-select-selection-search"
+                                        style="width: 0px;"
+                                      >
+                                        <input
+                                          aria-autocomplete="list"
+                                          aria-controls="rc_select_TEST_OR_SSR_list"
+                                          aria-expanded="false"
+                                          aria-haspopup="listbox"
+                                          aria-owns="rc_select_TEST_OR_SSR_list"
+                                          autocomplete="off"
+                                          class="ant-select-selection-search-input"
+                                          id="rc_select_TEST_OR_SSR"
+                                          role="combobox"
+                                          type="search"
+                                          value=""
+                                        />
+                                        <span
+                                          aria-hidden="true"
+                                          class="ant-select-selection-search-mirror"
+                                        >
+                                           
+                                        </span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <span
+                                  aria-hidden="true"
+                                  class="ant-select-arrow"
+                                  style="user-select: none;"
+                                  unselectable="on"
+                                />
+                              </div>
+                              <button
+                                class="ant-btn ant-btn-text ant-btn-icon-only ant-editor-icon zcss-pyk6pe"
+                                type="button"
+                              >
+                                <span
+                                  class="ant-btn-icon"
+                                >
+                                  <span
+                                    aria-label="copy"
+                                    class="anticon anticon-copy"
+                                    role="img"
+                                    size="12"
+                                  >
+                                    <svg
+                                      aria-hidden="true"
+                                      data-icon="copy"
+                                      fill="currentColor"
+                                      focusable="false"
+                                      height="1em"
+                                      viewBox="64 64 896 896"
+                                      width="1em"
+                                    >
+                                      <path
+                                        d="M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z"
+                                      />
+                                    </svg>
+                                  </span>
+                                </span>
+                              </button>
+                            </div>
+                            <div
+                              class="zcss-49fjj"
+                            >
+                              <div
+                                class="ant-editor-highlight-container zcss-ym4i93"
+                                tabindex="-1"
+                              >
+                                <div
+                                  class="ant-editor-highlight-shiki zcss-3vgo3v"
+                                >
+                                  <pre>
+                                    <code>
+                                      assistantMeta={{
+    avatar: '🛸',
+    title: '自定义类名',
+    backgroundColor: '#67dedd',
+    className: 'my-pro-chat-assistant',
+}}
+
+                                    </code>
+                                  </pre>
+                                </div>
+                                <div
+                                  class="layoutkit-center css-lzsi9u zcss-1tyo0s1"
+                                >
+                                  <span
+                                    aria-label="loading-3-quarters"
+                                    class="anticon anticon-loading-3-quarters anticon-spin zcss-6hzl99"
+                                    role="img"
+                                  >
+                                    <svg
+                                      aria-hidden="true"
+                                      data-icon="loading-3-quarters"
+                                      fill="currentColor"
+                                      focusable="false"
+                                      height="1em"
+                                      viewBox="0 0 1024 1024"
+                                      width="1em"
+                                    >
+                                      <path
+                                        d="M512 1024c-69.1 0-136.2-13.5-199.3-40.2C251.7 958 197 921 150 874c-47-47-84-101.7-109.8-162.7C13.5 648.2 0 581.1 0 512c0-19.9 16.1-36 36-36s36 16.1 36 36c0 59.4 11.6 117 34.6 171.3 22.2 52.4 53.9 99.5 94.3 139.9 40.4 40.4 87.5 72.2 139.9 94.3C395 940.4 452.6 952 512 952c59.4 0 117-11.6 171.3-34.6 52.4-22.2 99.5-53.9 139.9-94.3 40.4-40.4 72.2-87.5 94.3-139.9C940.4 629 952 571.4 952 512c0-59.4-11.6-117-34.6-171.3a440.45 440.45 0 00-94.3-139.9 437.71 437.71 0 00-139.9-94.3C629 83.6 571.4 72 512 72c-19.9 0-36-16.1-36-36s16.1-36 36-36c69.1 0 136.2 13.5 199.3 40.2C772.3 66 827 103 874 150c47 47 83.9 101.8 109.7 162.7 26.7 63.1 40.2 130.2 40.2 199.3s-13.5 136.2-40.2 199.3C958 772.3 921 827 874 874c-47 47-101.8 83.9-162.7 109.7-63.1 26.8-130.2 40.3-199.3 40.3z"
+                                      />
+                                    </svg>
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </article>
+                    </div>
+                    <div
+                      class="acss-0 ant-pro-chat-message-extra"
+                    />
+                  </div>
+                  <div
+                    class="layoutkit-flexbox css-9pyqzz acss-1eio0fa ant-pro-chat-list-item-actions"
+                    role="menubar"
+                  >
+                    <div
+                      class="ant-editor-action-group-content zcss-t61miv"
+                    >
+                      <button
+                        class="ant-btn ant-btn-text ant-btn-icon-only ant-editor-icon zcss-97l1ue"
+                        type="button"
+                      >
+                        <span
+                          class="ant-btn-icon"
+                        >
+                          <div
+                            class="acss-1o4i853"
+                            style="border-radius: 5px; height: 24px; width: 24px;"
+                          >
+                            <span
+                              class="anticon"
+                              role="img"
+                            >
+                              <svg
+                                class="lucide lucide-rotate-cw"
+                                fill="transparent"
+                                focusable="false"
+                                height="14"
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="1.5"
+                                viewBox="0 0 24 24"
+                                width="14"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"
+                                />
+                                <path
+                                  d="M21 3v5h-5"
+                                />
+                              </svg>
+                            </span>
+                          </div>
+                        </span>
+                      </button>
+                      <button
+                        class="ant-btn ant-btn-text ant-btn-icon-only ant-editor-icon zcss-97l1ue"
+                        type="button"
+                      >
+                        <span
+                          class="ant-btn-icon"
+                        >
+                          <div
+                            class="acss-1o4i853"
+                            style="border-radius: 5px; height: 24px; width: 24px;"
+                          >
+                            <span
+                              class="anticon"
+                              role="img"
+                            >
+                              <svg
+                                class="lucide lucide-copy"
+                                fill="transparent"
+                                focusable="false"
+                                height="14"
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="1.5"
+                                viewBox="0 0 24 24"
+                                width="14"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <rect
+                                  height="14"
+                                  rx="2"
+                                  ry="2"
+                                  width="14"
+                                  x="8"
+                                  y="8"
+                                />
+                                <path
+                                  d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
+                                />
+                              </svg>
+                            </span>
+                          </div>
+                        </span>
+                      </button>
+                      <button
+                        class="ant-btn ant-btn-text ant-btn-icon-only ant-editor-icon zcss-1jqu9f1 ant-dropdown-trigger"
+                        type="button"
+                      >
+                        <span
+                          class="ant-btn-icon"
+                        >
+                          <span
+                            aria-label="dash"
+                            class="anticon anticon-dash"
+                            role="img"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              data-icon="dash"
+                              fill="currentColor"
+                              focusable="false"
+                              height="1em"
+                              viewBox="64 64 896 896"
+                              width="1em"
+                            >
+                              <path
+                                d="M112 476h160v72H112zm320 0h160v72H432zm320 0h160v72H752z"
+                              />
+                            </svg>
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                style="flex: 0 0 auto; width: 32px;"
+              />
+            </div>
+          </div>
+          <div
+            style="height: 1px; width: 100%;"
+          />
+        </div>
+        <button
+          class="ant-btn ant-btn-default ant-btn-sm acss-1nxnbtq"
+          style="bottom: 138px; position: absolute; right: 16px;"
+          type="button"
+        >
+          <span
+            class="ant-btn-icon"
+          >
+            <span
+              class="anticon"
+              role="img"
+            >
+              <svg
+                class="lucide lucide-list-end"
+                fill="transparent"
+                focusable="false"
+                height="1em"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M16 12H3"
+                />
+                <path
+                  d="M16 6H3"
+                />
+                <path
+                  d="M10 18H3"
+                />
+                <path
+                  d="M21 6v10a2 2 0 0 1-2 2h-5"
+                />
+                <path
+                  d="m16 16-2 2 2 2"
+                />
+              </svg>
+            </span>
+          </span>
+          <span>
+            返回底部
+          </span>
+        </button>
+        <div>
+          <div
+            class="layoutkit-flexbox css-19iopuf acss-1ckeg12 ant-pro-chat-input-area"
+          >
+            <div
+              class="layoutkit-flexbox css-e0bvmz acss-1qxitnl ant-pro-chat-input-area-action-bar"
+            >
+              <button
+                class="ant-btn ant-btn-text ant-btn-icon-only ant-editor-icon zcss-1lwi3pj"
+                type="button"
+              >
+                <span
+                  class="ant-btn-icon"
+                >
+                  <div
+                    class="acss-1o4i853"
+                    style="border-radius: 5px; height: 36px; width: 36px;"
+                  >
+                    <span
+                      class="anticon"
+                      role="img"
+                    >
+                      <svg
+                        class="lucide lucide-trash2"
+                        fill="transparent"
+                        focusable="false"
+                        height="20"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        width="20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M3 6h18"
+                        />
+                        <path
+                          d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"
+                        />
+                        <path
+                          d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"
+                        />
+                        <line
+                          x1="10"
+                          x2="10"
+                          y1="11"
+                          y2="17"
+                        />
+                        <line
+                          x1="14"
+                          x2="14"
+                          y1="11"
+                          y2="17"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                </span>
+              </button>
+            </div>
+            <div
+              class="layoutkit-flexbox css-1lumxev acss-p1380z ant-pro-chat-input-area-text-container"
+            >
+              <div
+                class="ant-select ant-select-outlined ant-select-auto-complete acss-6ckfqf ant-pro-chat-input-area-component ant-select-single ant-select-customize-input ant-select-show-search"
+              >
+                <div
+                  class="ant-select-selector"
+                >
+                  <span
+                    class="ant-select-selection-search"
+                  >
+                    <textarea
+                      aria-autocomplete="list"
+                      aria-controls="rc_select_TEST_OR_SSR_list"
+                      aria-expanded="false"
+                      aria-haspopup="listbox"
+                      aria-owns="rc_select_TEST_OR_SSR_list"
+                      autocomplete="off"
+                      class="ant-input ant-input-lg ant-input-outlined ant-select-selection-search-input acss-6ckfqf ant-pro-chat-input-area-component-textarea"
+                      id="rc_select_TEST_OR_SSR"
+                      placeholder="请输入消息..."
+                      role="combobox"
+                      style="resize: none; height: -152px; max-height: -152px;"
+                      type="search"
+                    />
+                  </span>
+                  <span
+                    class="ant-select-selection-placeholder"
+                  />
+                </div>
+              </div>
+              <button
+                class="ant-btn ant-btn-text ant-btn-icon-only acss-b9746z"
+                type="button"
+              >
+                <span
+                  class="ant-btn-icon"
+                >
+                  <span
+                    aria-label="send"
+                    class="anticon anticon-send"
+                    role="img"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      data-icon="send"
+                      fill="currentColor"
+                      focusable="false"
+                      height="1em"
+                      viewBox="64 64 896 896"
+                      width="1em"
+                    >
+                      <defs>
+                        <style />
+                      </defs>
+                      <path
+                        d="M931.4 498.9L94.9 79.5c-3.4-1.7-7.3-2.1-11-1.2a15.99 15.99 0 00-11.7 19.3l86.2 352.2c1.3 5.3 5.2 9.6 10.4 11.3l147.7 50.7-147.6 50.7c-5.2 1.8-9.1 6-10.3 11.3L72.2 926.5c-.9 3.7-.5 7.6 1.2 10.9 3.9 7.9 13.5 11.1 21.5 7.2l836.5-417c3.1-1.5 5.6-4.1 7.2-7.1 3.9-8 .7-17.6-7.2-21.6zM170.8 826.3l50.3-205.6 295.2-101.3c2.3-.8 4.2-2.6 5-5 1.4-4.2-.8-8.7-5-10.2L221.1 403 171 198.2l628 314.9-628.2 313.2z"
+                      />
+                    </svg>
+                  </span>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
 exports[`<ProChat /> > renders default.tsx correctly 1`] = `
 <DocumentFragment>
   <div
@@ -11857,6 +12797,76 @@ exports[`<ProChat /> > renders i18n.tsx correctly 1`] = `
             title="zh-HK"
           >
             zh-HK
+          </div>
+        </label>
+        <label
+          class="ant-segmented-item"
+        >
+          <input
+            class="ant-segmented-item-input"
+            type="radio"
+          />
+          <div
+            class="ant-segmented-item-label"
+            title="cs-CZ"
+          >
+            cs-CZ
+          </div>
+        </label>
+        <label
+          class="ant-segmented-item"
+        >
+          <input
+            class="ant-segmented-item-input"
+            type="radio"
+          />
+          <div
+            class="ant-segmented-item-label"
+            title="de-DE"
+          >
+            de-DE
+          </div>
+        </label>
+        <label
+          class="ant-segmented-item"
+        >
+          <input
+            class="ant-segmented-item-input"
+            type="radio"
+          />
+          <div
+            class="ant-segmented-item-label"
+            title="hu-HU"
+          >
+            hu-HU
+          </div>
+        </label>
+        <label
+          class="ant-segmented-item"
+        >
+          <input
+            class="ant-segmented-item-input"
+            type="radio"
+          />
+          <div
+            class="ant-segmented-item-label"
+            title="pl-PL"
+          >
+            pl-PL
+          </div>
+        </label>
+        <label
+          class="ant-segmented-item"
+        >
+          <input
+            class="ant-segmented-item-input"
+            type="radio"
+          />
+          <div
+            class="ant-segmented-item-label"
+            title="sk-SK"
+          >
+            sk-SK
           </div>
         </label>
       </div>
