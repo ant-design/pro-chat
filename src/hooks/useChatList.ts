@@ -5,7 +5,7 @@ import { ModelConfig } from '@/types/config';
 import { processSSE } from '@/utils/fetch';
 import { genUUID } from '@/utils/uuid';
 import { useMergedState } from 'rc-util';
-import React, { useEffect, useMemo, useRef } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef } from 'react';
 import { useRefFunction } from './useRefFunction';
 
 export const initialModelConfig: ModelConfig = {
@@ -129,6 +129,7 @@ export const useChatList = (props: ProChatUIUseListChatProps) => {
     value: props.loading,
   });
   const [isLoadingMessage, setIsLoadingMessage] = useMergedState<boolean>(false);
+
   /**
    * Fetches the chat list using the provided request function.
    * If the request function is not provided, it sets the loading state to false and returns.
@@ -180,102 +181,125 @@ export const useChatList = (props: ProChatUIUseListChatProps) => {
    * @param {string} message - The message to send.
    * @returns {Promise<void>} - A promise that resolves when the message is sent.
    */
+  const getLastLoadingMessage = useCallback(() => {
+    return chatListRef.current[chatListRef.current.length - 1];
+  }, [chatListRef]);
+
   const sendMessage = useRefFunction(async (message: string | Partial<ChatMessage>) => {
     controller.current = new AbortController();
 
-    setChatList((prevState) => [
-      ...prevState,
-      genMessageRecord(
-        typeof message === 'string'
-          ? { content: message }
-          : {
-              ...message,
-              content: message.content,
-            },
-        'user',
-      ),
-    ]);
+    const userMessage = genMessageRecord(
+      typeof message === 'string' ? { content: message } : { ...message, content: message.content },
+      'user',
+    );
+    chatList.push(userMessage);
+    setChatList([...chatList]);
 
     if (!props?.sendMessageRequest) return;
     setIsLoadingMessage(true);
-    setChatList((prevState) => [
-      ...prevState,
-      genMessageRecord(
-        {
-          content: LOADING_FLAT,
-        },
-        'assistant',
-      ),
-    ]);
+    const loadingMessage = genMessageRecord({ content: LOADING_FLAT }, 'assistant');
+    chatList.push(loadingMessage);
+    setChatList([...chatList]);
 
-    const res = (await Promise.race([
-      props.sendMessageRequest?.(chatListRef.current),
-      new Promise((_, reject) => {
-        controller.current?.signal.addEventListener('abort', () => {
-          reject();
-        });
-      }),
-    ])) as Response | ChatMessage<any>;
-
-    if (res instanceof Response) {
-      processSSE(res, {
-        signal: controller.current.signal,
-        onFinish: async () => {
-          setChatList((prevState) => {
-            const updatedList = [...prevState];
-            updatedList[updatedList.length - 1].isFinished = true;
-            return updatedList;
+    try {
+      const res = (await Promise.race([
+        props.sendMessageRequest?.([chatList[chatList.length - 2]]),
+        new Promise((_, reject) => {
+          controller.current.signal.addEventListener('abort', () => {
+            reject();
           });
-          setIsLoadingMessage(false);
-        },
-        onMessageHandle: async (text, res, type) => {
-          if (type === 'done' || controller.current?.signal.aborted) {
-            setIsLoadingMessage(false);
-            setChatList((prevState) => {
-              const updatedList = [...prevState];
-              updatedList[updatedList.length - 1].isFinished = true;
-              return updatedList;
+        }),
+      ])) as Response | ChatMessage<any>;
+
+      if (res instanceof Response) {
+        await processSSE(res, {
+          signal: controller.current.signal,
+          onFinish: async () => {
+            const message = getLastLoadingMessage();
+            if (!message) return;
+            setChatList((prev) => {
+              message.isFinished = true;
+              return [...prev];
             });
-            return;
-          }
+            setIsLoadingMessage(false);
+          },
+          onMessageHandle: async (text, res, type) => {
+            const loadingMessage = getLastLoadingMessage();
+            if (!loadingMessage) return;
 
-          setChatList((prevState) => {
-            const updatedList = [...prevState];
-            const currentMessage = updatedList[updatedList.length - 1];
-            currentMessage.content =
-              currentMessage.content === LOADING_FLAT ? text : currentMessage.content + text;
-            currentMessage.updateAt = Date.now();
-            return updatedList;
+            if (type === 'done' || controller.current.signal.aborted) {
+              loadingMessage.isFinished = true;
+              setChatList((prev) => [...prev]);
+              setIsLoadingMessage(false);
+              return;
+            }
+
+            const content =
+              loadingMessage.content === LOADING_FLAT ? text : loadingMessage.content + text;
+            const updatedMessage = {
+              ...loadingMessage,
+              updateAt: Date.now(),
+              originContent: text,
+              isFinished: false,
+              content,
+            };
+
+            const transformMessage = await props.transformToChatMessage?.(updatedMessage, {
+              preContent: loadingMessage.content === LOADING_FLAT ? '' : loadingMessage.content,
+              currentContent: text,
+            });
+
+            setChatList((prev) => {
+              const newList = [...prev];
+              newList[newList.length - 1] = transformMessage || updatedMessage;
+              return newList;
+            });
+          },
+          onErrorHandle: async (error) => {
+            const loadingMessage = getLastLoadingMessage();
+            if (loadingMessage) {
+              const content = error.message;
+              const errorMessage = {
+                ...loadingMessage,
+                content,
+                originContent: content,
+                updateAt: Date.now(),
+                isFinished: true,
+              };
+
+              const transformMessage = await props.transformToChatMessage?.(errorMessage, {
+                preContent: loadingMessage.content,
+                currentContent: content,
+              });
+
+              setChatList((prev) => [...prev, transformMessage || errorMessage]);
+            }
+            setIsLoadingMessage(false);
+          },
+        });
+      } else {
+        const loadingMessage = getLastLoadingMessage();
+        if (loadingMessage) {
+          const updatedMessage = {
+            ...loadingMessage,
+            ...res,
+            updateAt: Date.now(),
+          };
+
+          const transformMessage = await props.transformToChatMessage?.(updatedMessage, {
+            preContent: loadingMessage.content,
+            currentContent: updatedMessage.originContent,
           });
-        },
-        onErrorHandle: async (error) => {
-          const content = error.message;
-          setChatList((prevState) => {
-            const updatedList = [...prevState];
-            const currentMessage = updatedList[updatedList.length - 1];
-            currentMessage.content = content;
-            currentMessage.originContent = content;
-            currentMessage.updateAt = Date.now();
-            currentMessage.isFinished = true;
-            return updatedList;
-          });
-          setIsLoadingMessage(false);
-        },
-      });
-    } else {
-      setChatList((prevState) => {
-        const updatedList = [...prevState];
-        const currentMessage = {
-          ...updatedList[updatedList.length - 1],
-          ...res,
-          updateAt: Date.now(),
-        };
-        updatedList[updatedList.length - 1] = currentMessage;
-        return updatedList;
-      });
-      setIsLoadingMessage(false);
+
+          setChatList((prev) => [...prev, transformMessage || updatedMessage]);
+        }
+        setIsLoadingMessage(false);
+      }
+    } catch (error) {
+      console.error('Error sending message:', error);
     }
   });
+
   /**
    * Stops the generation of messages.
    */
