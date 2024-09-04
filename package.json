@@ -128,6 +128,7 @@
     "antd-style": "^3",
     "react": "^18"
   },
+  "packageManager": "pnpm@9.8.0",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org"
