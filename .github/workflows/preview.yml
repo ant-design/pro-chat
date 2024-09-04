@@ -13,8 +13,6 @@ jobs:
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 9.8.0
 
       - uses: afc163/surge-preview@v1
         id: preview_step
