@@ -10,7 +10,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 9
+          version: 9.8.0
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v3
