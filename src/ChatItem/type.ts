@@ -17,11 +17,11 @@ export interface ChatItemProps<T = Record<string, any>> {
   /**
    * @description Actions to be displayed in the chat item
    */
-  actions: ReactNode;
+  actions?: ReactNode;
   /**
    * @description Actions click props,only use in render
    */
-  actionsClick: actionsClickProps;
+  actionsClick?: actionsClickProps;
   /**
    * @description Metadata for the avatar
    */
