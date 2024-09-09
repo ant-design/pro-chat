@@ -78,6 +78,14 @@ ProChat uses `meta` to represent the avatars, names, and other information of bo
 
 <code src="./demos/actions.tsx"></code>
 
+## Customize Item Actions
+
+You can use the actionsRender parameter under ChatItemConfig to complete the Actions configuration for each Item
+
+> We do not recommend that you modify it. If you do not want it, you can directly delete this function and write it yourself using render.
+
+<code src="./demos/actions-chat-item.tsx"></code>
+
 ## Customize the [Back to Bottom] button
 
 You can customize the [Back to Bottom] button to varying degrees through the backToBottomConfiguration parameter

@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 
+import { ActionEvent } from '@/ActionIconGroup';
 import { ActionsProps } from '@/ChatList/ActionsBar';
 import { EditableMessageProps } from '@/EditableMessage';
 import { ChatMessageError, DivProps, MetaData } from '@/types';
@@ -7,11 +8,20 @@ import { MarkdownProps } from '@ant-design/pro-editor';
 
 export type WithFalse<T> = T | false;
 
+export type actionsClickProps = {
+  onStartEdit: () => void;
+  onFinishEdit: () => void;
+  onClick: (actionKey: ActionEvent) => void;
+};
 export interface ChatItemProps<T = Record<string, any>> {
   /**
    * @description Actions to be displayed in the chat item
    */
-  actions?: ReactNode;
+  actions: ReactNode;
+  /**
+   * @description Actions click props,only use in render
+   */
+  actionsClick: actionsClickProps;
   /**
    * @description Metadata for the avatar
    */
@@ -88,7 +98,9 @@ export interface ChatItemProps<T = Record<string, any>> {
   chatItemRenderConfig?: {
     titleRender?: WithFalse<(props: ChatItemProps, defaultDom: ReactNode) => ReactNode>;
     contentRender?: WithFalse<(props: ChatItemProps, defaultDom: ReactNode) => ReactNode>;
-    actionsRender?: WithFalse<(props: ChatItemProps, defaultDom: ReactNode) => ReactNode>;
+    actionsRender?: WithFalse<
+      (props: ChatItemProps, defaultDom: ReactNode, actionsClick: actionsClickProps) => ReactNode
+    >;
     avatarRender?: WithFalse<(props: ChatItemProps, defaultDom: ReactNode) => ReactNode>;
     render?: WithFalse<
       (

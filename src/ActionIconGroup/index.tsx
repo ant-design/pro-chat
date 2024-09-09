@@ -16,9 +16,9 @@ export interface ActionIconGroupItems {
 }
 
 export interface ActionEvent {
-  item: ActionIconGroupItems;
+  item?: ActionIconGroupItems;
   key: string;
-  keyPath: string[];
+  keyPath?: string[];
 }
 
 export interface ActionIconGroupProps extends Omit<DivProps, 'content'> {
