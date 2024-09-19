@@ -1,10 +1,10 @@
 import { useRefFunction } from '@/hooks/useRefFunction';
-import { ChatMessage } from '@/index';
+import { ChatMessage, ProChatChatReference } from '@/index';
 import { ProChatLocale } from '@/locale';
 import { SendOutlined } from '@ant-design/icons';
 import { Button, ButtonProps, ConfigProvider, Flex } from 'antd';
 import cx from 'classnames';
-import { useContext, useMemo, useRef, useState } from 'react';
+import { useContext, useEffect, useMemo, useRef, useState } from 'react';
 import AnimationItem from '../Animation';
 import { ProChatActionBar, ProChatActionBarProps } from './ActionBar';
 import { MentionsTextArea, MentionsTextAreaProps } from './AutoCompleteTextArea';
@@ -75,6 +75,8 @@ export type ChatInputAreaProps = {
    * Locale configuration for the ProChat component.
    */
   locale?: ProChatLocale;
+
+  chatRef?: ProChatChatReference;
   /**
    * Callback function to clear the message input.
    */
@@ -133,6 +135,7 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
     onMessageSend,
     actionStyle,
     locale,
+    chatRef,
     mentionRequest,
     actionsRender,
   } = props || {};
@@ -144,7 +147,12 @@ export const ChatInputArea = (props: ChatInputAreaProps) => {
   const prefixClass = getPrefixCls('pro-chat-input-area');
 
   const { wrapSSR, hashId } = useStyle(prefixClass);
-
+  useEffect(() => {
+    if (!chatRef || !chatRef.current) return;
+    chatRef.current.setInputAreaValue = (value) => {
+      setMessage(value);
+    };
+  }, [chatRef]);
   const send = useRefFunction(async () => {
     if (onSend && message) {
       const success = await onSend(message);

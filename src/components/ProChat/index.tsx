@@ -84,6 +84,8 @@ export interface ProChatInstance<T = Record<string, any>> {
     message: Partial<ChatMessage<T>>,
     userType: 'assistant' | 'user',
   ) => ChatMessage<T>;
+
+  setInputAreaValue: (value: string) => void;
 }
 
 export type ProChatChatReference<T = Record<string, any>> = MutableRefObject<
@@ -529,6 +531,7 @@ export function ProChat<
           inputAreaRender={inputAreaRender}
           inputRender={inputRender}
           inputAreaProps={inputAreaProps}
+          chatRef={chatRef}
           actionStyle={styles?.chatInputAction}
           sendAreaStyle={styles?.chatSendAreaStyle}
           areaStyle={styles?.chatInputArea}
