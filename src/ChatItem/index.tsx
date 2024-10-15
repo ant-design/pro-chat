@@ -19,6 +19,7 @@ const ChatItem = memo<ChatItemProps>((props) => {
     avatarAddon,
     onAvatarClick,
     actions,
+    actionsClick,
     className,
     primary,
     loading,
@@ -121,7 +122,8 @@ const ChatItem = memo<ChatItemProps>((props) => {
         className={`${cx(styles.actions, `${prefixClass}-list-item-actions`)}`}
       />
     );
-    return chatItemRenderConfig?.actionsRender?.(props, dom) || dom;
+
+    return chatItemRenderConfig?.actionsRender?.(props, dom, actionsClick) || dom;
   }, [actions]);
 
   const titleDom = useMemo(() => {

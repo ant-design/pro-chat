@@ -95,6 +95,8 @@ const ChatList = memo<ChatListProps>(
             type,
           };
 
+          console.log('renderItems', renderItems);
+
           const historyLength = data.length;
           const enableHistoryDivider =
             enableHistoryCount &&

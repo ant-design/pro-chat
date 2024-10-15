@@ -88,6 +88,14 @@ ProChat 使用 `meta` 来表意会话双方的头像、名称等信息。设定�
 
 <code src="./demos/actions.tsx"></code>
 
+## 自定义 Item 的 Actions
+
+你可以使用 ChatItemConfig 下的 actionsRender 参数来完成每一个 Item 的 Actions 配置
+
+> 我们并不建议你去修改，如果不想要可以直接删除这块功能自己用 render 来写
+
+<code src="./demos/actions-chat-item.tsx"></code>
+
 ## 自定义「回到底部」按钮
 
 你可以通过 backToBottomConfig 参数对「回到底部」按钮进行不同程度的自定义

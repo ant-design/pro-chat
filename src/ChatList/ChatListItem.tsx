@@ -192,7 +192,7 @@ const ChatListItem = (props: ChatListItemProps) => {
   /**
    * 渲染操作按钮的函数。
    * @param data 聊天消息的数据。
-   * @returns 渲染操作按钮的组件。
+   * @returns 渲染操作按钮的配置项。
    */
   const Actions = useRefFunction(({ data }: { data: ChatMessage }) => {
     if (!renderActions || !item?.role) return;
@@ -216,14 +216,21 @@ const ChatListItem = (props: ChatListItemProps) => {
       onActionsClick?.(action, data);
     };
 
-    return (
-      <RenderFunction
-        {...data}
-        onActionClick={(actionKey) => handleActionClick?.(actionKey, data)}
-        text={text}
-        actionsProps={chatItemRenderConfig?.actionsProps?.[item.role]}
-      />
-    );
+    return {
+      click: {
+        onStartEdit: () => setEditing(true),
+        onFinishEdit: () => setEditing(false),
+        onClick: (actionKey) => handleActionClick?.(actionKey, data),
+      },
+      components: (
+        <RenderFunction
+          {...data}
+          onActionClick={(actionKey) => handleActionClick?.(actionKey, data)}
+          text={text}
+          actionsProps={chatItemRenderConfig?.actionsProps?.[item.role]}
+        />
+      ),
+    };
   });
 
   /**
@@ -243,7 +250,8 @@ const ChatListItem = (props: ChatListItemProps) => {
       <ChatItem
         className={chatItemClassName}
         data-id={item.id}
-        actions={<Actions data={item} />}
+        actions={Actions({ data: item }).components}
+        actionsClick={Actions({ data: item }).click}
         avatar={(item as any).meta}
         avatarAddon={groupNav}
         editing={editing}
