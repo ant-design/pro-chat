@@ -10,6 +10,12 @@ export interface ChatMessageError {
   type: string | number;
 }
 
+export interface ChatReference {
+  description?: string;
+  title: string;
+  url: string;
+}
+
 export interface ChatMessage<T extends Record<string, any> = Record<string, any>> {
   /**
    * @title 内容
@@ -29,6 +35,7 @@ export interface ChatMessage<T extends Record<string, any> = Record<string, any>
   id: string;
   updateAt: number;
   extra?: T;
+  references?: ChatReference[];
 }
 
 export interface OpenAIFunctionCall {

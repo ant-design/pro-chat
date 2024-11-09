@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 import { ActionEvent } from '@/ActionIconGroup';
 import { ActionsProps } from '@/ChatList/ActionsBar';
 import { EditableMessageProps } from '@/EditableMessage';
-import { ChatMessageError, DivProps, MetaData } from '@/types';
+import { ChatMessageError, ChatReference, DivProps, MetaData } from '@/types';
 import { MarkdownProps } from '@ant-design/pro-editor';
 
 export type WithFalse<T> = T | false;
@@ -126,4 +126,6 @@ export interface ChatItemProps<T = Record<string, any>> {
   renderErrorMessages?: (data: ChatMessageError) => ReactNode;
 
   originData?: T;
+
+  references?: ChatReference[];
 }

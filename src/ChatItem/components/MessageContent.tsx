@@ -1,5 +1,5 @@
 import { useResponsive } from 'antd-style';
-import { memo, useContext, type ReactNode } from 'react';
+import { memo, useContext, useMemo, type ReactNode } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
 import { ChatItemProps } from '@/ChatItem';
@@ -23,6 +23,7 @@ export interface MessageContentProps {
   type?: ChatItemProps['type'];
   className?: string;
   markdownProps?: MarkdownProps;
+  references?: ChatItemProps['references'];
 }
 
 const MessageContent = memo<MessageContentProps>(
@@ -40,12 +41,76 @@ const MessageContent = memo<MessageContentProps>(
     type,
     primary,
     onDoubleClick,
+    references,
   }) => {
     const { cx, styles } = useStyles({ editing, placement, primary, type });
     const { mobile } = useResponsive();
+    // const references = [
+    //   { url: 'https://www.a.com', description: 'lots of meawww', title: 'bb' },
+    //   { url: 'https://www.b.com', title: 'bb' },
+    //   { url: 'http://woof.com', description: 'ghew ghew', title: 'dog' },
+    //   { url: 'https://www.a.com', description: 'lots of meawww', title: 'bb' },
+    //   { url: 'https://www.b.com', title: 'bb' },
+    //   { url: 'http://woof.com', description: 'ghew ghew', title: 'dog' },
+    //   { url: 'https://www.a.com', description: 'lots of meawww', title: 'bb' },
+    //   { url: 'https://www.b.com', title: 'bb' },
+    //   { url: 'http://woof.com', description: 'ghew ghew', title: 'dog' },
+    //   { url: 'https://www.a.com', description: 'lots of meawww', title: 'bb' },
+    //   { url: 'https://www.b.com', title: 'bb' },
+    //   { url: 'http://woof.com', description: 'ghew ghew', title: 'dog' },
+    //   { url: 'https://www.a.com', description: 'lots of meawww', title: 'bb' },
+    //   { url: 'https://www.b.com', title: 'bb' },
+    //   { url: 'http://woof.com', description: 'ghew ghew', title: 'dog' },
+    //   { url: 'https://www.a.com', description: 'lots of meawww', title: 'bb' },
+    //   { url: 'https://www.b.com', title: 'bb' },
+    //   { url: 'http://woof.com', description: 'ghew ghew', title: 'dog' },
+    //   { url: 'https://www.a.com', description: 'lots of meawww', title: 'bb' },
+    //   { url: 'https://www.b.com', title: 'bb' },
+    //   { url: 'http://woof.com', description: 'ghew ghew', title: 'dog' },
+    //   { url: 'https://www.a.com', description: 'lots of meawww', title: 'bb' },
+    //   { url: 'https://www.b.com', title: 'bb' },
+    //   { url: 'http://woof.com', description: 'ghew ghew', title: 'dog' },
+    //   { url: 'https://www.a.com', description: 'lots of meawww', title: 'bb' },
+    //   { url: 'https://www.b.com', title: 'bb' },
+    //   { url: 'http://woof.com', description: 'ghew ghew', title: 'dog' },
+    //   { url: 'https://www.a.com', description: 'lots of meawww', title: 'bb' },
+    //   { url: 'https://www.b.com', title: 'bb' },
+    //   { url: 'http://woof.com', description: 'ghew ghew', title: 'dog' },
+    // ];
 
     const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
     const prefixClass = getPrefixCls('pro-chat');
+
+    const renderReferences = () => {
+      if (!references || references.length === 0) return null;
+      return (
+        <>
+          <div>
+            <strong>References:</strong>
+          </div>
+          <div className={`${cx(styles.messageReferences, `${prefixClass}-message-references`)}`}>
+            {references.map(({ url, description, title }, id) => (
+              <div
+                className={`${cx(styles.messageReference, `${prefixClass}-message-reference`)}`}
+                key={id}
+              >
+                <div
+                  className={`${cx(styles.messageReferenceTitle, `${prefixClass}-message-reference-title`)}`}
+                >
+                  <>{title}: </>
+                  <a href={url} target="_blank" rel="noopener noreferrer">
+                    {new URL(url).hostname}
+                  </a>
+                </div>
+                <p>{description}</p>
+              </div>
+            ))}
+          </div>
+        </>
+      );
+    };
+
+    const referencesContent = useMemo(() => renderReferences(), [references]);
 
     const content = (
       <EditableMessage
@@ -74,6 +139,7 @@ const MessageContent = memo<MessageContentProps>(
             {messageExtra}
           </div>
         ) : null}
+        {referencesContent}
       </Flexbox>
     );
   },
