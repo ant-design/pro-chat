@@ -179,22 +179,6 @@ export const useStyles = createStyles(
         overflow-x: scroll;
         width: 100%;
         gap: 8px;
-        &::after {
-          content: 'meawwwmaifee';
-          flex: 0 0 32px;
-        }
-      `,
-      messageReference: css`
-        flex: 0 0 auto;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        background-color: #f9f9f9;
-        padding: 10px;
-      `,
-      messageReferenceTitle: css`
-        font-weight: bold;
-        margin-bottom: 4px;
-        display: flex;
       `,
       name: css`
         position: ${showTitle ? 'relative' : 'absolute'};

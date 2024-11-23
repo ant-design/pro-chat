@@ -4,7 +4,7 @@ import { Flexbox } from 'react-layout-kit';
 
 import { ChatItemProps } from '@/ChatItem';
 import EditableMessage from '@/EditableMessage';
-import { ConfigProvider } from 'antd';
+import { Card, ConfigProvider, List } from 'antd';
 
 import { MarkdownProps } from '@ant-design/pro-editor';
 import { useStyles } from '../style';
@@ -89,22 +89,21 @@ const MessageContent = memo<MessageContentProps>(
             <strong>References:</strong>
           </div>
           <div className={`${cx(styles.messageReferences, `${prefixClass}-message-references`)}`}>
-            {references.map(({ url, description, title }, id) => (
-              <div
-                className={`${cx(styles.messageReference, `${prefixClass}-message-reference`)}`}
-                key={id}
-              >
-                <div
-                  className={`${cx(styles.messageReferenceTitle, `${prefixClass}-message-reference-title`)}`}
-                >
-                  <>{title}: </>
-                  <a href={url} target="_blank" rel="noopener noreferrer">
-                    {new URL(url).hostname}
-                  </a>
-                </div>
-                <p>{description}</p>
-              </div>
-            ))}
+            <List
+              grid={{ gutter: 16, column: 4 }}
+              dataSource={references}
+              renderItem={({ title, description, url }) => (
+                <List.Item>
+                  <Card>
+                    {description}
+                    <Card.Meta title={title} />
+                    <a href={url} target="_blank" rel="noopener noreferrer">
+                      {new URL(url).hostname}
+                    </a>
+                  </Card>
+                </List.Item>
+              )}
+            />
           </div>
         </>
       );
