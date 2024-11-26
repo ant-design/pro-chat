@@ -7,7 +7,8 @@ import deLocal from './de-DE';
 import huLocal from './hu-HU';
 import plLocal from './pl-PL';
 import skLocal from './sk-SK';
-export type Locale = 'zh-CN' | 'en-US' | 'zh-HK' | 'cs-CZ' | 'de-DE' | 'hu-HU' | 'pl-PL' | 'sk-SK';
+import ruLocal from './ru-RU';
+export type Locale = 'zh-CN' | 'en-US' | 'zh-HK' | 'cs-CZ' | 'de-DE' | 'hu-HU' | 'pl-PL' | 'sk-SK' | 'ru-RU' ;
 
 const locales = {
   'en-US': enUSLocal,
@@ -18,6 +19,7 @@ const locales = {
   'hu-HU': huLocal,
   'pl-PL': plLocal,
   'sk-SK': skLocal,
+  'ru-RU': skLocal,
   en: enUSLocal,
 };
 
