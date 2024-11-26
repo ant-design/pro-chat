@@ -1,3 +1,10 @@
+## 前言
+
+新用户请直接使用 [ant-design/x](https://github.com/ant-design/x)
+
+一些道歉和想说的：https://github.com/ant-design/pro-chat/issues/340
+
+
 <div align="center">
 
 <img height="120" src="https://gw.alipayobjects.com/zos/kitchen/wzToJwlSw%24/logo.svg">
