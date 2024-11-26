@@ -1,13 +1,35 @@
 import { useResponsive } from 'antd-style';
-import { memo, useContext, type ReactNode } from 'react';
+import { memo, useContext, useMemo, type ReactNode } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
 import { ChatItemProps } from '@/ChatItem';
 import EditableMessage from '@/EditableMessage';
-import { ConfigProvider } from 'antd';
+import { Card, ConfigProvider, List } from 'antd';
 
 import { MarkdownProps } from '@ant-design/pro-editor';
 import { useStyles } from '../style';
+
+import { InfoCircleOutlined } from '@ant-design/icons';
+
+interface ExternalLinkProps {
+  url: string;
+}
+
+const ExternalLink: React.FC<ExternalLinkProps> = ({ url }) => {
+  const handleClick = () => {
+    window.open(url, '_blank', 'noopener noreferrer');
+  };
+
+  return (
+    <InfoCircleOutlined
+      style={{
+        cursor: 'pointer',
+        transition: 'color 0.3s ease',
+      }}
+      onClick={handleClick}
+    />
+  );
+};
 
 export interface MessageContentProps {
   editing?: ChatItemProps['editing'];
@@ -23,6 +45,7 @@ export interface MessageContentProps {
   type?: ChatItemProps['type'];
   className?: string;
   markdownProps?: MarkdownProps;
+  references?: ChatItemProps['references'];
 }
 
 const MessageContent = memo<MessageContentProps>(
@@ -40,12 +63,71 @@ const MessageContent = memo<MessageContentProps>(
     type,
     primary,
     onDoubleClick,
+    references,
   }) => {
     const { cx, styles } = useStyles({ editing, placement, primary, type });
     const { mobile } = useResponsive();
+    // const references = [
+    //   { url: 'https://www.a.com', description: 'lots of meawww', title: 'a' },
+    //   { url: 'https://www.b.com', title: 'bb' },
+    //   { url: 'http://woof.com', description: 'ghew ghew', title: 'dog' },
+    //   { url: 'https://www.a.com', description: 'lots of meawww', title: 'bc' },
+    //   { url: 'https://www.b.com', title: 'bb' },
+    //   { url: 'http://woof.com', description: 'ghew ghew', title: 'dog' },
+    //   { url: 'https://www.a.com', description: 'lots of meawww', title: 'bd' },
+    //   { url: 'https://www.b.com', title: 'bb' },
+    //   { url: 'http://woof.com', description: 'ghew ghew', title: 'dog' },
+    //   { url: 'https://www.a.com', description: 'lots of meawww', title: 'bb' },
+    //   { url: 'https://www.b.com', title: 'bb' },
+    //   { url: 'http://woof.com', description: 'ghew ghew', title: 'dog' },
+    //   { url: 'https://www.a.com', description: 'lots of meawww', title: 'bb' },
+    //   { url: 'https://www.b.com', title: 'bb' },
+    //   { url: 'http://woof.com', description: 'ghew ghew', title: 'dog' },
+    //   { url: 'https://www.a.com', description: 'lots of meawww', title: 'bb' },
+    //   { url: 'https://www.b.com', title: 'bb' },
+    //   { url: 'http://woof.com', description: 'ghew ghew', title: 'dog' },
+    //   { url: 'https://www.a.com', description: 'lots of meawww', title: 'bb' },
+    //   { url: 'https://www.b.com', title: 'bb' },
+    //   { url: 'http://woof.com', description: 'ghew ghew', title: 'dog' },
+    //   { url: 'https://www.a.com', description: 'lots of meawww', title: 'bb' },
+    //   { url: 'https://www.b.com', title: 'bb' },
+    //   { url: 'http://woof.com', description: 'ghew ghew', title: 'dog' },
+    //   { url: 'https://www.a.com', description: 'lots of meawww', title: 'bb' },
+    //   { url: 'https://www.b.com', title: 'bb' },
+    //   { url: 'http://woof.com', description: 'ghew ghew', title: 'dog' },
+    //   { url: 'https://www.a.com', description: 'lots of meawww', title: 'bb' },
+    //   { url: 'https://www.b.com', title: 'bb' },
+    //   { url: 'http://woof.com', description: 'ghew ghew', title: 'dog' },
+    // ];
 
     const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
     const prefixClass = getPrefixCls('pro-chat');
+
+    const renderReferences = () => {
+      if (!references || references.length === 0) return null;
+      return (
+        <>
+          <div>
+            <strong>References:</strong>
+          </div>
+          <div className={`${cx(styles.messageReferences, `${prefixClass}-message-references`)}`}>
+            <List
+              grid={{ gutter: 16, column: 4 }}
+              dataSource={references}
+              renderItem={({ title, description, url }) => (
+                <List.Item>
+                  <Card hoverable title={title} extra={<ExternalLink url={url} />}>
+                    {description}
+                  </Card>
+                </List.Item>
+              )}
+            />
+          </div>
+        </>
+      );
+    };
+
+    const referencesContent = useMemo(() => renderReferences(), [references]);
 
     const content = (
       <EditableMessage
@@ -74,6 +156,7 @@ const MessageContent = memo<MessageContentProps>(
             {messageExtra}
           </div>
         ) : null}
+        {referencesContent}
       </Flexbox>
     );
   },

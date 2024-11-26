@@ -41,6 +41,7 @@ const ChatItem = memo<ChatItemProps>((props) => {
     markdownProps,
     onDoubleClick,
     originData,
+    references,
     ...restProps
   } = props;
   const { mobile } = useResponsive();
@@ -96,6 +97,7 @@ const ChatItem = memo<ChatItemProps>((props) => {
         text={text}
         type={type}
         markdownProps={markdownProps}
+        references={references}
       />
     );
     return chatItemRenderConfig?.contentRender?.(props, dom) || dom;

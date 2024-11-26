@@ -173,6 +173,13 @@ export const useStyles = createStyles(
         `,
       ),
       messageExtra: css``,
+      messageReferences: css`
+        margin-top: 8px;
+        display: flex;
+        overflow-x: scroll;
+        width: 100%;
+        gap: 8px;
+      `,
       name: css`
         position: ${showTitle ? 'relative' : 'absolute'};
         top: ${showTitle ? 'unset' : '-16px'};

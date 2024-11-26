@@ -103,6 +103,8 @@ const ChatList = memo<ChatListProps>(
             historyLength > historyCount &&
             historyCount === historyLength - index + 1;
 
+          const references = item.references;
+
           return (
             <ShouldUpdateItem
               key={item.id}
@@ -118,6 +120,7 @@ const ChatList = memo<ChatListProps>(
                   originData={item}
                   chatItemRenderConfig={chatItemRenderConfig}
                   markdownProps={markdownProps}
+                  references={references}
                 />
               </Fragment>
             </ShouldUpdateItem>
