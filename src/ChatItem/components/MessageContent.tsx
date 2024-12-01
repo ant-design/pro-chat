@@ -4,7 +4,7 @@ import { Flexbox } from 'react-layout-kit';
 
 import { ChatItemProps } from '@/ChatItem';
 import EditableMessage from '@/EditableMessage';
-import { Card, ConfigProvider, List } from 'antd';
+import { Card, ConfigProvider, List, Tooltip } from 'antd';
 
 import { MarkdownProps } from '@ant-design/pro-editor';
 import { useStyles } from '../style';
@@ -21,13 +21,15 @@ const ExternalLink: React.FC<ExternalLinkProps> = ({ url }) => {
   };
 
   return (
-    <InfoCircleOutlined
-      style={{
-        cursor: 'pointer',
-        transition: 'color 0.3s ease',
-      }}
-      onClick={handleClick}
-    />
+    <Tooltip title={`Open in new tab: ${url}`}>
+      <InfoCircleOutlined
+        style={{
+          cursor: 'pointer',
+          transition: 'color 0.3s ease',
+        }}
+        onClick={handleClick}
+      />
+    </Tooltip>
   );
 };
 
@@ -67,39 +69,6 @@ const MessageContent = memo<MessageContentProps>(
   }) => {
     const { cx, styles } = useStyles({ editing, placement, primary, type });
     const { mobile } = useResponsive();
-    // const references = [
-    //   { url: 'https://www.a.com', description: 'lots of meawww', title: 'a' },
-    //   { url: 'https://www.b.com', title: 'bb' },
-    //   { url: 'http://woof.com', description: 'ghew ghew', title: 'dog' },
-    //   { url: 'https://www.a.com', description: 'lots of meawww', title: 'bc' },
-    //   { url: 'https://www.b.com', title: 'bb' },
-    //   { url: 'http://woof.com', description: 'ghew ghew', title: 'dog' },
-    //   { url: 'https://www.a.com', description: 'lots of meawww', title: 'bd' },
-    //   { url: 'https://www.b.com', title: 'bb' },
-    //   { url: 'http://woof.com', description: 'ghew ghew', title: 'dog' },
-    //   { url: 'https://www.a.com', description: 'lots of meawww', title: 'bb' },
-    //   { url: 'https://www.b.com', title: 'bb' },
-    //   { url: 'http://woof.com', description: 'ghew ghew', title: 'dog' },
-    //   { url: 'https://www.a.com', description: 'lots of meawww', title: 'bb' },
-    //   { url: 'https://www.b.com', title: 'bb' },
-    //   { url: 'http://woof.com', description: 'ghew ghew', title: 'dog' },
-    //   { url: 'https://www.a.com', description: 'lots of meawww', title: 'bb' },
-    //   { url: 'https://www.b.com', title: 'bb' },
-    //   { url: 'http://woof.com', description: 'ghew ghew', title: 'dog' },
-    //   { url: 'https://www.a.com', description: 'lots of meawww', title: 'bb' },
-    //   { url: 'https://www.b.com', title: 'bb' },
-    //   { url: 'http://woof.com', description: 'ghew ghew', title: 'dog' },
-    //   { url: 'https://www.a.com', description: 'lots of meawww', title: 'bb' },
-    //   { url: 'https://www.b.com', title: 'bb' },
-    //   { url: 'http://woof.com', description: 'ghew ghew', title: 'dog' },
-    //   { url: 'https://www.a.com', description: 'lots of meawww', title: 'bb' },
-    //   { url: 'https://www.b.com', title: 'bb' },
-    //   { url: 'http://woof.com', description: 'ghew ghew', title: 'dog' },
-    //   { url: 'https://www.a.com', description: 'lots of meawww', title: 'bb' },
-    //   { url: 'https://www.b.com', title: 'bb' },
-    //   { url: 'http://woof.com', description: 'ghew ghew', title: 'dog' },
-    // ];
-
     const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
     const prefixClass = getPrefixCls('pro-chat');
 
