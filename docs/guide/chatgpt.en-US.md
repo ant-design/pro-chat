@@ -91,7 +91,7 @@ export default function Home() {
             width: '100vw',
           }}
           request={async (messages) => {
-            const response = await fetch('/api/qwen', {
+            const response = await fetch('/api/gpt', {
               method: 'POST',
               body: JSON.stringify({ messages: messages }),
             });
